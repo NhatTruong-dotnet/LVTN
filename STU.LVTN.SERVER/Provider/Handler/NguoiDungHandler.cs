@@ -4,7 +4,7 @@ using STU.LVTN.SERVER.Provider.BusinessLogic;
 
 namespace STU.LVTN.SERVER.Provider.Handler
 {
-    public  class NguoiDungHandler
+    public class NguoiDungHandler
     {
         public static NguoiDungEntities user;
         private readonly IConfiguration _configuration;
@@ -23,8 +23,7 @@ namespace STU.LVTN.SERVER.Provider.Handler
             user.PasswordSalt = passwordSalt;
             user.PasswordHash = passwordHash;
 
-            nguoiDungHelper.AddUser(user);
-            return true;
+            return nguoiDungHelper.AddUser(user);
         }
 
         public async Task<string> Login(Login_RegisterDTO userRequest)
@@ -39,7 +38,7 @@ namespace STU.LVTN.SERVER.Provider.Handler
             else
             {
                 string secretKey = _configuration.GetSection("AppSettings:Token").Value;
-                string token = nguoiDungHelper.CreateToken(userRequest.SoDienThoai, secretKey);
+                string token = nguoiDungHelper.CreateToken(userRequest.SoDienThoai,user.Admin, secretKey);
                 return token;
             }
         }

@@ -28,7 +28,7 @@ namespace STU.LVTN.SERVER.Model
         public bool? MienPhi { get; set; }
         public double? Gia { get; set; }
         public bool? CaNhan { get; set; }
-
+        public DateTime? CreatedDate { get; set; } = DateTime.Now;
         public virtual BaiDangDoAnThucPham? IdBaiDangChiTiet1 { get; set; }
         public virtual BaiDangViecLam? IdBaiDangChiTiet10 { get; set; }
         public virtual BaiDangXeCo? IdBaiDangChiTiet11 { get; set; }

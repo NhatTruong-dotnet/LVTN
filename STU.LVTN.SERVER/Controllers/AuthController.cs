@@ -23,10 +23,13 @@ namespace STU.LVTN.SERVER.Controllers
         [HttpPost("register")]
         public async Task<ActionResult<string>> Register(Login_RegisterDTO userRequest)
         {
-            nguoiDungHandler.Register(userRequest);
 
-            return Ok();
+            if (await nguoiDungHandler.Register(userRequest))
+                return Ok();
+            else
+                return BadRequest("User already exist !");
         }
+
         [HttpPost("login")]
         public async Task<ActionResult<string>> Login(Login_RegisterDTO userRequest)
         {

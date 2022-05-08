@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\DEVELOPMENT\\LVTN\\STU.LVTN.SERVER\\STU.LVTN.SERVER.csproj": {}
+    "C:\\DEVELOPMENT\\STU.LVTN.SERVER\\STU.LVTN.SERVER.csproj": {}
   },
   "projects": {
-    "C:\\DEVELOPMENT\\LVTN\\STU.LVTN.SERVER\\STU.LVTN.SERVER.csproj": {
+    "C:\\DEVELOPMENT\\STU.LVTN.SERVER\\STU.LVTN.SERVER.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\DEVELOPMENT\\LVTN\\STU.LVTN.SERVER\\STU.LVTN.SERVER.csproj",
+        "projectUniqueName": "C:\\DEVELOPMENT\\STU.LVTN.SERVER\\STU.LVTN.SERVER.csproj",
         "projectName": "STU.LVTN.SERVER",
-        "projectPath": "C:\\DEVELOPMENT\\LVTN\\STU.LVTN.SERVER\\STU.LVTN.SERVER.csproj",
-        "packagesPath": "C:\\Users\\tbui48\\.nuget\\packages\\",
-        "outputPath": "C:\\DEVELOPMENT\\LVTN\\STU.LVTN.SERVER\\obj\\",
+        "projectPath": "C:\\DEVELOPMENT\\STU.LVTN.SERVER\\STU.LVTN.SERVER.csproj",
+        "packagesPath": "C:\\Users\\Welcome\\.nuget\\packages\\",
+        "outputPath": "C:\\DEVELOPMENT\\STU.LVTN.SERVER\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\tbui48\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Welcome\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
