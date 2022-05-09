@@ -12,14 +12,52 @@ namespace STU.LVTN.SERVER.Provider.BusinessLogic
             List<BaiDangHomePageDTO> baiDangHomePageDTOs = new List<BaiDangHomePageDTO>();
             if (lastestSubCategories == 0)
             {
-                // an tin false, trang thai true
-                _context.BaiDangs.Where(baiDang => baiDang.AnTin == false && baiDang.TrangThai == true).ToList();
+               List<BaiDangEntities> lastest20BaiDang =  _context.BaiDangs
+                    .Where(baiDang => baiDang.AnTin == false && baiDang.TrangThai == true)
+                    .OrderByDescending(baidang => baidang.IdBaiDang)
+                    .Take(20)
+                    .ToList();
+                foreach (var baiDang in lastest20BaiDang)
+                {
+                    BaiDangHomePageDTO newBaiDang = new BaiDangHomePageDTO();
+                    newBaiDang.IDBaiDang = baiDang.IdBaiDang;
+                    newBaiDang.IDHinhAnh = _context.HinhAnhBaiDangs.Where(item => item.IdSanPham == baiDang.IdBaiDang)
+                        .OrderByDescending(item => item.IdHinhAnh)
+                        .FirstOrDefault().IdMediaCloud;
+                    newBaiDang.TieuDe = baiDang.TieuDe;
+                    newBaiDang.ThanhPho = baiDang.ThanhPho;
+                    newBaiDang.Gia = baiDang.Gia;
+                    newBaiDang.NgayTao = baiDang.CreatedDate;
+
+                    baiDangHomePageDTOs.Add(newBaiDang);
+                }
             }
             else
             {
+                List<BaiDangEntities> lastest20BaiDang = _context.BaiDangs
+                    .Where(baiDang => baiDang.AnTin == false && baiDang.TrangThai == true && baiDang.IdDanhMucCon == lastestSubCategories)
+                    .OrderByDescending(baidang => baidang.IdBaiDang)
+                    .Take(20)
+                    .ToList();
 
+                foreach (var baiDang in lastest20BaiDang)
+                {
+                    BaiDangHomePageDTO newBaiDang = new BaiDangHomePageDTO();
+                    newBaiDang.IDBaiDang = baiDang.IdBaiDang;
+                    newBaiDang.IDHinhAnh = _context.HinhAnhBaiDangs.Where(item => item.IdSanPham == baiDang.IdBaiDang)
+                        .OrderByDescending(item => item.IdHinhAnh)
+                        .FirstOrDefault().IdMediaCloud;
+                    newBaiDang.TieuDe = baiDang.TieuDe;
+                    newBaiDang.ThanhPho = baiDang.ThanhPho;
+                    newBaiDang.Gia = baiDang.Gia;
+                    newBaiDang.NgayTao = baiDang.CreatedDate;
+
+                    baiDangHomePageDTOs.Add(newBaiDang);
+                }
             }
             return baiDangHomePageDTOs;
         }
+
+        
     }
 }
