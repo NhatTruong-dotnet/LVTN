@@ -1,0 +1,55 @@
+.userIcon {
+    font-size: 24px;
+    color: #fff;
+    margin-left: 30px;
+    position: relative;
+    top: 4px;
+    right: 50px;
+    cursor: pointer;
+}
+.wrap {
+    position: relative;
+}
+.notifyTab {
+    padding: 20px 0;
+    background-color: #fff;
+    width: 500px;
+    position: absolute;
+    right: 0px;
+    top: 40px;
+    box-shadow: 0 0 5px 0 rgb(0 0 0 / 10%);
+    border-radius: 5px;
+    z-index: 99;
+}
+.notifyItem {
+    padding: 10px;
+    display: flex;
+    cursor: pointer;
+    border-bottom: 2px solid #eee;
+}
+.notifyItem:last-child {
+    border: none;
+}
+.notifyItem:hover {
+    background-color: #e8e8e8;
+}
+.notifyImage {
+    width: 70px;
+    height: 70px;
+    border-radius: 10px;
+    margin-right: 15px;
+}
+.title {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+.subTitle {
+    font-size: 15px;
+}
+.timeAgo {
+    font-size: 14px;
+    font-weight: 600;
+    margin-top: 10px;
+    color: #aaa;
+}

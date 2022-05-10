@@ -1,7 +1,14 @@
-import './App.css'
+import Home from './Page/Home'
+import Header from './Base/Header'
 
 function App() {
-    return <div className='App'></div>
+    // console.log(process.env.REACT_APP_BASE_IMG_URL)
+    return (
+        <div>
+            <Header />
+            <Home />
+        </div>
+    )
 }
 
 export default App

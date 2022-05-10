@@ -1,0 +1,62 @@
+.wrap {
+    position: relative;
+}
+.userIcon {
+    font-size: 24px;
+    color: #fff;
+    margin-left: 30px;
+    position: relative;
+    top: 4px;
+    right: 50px;
+    cursor: pointer;
+}
+.controlTab {
+    padding: 20px 0;
+    background-color: #fff;
+    width: 300px;
+    position: absolute;
+    right: 0px;
+    top: 40px;
+    box-shadow: 0 0 5px 0 rgb(0 0 0 / 10%);
+    border-radius: 5px;
+    z-index: 111;
+}
+.userInfo {
+    display: flex;
+    border-bottom: 2px solid #ccc;
+    padding: 0 10px 10px;
+    cursor: pointer;
+}
+.name {
+    margin-left: 15px;
+    font-weight: 600;
+    font-size: 18px;
+}
+.subTitle {
+    font-size: 12px;
+    color: #aaa;
+    margin-top: 3px;
+}
+.userInfoIcon {
+    font-size: 40px;
+}
+.controlContainer {
+    margin-top: 20px;
+}
+.controlItem {
+    padding: 10px 0;
+    cursor: pointer;
+}
+.controlItem:hover {
+    background-color: #e8e8e8;
+}
+.controlLabel {
+    font-weight: 600;
+    margin-left: 10px;
+}
+.icon {
+    width: 30px;
+    height: 30px;
+    vertical-align: middle;
+    margin-left: 10px;
+}

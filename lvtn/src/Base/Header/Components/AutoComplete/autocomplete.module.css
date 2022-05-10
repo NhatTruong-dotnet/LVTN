@@ -1,0 +1,24 @@
+.autoComplete {
+    width: 100%;
+    background-color: #fff;
+    position: absolute;
+    top: 40px;
+    box-shadow: 0 0 5px 0 rgb(0 0 0 / 10%);
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    cursor: default;
+}
+.searchValue {
+    padding: 15px;
+    font-weight: 600;
+}
+.item {
+    padding: 10px 15px;
+    color: #333;
+    transition: all 0.2s linear;
+    cursor: pointer;
+}
+
+.item:hover {
+    background-color: #e8e8e8;
+}
