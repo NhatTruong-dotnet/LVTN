@@ -14,5 +14,10 @@ namespace STU.LVTN.SERVER.Provider.Handler
         {
             return await baiDangHelper.RenderHomePage(lastestSubCategories);
         }
+
+        public async Task<List<BaiDangHomePageDTO>> GetSoldPostBySoDienThoai(string soDienThoai)
+        {
+            return await baiDangHelper.GetSoldPostBySoDienThoai(soDienThoai);
+        }
     }
 }

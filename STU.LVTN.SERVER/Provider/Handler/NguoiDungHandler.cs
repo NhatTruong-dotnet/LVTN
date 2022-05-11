@@ -13,7 +13,7 @@ namespace STU.LVTN.SERVER.Provider.Handler
         public NguoiDungHandler(IConfiguration configuration)
         {
             _configuration = configuration;
-            nguoiDungHelper = new NguoiDung();
+            nguoiDungHelper = new NguoiDung(_configuration);
         }
         public async Task<bool> Register(Login_RegisterDTO userRequest)
         {

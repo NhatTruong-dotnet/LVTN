@@ -10,7 +10,12 @@ namespace STU.LVTN.SERVER.Provider.BusinessLogic
     public  class NguoiDung
     {
         private LVTNContext _context = new LVTNContext();
+        private readonly IConfiguration _configuration;
 
+        public NguoiDung(IConfiguration configuration)
+        {
+            _configuration = configuration;
+        }
         public  void CreatePasswordHash(string password, out byte[] passwordHash, out byte[] passwordSalt)
         {
             using(var hmac = new HMACSHA512())
@@ -45,7 +50,8 @@ namespace STU.LVTN.SERVER.Provider.BusinessLogic
 
             };
 
-            var key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(secretKey));
+            var key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(
+                 _configuration.GetSection("AppSettings:Token").Value));
 
             var cred = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);
 

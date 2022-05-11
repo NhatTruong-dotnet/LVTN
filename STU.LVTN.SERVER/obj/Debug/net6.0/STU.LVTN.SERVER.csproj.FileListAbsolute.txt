@@ -122,3 +122,7 @@ C:\DEVELOPMENT\STU.LVTN.SERVER\obj\Debug\net6.0\staticwebassets.development.json
 C:\DEVELOPMENT\STU.LVTN.SERVER\obj\Debug\net6.0\scopedcss\bundle\STU.LVTN.SERVER.styles.css
 C:\DEVELOPMENT\STU.LVTN.SERVER\obj\Debug\net6.0\STU.LVTN.SERVER.csproj.CopyComplete
 C:\DEVELOPMENT\STU.LVTN.SERVER\obj\Debug\net6.0\STU.LVTN.SERVER.genruntimeconfig.cache
+C:\DEVELOPMENT\LVTN\STU.LVTN.SERVER\bin\Debug\net6.0\Microsoft.Extensions.DependencyModel.dll
+C:\DEVELOPMENT\LVTN\STU.LVTN.SERVER\bin\Debug\net6.0\Scrutor.dll
+C:\DEVELOPMENT\LVTN\STU.LVTN.SERVER\bin\Debug\net6.0\Swashbuckle.AspNetCore.Filters.dll
+C:\DEVELOPMENT\LVTN\STU.LVTN.SERVER\bin\Debug\net6.0\Swashbuckle.AspNetCore.Filters.Abstractions.dll

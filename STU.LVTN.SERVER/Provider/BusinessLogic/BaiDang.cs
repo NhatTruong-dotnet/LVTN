@@ -58,6 +58,37 @@ namespace STU.LVTN.SERVER.Provider.BusinessLogic
             return baiDangHomePageDTOs;
         }
 
-        
+        //private bool AddBaiDang(BaiDangGlobal baiDangRequest)
+        //{
+        //    _context.BaiDangs.Add(baiDangRequest);
+        //    _context.SaveChanges();
+        //}
+
+        public async Task<List<BaiDangHomePageDTO>> GetSoldPostBySoDienThoai(string soDienThoai)
+        {
+            List<BaiDangHomePageDTO> baiDangHomePageDTOs = new List<BaiDangHomePageDTO>();
+                List<BaiDangEntities> lastest20BaiDang = _context.BaiDangs
+                     .Where(baiDang => baiDang.SdtNguoiBan == soDienThoai)
+                     .OrderByDescending(baidang => baidang.IdBaiDang)
+                     .Take(20)
+                     .ToList();
+                foreach (var baiDang in lastest20BaiDang)
+                {
+                    BaiDangHomePageDTO newBaiDang = new BaiDangHomePageDTO();
+                    newBaiDang.IDBaiDang = baiDang.IdBaiDang;
+                    newBaiDang.IDHinhAnh = _context.HinhAnhBaiDangs.Where(item => item.IdSanPham == baiDang.IdBaiDang)
+                        .OrderByDescending(item => item.IdHinhAnh)
+                        .FirstOrDefault().IdMediaCloud;
+                    newBaiDang.TieuDe = baiDang.TieuDe;
+                    newBaiDang.ThanhPho = baiDang.ThanhPho;
+                    newBaiDang.Gia = baiDang.Gia;
+                    newBaiDang.NgayTao = baiDang.CreatedDate;
+
+                    baiDangHomePageDTOs.Add(newBaiDang);
+                }
+            
+
+            return baiDangHomePageDTOs;
+        }
     }
 }
