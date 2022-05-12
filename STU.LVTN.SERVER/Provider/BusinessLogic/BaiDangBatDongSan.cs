@@ -5,7 +5,7 @@ namespace STU.LVTN.SERVER.Provider.BusinessLogic
     public class BaiDangBatDongSan
     {
         private LVTNContext _context = new LVTNContext();
-        public int AddBaiDang(BaiDangBatDongSanEntites baiDangRequest)
+        public int AddBaiDang(BaiDangBatDongSanEntities baiDangRequest)
         {
             try
             {

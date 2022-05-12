@@ -28,19 +28,8 @@ namespace STU.LVTN.SERVER.Model
         public bool? MienPhi { get; set; }
         public double? Gia { get; set; }
         public bool? CaNhan { get; set; }
-        public DateTime? CreatedDate { get; set; } = DateTime.Now;
-        public virtual BaiDangDoAnThucPham? IdBaiDangChiTiet1 { get; set; }
-        public virtual BaiDangViecLam? IdBaiDangChiTiet10 { get; set; }
-        public virtual BaiDangXeCo? IdBaiDangChiTiet11 { get; set; }
-        public virtual BaiDangDoDienTu? IdBaiDangChiTiet2 { get; set; }
-        public virtual BaiDangDoDungVanPhong? IdBaiDangChiTiet3 { get; set; }
-        public virtual BaiDangDoGiaDung? IdBaiDangChiTiet4 { get; set; }
-        public virtual BaiDangGiaiTri? IdBaiDangChiTiet5 { get; set; }
-        public virtual BaiDangMeVaBe? IdBaiDangChiTiet6 { get; set; }
-        public virtual BaiDangThoiTrang? IdBaiDangChiTiet7 { get; set; }
-        public virtual BaiDangThuCung? IdBaiDangChiTiet8 { get; set; }
-        public virtual BaiDangTuLanh? IdBaiDangChiTiet9 { get; set; }
-        public virtual BaiDangBatDongSanEntites? IdBaiDangChiTietNavigation { get; set; }
+        public DateTime? CreatedDate { get; set; }
+
         public virtual DanhMuc? IdDanhMucConNavigation { get; set; }
         public virtual NguoiDungEntities? SdtNguoiBanNavigation { get; set; }
         public virtual ICollection<HinhAnhBaiDang> HinhAnhBaiDangs { get; set; }

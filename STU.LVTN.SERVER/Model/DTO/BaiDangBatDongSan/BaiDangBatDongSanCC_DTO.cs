@@ -2,7 +2,6 @@
 {
     public class BaiDangBatDongSanCC_DTO
     {
-        public int IdBaiDang { get; set; }
         public int IdDanhMucCha { get; set; }
         public string? SdtNguoiBan { get; set; }
         public string? SdtNguoiMua { get; set; }

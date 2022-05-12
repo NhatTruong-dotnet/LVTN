@@ -29,7 +29,7 @@ namespace STU.LVTN.SERVER.Provider.Handler
 
         public async Task<bool> AddBaiDangBatDongSanCC(BaiDangBatDongSanCC_DTO baiDangRequest)
         {
-            BaiDangBatDongSanEntites baiDangBatDongSanCC = _mapper.Map<BaiDangBatDongSanEntites>(baiDangRequest);
+            BaiDangBatDongSanEntities baiDangBatDongSanCC = _mapper.Map<BaiDangBatDongSanEntities>(baiDangRequest);
             int lastIDPost = baiDangBatDongSanHelper.AddBaiDang(baiDangBatDongSanCC);
             if (lastIDPost == -1)
             {

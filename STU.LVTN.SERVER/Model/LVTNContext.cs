@@ -17,7 +17,7 @@ namespace STU.LVTN.SERVER.Model
         }
 
         public virtual DbSet<BaiDangEntities> BaiDangs { get; set; } = null!;
-        public virtual DbSet<BaiDangBatDongSanEntites> BaiDangBatDongSans { get; set; } = null!;
+        public virtual DbSet<BaiDangBatDongSanEntities> BaiDangBatDongSans { get; set; } = null!;
         public virtual DbSet<BaiDangDoAnThucPham> BaiDangDoAnThucPhams { get; set; } = null!;
         public virtual DbSet<BaiDangDoDienTu> BaiDangDoDienTus { get; set; } = null!;
         public virtual DbSet<BaiDangDoDungVanPhong> BaiDangDoDungVanPhongs { get; set; } = null!;
@@ -40,7 +40,7 @@ namespace STU.LVTN.SERVER.Model
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("Data Source=VN-PF1REETP;Initial Catalog=LVTN;Integrated Security=True");
+                optionsBuilder.UseSqlServer("Server=.;Database=LVTN;Trusted_Connection=True;");
             }
         }
 
@@ -82,66 +82,6 @@ namespace STU.LVTN.SERVER.Model
 
                 entity.Property(e => e.TieuDe).HasMaxLength(150);
 
-                entity.HasOne(d => d.IdBaiDangChiTietNavigation)
-                    .WithMany(p => p.BaiDangs)
-                    .HasForeignKey(d => d.IdBaiDangChiTiet)
-                    .HasConstraintName("FK_BaiDang_BaiDang_BatDongSan");
-
-                entity.HasOne(d => d.IdBaiDangChiTiet1)
-                    .WithMany(p => p.BaiDangs)
-                    .HasForeignKey(d => d.IdBaiDangChiTiet)
-                    .HasConstraintName("FK_BaiDang_BaiDang_DoAnThucPham");
-
-                entity.HasOne(d => d.IdBaiDangChiTiet2)
-                    .WithMany(p => p.BaiDangs)
-                    .HasForeignKey(d => d.IdBaiDangChiTiet)
-                    .HasConstraintName("FK_BaiDang_BaiDang_DoDienTu");
-
-                entity.HasOne(d => d.IdBaiDangChiTiet3)
-                    .WithMany(p => p.BaiDangs)
-                    .HasForeignKey(d => d.IdBaiDangChiTiet)
-                    .HasConstraintName("FK_BaiDang_BaiDang_DoDungVanPhong");
-
-                entity.HasOne(d => d.IdBaiDangChiTiet4)
-                    .WithMany(p => p.BaiDangs)
-                    .HasForeignKey(d => d.IdBaiDangChiTiet)
-                    .HasConstraintName("FK_BaiDang_BaiDang_DoGiaDung");
-
-                entity.HasOne(d => d.IdBaiDangChiTiet5)
-                    .WithMany(p => p.BaiDangs)
-                    .HasForeignKey(d => d.IdBaiDangChiTiet)
-                    .HasConstraintName("FK_BaiDang_BaiDang_GiaiTri");
-
-                entity.HasOne(d => d.IdBaiDangChiTiet6)
-                    .WithMany(p => p.BaiDangs)
-                    .HasForeignKey(d => d.IdBaiDangChiTiet)
-                    .HasConstraintName("FK_BaiDang_BaiDang_MeVaBe");
-
-                entity.HasOne(d => d.IdBaiDangChiTiet7)
-                    .WithMany(p => p.BaiDangs)
-                    .HasForeignKey(d => d.IdBaiDangChiTiet)
-                    .HasConstraintName("FK_BaiDang_BaiDang_ThoiTrang");
-
-                entity.HasOne(d => d.IdBaiDangChiTiet8)
-                    .WithMany(p => p.BaiDangs)
-                    .HasForeignKey(d => d.IdBaiDangChiTiet)
-                    .HasConstraintName("FK_BaiDang_BaiDang_ThuCung");
-
-                entity.HasOne(d => d.IdBaiDangChiTiet9)
-                    .WithMany(p => p.BaiDangs)
-                    .HasForeignKey(d => d.IdBaiDangChiTiet)
-                    .HasConstraintName("FK_BaiDang_BaiDang_TuLanh");
-
-                entity.HasOne(d => d.IdBaiDangChiTiet10)
-                    .WithMany(p => p.BaiDangs)
-                    .HasForeignKey(d => d.IdBaiDangChiTiet)
-                    .HasConstraintName("FK_BaiDang_BaiDang_ViecLam");
-
-                entity.HasOne(d => d.IdBaiDangChiTiet11)
-                    .WithMany(p => p.BaiDangs)
-                    .HasForeignKey(d => d.IdBaiDangChiTiet)
-                    .HasConstraintName("FK_BaiDang_BaiDang_XeCo");
-
                 entity.HasOne(d => d.IdDanhMucConNavigation)
                     .WithMany(p => p.BaiDangs)
                     .HasForeignKey(d => d.IdDanhMucCon)
@@ -153,7 +93,7 @@ namespace STU.LVTN.SERVER.Model
                     .HasConstraintName("FK_BaiDang_NguoiDung");
             });
 
-            modelBuilder.Entity<BaiDangBatDongSanEntites>(entity =>
+            modelBuilder.Entity<BaiDangBatDongSanEntities>(entity =>
             {
                 entity.HasKey(e => e.IdBaiDang);
 

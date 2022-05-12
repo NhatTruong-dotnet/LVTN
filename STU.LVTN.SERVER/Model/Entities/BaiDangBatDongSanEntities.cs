@@ -3,13 +3,8 @@ using System.Collections.Generic;
 
 namespace STU.LVTN.SERVER.Model
 {
-    public partial class BaiDangBatDongSanEntites
+    public partial class BaiDangBatDongSanEntities
     {
-        public BaiDangBatDongSanEntites()
-        {
-            BaiDangs = new HashSet<BaiDangEntities>();
-        }
-
         public int IdBaiDang { get; set; }
         public string? TenDuAn { get; set; }
         public double? DienTich { get; set; }
@@ -40,7 +35,5 @@ namespace STU.LVTN.SERVER.Model
         public string? VanPhongLoaiHinhVanPhong { get; set; }
         public string? PhongTroTinhTrangNoiThat { get; set; }
         public double? PhongTroSoTienCoc { get; set; }
-
-        public virtual ICollection<BaiDangEntities> BaiDangs { get; set; }
     }
 }

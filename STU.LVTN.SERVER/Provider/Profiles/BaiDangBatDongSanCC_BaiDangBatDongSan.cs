@@ -8,7 +8,7 @@ namespace STU.LVTN.SERVER.Provider.Profiles
     {
         public BaiDangBatDongSanCC_BaiDangBatDongSan()
         {
-            CreateMap<BaiDangBatDongSanCC_DTO, BaiDangBatDongSanEntites>()
+            CreateMap<BaiDangBatDongSanCC_DTO, BaiDangBatDongSanEntities>()
                 .ForMember(destinationMember => destinationMember.CcBlock, opt => opt.MapFrom(sourceMember => sourceMember.Block))
                 .ForMember(destinationMember => destinationMember.CcMaCan, opt => opt.MapFrom(sourceMember => sourceMember.MaCan))
                 .ForMember(destinationMember => destinationMember.CcTangSo, opt => opt.MapFrom(sourceMember => sourceMember.TangSo))

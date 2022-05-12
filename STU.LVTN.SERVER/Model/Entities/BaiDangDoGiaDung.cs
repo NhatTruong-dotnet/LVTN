@@ -5,11 +5,6 @@ namespace STU.LVTN.SERVER.Model
 {
     public partial class BaiDangDoGiaDung
     {
-        public BaiDangDoGiaDung()
-        {
-            BaiDangs = new HashSet<BaiDangEntities>();
-        }
-
         public int IdBaiDang { get; set; }
         public bool? DaSuDung { get; set; }
         public string? LoaiSanPham { get; set; }
@@ -19,7 +14,5 @@ namespace STU.LVTN.SERVER.Model
         public string? BepThuongHieu { get; set; }
         public string? QuatThuongHieu { get; set; }
         public string? ThietBiVeSinhThuongHieu { get; set; }
-
-        public virtual ICollection<BaiDangEntities> BaiDangs { get; set; }
     }
 }
