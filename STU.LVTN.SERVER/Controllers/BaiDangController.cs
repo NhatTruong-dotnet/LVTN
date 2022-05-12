@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using STU.LVTN.SERVER.Model.DTO;
 using STU.LVTN.SERVER.Model.DTO.BaiDangBatDongSan;
+using STU.LVTN.SERVER.Model.DTO.BaiDangXeCo;
 using STU.LVTN.SERVER.Provider.Handler;
 
 namespace STU.LVTN.SERVER.Controllers
@@ -33,6 +34,7 @@ namespace STU.LVTN.SERVER.Controllers
             return await baiDangHandler.GetSoldPostBySoDienThoai(soDienThoai);
         }
 
+        #region BatDongSan Handler
         [HttpPost("batDongSanCC/newPost")]
         public async Task<ActionResult<bool>> newPostBatDongSanCC(BaiDangBatDongSanCC_DTO baiDangCC_Request)
         {
@@ -82,5 +84,79 @@ namespace STU.LVTN.SERVER.Controllers
             }
             return BadRequest();
         }
+
+        #endregion
+
+        #region XeCo Handler
+        [HttpPost("xeCoOto/newPost")]
+        public async Task<ActionResult<bool>> newPostXeCoOto(BaiDangXeCoOto_DTO baiDangOTo_Request)
+        {
+            if (await baiDangHandler.AddBaiDangXeCoOTo(baiDangOTo_Request))
+            {
+                return Ok();
+            }
+            return BadRequest();
+        }
+
+        [HttpPost("xeCoXeMay/newPost")]
+        public async Task<ActionResult<bool>> newPostXeCoXeMay(BaiDangXeCoXeMay_DTO baiDangXeMay_Request)
+        {
+            if (await baiDangHandler.AddBaiDangXeCoXeMay(baiDangXeMay_Request))
+            {
+                return Ok();
+            }
+            return BadRequest();
+        }
+
+        [HttpPost("xeCoXeTai/newPost")]
+        public async Task<ActionResult<bool>> newPostXeCoXeTai(BaiDangXeCoXeTai_DTO baiDangXeTai_Request)
+        {
+            if (await baiDangHandler.AddBaiDangXeCoXeTai(baiDangXeTai_Request))
+            {
+                return Ok();
+            }
+            return BadRequest();
+        }
+
+        [HttpPost("xeCoXeDien/newPost")]
+        public async Task<ActionResult<bool>> newPostXeCoXeDien(BaiDangXeCoXeDien_DTO baiDangXeDien_Request)
+        {
+            if (await baiDangHandler.AddBaiDangXeCoXeDien(baiDangXeDien_Request))
+            {
+                return Ok();
+            }
+            return BadRequest();
+        }
+
+        [HttpPost("xeCoXeDap/newPost")]
+        public async Task<ActionResult<bool>> newPostXeCoXeDap(BaiDangXeCoXeDap_DTO baiDangXeDap_Request)
+        {
+            if (await baiDangHandler.AddBaiDangXeCoXeDap(baiDangXeDap_Request))
+            {
+                return Ok();
+            }
+            return BadRequest();
+        }
+
+        [HttpPost("xeCoPhuongTienKhac/newPost")]
+        public async Task<ActionResult<bool>> newPostXeCoPhuongTienKhac(BaiDangXeCoPhuongTienKhac_DTO baiDangPhuongTienKhac_Request)
+        {
+            if (await baiDangHandler.AddBaiDangXeCoPhuongTienKhac(baiDangPhuongTienKhac_Request))
+            {
+                return Ok();
+            }
+            return BadRequest();
+        }
+
+        [HttpPost("xeCoPhuTungXe/newPost")]
+        public async Task<ActionResult<bool>> newPostXeCoPhuTungXe(BaiDangXeCoPhuTungXe_DTO baiDangPhuTungXe_Request)
+        {
+            if (await baiDangHandler.AddBaiDangXeCoPhuTungKhac(baiDangPhuTungXe_Request))
+            {
+                return Ok();
+            }
+            return BadRequest();
+        }
+        #endregion
     }
 }

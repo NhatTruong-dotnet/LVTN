@@ -3,10 +3,11 @@ using System.Collections.Generic;
 
 namespace STU.LVTN.SERVER.Model
 {
-    public partial class BaiDangDoDienTu
+    public partial class BaiDangDoDienTuEntities
     {
         public int IdBaiDang { get; set; }
         public bool? BaoHanh { get; set; }
+        public string? TinhTrang { get; set; }
         public string? DienThoaiHang { get; set; }
         public string? DienThoaiMauSac { get; set; }
         public string? DienThoaiDungLuong { get; set; }

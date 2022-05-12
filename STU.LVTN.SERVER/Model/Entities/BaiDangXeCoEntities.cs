@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace STU.LVTN.SERVER.Model
 {
-    public partial class BaiDangXeCo
+    public partial class BaiDangXeCoEntities
     {
         public int IdBaiDang { get; set; }
         public string? HangXe { get; set; }
