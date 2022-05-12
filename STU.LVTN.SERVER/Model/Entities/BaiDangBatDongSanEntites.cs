@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace STU.LVTN.SERVER.Model
 {
-    public partial class BaiDangBatDongSan
+    public partial class BaiDangBatDongSanEntites
     {
-        public BaiDangBatDongSan()
+        public BaiDangBatDongSanEntites()
         {
             BaiDangs = new HashSet<BaiDangEntities>();
         }

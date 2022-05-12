@@ -1,12 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "2Wu2JpAbzsdI/DmtTPs818avsPeSuoP+ko7YP4RGiohMkg8CQCfCwzfg034HcGO7Z2MrPYM3TLi9aqTAwwVsVg==",
+  "dgSpecHash": "fhxrFI9admgXcO2fKwsYu+DKQaDgipmyu0ZNpJGN9Od+Z/6KTjpDY4LDFy72zo+3v04fobQjvRPooCj8rHmTWg==",
   "success": true,
   "projectFilePath": "C:\\DEVELOPMENT\\LVTN\\STU.LVTN.SERVER\\STU.LVTN.SERVER.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\tbui48\\.nuget\\packages\\automapper\\11.0.0\\automapper.11.0.0.nupkg.sha512",
+    "C:\\Users\\tbui48\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\11.0.0\\automapper.extensions.microsoft.dependencyinjection.11.0.0.nupkg.sha512",
     "C:\\Users\\tbui48\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\tbui48\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\6.0.4\\microsoft.aspnetcore.authentication.jwtbearer.6.0.4.nupkg.sha512",
-    "C:\\Users\\tbui48\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
+    "C:\\Users\\tbui48\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\tbui48\\.nuget\\packages\\microsoft.data.sqlclient\\2.1.4\\microsoft.data.sqlclient.2.1.4.nupkg.sha512",
     "C:\\Users\\tbui48\\.nuget\\packages\\microsoft.data.sqlclient.sni.runtime\\2.1.1\\microsoft.data.sqlclient.sni.runtime.2.1.1.nupkg.sha512",
     "C:\\Users\\tbui48\\.nuget\\packages\\microsoft.entityframeworkcore\\6.0.4\\microsoft.entityframeworkcore.6.0.4.nupkg.sha512",

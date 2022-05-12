@@ -1,12 +1,19 @@
-﻿using STU.LVTN.SERVER.Model;
+﻿using AutoMapper;
+using STU.LVTN.SERVER.Model;
 using STU.LVTN.SERVER.Model.DTO;
+using STU.LVTN.SERVER.Model.DTO.BaiDangBatDongSan;
 
 namespace STU.LVTN.SERVER.Provider.BusinessLogic
 {
     public class BaiDang
     {
         private LVTNContext _context = new LVTNContext();
+        private readonly IMapper _mapper;
 
+        public BaiDang(IMapper mapper)
+        {
+            _mapper = mapper;
+        }
         public async Task<List<BaiDangHomePageDTO>> RenderHomePage(int lastestSubCategories)
         {
             List<BaiDangHomePageDTO> baiDangHomePageDTOs = new List<BaiDangHomePageDTO>();
@@ -58,11 +65,6 @@ namespace STU.LVTN.SERVER.Provider.BusinessLogic
             return baiDangHomePageDTOs;
         }
 
-        //private bool AddBaiDang(BaiDangGlobal baiDangRequest)
-        //{
-        //    _context.BaiDangs.Add(baiDangRequest);
-        //    _context.SaveChanges();
-        //}
 
         public async Task<List<BaiDangHomePageDTO>> GetSoldPostBySoDienThoai(string soDienThoai)
         {
@@ -89,6 +91,20 @@ namespace STU.LVTN.SERVER.Provider.BusinessLogic
             
 
             return baiDangHomePageDTOs;
+        }
+
+        public async Task<bool> AddBaiDang(BaiDangEntities baiDangRequest)
+        {
+            try
+            {
+                _context.BaiDangs.Add(baiDangRequest);
+                _context.SaveChanges();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
     }
 }

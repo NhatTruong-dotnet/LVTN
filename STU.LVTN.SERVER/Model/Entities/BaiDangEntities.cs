@@ -40,7 +40,7 @@ namespace STU.LVTN.SERVER.Model
         public virtual BaiDangThoiTrang? IdBaiDangChiTiet7 { get; set; }
         public virtual BaiDangThuCung? IdBaiDangChiTiet8 { get; set; }
         public virtual BaiDangTuLanh? IdBaiDangChiTiet9 { get; set; }
-        public virtual BaiDangBatDongSan? IdBaiDangChiTietNavigation { get; set; }
+        public virtual BaiDangBatDongSanEntites? IdBaiDangChiTietNavigation { get; set; }
         public virtual DanhMuc? IdDanhMucConNavigation { get; set; }
         public virtual NguoiDungEntities? SdtNguoiBanNavigation { get; set; }
         public virtual ICollection<HinhAnhBaiDang> HinhAnhBaiDangs { get; set; }

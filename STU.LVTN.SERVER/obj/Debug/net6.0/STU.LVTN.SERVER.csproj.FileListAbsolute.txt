@@ -126,3 +126,5 @@ C:\DEVELOPMENT\LVTN\STU.LVTN.SERVER\bin\Debug\net6.0\Microsoft.Extensions.Depend
 C:\DEVELOPMENT\LVTN\STU.LVTN.SERVER\bin\Debug\net6.0\Scrutor.dll
 C:\DEVELOPMENT\LVTN\STU.LVTN.SERVER\bin\Debug\net6.0\Swashbuckle.AspNetCore.Filters.dll
 C:\DEVELOPMENT\LVTN\STU.LVTN.SERVER\bin\Debug\net6.0\Swashbuckle.AspNetCore.Filters.Abstractions.dll
+C:\DEVELOPMENT\LVTN\STU.LVTN.SERVER\bin\Debug\net6.0\AutoMapper.dll
+C:\DEVELOPMENT\LVTN\STU.LVTN.SERVER\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll

@@ -17,7 +17,7 @@ namespace STU.LVTN.SERVER.Model
         }
 
         public virtual DbSet<BaiDangEntities> BaiDangs { get; set; } = null!;
-        public virtual DbSet<BaiDangBatDongSan> BaiDangBatDongSans { get; set; } = null!;
+        public virtual DbSet<BaiDangBatDongSanEntites> BaiDangBatDongSans { get; set; } = null!;
         public virtual DbSet<BaiDangDoAnThucPham> BaiDangDoAnThucPhams { get; set; } = null!;
         public virtual DbSet<BaiDangDoDienTu> BaiDangDoDienTus { get; set; } = null!;
         public virtual DbSet<BaiDangDoDungVanPhong> BaiDangDoDungVanPhongs { get; set; } = null!;
@@ -153,7 +153,7 @@ namespace STU.LVTN.SERVER.Model
                     .HasConstraintName("FK_BaiDang_NguoiDung");
             });
 
-            modelBuilder.Entity<BaiDangBatDongSan>(entity =>
+            modelBuilder.Entity<BaiDangBatDongSanEntites>(entity =>
             {
                 entity.HasKey(e => e.IdBaiDang);
 
