@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using STU.LVTN.SERVER.Model.DTO;
 using STU.LVTN.SERVER.Model.DTO.BaiDangBatDongSan;
 using STU.LVTN.SERVER.Model.DTO.BaiDangXeCo;
+using STU.LVTN.SERVER.Model.DTO.DoDienTu;
 using STU.LVTN.SERVER.Provider.Handler;
 
 namespace STU.LVTN.SERVER.Controllers
@@ -152,6 +153,98 @@ namespace STU.LVTN.SERVER.Controllers
         public async Task<ActionResult<bool>> newPostXeCoPhuTungXe(BaiDangXeCoPhuTungXe_DTO baiDangPhuTungXe_Request)
         {
             if (await baiDangHandler.AddBaiDangXeCoPhuTungKhac(baiDangPhuTungXe_Request))
+            {
+                return Ok();
+            }
+            return BadRequest();
+        }
+        #endregion
+
+        #region DoDienTu Handler
+        [HttpPost("doDienTuDienThoai/newPost")]
+        public async Task<ActionResult<bool>> newPostDoDienTuDienThoai(BaiDangDoDienTuDienThoai_DTO baiDangDienThoai_Request)
+        {
+            if (await baiDangHandler.AddBaiDangDoDienTuDienThoai(baiDangDienThoai_Request))
+            {
+                return Ok();
+            }
+            return BadRequest();
+        }
+
+        [HttpPost("doDienTuLaptop/newPost")]
+        public async Task<ActionResult<bool>> newPostDoDienTuLaptop(BaiDangDoDienTuLaptop_DTO baiDangLaptop_Request)
+        {
+            if (await baiDangHandler.AddBaiDangDoDienTuLaptop(baiDangLaptop_Request))
+            {
+                return Ok();
+            }
+            return BadRequest();
+        }
+
+        [HttpPost("doDienTuLinhKien/newPost")]
+        public async Task<ActionResult<bool>> newPostDoDienTuLinhKien(BaiDangDoDienTuLinhKien_DTO baiDangLinhKien_Request)
+        {
+            if (await baiDangHandler.AddBaiDangDoDienTuLinhKien(baiDangLinhKien_Request))
+            {
+                return Ok();
+            }
+            return BadRequest();
+        }
+
+        [HttpPost("doDienTuMayAnh/newPost")]
+        public async Task<ActionResult<bool>> newPostDoDienTuMayAnh(BaiDangDoDienTuMayAnh_DTO baiDangMayAnh_Request)
+        {
+            if (await baiDangHandler.AddBaiDangDoDienTuMayAnh(baiDangMayAnh_Request))
+            {
+                return Ok();
+            }
+            return BadRequest();
+        }
+
+        [HttpPost("doDienTuMayTinhBang/newPost")]
+        public async Task<ActionResult<bool>> newPostDoDienTuMayTinhBang(BaiDangDoDienTuMayTinhBang_DTO baiDangMayTinhBang_Request)
+        {
+            if (await baiDangHandler.AddBaiDangDoDienTuMayTinhBang(baiDangMayTinhBang_Request))
+            {
+                return Ok();
+            }
+            return BadRequest();
+        }
+
+        [HttpPost("doDienTuMayTinhDeBan/newPost")]
+        public async Task<ActionResult<bool>> newPostDoDienTuMayTinhDeBan(BaiDangDoDienTuMayTinhDeBan_DTO baiDangMayTinhDeBan_Request)
+        {
+            if (await baiDangHandler.AddBaiDangDoDienTuMayTinhDeBan(baiDangMayTinhDeBan_Request))
+            {
+                return Ok();
+            }
+            return BadRequest();
+        }
+
+        [HttpPost("doDienTuPhuKien/newPost")]
+        public async Task<ActionResult<bool>> newPostDoDienTuPhuKien(BaiDangDoDienTuPhuKien_DTO baiDangPhuKien_Request)
+        {
+            if (await baiDangHandler.AddBaiDangDoDienTuPhuKien(baiDangPhuKien_Request))
+            {
+                return Ok();
+            }
+            return BadRequest();
+        }
+
+        [HttpPost("doDienTuThietBiDeoThongMinh/newPost")]
+        public async Task<ActionResult<bool>> newPostDoDienTuThietBiDeoThongMinh(BaiDangDoDienTuThietBiDeoThongMinh_DTO baiDangThietBiDeoThongMinh_Request)
+        {
+            if (await baiDangHandler.AddBaiDangDoDienTuThietBiDeoThongMinh(baiDangThietBiDeoThongMinh_Request))
+            {
+                return Ok();
+            }
+            return BadRequest();
+        }
+
+        [HttpPost("doDienTuTivi/newPost")]
+        public async Task<ActionResult<bool>> newPostDoDienTuTivi(BaiDangDoDienTuTivi_DTO baiDangTivi_Request)
+        {
+            if (await baiDangHandler.AddBaiDangDoDienTuTivi(baiDangTivi_Request))
             {
                 return Ok();
             }

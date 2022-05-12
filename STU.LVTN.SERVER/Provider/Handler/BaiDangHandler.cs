@@ -3,6 +3,7 @@ using STU.LVTN.SERVER.Model;
 using STU.LVTN.SERVER.Model.DTO;
 using STU.LVTN.SERVER.Model.DTO.BaiDangBatDongSan;
 using STU.LVTN.SERVER.Model.DTO.BaiDangXeCo;
+using STU.LVTN.SERVER.Model.DTO.DoDienTu;
 using STU.LVTN.SERVER.Provider.BusinessLogic;
 
 namespace STU.LVTN.SERVER.Provider.Handler
@@ -13,12 +14,14 @@ namespace STU.LVTN.SERVER.Provider.Handler
         private readonly IMapper _mapper;
         BaiDangBatDongSan baiDangBatDongSanHelper;
         BaiDangXeCo baiDangXeCoHelper;
+        BaiDangDoDienTu baiDangDoDienTuHelper;
         public BaiDangHandler(IMapper mapper)
         {
             _mapper = mapper;
             baiDangHelper = new BaiDang(_mapper);
             baiDangBatDongSanHelper = new BaiDangBatDongSan();
             baiDangXeCoHelper = new BaiDangXeCo();
+            baiDangDoDienTuHelper = new BaiDangDoDienTu();
         }
         public async Task<List<BaiDangHomePageDTO>> RenderHomePage(int lastestSubCategories)
         {
@@ -223,7 +226,149 @@ namespace STU.LVTN.SERVER.Provider.Handler
         #endregion
 
         #region BaiDangDoDienTu
+        public async Task<bool> AddBaiDangDoDienTuDienThoai(BaiDangDoDienTuDienThoai_DTO baiDangRequest)
+        {
+            BaiDangDoDienTuEntities baiDangDoDienTuDienThoai = _mapper.Map<BaiDangDoDienTuEntities>(baiDangRequest);
+            int lastIDPost = baiDangDoDienTuHelper.AddBaiDang(baiDangDoDienTuDienThoai);
+            if (lastIDPost == -1)
+            {
+                return false;
+            }
+            else
+            {
+                BaiDangEntities baiDangGlobal = _mapper.Map<BaiDangEntities>(baiDangRequest);
+                baiDangGlobal.IdBaiDangChiTiet = lastIDPost;
+                return await baiDangHelper.AddBaiDang(baiDangGlobal);
+            }
+        }
 
-        #endregion
+        public async Task<bool> AddBaiDangDoDienTuLaptop(BaiDangDoDienTuLaptop_DTO baiDangRequest)
+        {
+            BaiDangDoDienTuEntities baiDangDoDienTuDienThoai = _mapper.Map<BaiDangDoDienTuEntities>(baiDangRequest);
+            int lastIDPost = baiDangDoDienTuHelper.AddBaiDang(baiDangDoDienTuDienThoai);
+            if (lastIDPost == -1)
+            {
+                return false;
+            }
+            else
+            {
+                BaiDangEntities baiDangGlobal = _mapper.Map<BaiDangEntities>(baiDangRequest);
+                baiDangGlobal.IdBaiDangChiTiet = lastIDPost;
+                return await baiDangHelper.AddBaiDang(baiDangGlobal);
+            }
+        }
+
+        public async Task<bool> AddBaiDangDoDienTuLinhKien(BaiDangDoDienTuLinhKien_DTO baiDangRequest)
+        {
+            BaiDangDoDienTuEntities baiDangDoDienTuDienThoai = _mapper.Map<BaiDangDoDienTuEntities>(baiDangRequest);
+            int lastIDPost = baiDangDoDienTuHelper.AddBaiDang(baiDangDoDienTuDienThoai);
+            if (lastIDPost == -1)
+            {
+                return false;
+            }
+            else
+            {
+                BaiDangEntities baiDangGlobal = _mapper.Map<BaiDangEntities>(baiDangRequest);
+                baiDangGlobal.IdBaiDangChiTiet = lastIDPost;
+                return await baiDangHelper.AddBaiDang(baiDangGlobal);
+            }
+        }
+
+        public async Task<bool> AddBaiDangDoDienTuMayAnh(BaiDangDoDienTuMayAnh_DTO baiDangRequest)
+        {
+            BaiDangDoDienTuEntities baiDangDoDienTuDienThoai = _mapper.Map<BaiDangDoDienTuEntities>(baiDangRequest);
+            int lastIDPost = baiDangDoDienTuHelper.AddBaiDang(baiDangDoDienTuDienThoai);
+            if (lastIDPost == -1)
+            {
+                return false;
+            }
+            else
+            {
+                BaiDangEntities baiDangGlobal = _mapper.Map<BaiDangEntities>(baiDangRequest);
+                baiDangGlobal.IdBaiDangChiTiet = lastIDPost;
+                return await baiDangHelper.AddBaiDang(baiDangGlobal);
+            }
+        }
+
+        public async Task<bool> AddBaiDangDoDienTuMayTinhBang(BaiDangDoDienTuMayTinhBang_DTO baiDangRequest)
+        {
+            BaiDangDoDienTuEntities baiDangDoDienTuDienThoai = _mapper.Map<BaiDangDoDienTuEntities>(baiDangRequest);
+            int lastIDPost = baiDangDoDienTuHelper.AddBaiDang(baiDangDoDienTuDienThoai);
+            if (lastIDPost == -1)
+            {
+                return false;
+            }
+            else
+            {
+                BaiDangEntities baiDangGlobal = _mapper.Map<BaiDangEntities>(baiDangRequest);
+                baiDangGlobal.IdBaiDangChiTiet = lastIDPost;
+                return await baiDangHelper.AddBaiDang(baiDangGlobal);
+            }
+        }
+
+        public async Task<bool> AddBaiDangDoDienTuMayTinhDeBan(BaiDangDoDienTuMayTinhDeBan_DTO baiDangRequest)
+        {
+            BaiDangDoDienTuEntities baiDangDoDienTuDienThoai = _mapper.Map<BaiDangDoDienTuEntities>(baiDangRequest);
+            int lastIDPost = baiDangDoDienTuHelper.AddBaiDang(baiDangDoDienTuDienThoai);
+            if (lastIDPost == -1)
+            {
+                return false;
+            }
+            else
+            {
+                BaiDangEntities baiDangGlobal = _mapper.Map<BaiDangEntities>(baiDangRequest);
+                baiDangGlobal.IdBaiDangChiTiet = lastIDPost;
+                return await baiDangHelper.AddBaiDang(baiDangGlobal);
+            }
+        }
+
+        public async Task<bool> AddBaiDangDoDienTuPhuKien(BaiDangDoDienTuPhuKien_DTO baiDangRequest)
+        {
+            BaiDangDoDienTuEntities baiDangDoDienTuDienThoai = _mapper.Map<BaiDangDoDienTuEntities>(baiDangRequest);
+            int lastIDPost = baiDangDoDienTuHelper.AddBaiDang(baiDangDoDienTuDienThoai);
+            if (lastIDPost == -1)
+            {
+                return false;
+            }
+            else
+            {
+                BaiDangEntities baiDangGlobal = _mapper.Map<BaiDangEntities>(baiDangRequest);
+                baiDangGlobal.IdBaiDangChiTiet = lastIDPost;
+                return await baiDangHelper.AddBaiDang(baiDangGlobal);
+            }
+        }
+
+        public async Task<bool> AddBaiDangDoDienTuThietBiDeoThongMinh(BaiDangDoDienTuThietBiDeoThongMinh_DTO baiDangRequest)
+        {
+            BaiDangDoDienTuEntities baiDangDoDienTuDienThoai = _mapper.Map<BaiDangDoDienTuEntities>(baiDangRequest);
+            int lastIDPost = baiDangDoDienTuHelper.AddBaiDang(baiDangDoDienTuDienThoai);
+            if (lastIDPost == -1)
+            {
+                return false;
+            }
+            else
+            {
+                BaiDangEntities baiDangGlobal = _mapper.Map<BaiDangEntities>(baiDangRequest);
+                baiDangGlobal.IdBaiDangChiTiet = lastIDPost;
+                return await baiDangHelper.AddBaiDang(baiDangGlobal);
+            }
+        }
+
+        public async Task<bool> AddBaiDangDoDienTuTivi(BaiDangDoDienTuTivi_DTO baiDangRequest)
+        {
+            BaiDangDoDienTuEntities baiDangDoDienTuDienThoai = _mapper.Map<BaiDangDoDienTuEntities>(baiDangRequest);
+            int lastIDPost = baiDangDoDienTuHelper.AddBaiDang(baiDangDoDienTuDienThoai);
+            if (lastIDPost == -1)
+            {
+                return false;
+            }
+            else
+            {
+                BaiDangEntities baiDangGlobal = _mapper.Map<BaiDangEntities>(baiDangRequest);
+                baiDangGlobal.IdBaiDangChiTiet = lastIDPost;
+                return await baiDangHelper.AddBaiDang(baiDangGlobal);
+            }
+        }
     }
+        #endregion
 }
