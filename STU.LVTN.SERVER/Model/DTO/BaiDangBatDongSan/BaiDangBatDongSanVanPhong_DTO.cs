@@ -1,13 +1,13 @@
 ﻿namespace STU.LVTN.SERVER.Model.DTO.BaiDangBatDongSan
 {
-    public class BaiDangBatDongSanCC_DTO
+    public class BaiDangBatDongSanVanPhong_DTO
     {
         public int IdDanhMucCha { get; set; }
         public string? SdtNguoiBan { get; set; }
         public string? SdtNguoiMua { get; set; }
         public bool AnTin { get; set; } = false;
         public bool CanBan { get; set; } = false;
-        public bool TrangThai { get; set; } = false ;
+        public bool TrangThai { get; set; } = false;
         public string? ThanhPho { get; set; }
         public string? QuanHuyen { get; set; }
         public string? PhuongXa { get; set; }
@@ -23,11 +23,9 @@
         public DateTime? CreatedDate { get; set; } = DateTime.Now;
         public string? TenDuAn { get; set; }
         public double? DienTich { get; set; }
-        public string MaCan { get; set; }
-        public string Block { get; set; }
-        public string TangSo { get; set; }
-        public bool ChuaBanGiao { get; set; }
-        public string LoaiHinh { get; set; }
-        public int SoPhongNgu { get; set; }
+        public string? VanPhongMaCan { get; set; }
+        public string? VanPhongBlock { get; set; }
+        public string? VanPhongTangSo { get; set; }
+        public string? VanPhongLoaiHinhVanPhong { get; set; }
     }
 }

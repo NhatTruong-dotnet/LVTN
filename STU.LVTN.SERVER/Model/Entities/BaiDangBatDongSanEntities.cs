@@ -35,5 +35,7 @@ namespace STU.LVTN.SERVER.Model
         public string? VanPhongLoaiHinhVanPhong { get; set; }
         public string? PhongTroTinhTrangNoiThat { get; set; }
         public double? PhongTroSoTienCoc { get; set; }
+        public bool? CanBan { get; set; }
+
     }
 }

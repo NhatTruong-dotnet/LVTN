@@ -43,5 +43,44 @@ namespace STU.LVTN.SERVER.Controllers
             return BadRequest();
         }
 
+        [HttpPost("batDongSanNhaO/newPost")]
+        public async Task<ActionResult<bool>> newPostBatDongSanNhaO(BaiDangBatDongSanNhaO_DTO baiDangCC_Request)
+        {
+            if (await baiDangHandler.AddBaiDangBatDongSanNhaO(baiDangCC_Request))
+            {
+                return Ok();
+            }
+            return BadRequest();
+        }
+
+        [HttpPost("batDongSanDat/newPost")]
+        public async Task<ActionResult<bool>> newPostBatDongSanDat(BaiDangBatDongSanDat_DTO baiDangCC_Request)
+        {
+            if (await baiDangHandler.AddBaiDangBatDongSanDat(baiDangCC_Request))
+            {
+                return Ok();
+            }
+            return BadRequest();
+        }
+
+        [HttpPost("batDongSanVanPhong/newPost")]
+        public async Task<ActionResult<bool>> newPostBatDongSanVanPhong(BaiDangBatDongSanVanPhong_DTO baiDangCC_Request)
+        {
+            if (await baiDangHandler.AddBaiDangBatDongSanVanPhong(baiDangCC_Request))
+            {
+                return Ok();
+            }
+            return BadRequest();
+        }
+
+        [HttpPost("batDongSanPhongTro/newPost")]
+        public async Task<ActionResult<bool>> newPostBatDongSanPhongTro(BaiDangBatDongSanPhongTro_DTO baiDangCC_Request)
+        {
+            if (await baiDangHandler.AddBaiDangBatDongSanPhongTro(baiDangCC_Request))
+            {
+                return Ok();
+            }
+            return BadRequest();
+        }
     }
 }

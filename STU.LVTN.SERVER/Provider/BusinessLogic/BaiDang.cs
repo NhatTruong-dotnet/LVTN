@@ -65,7 +65,6 @@ namespace STU.LVTN.SERVER.Provider.BusinessLogic
             return baiDangHomePageDTOs;
         }
 
-
         public async Task<List<BaiDangHomePageDTO>> GetSoldPostBySoDienThoai(string soDienThoai)
         {
             List<BaiDangHomePageDTO> baiDangHomePageDTOs = new List<BaiDangHomePageDTO>();
