@@ -9,7 +9,6 @@ namespace STU.LVTN.SERVER.Provider.BusinessLogic
         {
             try
             {
-                baiDangRequest.IdBaiDang = _context.BaiDangDoDienTus.Count() + 1;
                 _context.BaiDangDoDienTus.Add(baiDangRequest);
                 _context.SaveChanges();
                 return _context.BaiDangDoDienTus.Count();

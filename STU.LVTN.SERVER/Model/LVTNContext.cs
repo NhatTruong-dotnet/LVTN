@@ -18,15 +18,15 @@ namespace STU.LVTN.SERVER.Model
 
         public virtual DbSet<BaiDangEntities> BaiDangs { get; set; } = null!;
         public virtual DbSet<BaiDangBatDongSanEntities> BaiDangBatDongSans { get; set; } = null!;
-        public virtual DbSet<BaiDangDoAnThucPham> BaiDangDoAnThucPhams { get; set; } = null!;
+        public virtual DbSet<BaiDangDoAnThucPhamEntities> BaiDangDoAnThucPhams { get; set; } = null!;
         public virtual DbSet<BaiDangDoDienTuEntities> BaiDangDoDienTus { get; set; } = null!;
         public virtual DbSet<BaiDangDoDungVanPhong> BaiDangDoDungVanPhongs { get; set; } = null!;
-        public virtual DbSet<BaiDangDoGiaDung> BaiDangDoGiaDungs { get; set; } = null!;
+        public virtual DbSet<BaiDangDoGiaDungEntities> BaiDangDoGiaDungs { get; set; } = null!;
         public virtual DbSet<BaiDangGiaiTri> BaiDangGiaiTris { get; set; } = null!;
         public virtual DbSet<BaiDangMeVaBe> BaiDangMeVaBes { get; set; } = null!;
         public virtual DbSet<BaiDangThoiTrang> BaiDangThoiTrangs { get; set; } = null!;
         public virtual DbSet<BaiDangThuCungEntities> BaiDangThuCungs { get; set; } = null!;
-        public virtual DbSet<BaiDangTuLanh> BaiDangTuLanhs { get; set; } = null!;
+        public virtual DbSet<BaiDangTuLanhEntities> BaiDangTuLanhs { get; set; } = null!;
         public virtual DbSet<BaiDangViecLamEntities> BaiDangViecLams { get; set; } = null!;
         public virtual DbSet<BaiDangXeCoEntities> BaiDangXeCos { get; set; } = null!;
         public virtual DbSet<DanhMuc> DanhMucs { get; set; } = null!;
@@ -181,7 +181,7 @@ namespace STU.LVTN.SERVER.Model
                     .IsFixedLength();
             });
 
-            modelBuilder.Entity<BaiDangDoAnThucPham>(entity =>
+            modelBuilder.Entity<BaiDangDoAnThucPhamEntities>(entity =>
             {
                 entity.HasKey(e => e.IdBaiDang);
 
@@ -336,7 +336,7 @@ namespace STU.LVTN.SERVER.Model
                 entity.Property(e => e.IdBaiDang).HasColumnName("id_BaiDang");
             });
 
-            modelBuilder.Entity<BaiDangDoGiaDung>(entity =>
+            modelBuilder.Entity<BaiDangDoGiaDungEntities>(entity =>
             {
                 entity.HasKey(e => e.IdBaiDang);
 
@@ -429,7 +429,7 @@ namespace STU.LVTN.SERVER.Model
                 entity.Property(e => e.GiongThuCung).HasMaxLength(250);
             });
 
-            modelBuilder.Entity<BaiDangTuLanh>(entity =>
+            modelBuilder.Entity<BaiDangTuLanhEntities>(entity =>
             {
                 entity.HasKey(e => e.IdBaiDang);
 

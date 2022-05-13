@@ -2,16 +2,17 @@
 
 namespace STU.LVTN.SERVER.Provider.BusinessLogic
 {
-    public class BaiDangThuCung
+    public class BaiDangDoGiaDung
     {
         private LVTNContext _context = new LVTNContext();
-        public int AddBaiDang(BaiDangThuCungEntities baiDangRequest)
+
+        public int AddBaiDang(BaiDangDoGiaDungEntities baiDangRequest)
         {
             try
             {
-                _context.BaiDangThuCungs.Add(baiDangRequest);
+                _context.BaiDangDoGiaDungs.Add(baiDangRequest);
                 _context.SaveChanges();
-                return _context.BaiDangDoDienTus.Count();
+                return _context.BaiDangDoGiaDungs.Count();
             }
             catch (Exception)
             {
