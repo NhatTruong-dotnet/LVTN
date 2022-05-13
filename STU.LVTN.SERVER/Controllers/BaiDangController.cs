@@ -6,6 +6,8 @@ using STU.LVTN.SERVER.Model.DTO;
 using STU.LVTN.SERVER.Model.DTO.BaiDangBatDongSan;
 using STU.LVTN.SERVER.Model.DTO.BaiDangXeCo;
 using STU.LVTN.SERVER.Model.DTO.DoDienTu;
+using STU.LVTN.SERVER.Model.DTO.ThuCung;
+using STU.LVTN.SERVER.Model.DTO.ViecLam;
 using STU.LVTN.SERVER.Provider.Handler;
 
 namespace STU.LVTN.SERVER.Controllers
@@ -22,6 +24,7 @@ namespace STU.LVTN.SERVER.Controllers
             _mapper = mapper;
             baiDangHandler = new BaiDangHandler(_mapper);
         }
+
         [HttpGet("renderHomepage/{lastestSubCategories?}")]
         public async Task<ActionResult<List<BaiDangHomePageDTO>>> RenderHomePage(int lastestSubCategories = 0)
         {
@@ -245,6 +248,50 @@ namespace STU.LVTN.SERVER.Controllers
         public async Task<ActionResult<bool>> newPostDoDienTuTivi(BaiDangDoDienTuTivi_DTO baiDangTivi_Request)
         {
             if (await baiDangHandler.AddBaiDangDoDienTuTivi(baiDangTivi_Request))
+            {
+                return Ok();
+            }
+            return BadRequest();
+        }
+        #endregion
+
+        #region ViecLam Handler
+        [HttpPost("viecLam/newPost")]
+        public async Task<ActionResult<bool>> newPostViecLam(BaiDangViecLamDTO baiDangViecLam_Request)
+        {
+            if (await baiDangHandler.AddBaiDangViecLam(baiDangViecLam_Request))
+            {
+                return Ok();
+            }
+            return BadRequest();
+        }
+        #endregion
+
+        #region ThuCung Handler
+        [HttpPost("thuCungChim/newPost")]
+        public async Task<ActionResult<bool>> newPostThuCungChim(BaiDangThuCungChim_DTO baiDangThuCungChim_Request)
+        {
+            if (await baiDangHandler.AddBaiDangThuCungChim(baiDangThuCungChim_Request))
+            {
+                return Ok();
+            }
+            return BadRequest();
+        }
+
+        [HttpPost("thuCungCho/newPost")]
+        public async Task<ActionResult<bool>> newPostThuCungCho(BaiDangThuCungCho_DTO baiDangThuCungCho_Request)
+        {
+            if (await baiDangHandler.AddBaiDangThuCungCho(baiDangThuCungCho_Request))
+            {
+                return Ok();
+            }
+            return BadRequest();
+        }
+
+        [HttpPost("thuCungGaMeoThuCungKhac/newPost")]
+        public async Task<ActionResult<bool>> newPostThuCungGaMeoThuCungKhac(BaiDangThuCungGaMeoThuCungKhac_DTO baiDangThuCungGaMeoThuCungKhac_Request)
+        {
+            if (await baiDangHandler.AddBaiDangThuCungGaMeoThuCungKhac(baiDangThuCungGaMeoThuCungKhac_Request))
             {
                 return Ok();
             }

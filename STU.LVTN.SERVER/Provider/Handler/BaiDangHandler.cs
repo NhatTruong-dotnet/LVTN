@@ -4,6 +4,8 @@ using STU.LVTN.SERVER.Model.DTO;
 using STU.LVTN.SERVER.Model.DTO.BaiDangBatDongSan;
 using STU.LVTN.SERVER.Model.DTO.BaiDangXeCo;
 using STU.LVTN.SERVER.Model.DTO.DoDienTu;
+using STU.LVTN.SERVER.Model.DTO.ThuCung;
+using STU.LVTN.SERVER.Model.DTO.ViecLam;
 using STU.LVTN.SERVER.Provider.BusinessLogic;
 
 namespace STU.LVTN.SERVER.Provider.Handler
@@ -15,6 +17,8 @@ namespace STU.LVTN.SERVER.Provider.Handler
         BaiDangBatDongSan baiDangBatDongSanHelper;
         BaiDangXeCo baiDangXeCoHelper;
         BaiDangDoDienTu baiDangDoDienTuHelper;
+        BaiDangViecLam baiDangViecLamHelper;
+        BaiDangThuCung baiDangThuCungHelper;
         public BaiDangHandler(IMapper mapper)
         {
             _mapper = mapper;
@@ -22,6 +26,10 @@ namespace STU.LVTN.SERVER.Provider.Handler
             baiDangBatDongSanHelper = new BaiDangBatDongSan();
             baiDangXeCoHelper = new BaiDangXeCo();
             baiDangDoDienTuHelper = new BaiDangDoDienTu();
+            baiDangViecLamHelper = new BaiDangViecLam();
+            baiDangThuCungHelper = new BaiDangThuCung();
+
+
         }
         public async Task<List<BaiDangHomePageDTO>> RenderHomePage(int lastestSubCategories)
         {
@@ -369,6 +377,78 @@ namespace STU.LVTN.SERVER.Provider.Handler
                 return await baiDangHelper.AddBaiDang(baiDangGlobal);
             }
         }
-    }
+
         #endregion
+
+        #region BaiDangViecLam
+        public async Task<bool> AddBaiDangViecLam(BaiDangViecLamDTO baiDangRequest)
+        {
+            BaiDangViecLamEntities baiDangViecLam = _mapper.Map<BaiDangViecLamEntities>(baiDangRequest);
+            int lastIDPost = baiDangViecLamHelper.AddBaiDang(baiDangViecLam);
+            if (lastIDPost == -1)
+            {
+                return false;
+            }
+            else
+            {
+                BaiDangEntities baiDangGlobal = _mapper.Map<BaiDangEntities>(baiDangRequest);
+                baiDangGlobal.IdBaiDangChiTiet = lastIDPost;
+                return await baiDangHelper.AddBaiDang(baiDangGlobal);
+            }
+        }
+        #endregion
+
+        #region BaiDangThuCung
+        public async Task<bool> AddBaiDangThuCungChim(BaiDangThuCungChim_DTO baiDangRequest)
+        {
+            BaiDangThuCungEntities baiDangThuCung = _mapper.Map<BaiDangThuCungEntities>(baiDangRequest);
+            int lastIDPost = baiDangThuCungHelper.AddBaiDang(baiDangThuCung);
+            if (lastIDPost == -1)
+            {
+                return false;
+            }
+            else
+            {
+                BaiDangEntities baiDangGlobal = _mapper.Map<BaiDangEntities>(baiDangRequest);
+                baiDangGlobal.IdBaiDangChiTiet = lastIDPost;
+                return await baiDangHelper.AddBaiDang(baiDangGlobal);
+            }
+        }
+
+        public async Task<bool> AddBaiDangThuCungCho(BaiDangThuCungCho_DTO baiDangRequest)
+        {
+            BaiDangThuCungEntities baiDangThuCung = _mapper.Map<BaiDangThuCungEntities>(baiDangRequest);
+            int lastIDPost = baiDangThuCungHelper.AddBaiDang(baiDangThuCung);
+            if (lastIDPost == -1)
+            {
+                return false;
+            }
+            else
+            {
+                BaiDangEntities baiDangGlobal = _mapper.Map<BaiDangEntities>(baiDangRequest);
+                baiDangGlobal.IdBaiDangChiTiet = lastIDPost;
+                return await baiDangHelper.AddBaiDang(baiDangGlobal);
+            }
+        }
+
+        public async Task<bool> AddBaiDangThuCungGaMeoThuCungKhac(BaiDangThuCungGaMeoThuCungKhac_DTO baiDangRequest)
+        {
+            BaiDangThuCungEntities baiDangThuCung = _mapper.Map<BaiDangThuCungEntities>(baiDangRequest);
+            int lastIDPost = baiDangThuCungHelper.AddBaiDang(baiDangThuCung);
+            if (lastIDPost == -1)
+            {
+                return false;
+            }
+            else
+            {
+                BaiDangEntities baiDangGlobal = _mapper.Map<BaiDangEntities>(baiDangRequest);
+                baiDangGlobal.IdBaiDangChiTiet = lastIDPost;
+                return await baiDangHelper.AddBaiDang(baiDangGlobal);
+            }
+        }
+
+       #endregion
+    }
+
+
 }

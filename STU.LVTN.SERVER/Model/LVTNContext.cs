@@ -25,9 +25,9 @@ namespace STU.LVTN.SERVER.Model
         public virtual DbSet<BaiDangGiaiTri> BaiDangGiaiTris { get; set; } = null!;
         public virtual DbSet<BaiDangMeVaBe> BaiDangMeVaBes { get; set; } = null!;
         public virtual DbSet<BaiDangThoiTrang> BaiDangThoiTrangs { get; set; } = null!;
-        public virtual DbSet<BaiDangThuCung> BaiDangThuCungs { get; set; } = null!;
+        public virtual DbSet<BaiDangThuCungEntities> BaiDangThuCungs { get; set; } = null!;
         public virtual DbSet<BaiDangTuLanh> BaiDangTuLanhs { get; set; } = null!;
-        public virtual DbSet<BaiDangViecLam> BaiDangViecLams { get; set; } = null!;
+        public virtual DbSet<BaiDangViecLamEntities> BaiDangViecLams { get; set; } = null!;
         public virtual DbSet<BaiDangXeCoEntities> BaiDangXeCos { get; set; } = null!;
         public virtual DbSet<DanhMuc> DanhMucs { get; set; } = null!;
         public virtual DbSet<GiaoDichDatCoc> GiaoDichDatCocs { get; set; } = null!;
@@ -203,9 +203,7 @@ namespace STU.LVTN.SERVER.Model
                 entity.Property(e => e.DienThoaiDungLuong)
                     .HasMaxLength(15)
                     .HasColumnName("DienThoai_DungLuong");
-                entity.Property(e => e.TinhTrang)
-                    .HasMaxLength(150)
-                    .HasColumnName("TinhTrang");
+
                 entity.Property(e => e.DienThoaiHang)
                     .HasMaxLength(50)
                     .HasColumnName("DienThoai_Hang");
@@ -410,13 +408,21 @@ namespace STU.LVTN.SERVER.Model
                 entity.Property(e => e.LoaiSanPham).HasMaxLength(100);
             });
 
-            modelBuilder.Entity<BaiDangThuCung>(entity =>
+            modelBuilder.Entity<BaiDangThuCungEntities>(entity =>
             {
                 entity.HasKey(e => e.IdBaiDang);
 
                 entity.ToTable("BaiDang_ThuCung");
 
                 entity.Property(e => e.IdBaiDang).HasColumnName("id_BaiDang");
+
+                entity.Property(e => e.ChimGioiTinh)
+                    .HasMaxLength(100)
+                    .HasColumnName("Chim_GioiTinh");
+
+                entity.Property(e => e.ChoKichCo)
+                    .HasMaxLength(100)
+                    .HasColumnName("Cho_KichCo");
 
                 entity.Property(e => e.DoTuoi).HasMaxLength(30);
 
@@ -450,7 +456,7 @@ namespace STU.LVTN.SERVER.Model
                     .HasColumnName("TuLanh_TheTich");
             });
 
-            modelBuilder.Entity<BaiDangViecLam>(entity =>
+            modelBuilder.Entity<BaiDangViecLamEntities>(entity =>
             {
                 entity.HasKey(e => e.IdBaiDang);
 
