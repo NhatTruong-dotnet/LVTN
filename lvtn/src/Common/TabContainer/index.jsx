@@ -6,7 +6,6 @@ function TabContainer({ onClickOutside, children }) {
 
     useEffect(() => {
         const handleClickOutside = event => {
-            console.log('click')
             if (ref.current && !ref.current.contains(event.target)) {
                 onClickOutside && onClickOutside()
             }

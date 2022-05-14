@@ -5,6 +5,7 @@ import { store } from './app/store'
 import App from './App'
 import reportWebVitals from './reportWebVitals'
 import GlobalStyle from './Common/GlobalStyle/GlobalStyle'
+import { BrowserRouter } from 'react-router-dom'
 import './index.css'
 
 const container = document.getElementById('root')
@@ -12,11 +13,13 @@ const root = createRoot(container)
 
 root.render(
     <React.StrictMode>
-        <Provider store={store}>
-            <GlobalStyle>
-                <App />
-            </GlobalStyle>
-        </Provider>
+        <BrowserRouter>
+            <Provider store={store}>
+                <GlobalStyle>
+                    <App />
+                </GlobalStyle>
+            </Provider>
+        </BrowserRouter>
     </React.StrictMode>
 )
 

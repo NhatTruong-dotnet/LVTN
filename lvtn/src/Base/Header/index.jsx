@@ -10,11 +10,14 @@ import DynamicModal from '../../Common/DynamicModal/DynamicModal'
 import AuthForm from './Components/AuthForm/AuthForm'
 import UserControl from './Components/UserControl'
 import Notification from './Components/Notification'
+import { useNavigate } from 'react-router-dom'
 
 function Header(props) {
     const [searchValue, setSearchValue] = useState('')
     const [isShowAutoComplete, setIsShowAutoComplete] = useState(false)
     const [isShowForm, setIsShowForm] = useState(false)
+
+    const navigate = useNavigate()
 
     const handleSearch = e => {
         setIsShowAutoComplete(Boolean(e.target.value))
@@ -25,7 +28,7 @@ function Header(props) {
         <div className={styles.container}>
             <div className='grid wide'>
                 <div className={styles.wrap}>
-                    <span className={styles.logo}>
+                    <span className={styles.logo} onClick={() => navigate('/')}>
                         <SiEventstore className={styles.icon} />
                         𝓣𝓣𝓝𝓣
                     </span>
@@ -52,7 +55,7 @@ function Header(props) {
                         </div>
                     </form>
                     <div className={styles.userControl}>
-                        {/* <button
+                        <button
                             className={clsx(
                                 styles.popupLoginForm,
                                 styles.button
@@ -61,10 +64,13 @@ function Header(props) {
                         >
                             <AiOutlineUser className={styles.buttonIcon} />
                             Đăng nhập
-                        </button> */}
-                        <UserControl />
-                        <Notification />
-                        <button className={clsx(styles.button)}>
+                        </button>
+                        {/* <UserControl />
+                        <Notification /> */}
+                        <button
+                            className={clsx(styles.button)}
+                            onClick={() => navigate('create-post')}
+                        >
                             <FiEdit className={styles.buttonIcon} />
                             Đăng tin
                         </button>

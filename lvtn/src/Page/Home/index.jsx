@@ -39,7 +39,7 @@ const listBook = [
 
 function Home() {
     return (
-        <div className='grid wide' style={{ marginTop: 90 }}>
+        <div className='grid wide'>
             <Frame title='Khám phá danh mục'>
                 <div className='row no-gutters'>
                     <div className='col l-2'>
