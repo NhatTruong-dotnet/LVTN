@@ -116,7 +116,12 @@ function CreatePost(props) {
     })
     const openCategoryPicker = () => setIsShowCategoryPicker(true)
     const closeCategoryPicker = () => setIsShowCategoryPicker(false)
-
+    const handleFormDataChange = (name, value) => {
+        setFormData({
+            ...formData,
+            [name]: value,
+        })
+    }
     useEffect(() => {
         if (selectedCategory.category.id) {
             setFormData(
@@ -127,15 +132,6 @@ function CreatePost(props) {
             )
         }
     }, [selectedCategory.category.id, selectedCategory.subCategory.id])
-
-    console.log(formData)
-
-    const handleFormDataChange = (name, value) => {
-        setFormData({
-            ...formData,
-            [name]: value,
-        })
-    }
 
     return (
         <div className='grid wide'>

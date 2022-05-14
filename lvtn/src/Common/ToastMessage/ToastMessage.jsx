@@ -15,7 +15,6 @@ function ToastMessage() {
             newestOnTop={false}
             closeOnClick
             rtl={false}
-            pauseOnFocusLoss
             draggable
             pauseOnHover
         />

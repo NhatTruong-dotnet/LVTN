@@ -1,9 +1,10 @@
 import styles from './authform.module.css'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import clsx from 'clsx'
 
 import { FcGoogle } from 'react-icons/fc'
 import { FaFacebook, FaTimes } from 'react-icons/fa'
+import { useDispatch } from 'react-redux'
 
 function AuthForm({ setIsShowForm }) {
     const [formMode, setFormMode] = useState('login')
@@ -11,11 +12,24 @@ function AuthForm({ setIsShowForm }) {
         numberPhone: '',
         password: '',
     })
+    const dispatch = useDispatch()
 
     const handleFormDataChange = e => {
         setFormData({
             ...formData,
             [e.target.name]: e.target.value,
+        })
+    }
+    useEffect(() => {
+        setFormData({ numberPhone: '', password: '' })
+    }, [formMode])
+
+    const handleLogin = e => {
+        e.preventDefault()
+        dispatch({ type: 'USER_LOGIN', formData })
+        setFormData({
+            numberPhone: '',
+            password: '',
         })
     }
 
@@ -28,7 +42,7 @@ function AuthForm({ setIsShowForm }) {
                 className={styles.closeModalIcon}
                 onClick={() => setIsShowForm(false)}
             />
-            <form className={styles.form}>
+            <form className={styles.form} onSubmit={handleLogin}>
                 <div className={styles.formGroup}>
                     <label className={styles.label}>Số điện thoại</label>
                     <input

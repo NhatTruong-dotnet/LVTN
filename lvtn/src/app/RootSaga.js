@@ -1,3 +1,6 @@
+import loginWatcher from '../features/Auth/Login/loginSaga'
+import { takeEvery, all, call } from 'redux-saga/effects'
+
 export default function* RootSaga() {
-    console.log('hello')
+    yield all([call(loginWatcher)])
 }

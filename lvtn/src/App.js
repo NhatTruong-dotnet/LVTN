@@ -1,10 +1,17 @@
 import Home from './Page/Home'
 import Header from './Base/Header'
-import { Routes, Route, Link } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
 import CreatePost from './Page/CreatePost'
+import ToastMessage from './Common/ToastMessage/ToastMessage'
+import { useEffect } from 'react'
+import { useDispatch } from 'react-redux'
+import { loginWithToken } from './features/Auth/Login/loginSlice'
 
 function App() {
-    // console.log(process.env.REACT_APP_BASE_IMG_URL)
+    const dispatch = useDispatch()
+    useEffect(() => {
+        dispatch(loginWithToken())
+    }, [])
     return (
         <div>
             <Header />
@@ -14,6 +21,7 @@ function App() {
                 <Route path='/' element={<Home />} />
                 <Route path='/create-post' element={<CreatePost />} />
             </Routes>
+            <ToastMessage />
         </div>
     )
 }

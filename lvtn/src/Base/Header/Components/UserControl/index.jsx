@@ -3,9 +3,15 @@ import { FaUserAlt } from 'react-icons/fa'
 import { AiOutlineUser } from 'react-icons/ai'
 import styles from './usercontrol.module.css'
 import TabContainer from '../../../../Common/TabContainer'
+import { useDispatch } from 'react-redux'
+import { logout } from '../../../../features/Auth/Login/loginSlice'
 
-function UserControl(props) {
+function UserControl({ username }) {
     const [isShowControlTab, setIsShowControlTab] = useState(false)
+    const dispatch = useDispatch()
+    const handleLogout = () => {
+        dispatch(logout())
+    }
 
     return (
         <span className={styles.wrap}>
@@ -19,7 +25,7 @@ function UserControl(props) {
                         <div className={styles.userInfo}>
                             <AiOutlineUser className={styles.userInfoIcon} />
                             <div className={styles.name}>
-                                Nguyễn Trọng Trí
+                                {username}
                                 <div className={styles.subTitle}>
                                     Xem trang cá nhân
                                 </div>
@@ -56,7 +62,10 @@ function UserControl(props) {
                                     Yêu thích
                                 </span>
                             </div>
-                            <div className={styles.controlItem}>
+                            <div
+                                className={styles.controlItem}
+                                onClick={handleLogout}
+                            >
                                 <img
                                     src='https://st.chotot.com/storage/chotot-icons/svg/sign-out.svg'
                                     alt='icon'
