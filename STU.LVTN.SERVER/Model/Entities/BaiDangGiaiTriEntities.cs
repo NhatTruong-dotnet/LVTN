@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace STU.LVTN.SERVER.Model
 {
-    public partial class BaiDangGiaiTri
+    public partial class BaiDangGiaiTriEntities
     {
         public int IdBaiDang { get; set; }
         public bool? DaSuDung { get; set; }

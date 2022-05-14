@@ -7,6 +7,7 @@ using STU.LVTN.SERVER.Model.DTO.BaiDangBatDongSan;
 using STU.LVTN.SERVER.Model.DTO.BaiDangXeCo;
 using STU.LVTN.SERVER.Model.DTO.DoAnThucPham;
 using STU.LVTN.SERVER.Model.DTO.DoDienTu;
+using STU.LVTN.SERVER.Model.DTO.DoDungVanPhong;
 using STU.LVTN.SERVER.Model.DTO.DoGiaDung.BanGhe;
 using STU.LVTN.SERVER.Model.DTO.DoGiaDung.Bep;
 using STU.LVTN.SERVER.Model.DTO.DoGiaDung.DenCayCanhNoiThat;
@@ -14,6 +15,11 @@ using STU.LVTN.SERVER.Model.DTO.DoGiaDung.Giuong;
 using STU.LVTN.SERVER.Model.DTO.DoGiaDung.Quat;
 using STU.LVTN.SERVER.Model.DTO.DoGiaDung.ThietBiVeSinh;
 using STU.LVTN.SERVER.Model.DTO.DoGiaDung.TuKe;
+using STU.LVTN.SERVER.Model.DTO.GiaiTri;
+using STU.LVTN.SERVER.Model.DTO.GiaiTri.DoSuuTam;
+using STU.LVTN.SERVER.Model.DTO.GiaiTri.NhacCu;
+using STU.LVTN.SERVER.Model.DTO.MeVaBe;
+using STU.LVTN.SERVER.Model.DTO.ThoiTrang;
 using STU.LVTN.SERVER.Model.DTO.ThuCung;
 using STU.LVTN.SERVER.Model.DTO.TuLanh.MayGiat;
 using STU.LVTN.SERVER.Model.DTO.TuLanh.MayLanh;
@@ -49,6 +55,7 @@ namespace STU.LVTN.SERVER.Controllers
             return await baiDangHandler.GetSoldPostBySoDienThoai(soDienThoai);
         }
 
+        #region Create Handler
         #region BatDongSan Handler
         [HttpPost("batDongSanCC/newPost")]
         public async Task<ActionResult<bool>> newPostBatDongSanCC(BaiDangBatDongSanCC_DTO baiDangCC_Request)
@@ -425,5 +432,77 @@ namespace STU.LVTN.SERVER.Controllers
             return BadRequest();
         }
         #endregion
+
+        #region MevaBe Handler
+        [HttpPost("baiDangMeVaBe/newPost")]
+        public async Task<ActionResult<bool>> newPostMeVaBe(BaiDangMeVaBe_DTO baiDangMeVabe_Request)
+        {
+            if (await baiDangHandler.AddBaiDangMeVaBe(baiDangMeVabe_Request))
+            {
+                return Ok();
+            }
+            return BadRequest();
+        }
+        #endregion
+
+        #region ThoiTrang Handler
+        [HttpPost("baiDangThoiTrang/newPost")]
+        public async Task<ActionResult<bool>> newPostThoiTrang(BaiDangThoiTrang_DTO baiDangThoiTrang_Request)
+        {
+            if (await baiDangHandler.AddBaiDangThoiTrang(baiDangThoiTrang_Request))
+            {
+                return Ok();
+            }
+            return BadRequest();
+        }
+        #endregion
+
+        #region GiaiTri Handler
+        [HttpPost("baiDangGiaiTri/newPost")]
+        public async Task<ActionResult<bool>> newPostGiaiTri(BaiDangGiaiTri_DTO baiDangGiaiTri_Request)
+        {
+            if (await baiDangHandler.AddBaiDangGiaiTri(baiDangGiaiTri_Request))
+            {
+                return Ok();
+            }
+            return BadRequest();
+        }
+
+        [HttpPost("baiDangGiaiTriDoSuuTam/newPost")]
+        public async Task<ActionResult<bool>> newPostGiaiTriDoSuuTam(BaiDangGiaiTriDoSuuTam_DTO baiDangGiaiTriDoSuuTam_Request)
+        {
+            if (await baiDangHandler.AddBaiDangGiaiTriDoSuuTam(baiDangGiaiTriDoSuuTam_Request))
+            {
+                return Ok();
+            }
+            return BadRequest();
+        }
+
+        [HttpPost("baiDangGiaiTriNhacCu/newPost")]
+        public async Task<ActionResult<bool>> newPostGiaiTriNhacCu(BaiDangGiaiTriDoNhacCu_DTO baiDangGiaiTriDoNhacCu_Request)
+        {
+            if (await baiDangHandler.AddBaiDangGiaiTriNhacCu(baiDangGiaiTriDoNhacCu_Request))
+            {
+                return Ok();
+            }
+            return BadRequest();
+        }
+        #endregion
+
+        #region DoDungVanPhong Handler
+        [HttpPost("baiDangDoDungVanPhong/newPost")]
+        public async Task<ActionResult<bool>> newPostDoDungVanPhong(BaiDangDoDungVanPhong_DTO baiDangDoDungVanPhong_Request)
+        {
+            if (await baiDangHandler.AddBaiDangDoDungVanPhong(baiDangDoDungVanPhong_Request))
+            {
+                return Ok();
+            }
+            return BadRequest();
+        }
+        #endregion
+
+        #endregion
+
+
     }
 }
