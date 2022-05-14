@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
+import { emitMessage } from '../../../Common/ToastMessage/ToastMessage'
 
 const initialState = {
     isLoading: false,
@@ -15,15 +16,28 @@ const registerSlice = createSlice({
         registerSuccess: state => {
             state.isLoading = false
             state.isRegisterSuccess = true
+            emitMessage('success', 'Đăng ký thành công')
         },
-        registerFail: state => {
+        registerFail: (state, action) => {
             state.isLoading = false
+            emitMessage('error', action.payload.errorMessage)
+        },
+        setDefaultRegisterState: state => {
+            state.isLoading = false
+            state.isRegisterSuccess = null
         },
     },
 })
 
 const { reducer, actions } = registerSlice
 
-export const { registerPending, registerSuccess, registerFail } = actions
+export const {
+    registerPending,
+    registerSuccess,
+    registerFail,
+    setDefaultRegisterState,
+} = actions
+
+export const selectRegisterState = state => state.register.isRegisterSuccess
 
 export default reducer

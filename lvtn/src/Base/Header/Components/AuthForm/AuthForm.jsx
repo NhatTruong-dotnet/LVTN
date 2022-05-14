@@ -4,7 +4,11 @@ import clsx from 'clsx'
 
 import { FcGoogle } from 'react-icons/fc'
 import { FaFacebook, FaTimes } from 'react-icons/fa'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import {
+    selectRegisterState,
+    setDefaultRegisterState,
+} from '../../../../features/Auth/Register/registerSlice'
 
 function AuthForm({ setIsShowForm }) {
     const [formMode, setFormMode] = useState('login')
@@ -12,6 +16,7 @@ function AuthForm({ setIsShowForm }) {
         numberPhone: '',
         password: '',
     })
+    const registerState = useSelector(selectRegisterState)
     const dispatch = useDispatch()
 
     const handleFormDataChange = e => {
@@ -24,9 +29,20 @@ function AuthForm({ setIsShowForm }) {
         setFormData({ numberPhone: '', password: '' })
     }, [formMode])
 
-    const handleLogin = e => {
+    useEffect(() => {
+        if (registerState) {
+            setFormMode('login')
+            dispatch(setDefaultRegisterState())
+        }
+    }, [registerState])
+
+    const handleSubmitForm = e => {
         e.preventDefault()
-        dispatch({ type: 'USER_LOGIN', formData })
+        if (formMode === 'login') {
+            dispatch({ type: 'USER_LOGIN', formData })
+        } else {
+            dispatch({ type: 'userRegister', formData })
+        }
         setFormData({
             numberPhone: '',
             password: '',
@@ -42,7 +58,7 @@ function AuthForm({ setIsShowForm }) {
                 className={styles.closeModalIcon}
                 onClick={() => setIsShowForm(false)}
             />
-            <form className={styles.form} onSubmit={handleLogin}>
+            <form className={styles.form} onSubmit={handleSubmitForm}>
                 <div className={styles.formGroup}>
                     <label className={styles.label}>Số điện thoại</label>
                     <input
