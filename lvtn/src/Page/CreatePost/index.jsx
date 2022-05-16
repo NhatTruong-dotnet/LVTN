@@ -133,9 +133,9 @@ function CreatePost(props) {
                                         >
                                             <g
                                                 fill='none'
-                                                fill-rule='evenodd'
+                                                fillRule='evenodd'
                                                 stroke='none'
-                                                stroke-width='1'
+                                                strokeWidth='1'
                                             >
                                                 <g
                                                     fill='#FE9900'
