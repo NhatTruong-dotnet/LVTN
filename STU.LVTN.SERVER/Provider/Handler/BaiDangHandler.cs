@@ -70,6 +70,32 @@ namespace STU.LVTN.SERVER.Provider.Handler
             return await baiDangHelper.GetSoldPostBySoDienThoai(soDienThoai);
         }
 
+        public async Task<Dictionary<string, Dictionary<string ,string>>> GetPostByID(int IDPost)
+        {
+            BaiDangEntities post = await baiDangHelper.GetPostByID(IDPost);
+            Dictionary<string, Dictionary<string ,string>> result = new Dictionary<string, Dictionary<string ,string>>();
+            int idDanhMucSanPham = post.IdDanhMucCha;
+            int? idDanhMucBaiDang = post.IdDanhMucCon;
+            #region BaiDang global
+            Dictionary<string, string> postDictionary = new Dictionary<string, string>();
+            postDictionary.Add("tieuDe", post.TieuDe);
+            postDictionary.Add("moTa", post.Mota);
+            postDictionary.Add("gia", post.Gia.ToString());
+            postDictionary.Add("sdt", post.SdtNguoiBan);
+            postDictionary.Add("khuVuc", post.PhuongXa + ", " + post.QuanHuyen + ", " + post.ThanhPho);
+            result.Add("BaiDang", postDictionary);
+            #endregion
+            switch (idDanhMucBaiDang)
+            {
+                case 13:
+                    result.Add("detail", baiDangBatDongSanHelper.getPost_CC_ByID(post.IdBaiDangChiTiet));
+                    break;
+                default:
+                    break;
+            }
+            return result;
+        }
+
         #region Create
         #region BaiDangBatDongSan
         public async Task<bool> AddBaiDangBatDongSanCC(BaiDangBatDongSanCC_DTO baiDangRequest)

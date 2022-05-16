@@ -9,7 +9,6 @@ namespace STU.LVTN.SERVER.Provider.BusinessLogic
     {
         private LVTNContext _context = new LVTNContext();
         private readonly IMapper _mapper;
-
         public BaiDang(IMapper mapper)
         {
             _mapper = mapper;
@@ -105,5 +104,19 @@ namespace STU.LVTN.SERVER.Provider.BusinessLogic
                 return false;
             }
         }
+
+        public async Task<BaiDangEntities> GetPostByID(int IDPost)
+        {
+            try
+            {
+                return _context.BaiDangs.Where(baiDang => baiDang.IdBaiDang == IDPost).FirstOrDefault();
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+       
     }
 }
+
