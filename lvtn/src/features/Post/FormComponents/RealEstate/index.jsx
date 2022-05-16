@@ -26,9 +26,33 @@ const subCategories = [
             />
         ),
     },
-    { id: 15, Component: () => <Land /> },
-    { id: 16, Component: () => <Office /> },
-    { id: 17, Component: () => <Motel /> },
+    {
+        id: 15,
+        Component: ({ formData, handleFormDataChange }) => (
+            <Land
+                handleFormDataChange={handleFormDataChange}
+                formData={formData}
+            />
+        ),
+    },
+    {
+        id: 16,
+        Component: ({ formData, handleFormDataChange }) => (
+            <Office
+                handleFormDataChange={handleFormDataChange}
+                formData={formData}
+            />
+        ),
+    },
+    {
+        id: 17,
+        Component: ({ formData, handleFormDataChange }) => (
+            <Motel
+                handleFormDataChange={handleFormDataChange}
+                formData={formData}
+            />
+        ),
+    },
 ]
 
 function RealEstate({ subCategoryId, formData, handleFormDataChange }) {
@@ -42,53 +66,59 @@ function RealEstate({ subCategoryId, formData, handleFormDataChange }) {
 
     return (
         <div>
-            <div className={styles.type}>
-                <div className={styles.title}>
-                    Danh mục bất động sản{' '}
-                    <span className={styles.required}>*</span>
-                </div>
-                <div
-                    className={clsx(styles.typeItem, {
-                        [styles.active]:
-                            formData.isSell && formData.isSell !== null,
-                    })}
-                    onClick={() => handleFormDataChange('isSell', true)}
-                >
-                    Cần bán
-                </div>
-                <div
-                    className={clsx(styles.typeItem, {
-                        [styles.active]:
-                            !formData.isSell && formData.isSell !== null,
-                    })}
-                    onClick={() => handleFormDataChange('isSell', false)}
-                >
-                    Cho thuê
-                </div>
-            </div>
-            {formData.isSell && (
+            {formData.subCategoryId !== 17 && (
                 <div className={styles.type}>
                     <div className={styles.title}>
-                        Tình trạng bất động sản{' '}
+                        Danh mục bất động sản{' '}
                         <span className={styles.required}>*</span>
                     </div>
                     <div
-                        className={styles.typeItem}
-                        onClick={() => handleFormDataChange('isHandOver', true)}
+                        className={clsx(styles.typeItem, {
+                            [styles.active]:
+                                formData.isSell && formData.isSell !== null,
+                        })}
+                        onClick={() => handleFormDataChange('isSell', true)}
                     >
-                        Đã bàn giao
+                        Cần bán
                     </div>
                     <div
-                        className={styles.typeItem}
-                        onClick={() =>
-                            handleFormDataChange('isHandOver', false)
-                        }
+                        className={clsx(styles.typeItem, {
+                            [styles.active]:
+                                !formData.isSell && formData.isSell !== null,
+                        })}
+                        onClick={() => handleFormDataChange('isSell', false)}
                     >
-                        Chưa bàn giao
+                        Cho thuê
                     </div>
-                    <div className={styles.formMessage}>hello</div>
                 </div>
             )}
+            {formData.isSell &&
+                formData.subCategoryId !== 15 &&
+                formData.subCategoryId !== 16 && (
+                    <div className={styles.type}>
+                        <div className={styles.title}>
+                            Tình trạng bất động sản{' '}
+                            <span className={styles.required}>*</span>
+                        </div>
+                        <div
+                            className={styles.typeItem}
+                            onClick={() =>
+                                handleFormDataChange('isHandOver', true)
+                            }
+                        >
+                            Đã bàn giao
+                        </div>
+                        <div
+                            className={styles.typeItem}
+                            onClick={() =>
+                                handleFormDataChange('isHandOver', false)
+                            }
+                        >
+                            Chưa bàn giao
+                        </div>
+                        <div className={styles.formMessage}>hello</div>
+                    </div>
+                )}
 
             {/* <Apartment /> */}
             {currentSubCategory && formData.isSell !== null && (

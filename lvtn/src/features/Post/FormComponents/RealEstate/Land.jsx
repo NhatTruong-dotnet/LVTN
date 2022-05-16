@@ -1,16 +1,16 @@
+import React from 'react'
 import styles from './index.module.css'
-import clsx from 'clsx'
 import FormGroup from './Components/FormGroup'
 import FormInput from './Components/FormInput'
 
-function House({ formData, handleFormDataChange }) {
+function Land({ formData, handleFormDataChange }) {
     return (
         <>
             {/* Địa chỉ BĐS và Hình ảnh */}
             <FormGroup title='Địa chỉ BĐS và Hình ảnh'>
                 <div className={styles.group}>
                     <FormInput
-                        label='Tên Khu dân cư / dự án'
+                        label='Tên dự án đất nền'
                         value={formData.name}
                         onChange={e =>
                             handleFormDataChange('name', e.target.value)
@@ -93,10 +93,10 @@ function House({ formData, handleFormDataChange }) {
                 <div className={styles.group}>
                     <div className={styles.halfParent}>
                         <FormInput
-                            label='Mã căn'
-                            value={formData.houseId}
+                            label='Mã lô'
+                            value={formData.landId}
                             onChange={e =>
-                                handleFormDataChange('houseId', e.target.value)
+                                handleFormDataChange('landId', e.target.value)
                             }
                         />
 
@@ -115,56 +115,25 @@ function House({ formData, handleFormDataChange }) {
             <FormGroup title='Thông tin chi tiết'>
                 <div className={styles.group}>
                     <FormInput
-                        label='Loại hình nhà ở'
+                        label='Loại hình đất'
                         require
-                        value={formData.houseType}
+                        value={formData.landType}
                         onChange={e =>
-                            handleFormDataChange('houseType', e.target.value)
+                            handleFormDataChange('landType', e.target.value)
                         }
                     />
                 </div>
                 <div className={styles.group}>
                     <div className={styles.halfParent}>
                         <FormInput
-                            label='Số phòng ngủ'
-                            require
+                            label='Hướng đất (không bắt buộc)'
                             halfContainer
-                            value={formData.amountBedroom}
+                            value={formData.landDirection}
                             onChange={e =>
                                 handleFormDataChange(
-                                    'amountBedroom',
+                                    'landDirection',
                                     e.target.value
                                 )
-                            }
-                        />
-
-                        <FormInput
-                            label='Số phòng vệ sinh(Không bắt buộc)'
-                            require
-                            halfContainer
-                            value={formData.amountToilet}
-                            onChange={e =>
-                                handleFormDataChange(
-                                    'amountToilet',
-                                    e.target.value
-                                )
-                            }
-                        />
-                    </div>
-                    <div className={styles.halfParent}>
-                        <FormInput
-                            label='Tổng số tầng'
-                            value={formData.floor}
-                            onChange={e =>
-                                handleFormDataChange('floor', e.target.value)
-                            }
-                        />
-
-                        <FormInput
-                            label='Hướng cửa chính (Không bắt buộc)'
-                            value={formData.mainDoor}
-                            onChange={e =>
-                                handleFormDataChange('mainDoor', e.target.value)
                             }
                         />
                     </div>
@@ -182,51 +151,68 @@ function House({ formData, handleFormDataChange }) {
                                 handleFormDataChange('exhibit', e.target.value)
                             }
                         />
-                        <FormInput
-                            label='Tình trạng nội thất (Không bắt buộc)'
-                            value={formData.furniture}
-                            onChange={e =>
-                                handleFormDataChange(
-                                    'furniture',
-                                    e.target.value
-                                )
-                            }
-                        />
                     </div>
 
                     <div className={styles.special}>
                         <div className={styles.title}>Đặc điểm nhà / đất</div>
-                        <div className={styles.checkboxGroup}>
-                            <label className={styles.checkboxLabel}>
-                                Hẻm xe hơi
-                            </label>
-                            <input
-                                type='checkbox'
-                                id='car'
-                                checked={formData.isAlley}
-                                onChange={e =>
-                                    handleFormDataChange(
-                                        'isAlley',
-                                        e.target.checked
-                                    )
-                                }
-                            />
-                        </div>
-                        <div className={styles.checkboxGroup}>
-                            <label className={styles.checkboxLabel}>
-                                Nở hậu
-                            </label>
-                            <input
-                                type='checkbox'
-                                id='car'
-                                checked={formData.hasBackyard}
-                                onChange={e =>
-                                    handleFormDataChange(
-                                        'hasBackyard',
-                                        e.target.checked
-                                    )
-                                }
-                            />
+                        <div className={styles.wrap}>
+                            <div className={styles.checkboxGroup}>
+                                <label
+                                    className={styles.checkboxLabel}
+                                    htmlFor='1'
+                                >
+                                    Hẻm xe hơi
+                                </label>
+                                <input
+                                    type='checkbox'
+                                    id='1'
+                                    checked={formData.isAlley}
+                                    onChange={e =>
+                                        handleFormDataChange(
+                                            'isAlley',
+                                            e.target.checked
+                                        )
+                                    }
+                                />
+                            </div>
+                            <div className={styles.checkboxGroup}>
+                                <label
+                                    className={styles.checkboxLabel}
+                                    htmlFor='2'
+                                >
+                                    Nở hậu
+                                </label>
+                                <input
+                                    type='checkbox'
+                                    id='2'
+                                    checked={formData.hasBackyard}
+                                    onChange={e =>
+                                        handleFormDataChange(
+                                            'hasBackyard',
+                                            e.target.checked
+                                        )
+                                    }
+                                />
+                            </div>
+                            <div className={styles.checkboxGroup}>
+                                <label
+                                    className={styles.checkboxLabel}
+                                    htmlFor='3'
+                                >
+                                    Mặt tiền
+                                </label>
+                                <input
+                                    type='checkbox'
+                                    id='3'
+                                    checked={formData.isFacade}
+                                    onChange={e =>
+                                        handleFormDataChange(
+                                            'isFacade',
+                                            e.target.checked
+                                        )
+                                    }
+                                />
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -241,14 +227,6 @@ function House({ formData, handleFormDataChange }) {
                         value={formData.acreage}
                         onChange={e =>
                             handleFormDataChange('acreage', e.target.value)
-                        }
-                    />
-
-                    <FormInput
-                        label='Diện tích sử dụng'
-                        value={formData.useAcreage}
-                        onChange={e =>
-                            handleFormDataChange('useAcreage', e.target.value)
                         }
                     />
 
@@ -298,4 +276,4 @@ function House({ formData, handleFormDataChange }) {
     )
 }
 
-export default House
+export default Land

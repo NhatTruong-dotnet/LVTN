@@ -163,10 +163,10 @@ function Apartment({ formData, handleFormDataChange }) {
                             require
                             label='Số phòng vệ sinh'
                             halfContainer
-                            value={formData.apartmentToilet}
+                            value={formData.amountToilet}
                             onChange={e =>
                                 handleFormDataChange(
-                                    'apartmentToilet',
+                                    'amountToilet',
                                     e.target.value
                                 )
                             }

@@ -134,9 +134,15 @@ input::-webkit-inner-spin-button {
 
 /* House */
 .special {
-    /* display: flex;
-    justify-content: space-between; */
-    position: relative;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    /* position: relative; */
+}
+.wrap {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: no-wrap;
 }
 .checkboxGroup {
     border-bottom: 1px solid #cacaca;
@@ -144,11 +150,11 @@ input::-webkit-inner-spin-button {
     /* flex-direction: row-reverse; */
     -webkit-box-pack: justify;
     justify-content: space-between;
-    width: 48%;
+    width: 30%;
 }
 .checkboxGroup + .checkboxGroup {
-    position: absolute;
-    right: 0;
+    /* position: absolute;
+    right: 0; */
 }
 
 .checkboxLabel {

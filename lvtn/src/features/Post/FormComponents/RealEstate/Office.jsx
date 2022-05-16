@@ -1,16 +1,16 @@
+// chung cư
 import styles from './index.module.css'
-import clsx from 'clsx'
-import FormGroup from './Components/FormGroup'
 import FormInput from './Components/FormInput'
+import FormGroup from './Components/FormGroup'
 
-function House({ formData, handleFormDataChange }) {
+function Office({ formData, handleFormDataChange }) {
     return (
         <>
             {/* Địa chỉ BĐS và Hình ảnh */}
             <FormGroup title='Địa chỉ BĐS và Hình ảnh'>
                 <div className={styles.group}>
                     <FormInput
-                        label='Tên Khu dân cư / dự án'
+                        label='Tên tòa nhà / Khu dân cư / dự án'
                         value={formData.name}
                         onChange={e =>
                             handleFormDataChange('name', e.target.value)
@@ -31,6 +31,7 @@ function House({ formData, handleFormDataChange }) {
                                 })
                             }
                         />
+
                         <FormInput
                             require
                             label='Chọn quận, huyện, thị xã'
@@ -94,17 +95,30 @@ function House({ formData, handleFormDataChange }) {
                     <div className={styles.halfParent}>
                         <FormInput
                             label='Mã căn'
-                            value={formData.houseId}
+                            halfContainer
+                            value={formData.officeId}
                             onChange={e =>
-                                handleFormDataChange('houseId', e.target.value)
+                                handleFormDataChange('officeId', e.target.value)
                             }
                         />
 
                         <FormInput
-                            label='Tên phân khu / lô'
+                            label='Block / Tháp'
+                            halfContainer
                             value={formData.block}
                             onChange={e =>
                                 handleFormDataChange('block', e.target.value)
+                            }
+                        />
+                    </div>
+
+                    <div className={styles.halfParent}>
+                        <FormInput
+                            label='Tầng số'
+                            halfContainer
+                            value={formData.floor}
+                            onChange={e =>
+                                handleFormDataChange('floor', e.target.value)
                             }
                         />
                     </div>
@@ -115,56 +129,26 @@ function House({ formData, handleFormDataChange }) {
             <FormGroup title='Thông tin chi tiết'>
                 <div className={styles.group}>
                     <FormInput
-                        label='Loại hình nhà ở'
                         require
-                        value={formData.houseType}
+                        label='Loại hình văn phòng'
+                        value={formData.officeType}
                         onChange={e =>
-                            handleFormDataChange('houseType', e.target.value)
+                            handleFormDataChange('officeType', e.target.value)
                         }
                     />
                 </div>
                 <div className={styles.group}>
                     <div className={styles.halfParent}>
                         <FormInput
-                            label='Số phòng ngủ'
                             require
+                            label='Hướng cửa chính(Không bắt buộc)'
                             halfContainer
-                            value={formData.amountBedroom}
+                            value={formData.officeDirection}
                             onChange={e =>
                                 handleFormDataChange(
-                                    'amountBedroom',
+                                    'officeDirection',
                                     e.target.value
                                 )
-                            }
-                        />
-
-                        <FormInput
-                            label='Số phòng vệ sinh(Không bắt buộc)'
-                            require
-                            halfContainer
-                            value={formData.amountToilet}
-                            onChange={e =>
-                                handleFormDataChange(
-                                    'amountToilet',
-                                    e.target.value
-                                )
-                            }
-                        />
-                    </div>
-                    <div className={styles.halfParent}>
-                        <FormInput
-                            label='Tổng số tầng'
-                            value={formData.floor}
-                            onChange={e =>
-                                handleFormDataChange('floor', e.target.value)
-                            }
-                        />
-
-                        <FormInput
-                            label='Hướng cửa chính (Không bắt buộc)'
-                            value={formData.mainDoor}
-                            onChange={e =>
-                                handleFormDataChange('mainDoor', e.target.value)
                             }
                         />
                     </div>
@@ -177,13 +161,16 @@ function House({ formData, handleFormDataChange }) {
                     <div className={styles.halfParent}>
                         <FormInput
                             label='Giấy tờ pháp lý (Không bắt buộc)'
+                            halfContainer
                             value={formData.exhibit}
                             onChange={e =>
                                 handleFormDataChange('exhibit', e.target.value)
                             }
                         />
+
                         <FormInput
                             label='Tình trạng nội thất (Không bắt buộc)'
+                            halfContainer
                             value={formData.furniture}
                             onChange={e =>
                                 handleFormDataChange(
@@ -193,42 +180,6 @@ function House({ formData, handleFormDataChange }) {
                             }
                         />
                     </div>
-
-                    <div className={styles.special}>
-                        <div className={styles.title}>Đặc điểm nhà / đất</div>
-                        <div className={styles.checkboxGroup}>
-                            <label className={styles.checkboxLabel}>
-                                Hẻm xe hơi
-                            </label>
-                            <input
-                                type='checkbox'
-                                id='car'
-                                checked={formData.isAlley}
-                                onChange={e =>
-                                    handleFormDataChange(
-                                        'isAlley',
-                                        e.target.checked
-                                    )
-                                }
-                            />
-                        </div>
-                        <div className={styles.checkboxGroup}>
-                            <label className={styles.checkboxLabel}>
-                                Nở hậu
-                            </label>
-                            <input
-                                type='checkbox'
-                                id='car'
-                                checked={formData.hasBackyard}
-                                onChange={e =>
-                                    handleFormDataChange(
-                                        'hasBackyard',
-                                        e.target.checked
-                                    )
-                                }
-                            />
-                        </div>
-                    </div>
                 </div>
             </FormGroup>
 
@@ -236,8 +187,8 @@ function House({ formData, handleFormDataChange }) {
             <FormGroup title='Diện tích và giá'>
                 <div className={styles.group}>
                     <FormInput
-                        label='Diện tích đất'
                         require
+                        label='Diện tích'
                         value={formData.acreage}
                         onChange={e =>
                             handleFormDataChange('acreage', e.target.value)
@@ -245,57 +196,28 @@ function House({ formData, handleFormDataChange }) {
                     />
 
                     <FormInput
-                        label='Diện tích sử dụng'
-                        value={formData.useAcreage}
-                        onChange={e =>
-                            handleFormDataChange('useAcreage', e.target.value)
-                        }
-                    />
-
-                    <div className={styles.halfParent}>
-                        <FormInput
-                            label={'Chiều ngang'}
-                            halfContainer
-                            value={formData.horizontal}
-                            onChange={e =>
-                                handleFormDataChange(
-                                    'horizontal',
-                                    e.target.value
-                                )
-                            }
-                        />
-
-                        <FormInput
-                            label={'Chiều dài'}
-                            halfContainer
-                            value={formData.vertical}
-                            onChange={e =>
-                                handleFormDataChange('vertical', e.target.value)
-                            }
-                        />
-                    </div>
-
-                    <FormInput
-                        label={'Giá'}
                         require
+                        label='Giá'
                         value={formData.price}
                         onChange={e =>
                             handleFormDataChange('price', e.target.value)
                         }
                     />
 
-                    <FormInput
-                        label={'Số tiền cọc'}
-                        require
-                        value={formData.deposit}
-                        onChange={e =>
-                            handleFormDataChange('deposit', e.target.value)
-                        }
-                    />
+                    {!formData?.isSell && (
+                        <FormInput
+                            require
+                            label='Số tiền cọc'
+                            value={formData.deposit}
+                            onChange={e =>
+                                handleFormDataChange('deposit', e.target.value)
+                            }
+                        />
+                    )}
                 </div>
             </FormGroup>
         </>
     )
 }
 
-export default House
+export default Office

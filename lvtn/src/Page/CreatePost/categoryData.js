@@ -30,9 +30,8 @@ const categories = [
             {
                 id: 13,
                 name: 'Căn hộ, chung cư',
-                Component: () => <Apartment />,
             },
-            { id: 14, name: 'Nhà ở', Component: () => <House /> },
+            { id: 14, name: 'Nhà ở' },
             { id: 15, name: 'Đất' },
             { id: 16, name: 'Văn phòng, mặt bằng kinh doanh' },
             { id: 17, name: 'Phòng trọ' },

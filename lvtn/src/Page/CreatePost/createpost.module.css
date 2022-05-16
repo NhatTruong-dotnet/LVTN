@@ -28,8 +28,45 @@
     opacity: 1;
     padding-top: 0;
 }
+.small {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 20px;
+}
 .videoPicker {
     margin-top: 10px;
+}
+
+.previewImageContainer {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.imageItem {
+    position: relative;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+}
+
+.deleteImageIcon {
+    position: absolute;
+    right: -5px;
+    top: -5px;
+    background-color: #fff;
+    border-radius: 100%;
+    cursor: pointer;
+    font-size: 18px;
+}
+.firstImage {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #222;
+    color: #fff;
+    font-size: 14px;
+    z-index: 1;
+    text-align: center;
 }
 .text {
     text-align: center;
