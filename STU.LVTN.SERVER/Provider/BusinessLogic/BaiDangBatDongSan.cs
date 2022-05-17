@@ -26,16 +26,31 @@ namespace STU.LVTN.SERVER.Provider.BusinessLogic
             BaiDangBatDongSanEntities entity = _context.BaiDangBatDongSans.Where(item => item.IdBaiDang == idPostDetail).FirstOrDefault();
             post.Add("Tên dự án: ", entity.TenDuAn);
             post.Add("Diện tích: ", entity.DienTich.ToString());
-            post.Add("Cần bán: ", entity.CanBan == true? "true":"false");
+            post.Add("Cần bán: ", entity.CanBan == true ? "true" : "false");
             post.Add("Mã căn: ", entity.CcMaCan);
             post.Add("Tên phân khu/Lô/Block/Tháp: ", entity.CcBlock);
             post.Add("Tầng số: ", entity.CcTangSo);
-            post.Add("Tình trạng bất động sản: ", entity.CcChuaBanGiao == true ? "Chưa bàn giao": "Đã bàn giao");
+            post.Add("Tình trạng bất động sản: ", entity.CcChuaBanGiao == true ? "Chưa bàn giao" : "Đã bàn giao");
             post.Add("Loại hình chung cư: ", entity.CcLoaiHinh);
             post.Add("Số phòng ngủ: ", entity.CcSoPhongNgu.ToString());
             return post;
         }
 
-        
+        public Dictionary<string, string> getPost_NhaO_ByID(int? idPostDetail)
+        {
+            Dictionary<string, string> post = new Dictionary<string, string>();
+            BaiDangBatDongSanEntities entity = _context.BaiDangBatDongSans.Where(item => item.IdBaiDang == idPostDetail).FirstOrDefault();
+            post.Add("Diện tích đất : ", entity.NhaOSoPhongNgu.ToString());
+            post.Add("Số phòng ngủ: ", entity.DienTich.ToString());
+            post.Add("Giấy tờ pháp lí: ", entity.NhaOLoaiHinh);
+            post.Add("Loại hình nhà ở: ", entity.NhaOLoaiHinh);
+            post.Add("Chiều dài: ", entity.NhaOChieuDai.ToString());
+            post.Add("Chiều dài: ", entity.CcBlock);
+            post.Add("Tầng số: ", entity.CcTangSo);
+            post.Add("Tình trạng bất động sản: ", entity.CcChuaBanGiao == true ? "Chưa bàn giao" : "Đã bàn giao");
+            post.Add("Loại hình chung cư: ", entity.CcLoaiHinh);
+            post.Add("Số phòng ngủ: ", entity.CcSoPhongNgu.ToString());
+            return post;
+        }
     }
 }

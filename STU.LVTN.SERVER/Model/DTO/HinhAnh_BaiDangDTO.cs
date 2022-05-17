@@ -2,7 +2,7 @@
 {
     public class HinhAnh_BaiDangDTO
     {
-        public string id { get; set; }
         public string type { get; set; }
+        public string id { get; set; }
     }
 }
