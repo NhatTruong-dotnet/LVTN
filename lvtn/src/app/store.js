@@ -2,6 +2,7 @@ import { configureStore } from '@reduxjs/toolkit'
 import counterReducer from '../features/counter/counterSlice'
 import loginReducer from '../features/Auth/Login/loginSlice'
 import registerReducer from '../features/Auth/Register/registerSlice'
+import postReducer from '../features/Post/PostSlice'
 import createSagaMiddleware from 'redux-saga'
 
 import RootSaga from './RootSaga'
@@ -13,6 +14,7 @@ export const store = configureStore({
         counter: counterReducer,
         login: loginReducer,
         register: registerReducer,
+        post: postReducer,
     },
     middleware: getDefaultMiddleware =>
         getDefaultMiddleware().concat(sagaMiddleware),

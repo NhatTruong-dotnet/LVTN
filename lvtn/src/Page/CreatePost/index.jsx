@@ -11,6 +11,11 @@ import {
 } from '../../Utils/PostUtils'
 import { nanoid } from '@reduxjs/toolkit'
 import { FaTimesCircle } from 'react-icons/fa'
+import { useDispatch, useSelector } from 'react-redux'
+import {
+    selectToken,
+    selectUsername,
+} from '../../features/Auth/Login/loginSlice'
 
 function CreatePost(props) {
     const [isShowCategoryPicker, setIsShowCategoryPicker] = useState(true)
@@ -31,8 +36,11 @@ function CreatePost(props) {
     const [formData, setFormData] = useState({
         title: '',
         description: '',
-        mediaIds: [],
+        medias: [],
     })
+    const token = useSelector(selectToken)
+    const numberPhone = useSelector(selectUsername)
+    const dispatch = useDispatch()
     const openCategoryPicker = () => setIsShowCategoryPicker(true)
     const closeCategoryPicker = () => setIsShowCategoryPicker(false)
 
@@ -44,6 +52,7 @@ function CreatePost(props) {
     }
 
     const handleSelectMediaFile = e => {
+        console.log(e.target.files[0])
         if (!e.target.files[0]) {
             return
         }
@@ -96,8 +105,16 @@ function CreatePost(props) {
         e.preventDefault()
 
         const fileIdArray = await uploadImage(listFileDataMedia)
-        const formRequestData = { ...formData, mediaIds: fileIdArray }
+        const formRequestData = { ...formData, medias: fileIdArray }
+
         console.log(formRequestData)
+
+        dispatch({
+            type: 'createPost',
+            formData: formRequestData,
+            token,
+            numberPhone,
+        })
     }
 
     useEffect(() => {

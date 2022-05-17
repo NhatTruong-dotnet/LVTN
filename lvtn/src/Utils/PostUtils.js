@@ -168,19 +168,19 @@ export function convertFile(file, callback) {
             dataReq: { data: rawLog, name: file.name, type: file.type },
             fname: 'uploadFilesToGoogleDrive',
         } //preapre info to send to API
-        callback(dataSend)
+        callback({ type: file.type, fileData: dataSend })
     }
 }
 
 export const uploadImage = async files => {
     const fileIdArray = await Promise.all(
-        files.map(async fileData => {
+        files.map(async ({ type, fileData }) => {
             const res = await fetch(
                 'https://script.google.com/macros/s/AKfycbwXhX4N82ic3vhrVOK493pjOfR9-pISPf7jsSmpiBcf_IHuQCc/exec',
                 { method: 'POST', body: JSON.stringify(fileData) }
             )
             const { id } = await res.json()
-            return id
+            return { type, id }
         })
     )
     return fileIdArray

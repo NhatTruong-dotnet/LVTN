@@ -70,5 +70,6 @@ export const { loginPending, loginSuccess, loginFail, logout, loginWithToken } =
 export const selectStatus = state => state.login.isLoading
 export const selectUsername = state => state.login.username
 export const selectLoginStatus = state => state.login.isLogin
+export const selectToken = state => state.login.token
 
 export default reducer
