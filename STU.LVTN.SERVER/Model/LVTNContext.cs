@@ -31,7 +31,7 @@ namespace STU.LVTN.SERVER.Model
         public virtual DbSet<BaiDangXeCoEntities> BaiDangXeCos { get; set; } = null!;
         public virtual DbSet<DanhMuc> DanhMucs { get; set; } = null!;
         public virtual DbSet<GiaoDichDatCoc> GiaoDichDatCocs { get; set; } = null!;
-        public virtual DbSet<HinhAnhBaiDang> HinhAnhBaiDangs { get; set; } = null!;
+        public virtual DbSet<HinhAnhBaiDangEntities> HinhAnhBaiDangs { get; set; } = null!;
         public virtual DbSet<NguoiDungEntities> NguoiDungs { get; set; } = null!;
         public virtual DbSet<ThuocTinhDanhMuc> ThuocTinhDanhMucs { get; set; } = null!;
 
@@ -613,7 +613,7 @@ namespace STU.LVTN.SERVER.Model
                     .HasConstraintName("FK_GiaoDich_DatCoc_NguoiDung1");
             });
 
-            modelBuilder.Entity<HinhAnhBaiDang>(entity =>
+            modelBuilder.Entity<HinhAnhBaiDangEntities>(entity =>
             {
                 entity.HasKey(e => e.IdHinhAnh);
 

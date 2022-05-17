@@ -7,7 +7,7 @@ namespace STU.LVTN.SERVER.Model
     {
         public BaiDangEntities()
         {
-            HinhAnhBaiDangs = new HashSet<HinhAnhBaiDang>();
+            HinhAnhBaiDangs = new HashSet<HinhAnhBaiDangEntities>();
         }
 
         public int IdBaiDang { get; set; }
@@ -32,6 +32,6 @@ namespace STU.LVTN.SERVER.Model
 
         public virtual DanhMuc? IdDanhMucConNavigation { get; set; }
         public virtual NguoiDungEntities? SdtNguoiBanNavigation { get; set; }
-        public virtual ICollection<HinhAnhBaiDang> HinhAnhBaiDangs { get; set; }
+        public virtual ICollection<HinhAnhBaiDangEntities> HinhAnhBaiDangs { get; set; }
     }
 }

@@ -156,7 +156,7 @@ namespace STU.LVTN.SERVER.Controllers
         [HttpPost("xeCoXeDien/newPost"),Authorize]
         public async Task<ActionResult<bool>> newPostXeCoXeDien(BaiDangXeCoXeDien_DTO baiDangXeDien_Request)
         {
-            baiDangXeDien_Request.SdtNguoiBan = = User.Identity.Name;
+            baiDangXeDien_Request.SdtNguoiBan = User.Identity.Name;
             if (await baiDangHandler.AddBaiDangXeCoXeDien(baiDangXeDien_Request))
             {
                 return Ok();
@@ -213,7 +213,7 @@ namespace STU.LVTN.SERVER.Controllers
         [HttpPost("doDienTuLaptop/newPost"), Authorize]
         public async Task<ActionResult<bool>> newPostDoDienTuLaptop(BaiDangDoDienTuLaptop_DTO baiDangLaptop_Request)
         {
-            baiDangLaptop_Request.SdtNguoiBan = = User.Identity.Name;
+            baiDangLaptop_Request.SdtNguoiBan = User.Identity.Name;
             if (await baiDangHandler.AddBaiDangDoDienTuLaptop(baiDangLaptop_Request))
             {
                 return Ok();
@@ -224,7 +224,7 @@ namespace STU.LVTN.SERVER.Controllers
         [HttpPost("doDienTuLinhKien/newPost"),Authorize]
         public async Task<ActionResult<bool>> newPostDoDienTuLinhKien(BaiDangDoDienTuLinhKien_DTO baiDangLinhKien_Request)
         {
-            baiDangLinhKien_Request.SdtNguoiBan = = User.Identity.Name;
+            baiDangLinhKien_Request.SdtNguoiBan = User.Identity.Name;
             if (await baiDangHandler.AddBaiDangDoDienTuLinhKien(baiDangLinhKien_Request))
             {
                 return Ok();
@@ -257,7 +257,7 @@ namespace STU.LVTN.SERVER.Controllers
         [HttpPost("doDienTuMayTinhDeBan/newPost"),Authorize]
         public async Task<ActionResult<bool>> newPostDoDienTuMayTinhDeBan(BaiDangDoDienTuMayTinhDeBan_DTO baiDangMayTinhDeBan_Request)
         {
-            baiDangMayTinhDeBan_Request.SdtNguoiBan = = User.Identity.Name;
+            baiDangMayTinhDeBan_Request.SdtNguoiBan = User.Identity.Name;
             if (await baiDangHandler.AddBaiDangDoDienTuMayTinhDeBan(baiDangMayTinhDeBan_Request))
             {
                 return Ok();

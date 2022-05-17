@@ -9,6 +9,11 @@ namespace STU.LVTN.SERVER.Model
         public string? TenDuAn { get; set; }
         public double? DienTich { get; set; }
         public string? CcMaCan { get; set; }
+        public string? CcHuongCuaChinh { get; set; }
+        public string? CcBanCong { get; set; }
+        public string? CcGiayToPhapLy { get; set; }
+        public string? CcTinhTrangNoiThat { get; set; }
+        public float? SoTienCoc { get; set; }
         public string? CcBlock { get; set; }
         public string? CcTangSo { get; set; }
         public bool? CcChuaBanGiao { get; set; }

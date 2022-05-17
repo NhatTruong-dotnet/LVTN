@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace STU.LVTN.SERVER.Model
 {
-    public partial class HinhAnhBaiDang
+    public partial class HinhAnhBaiDangEntities
     {
         public int IdHinhAnh { get; set; }
         public string IdMediaCloud { get; set; } = null!;

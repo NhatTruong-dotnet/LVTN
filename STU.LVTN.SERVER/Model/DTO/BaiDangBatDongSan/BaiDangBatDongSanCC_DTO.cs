@@ -29,5 +29,12 @@
         public bool ChuaBanGiao { get; set; }
         public string LoaiHinh { get; set; }
         public int SoPhongNgu { get; set; }
+        public string? CcHuongCuaChinh { get; set; }
+        public string? CcBanCong { get; set; }
+        public string? CcGiayToPhapLy { get; set; }
+        public string? CcTinhTrangNoiThat { get; set; }
+        public float? SoTienCoc { get; set; }
+        public List<HinhAnh_BaiDangDTO> hinhAnh_BaiDangs { get; set; }
+         
     }
 }

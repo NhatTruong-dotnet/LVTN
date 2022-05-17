@@ -43,6 +43,7 @@ namespace STU.LVTN.SERVER.Provider.Handler
         BaiDangThoiTrang baiDangThoiTrangHelper;
         BaiDangGiaiTri baiDangGiaiTriHelper;
         BaiDangDoDungVanPhong baiDangDoDungVanPhongHelper;
+        HinhAnh_BaiDang hinhAnhBaiDangHelper;
         public BaiDangHandler(IMapper mapper)
         {
             _mapper = mapper;
@@ -59,6 +60,7 @@ namespace STU.LVTN.SERVER.Provider.Handler
             baiDangThoiTrangHelper = new BaiDangThoiTrang();
             baiDangGiaiTriHelper = new BaiDangGiaiTri();
             baiDangDoDungVanPhongHelper = new BaiDangDoDungVanPhong();
+            hinhAnhBaiDangHelper = new HinhAnh_BaiDang();
         }
         public async Task<List<BaiDangHomePageDTO>> RenderHomePage(int lastestSubCategories)
         {
@@ -108,6 +110,17 @@ namespace STU.LVTN.SERVER.Provider.Handler
             }
             else
             {
+                foreach (var item in baiDangRequest.hinhAnh_BaiDangs)
+                {
+                    HinhAnhBaiDangEntities hinhAnhRequest = new HinhAnhBaiDangEntities();
+                    hinhAnhRequest.IdSanPham = lastIDPost;
+                    hinhAnhRequest.IdMediaCloud = item.id;
+                    if (item.type.Contains("video"))
+                        hinhAnhRequest.VideoType = true;
+                    else
+                        hinhAnhRequest.VideoType = false;
+                    hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
+                }
                 BaiDangEntities baiDangGlobal = _mapper.Map<BaiDangEntities>(baiDangRequest);
                 baiDangGlobal.IdBaiDangChiTiet = lastIDPost;
                 return await baiDangHelper.AddBaiDang(baiDangGlobal);
