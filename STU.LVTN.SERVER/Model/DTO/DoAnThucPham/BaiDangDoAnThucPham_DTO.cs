@@ -26,5 +26,7 @@
         #region BaiDangDoAnThucPham
         public string? LoaiThucPham { get; set; }
         #endregion
+        public List<HinhAnh_BaiDangDTO> hinhAnh_BaiDangs { get; set; }
+
     }
 }

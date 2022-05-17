@@ -36,5 +36,7 @@
         public bool? XeDienDaSuDung { get; set; }
         public bool? XeDienMienPhi { get; set; }
         #endregion
+        public List<HinhAnh_BaiDangDTO> hinhAnh_BaiDangs { get; set; }
+
     }
 }

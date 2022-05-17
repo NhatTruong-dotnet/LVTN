@@ -29,5 +29,7 @@
         public string? LinhKienLoaiPhuKien { get; set; }
         public string? LinhKienThietBi { get; set; }
         #endregion
+        public List<HinhAnh_BaiDangDTO> hinhAnh_BaiDangs { get; set; }
+
     }
 }

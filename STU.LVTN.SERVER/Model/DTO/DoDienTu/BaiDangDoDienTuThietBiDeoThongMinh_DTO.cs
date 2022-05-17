@@ -29,5 +29,7 @@
         public string? ThietBiDeoThongMinhThietBi { get; set; }
         public string? ThietBiDeoThongMinhHang { get; set; }
         #endregion
+        public List<HinhAnh_BaiDangDTO> hinhAnh_BaiDangs { get; set; }
+
     }
 }

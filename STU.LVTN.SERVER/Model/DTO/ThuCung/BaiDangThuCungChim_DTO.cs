@@ -28,5 +28,7 @@
         public string? DoTuoi { get; set; }
         public string? ChimGioiTinh { get; set; }
         #endregion
+        public List<HinhAnh_BaiDangDTO> hinhAnh_BaiDangs { get; set; }
+
     }
 }

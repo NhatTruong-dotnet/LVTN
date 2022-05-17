@@ -29,5 +29,7 @@
         public string? MayGiatCuaMayGiat { get; set; }
         public string? MayGiatKhoiLuongGiat { get; set; }
         #endregion
+        public List<HinhAnh_BaiDangDTO> hinhAnh_BaiDangs { get; set; }
+
     }
 }

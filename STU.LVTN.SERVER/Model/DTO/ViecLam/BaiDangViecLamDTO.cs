@@ -37,5 +37,7 @@
         public string? ChungChi { get; set; }
         public string? QuyenLoi { get; set; }
         #endregion
+        public List<HinhAnh_BaiDangDTO> hinhAnh_BaiDangs { get; set; }
+
     }
 }

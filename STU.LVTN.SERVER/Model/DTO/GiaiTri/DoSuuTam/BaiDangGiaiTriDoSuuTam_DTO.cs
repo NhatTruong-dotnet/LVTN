@@ -27,5 +27,7 @@
         public bool? DaSuDung { get; set; }
         public string? DoSuuTamLoaiSanPham { get; set; }
         #endregion
+        public List<HinhAnh_BaiDangDTO> hinhAnh_BaiDangs { get; set; }
+
     }
 }

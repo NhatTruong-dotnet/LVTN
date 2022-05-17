@@ -36,5 +36,7 @@
         public string? OtoKieuDang { get; set; }
         public byte? OtoSocho { get; set; }
         #endregion
+        public List<HinhAnh_BaiDangDTO> hinhAnh_BaiDangs { get; set; }
+
     }
 }

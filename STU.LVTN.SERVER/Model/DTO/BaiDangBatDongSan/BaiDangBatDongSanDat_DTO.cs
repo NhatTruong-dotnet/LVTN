@@ -30,5 +30,7 @@
         public bool? DatNoHau { get; set; }
         public double? DatChieuNgang { get; set; }
         public double? DatChieuDai { get; set; }
+        public List<HinhAnh_BaiDangDTO> hinhAnh_BaiDangs { get; set; }
+
     }
 }

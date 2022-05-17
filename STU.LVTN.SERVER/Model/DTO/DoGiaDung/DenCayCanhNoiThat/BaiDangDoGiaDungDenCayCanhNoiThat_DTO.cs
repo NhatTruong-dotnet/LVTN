@@ -26,7 +26,9 @@
         #region BaiDangDoGiaDung
         public bool? DaSuDung { get; set; }
         public string? LoaiSanPham { get; set; }
-       
+
         #endregion
+        public List<HinhAnh_BaiDangDTO> hinhAnh_BaiDangs { get; set; }
+
     }
 }

@@ -27,5 +27,7 @@
         public string? VanPhongBlock { get; set; }
         public string? VanPhongTangSo { get; set; }
         public string? VanPhongLoaiHinhVanPhong { get; set; }
+        public List<HinhAnh_BaiDangDTO> hinhAnh_BaiDangs { get; set; }
+
     }
 }

@@ -136,6 +136,17 @@ namespace STU.LVTN.SERVER.Provider.Handler
             }
             else
             {
+                foreach (var item in baiDangRequest.hinhAnh_BaiDangs)
+                {
+                    HinhAnhBaiDangEntities hinhAnhRequest = new HinhAnhBaiDangEntities();
+                    hinhAnhRequest.IdSanPham = lastIDPost;
+                    hinhAnhRequest.IdMediaCloud = item.id;
+                    if (item.type.Contains("video"))
+                        hinhAnhRequest.VideoType = true;
+                    else
+                        hinhAnhRequest.VideoType = false;
+                    hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
+                }
                 BaiDangEntities baiDangGlobal = _mapper.Map<BaiDangEntities>(baiDangRequest);
                 baiDangGlobal.IdBaiDangChiTiet = lastIDPost;
                 return await baiDangHelper.AddBaiDang(baiDangGlobal);
@@ -151,6 +162,17 @@ namespace STU.LVTN.SERVER.Provider.Handler
             }
             else
             {
+                foreach (var item in baiDangRequest.hinhAnh_BaiDangs)
+                {
+                    HinhAnhBaiDangEntities hinhAnhRequest = new HinhAnhBaiDangEntities();
+                    hinhAnhRequest.IdSanPham = lastIDPost;
+                    hinhAnhRequest.IdMediaCloud = item.id;
+                    if (item.type.Contains("video"))
+                        hinhAnhRequest.VideoType = true;
+                    else
+                        hinhAnhRequest.VideoType = false;
+                    hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
+                }
                 BaiDangEntities baiDangGlobal = _mapper.Map<BaiDangEntities>(baiDangRequest);
                 baiDangGlobal.IdBaiDangChiTiet = lastIDPost;
                 return await baiDangHelper.AddBaiDang(baiDangGlobal);
@@ -166,6 +188,17 @@ namespace STU.LVTN.SERVER.Provider.Handler
             }
             else
             {
+                foreach (var item in baiDangRequest.hinhAnh_BaiDangs)
+                {
+                    HinhAnhBaiDangEntities hinhAnhRequest = new HinhAnhBaiDangEntities();
+                    hinhAnhRequest.IdSanPham = lastIDPost;
+                    hinhAnhRequest.IdMediaCloud = item.id;
+                    if (item.type.Contains("video"))
+                        hinhAnhRequest.VideoType = true;
+                    else
+                        hinhAnhRequest.VideoType = false;
+                    hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
+                }
                 BaiDangEntities baiDangGlobal = _mapper.Map<BaiDangEntities>(baiDangRequest);
                 baiDangGlobal.IdBaiDangChiTiet = lastIDPost;
                 return await baiDangHelper.AddBaiDang(baiDangGlobal);
@@ -181,6 +214,17 @@ namespace STU.LVTN.SERVER.Provider.Handler
             }
             else
             {
+                foreach (var item in baiDangRequest.hinhAnh_BaiDangs)
+                {
+                    HinhAnhBaiDangEntities hinhAnhRequest = new HinhAnhBaiDangEntities();
+                    hinhAnhRequest.IdSanPham = lastIDPost;
+                    hinhAnhRequest.IdMediaCloud = item.id;
+                    if (item.type.Contains("video"))
+                        hinhAnhRequest.VideoType = true;
+                    else
+                        hinhAnhRequest.VideoType = false;
+                    hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
+                }
                 BaiDangEntities baiDangGlobal = _mapper.Map<BaiDangEntities>(baiDangRequest);
                 baiDangGlobal.IdBaiDangChiTiet = lastIDPost;
                 return await baiDangHelper.AddBaiDang(baiDangGlobal);
@@ -199,6 +243,17 @@ namespace STU.LVTN.SERVER.Provider.Handler
             }
             else
             {
+                foreach (var item in baiDangRequest.hinhAnh_BaiDangs)
+                {
+                    HinhAnhBaiDangEntities hinhAnhRequest = new HinhAnhBaiDangEntities();
+                    hinhAnhRequest.IdSanPham = lastIDPost;
+                    hinhAnhRequest.IdMediaCloud = item.id;
+                    if (item.type.Contains("video"))
+                        hinhAnhRequest.VideoType = true;
+                    else
+                        hinhAnhRequest.VideoType = false;
+                    hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
+                }
                 BaiDangEntities baiDangGlobal = _mapper.Map<BaiDangEntities>(baiDangRequest);
                 baiDangGlobal.IdBaiDangChiTiet = lastIDPost;
                 return await baiDangHelper.AddBaiDang(baiDangGlobal);
@@ -215,6 +270,17 @@ namespace STU.LVTN.SERVER.Provider.Handler
             }
             else
             {
+                foreach (var item in baiDangRequest.hinhAnh_BaiDangs)
+                {
+                    HinhAnhBaiDangEntities hinhAnhRequest = new HinhAnhBaiDangEntities();
+                    hinhAnhRequest.IdSanPham = lastIDPost;
+                    hinhAnhRequest.IdMediaCloud = item.id;
+                    if (item.type.Contains("video"))
+                        hinhAnhRequest.VideoType = true;
+                    else
+                        hinhAnhRequest.VideoType = false;
+                    hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
+                }
                 BaiDangEntities baiDangGlobal = _mapper.Map<BaiDangEntities>(baiDangRequest);
                 baiDangGlobal.IdBaiDangChiTiet = lastIDPost;
                 return await baiDangHelper.AddBaiDang(baiDangGlobal);
@@ -231,6 +297,17 @@ namespace STU.LVTN.SERVER.Provider.Handler
             }
             else
             {
+                foreach (var item in baiDangRequest.hinhAnh_BaiDangs)
+                {
+                    HinhAnhBaiDangEntities hinhAnhRequest = new HinhAnhBaiDangEntities();
+                    hinhAnhRequest.IdSanPham = lastIDPost;
+                    hinhAnhRequest.IdMediaCloud = item.id;
+                    if (item.type.Contains("video"))
+                        hinhAnhRequest.VideoType = true;
+                    else
+                        hinhAnhRequest.VideoType = false;
+                    hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
+                }
                 BaiDangEntities baiDangGlobal = _mapper.Map<BaiDangEntities>(baiDangRequest);
                 baiDangGlobal.IdBaiDangChiTiet = lastIDPost;
                 return await baiDangHelper.AddBaiDang(baiDangGlobal);
@@ -247,6 +324,17 @@ namespace STU.LVTN.SERVER.Provider.Handler
             }
             else
             {
+                foreach (var item in baiDangRequest.hinhAnh_BaiDangs)
+                {
+                    HinhAnhBaiDangEntities hinhAnhRequest = new HinhAnhBaiDangEntities();
+                    hinhAnhRequest.IdSanPham = lastIDPost;
+                    hinhAnhRequest.IdMediaCloud = item.id;
+                    if (item.type.Contains("video"))
+                        hinhAnhRequest.VideoType = true;
+                    else
+                        hinhAnhRequest.VideoType = false;
+                    hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
+                }
                 BaiDangEntities baiDangGlobal = _mapper.Map<BaiDangEntities>(baiDangRequest);
                 baiDangGlobal.IdBaiDangChiTiet = lastIDPost;
                 return await baiDangHelper.AddBaiDang(baiDangGlobal);
@@ -263,6 +351,17 @@ namespace STU.LVTN.SERVER.Provider.Handler
             }
             else
             {
+                foreach (var item in baiDangRequest.hinhAnh_BaiDangs)
+                {
+                    HinhAnhBaiDangEntities hinhAnhRequest = new HinhAnhBaiDangEntities();
+                    hinhAnhRequest.IdSanPham = lastIDPost;
+                    hinhAnhRequest.IdMediaCloud = item.id;
+                    if (item.type.Contains("video"))
+                        hinhAnhRequest.VideoType = true;
+                    else
+                        hinhAnhRequest.VideoType = false;
+                    hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
+                }
                 BaiDangEntities baiDangGlobal = _mapper.Map<BaiDangEntities>(baiDangRequest);
                 baiDangGlobal.IdBaiDangChiTiet = lastIDPost;
                 return await baiDangHelper.AddBaiDang(baiDangGlobal);
@@ -279,6 +378,17 @@ namespace STU.LVTN.SERVER.Provider.Handler
             }
             else
             {
+                foreach (var item in baiDangRequest.hinhAnh_BaiDangs)
+                {
+                    HinhAnhBaiDangEntities hinhAnhRequest = new HinhAnhBaiDangEntities();
+                    hinhAnhRequest.IdSanPham = lastIDPost;
+                    hinhAnhRequest.IdMediaCloud = item.id;
+                    if (item.type.Contains("video"))
+                        hinhAnhRequest.VideoType = true;
+                    else
+                        hinhAnhRequest.VideoType = false;
+                    hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
+                }
                 BaiDangEntities baiDangGlobal = _mapper.Map<BaiDangEntities>(baiDangRequest);
                 baiDangGlobal.IdBaiDangChiTiet = lastIDPost;
                 return await baiDangHelper.AddBaiDang(baiDangGlobal);
@@ -295,6 +405,17 @@ namespace STU.LVTN.SERVER.Provider.Handler
             }
             else
             {
+                foreach (var item in baiDangRequest.hinhAnh_BaiDangs)
+                {
+                    HinhAnhBaiDangEntities hinhAnhRequest = new HinhAnhBaiDangEntities();
+                    hinhAnhRequest.IdSanPham = lastIDPost;
+                    hinhAnhRequest.IdMediaCloud = item.id;
+                    if (item.type.Contains("video"))
+                        hinhAnhRequest.VideoType = true;
+                    else
+                        hinhAnhRequest.VideoType = false;
+                    hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
+                }
                 BaiDangEntities baiDangGlobal = _mapper.Map<BaiDangEntities>(baiDangRequest);
                 baiDangGlobal.IdBaiDangChiTiet = lastIDPost;
                 return await baiDangHelper.AddBaiDang(baiDangGlobal);
@@ -313,6 +434,17 @@ namespace STU.LVTN.SERVER.Provider.Handler
             }
             else
             {
+                foreach (var item in baiDangRequest.hinhAnh_BaiDangs)
+                {
+                    HinhAnhBaiDangEntities hinhAnhRequest = new HinhAnhBaiDangEntities();
+                    hinhAnhRequest.IdSanPham = lastIDPost;
+                    hinhAnhRequest.IdMediaCloud = item.id;
+                    if (item.type.Contains("video"))
+                        hinhAnhRequest.VideoType = true;
+                    else
+                        hinhAnhRequest.VideoType = false;
+                    hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
+                }
                 BaiDangEntities baiDangGlobal = _mapper.Map<BaiDangEntities>(baiDangRequest);
                 baiDangGlobal.IdBaiDangChiTiet = lastIDPost;
                 return await baiDangHelper.AddBaiDang(baiDangGlobal);
@@ -329,6 +461,17 @@ namespace STU.LVTN.SERVER.Provider.Handler
             }
             else
             {
+                foreach (var item in baiDangRequest.hinhAnh_BaiDangs)
+                {
+                    HinhAnhBaiDangEntities hinhAnhRequest = new HinhAnhBaiDangEntities();
+                    hinhAnhRequest.IdSanPham = lastIDPost;
+                    hinhAnhRequest.IdMediaCloud = item.id;
+                    if (item.type.Contains("video"))
+                        hinhAnhRequest.VideoType = true;
+                    else
+                        hinhAnhRequest.VideoType = false;
+                    hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
+                }
                 BaiDangEntities baiDangGlobal = _mapper.Map<BaiDangEntities>(baiDangRequest);
                 baiDangGlobal.IdBaiDangChiTiet = lastIDPost;
                 return await baiDangHelper.AddBaiDang(baiDangGlobal);
@@ -345,6 +488,17 @@ namespace STU.LVTN.SERVER.Provider.Handler
             }
             else
             {
+                foreach (var item in baiDangRequest.hinhAnh_BaiDangs)
+                {
+                    HinhAnhBaiDangEntities hinhAnhRequest = new HinhAnhBaiDangEntities();
+                    hinhAnhRequest.IdSanPham = lastIDPost;
+                    hinhAnhRequest.IdMediaCloud = item.id;
+                    if (item.type.Contains("video"))
+                        hinhAnhRequest.VideoType = true;
+                    else
+                        hinhAnhRequest.VideoType = false;
+                    hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
+                }
                 BaiDangEntities baiDangGlobal = _mapper.Map<BaiDangEntities>(baiDangRequest);
                 baiDangGlobal.IdBaiDangChiTiet = lastIDPost;
                 return await baiDangHelper.AddBaiDang(baiDangGlobal);
@@ -361,6 +515,17 @@ namespace STU.LVTN.SERVER.Provider.Handler
             }
             else
             {
+                foreach (var item in baiDangRequest.hinhAnh_BaiDangs)
+                {
+                    HinhAnhBaiDangEntities hinhAnhRequest = new HinhAnhBaiDangEntities();
+                    hinhAnhRequest.IdSanPham = lastIDPost;
+                    hinhAnhRequest.IdMediaCloud = item.id;
+                    if (item.type.Contains("video"))
+                        hinhAnhRequest.VideoType = true;
+                    else
+                        hinhAnhRequest.VideoType = false;
+                    hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
+                }
                 BaiDangEntities baiDangGlobal = _mapper.Map<BaiDangEntities>(baiDangRequest);
                 baiDangGlobal.IdBaiDangChiTiet = lastIDPost;
                 return await baiDangHelper.AddBaiDang(baiDangGlobal);
@@ -377,6 +542,17 @@ namespace STU.LVTN.SERVER.Provider.Handler
             }
             else
             {
+                foreach (var item in baiDangRequest.hinhAnh_BaiDangs)
+                {
+                    HinhAnhBaiDangEntities hinhAnhRequest = new HinhAnhBaiDangEntities();
+                    hinhAnhRequest.IdSanPham = lastIDPost;
+                    hinhAnhRequest.IdMediaCloud = item.id;
+                    if (item.type.Contains("video"))
+                        hinhAnhRequest.VideoType = true;
+                    else
+                        hinhAnhRequest.VideoType = false;
+                    hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
+                }
                 BaiDangEntities baiDangGlobal = _mapper.Map<BaiDangEntities>(baiDangRequest);
                 baiDangGlobal.IdBaiDangChiTiet = lastIDPost;
                 return await baiDangHelper.AddBaiDang(baiDangGlobal);
@@ -393,6 +569,17 @@ namespace STU.LVTN.SERVER.Provider.Handler
             }
             else
             {
+                foreach (var item in baiDangRequest.hinhAnh_BaiDangs)
+                {
+                    HinhAnhBaiDangEntities hinhAnhRequest = new HinhAnhBaiDangEntities();
+                    hinhAnhRequest.IdSanPham = lastIDPost;
+                    hinhAnhRequest.IdMediaCloud = item.id;
+                    if (item.type.Contains("video"))
+                        hinhAnhRequest.VideoType = true;
+                    else
+                        hinhAnhRequest.VideoType = false;
+                    hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
+                }
                 BaiDangEntities baiDangGlobal = _mapper.Map<BaiDangEntities>(baiDangRequest);
                 baiDangGlobal.IdBaiDangChiTiet = lastIDPost;
                 return await baiDangHelper.AddBaiDang(baiDangGlobal);
@@ -409,6 +596,17 @@ namespace STU.LVTN.SERVER.Provider.Handler
             }
             else
             {
+                foreach (var item in baiDangRequest.hinhAnh_BaiDangs)
+                {
+                    HinhAnhBaiDangEntities hinhAnhRequest = new HinhAnhBaiDangEntities();
+                    hinhAnhRequest.IdSanPham = lastIDPost;
+                    hinhAnhRequest.IdMediaCloud = item.id;
+                    if (item.type.Contains("video"))
+                        hinhAnhRequest.VideoType = true;
+                    else
+                        hinhAnhRequest.VideoType = false;
+                    hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
+                }
                 BaiDangEntities baiDangGlobal = _mapper.Map<BaiDangEntities>(baiDangRequest);
                 baiDangGlobal.IdBaiDangChiTiet = lastIDPost;
                 return await baiDangHelper.AddBaiDang(baiDangGlobal);
@@ -425,6 +623,17 @@ namespace STU.LVTN.SERVER.Provider.Handler
             }
             else
             {
+                foreach (var item in baiDangRequest.hinhAnh_BaiDangs)
+                {
+                    HinhAnhBaiDangEntities hinhAnhRequest = new HinhAnhBaiDangEntities();
+                    hinhAnhRequest.IdSanPham = lastIDPost;
+                    hinhAnhRequest.IdMediaCloud = item.id;
+                    if (item.type.Contains("video"))
+                        hinhAnhRequest.VideoType = true;
+                    else
+                        hinhAnhRequest.VideoType = false;
+                    hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
+                }
                 BaiDangEntities baiDangGlobal = _mapper.Map<BaiDangEntities>(baiDangRequest);
                 baiDangGlobal.IdBaiDangChiTiet = lastIDPost;
                 return await baiDangHelper.AddBaiDang(baiDangGlobal);
@@ -441,6 +650,17 @@ namespace STU.LVTN.SERVER.Provider.Handler
             }
             else
             {
+                foreach (var item in baiDangRequest.hinhAnh_BaiDangs)
+                {
+                    HinhAnhBaiDangEntities hinhAnhRequest = new HinhAnhBaiDangEntities();
+                    hinhAnhRequest.IdSanPham = lastIDPost;
+                    hinhAnhRequest.IdMediaCloud = item.id;
+                    if (item.type.Contains("video"))
+                        hinhAnhRequest.VideoType = true;
+                    else
+                        hinhAnhRequest.VideoType = false;
+                    hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
+                }
                 BaiDangEntities baiDangGlobal = _mapper.Map<BaiDangEntities>(baiDangRequest);
                 baiDangGlobal.IdBaiDangChiTiet = lastIDPost;
                 return await baiDangHelper.AddBaiDang(baiDangGlobal);
@@ -460,6 +680,17 @@ namespace STU.LVTN.SERVER.Provider.Handler
             }
             else
             {
+                foreach (var item in baiDangRequest.hinhAnh_BaiDangs)
+                {
+                    HinhAnhBaiDangEntities hinhAnhRequest = new HinhAnhBaiDangEntities();
+                    hinhAnhRequest.IdSanPham = lastIDPost;
+                    hinhAnhRequest.IdMediaCloud = item.id;
+                    if (item.type.Contains("video"))
+                        hinhAnhRequest.VideoType = true;
+                    else
+                        hinhAnhRequest.VideoType = false;
+                    hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
+                }
                 BaiDangEntities baiDangGlobal = _mapper.Map<BaiDangEntities>(baiDangRequest);
                 baiDangGlobal.IdBaiDangChiTiet = lastIDPost;
                 return await baiDangHelper.AddBaiDang(baiDangGlobal);
@@ -478,6 +709,17 @@ namespace STU.LVTN.SERVER.Provider.Handler
             }
             else
             {
+                foreach (var item in baiDangRequest.hinhAnh_BaiDangs)
+                {
+                    HinhAnhBaiDangEntities hinhAnhRequest = new HinhAnhBaiDangEntities();
+                    hinhAnhRequest.IdSanPham = lastIDPost;
+                    hinhAnhRequest.IdMediaCloud = item.id;
+                    if (item.type.Contains("video"))
+                        hinhAnhRequest.VideoType = true;
+                    else
+                        hinhAnhRequest.VideoType = false;
+                    hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
+                }
                 BaiDangEntities baiDangGlobal = _mapper.Map<BaiDangEntities>(baiDangRequest);
                 baiDangGlobal.IdBaiDangChiTiet = lastIDPost;
                 return await baiDangHelper.AddBaiDang(baiDangGlobal);
@@ -494,6 +736,17 @@ namespace STU.LVTN.SERVER.Provider.Handler
             }
             else
             {
+                foreach (var item in baiDangRequest.hinhAnh_BaiDangs)
+                {
+                    HinhAnhBaiDangEntities hinhAnhRequest = new HinhAnhBaiDangEntities();
+                    hinhAnhRequest.IdSanPham = lastIDPost;
+                    hinhAnhRequest.IdMediaCloud = item.id;
+                    if (item.type.Contains("video"))
+                        hinhAnhRequest.VideoType = true;
+                    else
+                        hinhAnhRequest.VideoType = false;
+                    hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
+                }
                 BaiDangEntities baiDangGlobal = _mapper.Map<BaiDangEntities>(baiDangRequest);
                 baiDangGlobal.IdBaiDangChiTiet = lastIDPost;
                 return await baiDangHelper.AddBaiDang(baiDangGlobal);
@@ -510,6 +763,17 @@ namespace STU.LVTN.SERVER.Provider.Handler
             }
             else
             {
+                foreach (var item in baiDangRequest.hinhAnh_BaiDangs)
+                {
+                    HinhAnhBaiDangEntities hinhAnhRequest = new HinhAnhBaiDangEntities();
+                    hinhAnhRequest.IdSanPham = lastIDPost;
+                    hinhAnhRequest.IdMediaCloud = item.id;
+                    if (item.type.Contains("video"))
+                        hinhAnhRequest.VideoType = true;
+                    else
+                        hinhAnhRequest.VideoType = false;
+                    hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
+                }
                 BaiDangEntities baiDangGlobal = _mapper.Map<BaiDangEntities>(baiDangRequest);
                 baiDangGlobal.IdBaiDangChiTiet = lastIDPost;
                 return await baiDangHelper.AddBaiDang(baiDangGlobal);
@@ -529,6 +793,17 @@ namespace STU.LVTN.SERVER.Provider.Handler
             }
             else
             {
+                foreach (var item in baiDangRequest.hinhAnh_BaiDangs)
+                {
+                    HinhAnhBaiDangEntities hinhAnhRequest = new HinhAnhBaiDangEntities();
+                    hinhAnhRequest.IdSanPham = lastIDPost;
+                    hinhAnhRequest.IdMediaCloud = item.id;
+                    if (item.type.Contains("video"))
+                        hinhAnhRequest.VideoType = true;
+                    else
+                        hinhAnhRequest.VideoType = false;
+                    hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
+                }
                 BaiDangEntities baiDangGlobal = _mapper.Map<BaiDangEntities>(baiDangRequest);
                 baiDangGlobal.IdBaiDangChiTiet = lastIDPost;
                 return await baiDangHelper.AddBaiDang(baiDangGlobal);
@@ -547,6 +822,17 @@ namespace STU.LVTN.SERVER.Provider.Handler
             }
             else
             {
+                foreach (var item in baiDangRequest.hinhAnh_BaiDangs)
+                {
+                    HinhAnhBaiDangEntities hinhAnhRequest = new HinhAnhBaiDangEntities();
+                    hinhAnhRequest.IdSanPham = lastIDPost;
+                    hinhAnhRequest.IdMediaCloud = item.id;
+                    if (item.type.Contains("video"))
+                        hinhAnhRequest.VideoType = true;
+                    else
+                        hinhAnhRequest.VideoType = false;
+                    hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
+                }
                 BaiDangEntities baiDangGlobal = _mapper.Map<BaiDangEntities>(baiDangRequest);
                 baiDangGlobal.IdBaiDangChiTiet = lastIDPost;
                 return await baiDangHelper.AddBaiDang(baiDangGlobal);
@@ -563,6 +849,17 @@ namespace STU.LVTN.SERVER.Provider.Handler
             }
             else
             {
+                foreach (var item in baiDangRequest.hinhAnh_BaiDangs)
+                {
+                    HinhAnhBaiDangEntities hinhAnhRequest = new HinhAnhBaiDangEntities();
+                    hinhAnhRequest.IdSanPham = lastIDPost;
+                    hinhAnhRequest.IdMediaCloud = item.id;
+                    if (item.type.Contains("video"))
+                        hinhAnhRequest.VideoType = true;
+                    else
+                        hinhAnhRequest.VideoType = false;
+                    hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
+                }
                 BaiDangEntities baiDangGlobal = _mapper.Map<BaiDangEntities>(baiDangRequest);
                 baiDangGlobal.IdBaiDangChiTiet = lastIDPost;
                 return await baiDangHelper.AddBaiDang(baiDangGlobal);
@@ -580,6 +877,17 @@ namespace STU.LVTN.SERVER.Provider.Handler
             }
             else
             {
+                foreach (var item in baiDangRequest.hinhAnh_BaiDangs)
+                {
+                    HinhAnhBaiDangEntities hinhAnhRequest = new HinhAnhBaiDangEntities();
+                    hinhAnhRequest.IdSanPham = lastIDPost;
+                    hinhAnhRequest.IdMediaCloud = item.id;
+                    if (item.type.Contains("video"))
+                        hinhAnhRequest.VideoType = true;
+                    else
+                        hinhAnhRequest.VideoType = false;
+                    hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
+                }
                 BaiDangEntities baiDangGlobal = _mapper.Map<BaiDangEntities>(baiDangRequest);
                 baiDangGlobal.IdBaiDangChiTiet = lastIDPost;
                 return await baiDangHelper.AddBaiDang(baiDangGlobal);
@@ -598,6 +906,17 @@ namespace STU.LVTN.SERVER.Provider.Handler
             }
             else
             {
+                foreach (var item in baiDangRequest.hinhAnh_BaiDangs)
+                {
+                    HinhAnhBaiDangEntities hinhAnhRequest = new HinhAnhBaiDangEntities();
+                    hinhAnhRequest.IdSanPham = lastIDPost;
+                    hinhAnhRequest.IdMediaCloud = item.id;
+                    if (item.type.Contains("video"))
+                        hinhAnhRequest.VideoType = true;
+                    else
+                        hinhAnhRequest.VideoType = false;
+                    hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
+                }
                 BaiDangEntities baiDangGlobal = _mapper.Map<BaiDangEntities>(baiDangRequest);
                 baiDangGlobal.IdBaiDangChiTiet = lastIDPost;
                 return await baiDangHelper.AddBaiDang(baiDangGlobal);
@@ -613,6 +932,17 @@ namespace STU.LVTN.SERVER.Provider.Handler
             }
             else
             {
+                foreach (var item in baiDangRequest.hinhAnh_BaiDangs)
+                {
+                    HinhAnhBaiDangEntities hinhAnhRequest = new HinhAnhBaiDangEntities();
+                    hinhAnhRequest.IdSanPham = lastIDPost;
+                    hinhAnhRequest.IdMediaCloud = item.id;
+                    if (item.type.Contains("video"))
+                        hinhAnhRequest.VideoType = true;
+                    else
+                        hinhAnhRequest.VideoType = false;
+                    hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
+                }
                 BaiDangEntities baiDangGlobal = _mapper.Map<BaiDangEntities>(baiDangRequest);
                 baiDangGlobal.IdBaiDangChiTiet = lastIDPost;
                 return await baiDangHelper.AddBaiDang(baiDangGlobal);
@@ -628,6 +958,17 @@ namespace STU.LVTN.SERVER.Provider.Handler
             }
             else
             {
+                foreach (var item in baiDangRequest.hinhAnh_BaiDangs)
+                {
+                    HinhAnhBaiDangEntities hinhAnhRequest = new HinhAnhBaiDangEntities();
+                    hinhAnhRequest.IdSanPham = lastIDPost;
+                    hinhAnhRequest.IdMediaCloud = item.id;
+                    if (item.type.Contains("video"))
+                        hinhAnhRequest.VideoType = true;
+                    else
+                        hinhAnhRequest.VideoType = false;
+                    hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
+                }
                 BaiDangEntities baiDangGlobal = _mapper.Map<BaiDangEntities>(baiDangRequest);
                 baiDangGlobal.IdBaiDangChiTiet = lastIDPost;
                 return await baiDangHelper.AddBaiDang(baiDangGlobal);
@@ -644,6 +985,17 @@ namespace STU.LVTN.SERVER.Provider.Handler
             }
             else
             {
+                foreach (var item in baiDangRequest.hinhAnh_BaiDangs)
+                {
+                    HinhAnhBaiDangEntities hinhAnhRequest = new HinhAnhBaiDangEntities();
+                    hinhAnhRequest.IdSanPham = lastIDPost;
+                    hinhAnhRequest.IdMediaCloud = item.id;
+                    if (item.type.Contains("video"))
+                        hinhAnhRequest.VideoType = true;
+                    else
+                        hinhAnhRequest.VideoType = false;
+                    hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
+                }
                 BaiDangEntities baiDangGlobal = _mapper.Map<BaiDangEntities>(baiDangRequest);
                 baiDangGlobal.IdBaiDangChiTiet = lastIDPost;
                 return await baiDangHelper.AddBaiDang(baiDangGlobal);
@@ -660,6 +1012,17 @@ namespace STU.LVTN.SERVER.Provider.Handler
             }
             else
             {
+                foreach (var item in baiDangRequest.hinhAnh_BaiDangs)
+                {
+                    HinhAnhBaiDangEntities hinhAnhRequest = new HinhAnhBaiDangEntities();
+                    hinhAnhRequest.IdSanPham = lastIDPost;
+                    hinhAnhRequest.IdMediaCloud = item.id;
+                    if (item.type.Contains("video"))
+                        hinhAnhRequest.VideoType = true;
+                    else
+                        hinhAnhRequest.VideoType = false;
+                    hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
+                }
                 BaiDangEntities baiDangGlobal = _mapper.Map<BaiDangEntities>(baiDangRequest);
                 baiDangGlobal.IdBaiDangChiTiet = lastIDPost;
                 return await baiDangHelper.AddBaiDang(baiDangGlobal);
@@ -676,6 +1039,17 @@ namespace STU.LVTN.SERVER.Provider.Handler
             }
             else
             {
+                foreach (var item in baiDangRequest.hinhAnh_BaiDangs)
+                {
+                    HinhAnhBaiDangEntities hinhAnhRequest = new HinhAnhBaiDangEntities();
+                    hinhAnhRequest.IdSanPham = lastIDPost;
+                    hinhAnhRequest.IdMediaCloud = item.id;
+                    if (item.type.Contains("video"))
+                        hinhAnhRequest.VideoType = true;
+                    else
+                        hinhAnhRequest.VideoType = false;
+                    hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
+                }
                 BaiDangEntities baiDangGlobal = _mapper.Map<BaiDangEntities>(baiDangRequest);
                 baiDangGlobal.IdBaiDangChiTiet = lastIDPost;
                 return await baiDangHelper.AddBaiDang(baiDangGlobal);
@@ -692,6 +1066,17 @@ namespace STU.LVTN.SERVER.Provider.Handler
             }
             else
             {
+                foreach (var item in baiDangRequest.hinhAnh_BaiDangs)
+                {
+                    HinhAnhBaiDangEntities hinhAnhRequest = new HinhAnhBaiDangEntities();
+                    hinhAnhRequest.IdSanPham = lastIDPost;
+                    hinhAnhRequest.IdMediaCloud = item.id;
+                    if (item.type.Contains("video"))
+                        hinhAnhRequest.VideoType = true;
+                    else
+                        hinhAnhRequest.VideoType = false;
+                    hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
+                }
                 BaiDangEntities baiDangGlobal = _mapper.Map<BaiDangEntities>(baiDangRequest);
                 baiDangGlobal.IdBaiDangChiTiet = lastIDPost;
                 return await baiDangHelper.AddBaiDang(baiDangGlobal);
@@ -711,6 +1096,17 @@ namespace STU.LVTN.SERVER.Provider.Handler
             }
             else
             {
+                foreach (var item in baiDangRequest.hinhAnh_BaiDangs)
+                {
+                    HinhAnhBaiDangEntities hinhAnhRequest = new HinhAnhBaiDangEntities();
+                    hinhAnhRequest.IdSanPham = lastIDPost;
+                    hinhAnhRequest.IdMediaCloud = item.id;
+                    if (item.type.Contains("video"))
+                        hinhAnhRequest.VideoType = true;
+                    else
+                        hinhAnhRequest.VideoType = false;
+                    hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
+                }
                 BaiDangEntities baiDangGlobal = _mapper.Map<BaiDangEntities>(baiDangRequest);
                 baiDangGlobal.IdBaiDangChiTiet = lastIDPost;
                 return await baiDangHelper.AddBaiDang(baiDangGlobal);
@@ -729,6 +1125,17 @@ namespace STU.LVTN.SERVER.Provider.Handler
             }
             else
             {
+                foreach (var item in baiDangRequest.hinhAnh_BaiDangs)
+                {
+                    HinhAnhBaiDangEntities hinhAnhRequest = new HinhAnhBaiDangEntities();
+                    hinhAnhRequest.IdSanPham = lastIDPost;
+                    hinhAnhRequest.IdMediaCloud = item.id;
+                    if (item.type.Contains("video"))
+                        hinhAnhRequest.VideoType = true;
+                    else
+                        hinhAnhRequest.VideoType = false;
+                    hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
+                }
                 BaiDangEntities baiDangGlobal = _mapper.Map<BaiDangEntities>(baiDangRequest);
                 baiDangGlobal.IdBaiDangChiTiet = lastIDPost;
                 return await baiDangHelper.AddBaiDang(baiDangGlobal);
@@ -747,6 +1154,17 @@ namespace STU.LVTN.SERVER.Provider.Handler
             }
             else
             {
+                foreach (var item in baiDangRequest.hinhAnh_BaiDangs)
+                {
+                    HinhAnhBaiDangEntities hinhAnhRequest = new HinhAnhBaiDangEntities();
+                    hinhAnhRequest.IdSanPham = lastIDPost;
+                    hinhAnhRequest.IdMediaCloud = item.id;
+                    if (item.type.Contains("video"))
+                        hinhAnhRequest.VideoType = true;
+                    else
+                        hinhAnhRequest.VideoType = false;
+                    hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
+                }
                 BaiDangEntities baiDangGlobal = _mapper.Map<BaiDangEntities>(baiDangRequest);
                 baiDangGlobal.IdBaiDangChiTiet = lastIDPost;
                 return await baiDangHelper.AddBaiDang(baiDangGlobal);
@@ -762,6 +1180,17 @@ namespace STU.LVTN.SERVER.Provider.Handler
             }
             else
             {
+                foreach (var item in baiDangRequest.hinhAnh_BaiDangs)
+                {
+                    HinhAnhBaiDangEntities hinhAnhRequest = new HinhAnhBaiDangEntities();
+                    hinhAnhRequest.IdSanPham = lastIDPost;
+                    hinhAnhRequest.IdMediaCloud = item.id;
+                    if (item.type.Contains("video"))
+                        hinhAnhRequest.VideoType = true;
+                    else
+                        hinhAnhRequest.VideoType = false;
+                    hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
+                }
                 BaiDangEntities baiDangGlobal = _mapper.Map<BaiDangEntities>(baiDangRequest);
                 baiDangGlobal.IdBaiDangChiTiet = lastIDPost;
                 return await baiDangHelper.AddBaiDang(baiDangGlobal);
@@ -777,6 +1206,17 @@ namespace STU.LVTN.SERVER.Provider.Handler
             }
             else
             {
+                foreach (var item in baiDangRequest.hinhAnh_BaiDangs)
+                {
+                    HinhAnhBaiDangEntities hinhAnhRequest = new HinhAnhBaiDangEntities();
+                    hinhAnhRequest.IdSanPham = lastIDPost;
+                    hinhAnhRequest.IdMediaCloud = item.id;
+                    if (item.type.Contains("video"))
+                        hinhAnhRequest.VideoType = true;
+                    else
+                        hinhAnhRequest.VideoType = false;
+                    hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
+                }
                 BaiDangEntities baiDangGlobal = _mapper.Map<BaiDangEntities>(baiDangRequest);
                 baiDangGlobal.IdBaiDangChiTiet = lastIDPost;
                 return await baiDangHelper.AddBaiDang(baiDangGlobal);
@@ -795,6 +1235,17 @@ namespace STU.LVTN.SERVER.Provider.Handler
             }
             else
             {
+                foreach (var item in baiDangRequest.hinhAnh_BaiDangs)
+                {
+                    HinhAnhBaiDangEntities hinhAnhRequest = new HinhAnhBaiDangEntities();
+                    hinhAnhRequest.IdSanPham = lastIDPost;
+                    hinhAnhRequest.IdMediaCloud = item.id;
+                    if (item.type.Contains("video"))
+                        hinhAnhRequest.VideoType = true;
+                    else
+                        hinhAnhRequest.VideoType = false;
+                    hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
+                }
                 BaiDangEntities baiDangGlobal = _mapper.Map<BaiDangEntities>(baiDangRequest);
                 baiDangGlobal.IdBaiDangChiTiet = lastIDPost;
                 return await baiDangHelper.AddBaiDang(baiDangGlobal);

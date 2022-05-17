@@ -33,5 +33,7 @@
         public string? BienSoXe { get; set; }
         public string? PhuTungXeLoaiPhuTung { get; set; }
         #endregion
+        public List<HinhAnh_BaiDangDTO> hinhAnh_BaiDangs { get; set; }
+
     }
 }

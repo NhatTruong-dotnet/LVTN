@@ -33,5 +33,7 @@
         public string? MayTinhDeBanCardManHinh { get; set; }
         public string? MayTinhDeBanKichCoManHinh { get; set; }
         #endregion
+        public List<HinhAnh_BaiDangDTO> hinhAnh_BaiDangs { get; set; }
+
     }
 }
