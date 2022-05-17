@@ -1,7 +1,7 @@
 import styles from './index.module.css'
 import clsx from 'clsx'
-import FormGroup from './Components/FormGroup'
-import FormInput from './Components/FormInput'
+import FormGroup from '../Components/FormGroup'
+import FormInput from '../Components/FormInput'
 
 function House({ formData, handleFormDataChange }) {
     return (

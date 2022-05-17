@@ -101,15 +101,23 @@ function RealEstate({ subCategoryId, formData, handleFormDataChange }) {
                             <span className={styles.required}>*</span>
                         </div>
                         <div
-                            className={styles.typeItem}
                             onClick={() =>
                                 handleFormDataChange('isHandOver', true)
                             }
+                            className={clsx(styles.typeItem, {
+                                [styles.active]:
+                                    formData.isHandOver &&
+                                    formData.isHandOver !== null,
+                            })}
                         >
                             Đã bàn giao
                         </div>
                         <div
-                            className={styles.typeItem}
+                            className={clsx(styles.typeItem, {
+                                [styles.active]:
+                                    !formData.isHandOver &&
+                                    formData.isHandOver !== null,
+                            })}
                             onClick={() =>
                                 handleFormDataChange('isHandOver', false)
                             }
@@ -131,13 +139,19 @@ function RealEstate({ subCategoryId, formData, handleFormDataChange }) {
                 <div className={styles.formGroup}>
                     <div className={styles.title}>Bạn là</div>
                     <div
-                        className={styles.typeItem}
+                        className={clsx(styles.typeItem, {
+                            [styles.active]:
+                                formData.isOwner && formData.isOwner !== null,
+                        })}
                         onClick={() => handleFormDataChange('isOwner', true)}
                     >
                         Cá nhân
                     </div>
                     <div
-                        className={styles.typeItem}
+                        className={clsx(styles.typeItem, {
+                            [styles.active]:
+                                !formData.isOwner && formData.isOwner !== null,
+                        })}
                         onClick={() => handleFormDataChange('isOwner', false)}
                     >
                         Môi giới

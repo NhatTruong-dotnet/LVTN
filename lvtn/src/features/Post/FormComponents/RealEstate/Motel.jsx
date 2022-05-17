@@ -1,6 +1,6 @@
 import styles from './index.module.css'
-import FormGroup from './Components/FormGroup'
-import FormInput from './Components/FormInput'
+import FormGroup from '../Components/FormGroup'
+import FormInput from '../Components/FormInput'
 
 function Motel({ formData, handleFormDataChange }) {
     return (

@@ -1,4 +1,5 @@
-import styles from '../index.module.css'
+import styles from '../RealEstate/index.module.css'
+
 import clsx from 'clsx'
 
 function FormInput({

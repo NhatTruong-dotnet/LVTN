@@ -1,7 +1,7 @@
 // chung cư
 import styles from './index.module.css'
-import FormInput from './Components/FormInput'
-import FormGroup from './Components/FormGroup'
+import FormInput from '../Components/FormInput'
+import FormGroup from '../Components/FormGroup'
 
 function Office({ formData, handleFormDataChange }) {
     return (

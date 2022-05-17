@@ -1,4 +1,4 @@
-import styles from '../index.module.css'
+import styles from '../RealEstate/index.module.css'
 
 function FormGroup({ title, children }) {
     return (
