@@ -53,10 +53,16 @@ function CreatePost(props) {
 
         if (type.match(/image/)) {
             const url = URL.createObjectURL(file)
-            setListPreviewImage([...listPreviewImage, url])
+            setListPreviewImage([
+                ...listPreviewImage,
+                { indexInFileData: listFileDataMedia.length, url },
+            ])
         } else if (type.match(/video/)) {
             const url = URL.createObjectURL(file)
-            setListPreviewVideo([...listPreviewVideo, url])
+            setListPreviewVideo([
+                ...listPreviewVideo,
+                { indexInFileData: listFileDataMedia.length, url },
+            ])
         } else {
             emitMessage('error', 'File lựa chọn không hợp lệ')
             return
@@ -67,7 +73,7 @@ function CreatePost(props) {
         })
     }
 
-    const deleteFile = (type, index) => {
+    const deleteFile = (type, index, indexInFileData) => {
         if (type === 'image') {
             const newListPreviewImage = [...listPreviewImage]
             const deleteImageUrl = newListPreviewImage.splice(index, 1)
@@ -79,6 +85,10 @@ function CreatePost(props) {
             URL.revokeObjectURL(deleteVideoUrl)
             setListPreviewVideo(newListPreviewVideo)
         }
+
+        const newListFileDataMedia = [...listFileDataMedia]
+        newListFileDataMedia.splice(indexInFileData, 1)
+        setListFileDataMedia(newListFileDataMedia)
     }
     console.log(listFileDataMedia)
 
@@ -162,43 +172,49 @@ function CreatePost(props) {
                                             </g>
                                         </svg>
                                     </label>
-                                    {listPreviewImage.map((url, index) => (
-                                        <div
-                                            key={nanoid()}
-                                            className={clsx(
-                                                styles.imageItem,
-                                                styles.small
-                                            )}
-                                        >
-                                            <FaTimesCircle
-                                                className={
-                                                    styles.deleteImageIcon
-                                                }
-                                                onClick={() =>
-                                                    deleteFile('image', index)
-                                                }
-                                            />
-                                            <img
-                                                src={url}
-                                                alt={index}
-                                                style={{
-                                                    width: '100%',
-                                                    height: 80,
-                                                }}
-                                            />
-                                            {!index ? (
-                                                <span
+                                    {listPreviewImage.map(
+                                        ({ url, indexInFileData }, index) => (
+                                            <div
+                                                key={nanoid()}
+                                                className={clsx(
+                                                    styles.imageItem,
+                                                    styles.small
+                                                )}
+                                            >
+                                                <FaTimesCircle
                                                     className={
-                                                        styles.firstImage
+                                                        styles.deleteImageIcon
                                                     }
-                                                >
-                                                    Hình bìa
-                                                </span>
-                                            ) : (
-                                                ''
-                                            )}
-                                        </div>
-                                    ))}
+                                                    onClick={() =>
+                                                        deleteFile(
+                                                            'image',
+                                                            index,
+                                                            indexInFileData
+                                                        )
+                                                    }
+                                                />
+                                                <img
+                                                    src={url}
+                                                    alt={index}
+                                                    style={{
+                                                        width: '100%',
+                                                        height: 80,
+                                                    }}
+                                                />
+                                                {!index ? (
+                                                    <span
+                                                        className={
+                                                            styles.firstImage
+                                                        }
+                                                    >
+                                                        Hình bìa
+                                                    </span>
+                                                ) : (
+                                                    ''
+                                                )}
+                                            </div>
+                                        )
+                                    )}
                                 </div>
                             ) : (
                                 <label
@@ -430,7 +446,7 @@ function CreatePost(props) {
                                     </div>
                                     {/* <div className={styles.formMessage}></div> */}
                                     <div className={styles.hint}>
-                                        0/50 ký tự
+                                        {formData.title.length}/50 ký tự
                                     </div>
                                 </div>
 
@@ -463,7 +479,10 @@ Ví dụ:- Căn hộ 2PN 68m2 Celadon City, Q.Tân Phú
                                     </label>
                                 </div>
                                 {/* <div className={styles.formMessage}></div> */}
-                                <div className={styles.hint}>0/50 ký tự</div>
+                                <div className={styles.hint}>
+                                    {formData.description.length}/1500 ký tự
+                                    (Tối thiểu 10 ký tự)
+                                </div>
                             </div>
 
                             <div className={styles.buttonGroup}>

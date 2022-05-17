@@ -119,6 +119,7 @@ function Apartment({ formData, handleFormDataChange }) {
                     <div className={styles.halfParent}>
                         <FormInput
                             label='Tầng số'
+                            type='number'
                             halfContainer
                             value={formData.floor}
                             onChange={e =>
@@ -227,6 +228,8 @@ function Apartment({ formData, handleFormDataChange }) {
                 <div className={styles.group}>
                     <FormInput
                         require
+                        type='number'
+                        unit='m²'
                         label='Diện tích'
                         value={formData.acreage}
                         onChange={e =>
@@ -236,6 +239,8 @@ function Apartment({ formData, handleFormDataChange }) {
 
                     <FormInput
                         require
+                        type='number'
+                        unit='đ'
                         label='Giá'
                         value={formData.price}
                         onChange={e =>

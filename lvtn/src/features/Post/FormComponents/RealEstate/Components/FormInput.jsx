@@ -3,23 +3,26 @@ import clsx from 'clsx'
 
 function FormInput({
     require,
+    type = 'text',
     label,
     value,
     onChange,
     halfContainer,
     message,
     name,
+    unit,
 }) {
     return (
         <>
             <div className={styles.inputGroup}>
                 <input
-                    type='text'
+                    type={type}
                     className={styles.input}
                     value={value}
                     onChange={onChange}
                     name={name}
                 />
+                <div className={styles.unit}>{unit}</div>
 
                 <label
                     className={clsx(styles.label, {

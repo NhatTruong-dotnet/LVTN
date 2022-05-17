@@ -118,12 +118,14 @@ input::-webkit-inner-spin-button {
     /* margin: 0;
      */
 }
-/* .halfParent > .inputGroup:first-child {
-    margin-right: 10px;
+.unit {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    font-size: 14px;
+    color: #666;
+    font-weight: 600;
 }
-.halfParent > .inputGroup:last-child {
-    margin-left: 10px;
-} */
 
 /* Apartment */
 
@@ -151,13 +153,4 @@ input::-webkit-inner-spin-button {
     -webkit-box-pack: justify;
     justify-content: space-between;
     width: 30%;
-}
-.checkboxGroup + .checkboxGroup {
-    /* position: absolute;
-    right: 0; */
-}
-
-.checkboxLabel {
-}
-.checkboxLabel::after {
 }

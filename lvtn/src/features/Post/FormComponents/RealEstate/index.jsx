@@ -116,7 +116,7 @@ function RealEstate({ subCategoryId, formData, handleFormDataChange }) {
                         >
                             Chưa bàn giao
                         </div>
-                        <div className={styles.formMessage}>hello</div>
+                        <div className={styles.formMessage}></div>
                     </div>
                 )}
 
