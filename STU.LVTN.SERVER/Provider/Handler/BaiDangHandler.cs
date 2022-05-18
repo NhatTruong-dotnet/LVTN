@@ -89,9 +89,65 @@ namespace STU.LVTN.SERVER.Provider.Handler
             #endregion
             switch (idDanhMucBaiDang)
             {
+                #region BatDongSan
                 case 13:
-                    result.Add("detail", baiDangBatDongSanHelper.getPost_CC_ByID(post.IdBaiDangChiTiet));
+                    Dictionary<string, string> detailCC = baiDangBatDongSanHelper.getPost_CC_ByID(post.IdBaiDangChiTiet);
+                    detailCC.Add("Giá/m2: ", post.Gia.ToString());
+                    result.Add("detail", detailCC);
                     break;
+                case 14:
+                    Dictionary<string, string> detailNhaO = baiDangBatDongSanHelper.getPost_NhaO_ByID(post.IdBaiDangChiTiet);
+                    detailNhaO.Add("Giá/m2: ", post.Gia.ToString());
+                    result.Add("detail", detailNhaO);
+                    break;
+                case 15:
+                    Dictionary<string, string> detailDat = baiDangBatDongSanHelper.getPost_Dat_ByID(post.IdBaiDangChiTiet);
+                    detailDat.Add("Giá/m2: ", post.Gia.ToString());
+                    result.Add("detail", detailDat);
+                    break;
+                case 16:
+                    Dictionary<string, string> detailMatBangKinhDoanh = baiDangBatDongSanHelper.getPost_VanPhong_ByID(post.IdBaiDangChiTiet);
+                    detailMatBangKinhDoanh.Add("Giá/m2: ", post.Gia.ToString());
+                    result.Add("detail", detailMatBangKinhDoanh);
+                    break;
+                case 17:
+                    Dictionary<string, string> detailPhongTro = baiDangBatDongSanHelper.getPost_VanPhong_ByID(post.IdBaiDangChiTiet);
+                    detailPhongTro.Add("Giá/m2: ", post.Gia.ToString());
+                    result.Add("detail", detailPhongTro);
+                    break;
+                #endregion
+
+                #region XeCo
+                case 18:
+                    Dictionary<string, string> detailXeOto = baiDangXeCoHelper.getPost_XeOto_ByID(post.IdBaiDangChiTiet);
+                    result.Add("detail", detailXeOto);
+                    break;
+                case 19:
+                    Dictionary<string, string> detailXeMay = baiDangXeCoHelper.getPost_XeMay_ByID(post.IdBaiDangChiTiet);
+                    result.Add("detail", detailXeMay);
+                    break;
+                case 20:
+                    Dictionary<string, string> detailXeTai = baiDangXeCoHelper.getPost_XeTai_ByID(post.IdBaiDangChiTiet);
+                    result.Add("detail", detailXeTai);
+                    break;
+                case 21:
+                    Dictionary<string, string> detailXeDien = baiDangXeCoHelper.getPost_XeDien_ByID(post.IdBaiDangChiTiet);
+                    result.Add("detail", detailXeDien);
+                    break;
+                case 22:
+                    Dictionary<string, string> detailXeDap = baiDangXeCoHelper.getPost_XeDap_ByID(post.IdBaiDangChiTiet);
+                    result.Add("detail", detailXeDap);
+                    break;
+                case 23:
+                    Dictionary<string, string> detailPhuongTienKhac = baiDangXeCoHelper.getPost_PhuongTienKhac_ByID(post.IdBaiDangChiTiet);
+                    result.Add("detail", detailPhuongTienKhac);
+                    break;
+                case 24:
+                    Dictionary<string, string> detailPhuTungXe = baiDangXeCoHelper.getPost_PhuTungXe_ByID(post.IdBaiDangChiTiet);
+                    result.Add("detail", detailPhuTungXe);
+                    break;
+                #endregion
+
                 default:
                     break;
             }

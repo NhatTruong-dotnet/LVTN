@@ -32,6 +32,7 @@
         public string? MauSac { get; set; }
         public string? BienSoXe { get; set; }
         public string? OtoHopSo { get; set; }
+        public string? OtoDongXe { get; set; }
         public string? OtoNhieuLieu { get; set; }
         public string? OtoKieuDang { get; set; }
         public byte? OtoSocho { get; set; }

@@ -32,6 +32,8 @@
         public string? MauSac { get; set; }
         public string? BienSoXe { get; set; }
         public string? PhuTungXeLoaiPhuTung { get; set; }
+        public bool? PhuTungXeMienPhi { get; set; }
+
         #endregion
         public List<HinhAnh_BaiDangDTO> hinhAnh_BaiDangs { get; set; }
 

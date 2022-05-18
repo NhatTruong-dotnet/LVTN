@@ -15,10 +15,13 @@ namespace STU.LVTN.SERVER.Model
         public string? MauSac { get; set; }
         public string? BienSoXe { get; set; }
         public string? OtoHopSo { get; set; }
+        public string? OtoDongXe { get; set; }
         public string? OtoNhieuLieu { get; set; }
         public string? OtoKieuDang { get; set; }
         public byte? OtoSocho { get; set; }
         public string? XeMayDungtich { get; set; }
+        public string? XeMayDongXe { get; set; }
+        public string? XeMayLoaiXe { get; set; }
         public string? XeTaiTrongTai { get; set; }
         public string? XeTaiNhieuLieu { get; set; }
         public string? XeTaiXuatXu { get; set; }
@@ -31,7 +34,12 @@ namespace STU.LVTN.SERVER.Model
         public bool? XeDapDaSuDung { get; set; }
         public bool? XeDapMienPhi { get; set; }
         public string? XeDapBaoHang { get; set; }
+        public string? XeDapLoaiXe { get; set; }
+
         public string? PhuongTienKhacNhienLieu { get; set; }
+        public string? PhuongTienKhacLoaiXeChuyenDung { get; set; }
+        public string? PhuongTienKhacSoChoXeKhachXeBuyt { get; set; }
         public string? PhuTungXeLoaiPhuTung { get; set; }
+        public bool? PhuTungXeMienPhi { get; set; }
     }
 }
