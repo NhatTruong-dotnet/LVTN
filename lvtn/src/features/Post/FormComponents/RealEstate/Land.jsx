@@ -11,9 +11,9 @@ function Land({ formData, handleFormDataChange }) {
                 <div className={styles.group}>
                     <FormInput
                         label='Tên dự án đất nền'
-                        value={formData.name}
+                        value={formData.tenDuAn}
                         onChange={e =>
-                            handleFormDataChange('name', e.target.value)
+                            handleFormDataChange('tenDuAn', e.target.value)
                         }
                     />
                 </div>
@@ -23,11 +23,11 @@ function Land({ formData, handleFormDataChange }) {
                             label='Chọn thành phố'
                             require
                             halfContainer
-                            value={formData.address.city}
+                            value={formData.address.thanhPho}
                             onChange={e =>
                                 handleFormDataChange('address', {
                                     ...formData.address,
-                                    city: e.target.value,
+                                    thanhPho: e.target.value,
                                 })
                             }
                         />
@@ -35,11 +35,11 @@ function Land({ formData, handleFormDataChange }) {
                             require
                             label='Chọn quận, huyện, thị xã'
                             halfContainer
-                            value={formData.address.district}
+                            value={formData.address.quanHuyen}
                             onChange={e =>
                                 handleFormDataChange('address', {
                                     ...formData.address,
-                                    district: e.target.value,
+                                    quanHuyen: e.target.value,
                                 })
                             }
                         />
@@ -49,11 +49,11 @@ function Land({ formData, handleFormDataChange }) {
                             require
                             label='Chọn xã, phường, thị trấn'
                             halfContainer
-                            value={formData.address.ward}
+                            value={formData.address.phuongXa}
                             onChange={e =>
                                 handleFormDataChange('address', {
                                     ...formData.address,
-                                    ward: e.target.value,
+                                    phuongXa: e.target.value,
                                 })
                             }
                         />
@@ -62,11 +62,11 @@ function Land({ formData, handleFormDataChange }) {
                             require
                             label='Tên đường'
                             halfContainer
-                            value={formData.address.street}
+                            value={formData.address.tenDuong}
                             onChange={e =>
                                 handleFormDataChange('address', {
                                     ...formData.address,
-                                    street: e.target.value,
+                                    tenDuong: e.target.value,
                                 })
                             }
                         />
@@ -76,11 +76,11 @@ function Land({ formData, handleFormDataChange }) {
                             require
                             label='Số nhà'
                             halfContainer
-                            value={formData.address.number}
+                            value={formData.address.soNha}
                             onChange={e =>
                                 handleFormDataChange('address', {
                                     ...formData.address,
-                                    number: e.target.value,
+                                    soNha: e.target.value,
                                 })
                             }
                         />
@@ -89,7 +89,7 @@ function Land({ formData, handleFormDataChange }) {
             </FormGroup>
 
             {/* Vị trí BĐS */}
-            <FormGroup title='Vị trí BĐS'>
+            {/* <FormGroup title='Vị trí BĐS'>
                 <div className={styles.group}>
                     <div className={styles.halfParent}>
                         <FormInput
@@ -109,7 +109,7 @@ function Land({ formData, handleFormDataChange }) {
                         />
                     </div>
                 </div>
-            </FormGroup>
+            </FormGroup> */}
 
             {/* Thông tin chi tiết */}
             <FormGroup title='Thông tin chi tiết'>
@@ -117,9 +117,9 @@ function Land({ formData, handleFormDataChange }) {
                     <FormInput
                         label='Loại hình đất'
                         require
-                        value={formData.landType}
+                        value={formData.loaiHinh}
                         onChange={e =>
-                            handleFormDataChange('landType', e.target.value)
+                            handleFormDataChange('loaiHinh', e.target.value)
                         }
                     />
                 </div>
@@ -128,10 +128,10 @@ function Land({ formData, handleFormDataChange }) {
                         <FormInput
                             label='Hướng đất (không bắt buộc)'
                             halfContainer
-                            value={formData.landDirection}
+                            value={formData.datHuongDat}
                             onChange={e =>
                                 handleFormDataChange(
-                                    'landDirection',
+                                    'datHuongDat',
                                     e.target.value
                                 )
                             }
@@ -146,9 +146,12 @@ function Land({ formData, handleFormDataChange }) {
                     <div className={styles.halfParent}>
                         <FormInput
                             label='Giấy tờ pháp lý (Không bắt buộc)'
-                            value={formData.exhibit}
+                            value={formData.datGiayToPhapLy}
                             onChange={e =>
-                                handleFormDataChange('exhibit', e.target.value)
+                                handleFormDataChange(
+                                    'datGiayToPhapLy',
+                                    e.target.value
+                                )
                             }
                         />
                     </div>
@@ -166,10 +169,10 @@ function Land({ formData, handleFormDataChange }) {
                                 <input
                                     type='checkbox'
                                     id='1'
-                                    checked={formData.isAlley}
+                                    checked={formData.datHemXeHoi}
                                     onChange={e =>
                                         handleFormDataChange(
-                                            'isAlley',
+                                            'datHemXeHoi',
                                             e.target.checked
                                         )
                                     }
@@ -185,10 +188,10 @@ function Land({ formData, handleFormDataChange }) {
                                 <input
                                     type='checkbox'
                                     id='2'
-                                    checked={formData.hasBackyard}
+                                    checked={formData.datNoHau}
                                     onChange={e =>
                                         handleFormDataChange(
-                                            'hasBackyard',
+                                            'datNoHau',
                                             e.target.checked
                                         )
                                     }
@@ -204,10 +207,10 @@ function Land({ formData, handleFormDataChange }) {
                                 <input
                                     type='checkbox'
                                     id='3'
-                                    checked={formData.isFacade}
+                                    checked={formData.datMatTien}
                                     onChange={e =>
                                         handleFormDataChange(
-                                            'isFacade',
+                                            'datMatTien',
                                             e.target.checked
                                         )
                                     }
@@ -224,9 +227,9 @@ function Land({ formData, handleFormDataChange }) {
                     <FormInput
                         label='Diện tích đất'
                         require
-                        value={formData.acreage}
+                        value={formData.dienTich}
                         onChange={e =>
-                            handleFormDataChange('acreage', e.target.value)
+                            handleFormDataChange('dienTich', e.target.value)
                         }
                     />
 
@@ -234,10 +237,10 @@ function Land({ formData, handleFormDataChange }) {
                         <FormInput
                             label={'Chiều ngang'}
                             halfContainer
-                            value={formData.horizontal}
+                            value={formData.datChieuNgang}
                             onChange={e =>
                                 handleFormDataChange(
-                                    'horizontal',
+                                    'datChieuNgang',
                                     e.target.value
                                 )
                             }
@@ -246,9 +249,12 @@ function Land({ formData, handleFormDataChange }) {
                         <FormInput
                             label={'Chiều dài'}
                             halfContainer
-                            value={formData.vertical}
+                            value={formData.datChieuDai}
                             onChange={e =>
-                                handleFormDataChange('vertical', e.target.value)
+                                handleFormDataChange(
+                                    'datChieuDai',
+                                    e.target.value
+                                )
                             }
                         />
                     </div>
@@ -256,18 +262,18 @@ function Land({ formData, handleFormDataChange }) {
                     <FormInput
                         label={'Giá'}
                         require
-                        value={formData.price}
+                        value={formData.gia}
                         onChange={e =>
-                            handleFormDataChange('price', e.target.value)
+                            handleFormDataChange('gia', e.target.value)
                         }
                     />
 
                     <FormInput
                         label={'Số tiền cọc'}
                         require
-                        value={formData.deposit}
+                        value={formData.soTienCoc}
                         onChange={e =>
-                            handleFormDataChange('deposit', e.target.value)
+                            handleFormDataChange('soTienCoc', e.target.value)
                         }
                     />
                 </div>

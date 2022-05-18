@@ -10,9 +10,9 @@ function Motel({ formData, handleFormDataChange }) {
                 <div className={styles.group}>
                     <FormInput
                         label='Tên tòa nhà / Khu dân cư / dự án'
-                        value={formData.name}
+                        value={formData.tenDuAn}
                         onChange={e =>
-                            handleFormDataChange('name', e.target.value)
+                            handleFormDataChange('tenDuAn', e.target.value)
                         }
                     />
                 </div>
@@ -22,11 +22,11 @@ function Motel({ formData, handleFormDataChange }) {
                             label='Chọn thành phố'
                             require
                             halfContainer
-                            value={formData.address.city}
+                            value={formData.address.thanhPho}
                             onChange={e =>
                                 handleFormDataChange('address', {
                                     ...formData.address,
-                                    city: e.target.value,
+                                    thanhPho: e.target.value,
                                 })
                             }
                         />
@@ -35,11 +35,11 @@ function Motel({ formData, handleFormDataChange }) {
                             require
                             label='Chọn quận, huyện, thị xã'
                             halfContainer
-                            value={formData.address.district}
+                            value={formData.address.quanHuyen}
                             onChange={e =>
                                 handleFormDataChange('address', {
                                     ...formData.address,
-                                    district: e.target.value,
+                                    quanHuyen: e.target.value,
                                 })
                             }
                         />
@@ -49,11 +49,11 @@ function Motel({ formData, handleFormDataChange }) {
                             require
                             label='Chọn xã, phường, thị trấn'
                             halfContainer
-                            value={formData.address.ward}
+                            value={formData.address.phuongXa}
                             onChange={e =>
                                 handleFormDataChange('address', {
                                     ...formData.address,
-                                    ward: e.target.value,
+                                    phuongXa: e.target.value,
                                 })
                             }
                         />
@@ -62,11 +62,11 @@ function Motel({ formData, handleFormDataChange }) {
                             require
                             label='Tên đường'
                             halfContainer
-                            value={formData.address.street}
+                            value={formData.address.tenDuong}
                             onChange={e =>
                                 handleFormDataChange('address', {
                                     ...formData.address,
-                                    street: e.target.value,
+                                    tenDuong: e.target.value,
                                 })
                             }
                         />
@@ -76,11 +76,11 @@ function Motel({ formData, handleFormDataChange }) {
                             require
                             label='Số nhà'
                             halfContainer
-                            value={formData.address.number}
+                            value={formData.address.soNha}
                             onChange={e =>
                                 handleFormDataChange('address', {
                                     ...formData.address,
-                                    number: e.target.value,
+                                    soNha: e.target.value,
                                 })
                             }
                         />
@@ -94,10 +94,10 @@ function Motel({ formData, handleFormDataChange }) {
                     <div className={styles.halfParent}>
                         <FormInput
                             label='Tình trạng nội thất (Không bắt buộc)'
-                            value={formData.furniture}
+                            value={formData.phongTroTinhTrangNoiThat}
                             onChange={e =>
                                 handleFormDataChange(
-                                    'furniture',
+                                    'phongTroTinhTrangNoiThat',
                                     e.target.value
                                 )
                             }
@@ -112,27 +112,27 @@ function Motel({ formData, handleFormDataChange }) {
                     <FormInput
                         label='Diện tích đất'
                         require
-                        value={formData.acreage}
+                        value={formData.dienTich}
                         onChange={e =>
-                            handleFormDataChange('acreage', e.target.value)
+                            handleFormDataChange('dienTich', e.target.value)
                         }
                     />
 
                     <FormInput
                         label={'Giá'}
                         require
-                        value={formData.price}
+                        value={formData.gia}
                         onChange={e =>
-                            handleFormDataChange('price', e.target.value)
+                            handleFormDataChange('gia', e.target.value)
                         }
                     />
 
                     <FormInput
                         label={'Số tiền cọc'}
                         require
-                        value={formData.deposit}
+                        value={formData.soTienCoc}
                         onChange={e =>
-                            handleFormDataChange('deposit', e.target.value)
+                            handleFormDataChange('soTienCoc', e.target.value)
                         }
                     />
                 </div>

@@ -75,24 +75,24 @@ function RealEstate({ subCategoryId, formData, handleFormDataChange }) {
                     <div
                         className={clsx(styles.typeItem, {
                             [styles.active]:
-                                formData.isSell && formData.isSell !== null,
+                                formData.canBan && formData.canBan !== null,
                         })}
-                        onClick={() => handleFormDataChange('isSell', true)}
+                        onClick={() => handleFormDataChange('canBan', true)}
                     >
                         Cần bán
                     </div>
                     <div
                         className={clsx(styles.typeItem, {
                             [styles.active]:
-                                !formData.isSell && formData.isSell !== null,
+                                !formData.canBan && formData.canBan !== null,
                         })}
-                        onClick={() => handleFormDataChange('isSell', false)}
+                        onClick={() => handleFormDataChange('canBan', false)}
                     >
                         Cho thuê
                     </div>
                 </div>
             )}
-            {formData.isSell &&
+            {formData.canBan &&
                 formData.subCategoryId !== 15 &&
                 formData.subCategoryId !== 16 && (
                     <div className={styles.type}>
@@ -102,12 +102,12 @@ function RealEstate({ subCategoryId, formData, handleFormDataChange }) {
                         </div>
                         <div
                             onClick={() =>
-                                handleFormDataChange('isHandOver', true)
+                                handleFormDataChange('banGiao', true)
                             }
                             className={clsx(styles.typeItem, {
                                 [styles.active]:
-                                    formData.isHandOver &&
-                                    formData.isHandOver !== null,
+                                    formData.banGiao &&
+                                    formData.banGiao !== null,
                             })}
                         >
                             Đã bàn giao
@@ -115,11 +115,11 @@ function RealEstate({ subCategoryId, formData, handleFormDataChange }) {
                         <div
                             className={clsx(styles.typeItem, {
                                 [styles.active]:
-                                    !formData.isHandOver &&
-                                    formData.isHandOver !== null,
+                                    !formData.banGiao &&
+                                    formData.banGiao !== null,
                             })}
                             onClick={() =>
-                                handleFormDataChange('isHandOver', false)
+                                handleFormDataChange('banGiao', false)
                             }
                         >
                             Chưa bàn giao
@@ -129,30 +129,30 @@ function RealEstate({ subCategoryId, formData, handleFormDataChange }) {
                 )}
 
             {/* <Apartment /> */}
-            {currentSubCategory && formData.isSell !== null && (
+            {currentSubCategory && formData.canBan !== null && (
                 <currentSubCategory.Component
                     formData={formData}
                     handleFormDataChange={handleFormDataChange}
                 />
             )}
-            {formData.isSell !== null && (
+            {formData.canBan !== null && (
                 <div className={styles.formGroup}>
                     <div className={styles.title}>Bạn là</div>
                     <div
                         className={clsx(styles.typeItem, {
                             [styles.active]:
-                                formData.isOwner && formData.isOwner !== null,
+                                formData.caNhan && formData.caNhan !== null,
                         })}
-                        onClick={() => handleFormDataChange('isOwner', true)}
+                        onClick={() => handleFormDataChange('caNhan', true)}
                     >
                         Cá nhân
                     </div>
                     <div
                         className={clsx(styles.typeItem, {
                             [styles.active]:
-                                !formData.isOwner && formData.isOwner !== null,
+                                !formData.caNhan && formData.caNhan !== null,
                         })}
-                        onClick={() => handleFormDataChange('isOwner', false)}
+                        onClick={() => handleFormDataChange('caNhan', false)}
                     >
                         Môi giới
                     </div>

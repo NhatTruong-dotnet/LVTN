@@ -78,6 +78,8 @@
     margin-left: 5px;
     line-height: 1.5;
     color: #d0021b;
+    position: absolute;
+    bottom: -18px;
 }
 .label {
     text-transform: capitalize;

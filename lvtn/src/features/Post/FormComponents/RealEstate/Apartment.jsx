@@ -12,10 +12,11 @@ function Apartment({ formData, handleFormDataChange }) {
                 <div className={styles.group}>
                     <FormInput
                         label='Tên tòa nhà / Khu dân cư / dự án'
-                        value={formData.name}
+                        value={formData.tenDuAn}
                         onChange={e =>
-                            handleFormDataChange('name', e.target.value)
+                            handleFormDataChange('tenDuAn', e.target.value)
                         }
+                        test
                     />
                 </div>
                 <div className={styles.group}>
@@ -24,11 +25,11 @@ function Apartment({ formData, handleFormDataChange }) {
                             label='Chọn thành phố'
                             require
                             halfContainer
-                            value={formData.address.city}
+                            value={formData.address.thanhPho}
                             onChange={e =>
                                 handleFormDataChange('address', {
                                     ...formData.address,
-                                    city: e.target.value,
+                                    thanhPho: e.target.value,
                                 })
                             }
                         />
@@ -37,11 +38,11 @@ function Apartment({ formData, handleFormDataChange }) {
                             require
                             label='Chọn quận, huyện, thị xã'
                             halfContainer
-                            value={formData.address.district}
+                            value={formData.address.quanHuyen}
                             onChange={e =>
                                 handleFormDataChange('address', {
                                     ...formData.address,
-                                    district: e.target.value,
+                                    quanHuyen: e.target.value,
                                 })
                             }
                         />
@@ -51,11 +52,11 @@ function Apartment({ formData, handleFormDataChange }) {
                             require
                             label='Chọn xã, phường, thị trấn'
                             halfContainer
-                            value={formData.address.ward}
+                            value={formData.address.phuongXa}
                             onChange={e =>
                                 handleFormDataChange('address', {
                                     ...formData.address,
-                                    ward: e.target.value,
+                                    phuongXa: e.target.value,
                                 })
                             }
                         />
@@ -64,11 +65,11 @@ function Apartment({ formData, handleFormDataChange }) {
                             require
                             label='Tên đường'
                             halfContainer
-                            value={formData.address.street}
+                            value={formData.address.tenDuong}
                             onChange={e =>
                                 handleFormDataChange('address', {
                                     ...formData.address,
-                                    street: e.target.value,
+                                    tenDuong: e.target.value,
                                 })
                             }
                         />
@@ -78,11 +79,11 @@ function Apartment({ formData, handleFormDataChange }) {
                             require
                             label='Số nhà'
                             halfContainer
-                            value={formData.address.number}
+                            value={formData.address.soNha}
                             onChange={e =>
                                 handleFormDataChange('address', {
                                     ...formData.address,
-                                    number: e.target.value,
+                                    soNha: e.target.value,
                                 })
                             }
                         />
@@ -97,12 +98,9 @@ function Apartment({ formData, handleFormDataChange }) {
                         <FormInput
                             label='Mã căn'
                             halfContainer
-                            value={formData.apartmentId}
+                            value={formData.maCan}
                             onChange={e =>
-                                handleFormDataChange(
-                                    'apartmentId',
-                                    e.target.value
-                                )
+                                handleFormDataChange('maCan', e.target.value)
                             }
                         />
 
@@ -121,9 +119,9 @@ function Apartment({ formData, handleFormDataChange }) {
                             label='Tầng số'
                             type='number'
                             halfContainer
-                            value={formData.floor}
+                            value={formData.tangSo}
                             onChange={e =>
-                                handleFormDataChange('floor', e.target.value)
+                                handleFormDataChange('tangSo', e.target.value)
                             }
                         />
                     </div>
@@ -136,12 +134,9 @@ function Apartment({ formData, handleFormDataChange }) {
                     <FormInput
                         require
                         label='Loại hình căn hộ'
-                        value={formData.apartmentType}
+                        value={formData.loaiHinh}
                         onChange={e =>
-                            handleFormDataChange(
-                                'apartmentType',
-                                e.target.value
-                            )
+                            handleFormDataChange('loaiHinh', e.target.value)
                         }
                     />
                 </div>
@@ -151,10 +146,10 @@ function Apartment({ formData, handleFormDataChange }) {
                             require
                             label='Số phòng ngủ'
                             halfContainer
-                            value={formData.amountBedroom}
+                            value={formData.soPhongNgu}
                             onChange={e =>
                                 handleFormDataChange(
-                                    'amountBedroom',
+                                    'soPhongNgu',
                                     e.target.value
                                 )
                             }
@@ -164,12 +159,9 @@ function Apartment({ formData, handleFormDataChange }) {
                             require
                             label='Số phòng vệ sinh'
                             halfContainer
-                            value={formData.amountToilet}
+                            value={formData.soToilet}
                             onChange={e =>
-                                handleFormDataChange(
-                                    'amountToilet',
-                                    e.target.value
-                                )
+                                handleFormDataChange('soToilet', e.target.value)
                             }
                         />
                     </div>
@@ -177,18 +169,24 @@ function Apartment({ formData, handleFormDataChange }) {
                         <FormInput
                             label='Hướng ban công (Không bắt buộc)'
                             halfContainer
-                            value={formData.balcony}
+                            value={formData.ccBanCong}
                             onChange={e =>
-                                handleFormDataChange('balcony', e.target.value)
+                                handleFormDataChange(
+                                    'ccBanCong',
+                                    e.target.value
+                                )
                             }
                         />
 
                         <FormInput
                             label='Hướng cửa chính (Không bắt buộc)'
                             halfContainer
-                            value={formData.mainDoor}
+                            value={formData.ccHuongCuaChinh}
                             onChange={e =>
-                                handleFormDataChange('mainDoor', e.target.value)
+                                handleFormDataChange(
+                                    'ccHuongCuaChinh',
+                                    e.target.value
+                                )
                             }
                         />
                     </div>
@@ -202,19 +200,22 @@ function Apartment({ formData, handleFormDataChange }) {
                         <FormInput
                             label='Giấy tờ pháp lý (Không bắt buộc)'
                             halfContainer
-                            value={formData.exhibit}
+                            value={formData.ccGiayToPhapLy}
                             onChange={e =>
-                                handleFormDataChange('exhibit', e.target.value)
+                                handleFormDataChange(
+                                    'ccGiayToPhapLy',
+                                    e.target.value
+                                )
                             }
                         />
 
                         <FormInput
                             label='Tình trạng nội thất (Không bắt buộc)'
                             halfContainer
-                            value={formData.furniture}
+                            value={formData.ccTinhTrangNoiThat}
                             onChange={e =>
                                 handleFormDataChange(
-                                    'furniture',
+                                    'ccTinhTrangNoiThat',
                                     e.target.value
                                 )
                             }
@@ -231,9 +232,9 @@ function Apartment({ formData, handleFormDataChange }) {
                         type='number'
                         unit='m²'
                         label='Diện tích'
-                        value={formData.acreage}
+                        value={formData.dienTich}
                         onChange={e =>
-                            handleFormDataChange('acreage', e.target.value)
+                            handleFormDataChange('dienTich', e.target.value)
                         }
                     />
 
@@ -242,9 +243,9 @@ function Apartment({ formData, handleFormDataChange }) {
                         type='number'
                         unit='đ'
                         label='Giá'
-                        value={formData.price}
+                        value={formData.gia}
                         onChange={e =>
-                            handleFormDataChange('price', e.target.value)
+                            handleFormDataChange('gia', e.target.value)
                         }
                     />
 
@@ -252,9 +253,12 @@ function Apartment({ formData, handleFormDataChange }) {
                         <FormInput
                             require
                             label='Số tiền cọc'
-                            value={formData.deposit}
+                            value={formData.soTienCoc}
                             onChange={e =>
-                                handleFormDataChange('deposit', e.target.value)
+                                handleFormDataChange(
+                                    'soTienCoc',
+                                    e.target.value
+                                )
                             }
                         />
                     )}

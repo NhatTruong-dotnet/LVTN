@@ -11,9 +11,9 @@ function Office({ formData, handleFormDataChange }) {
                 <div className={styles.group}>
                     <FormInput
                         label='Tên tòa nhà / Khu dân cư / dự án'
-                        value={formData.name}
+                        value={formData.tenDuAn}
                         onChange={e =>
-                            handleFormDataChange('name', e.target.value)
+                            handleFormDataChange('tenDuAn', e.target.value)
                         }
                     />
                 </div>
@@ -23,11 +23,11 @@ function Office({ formData, handleFormDataChange }) {
                             label='Chọn thành phố'
                             require
                             halfContainer
-                            value={formData.address.city}
+                            value={formData.address.thanhPho}
                             onChange={e =>
                                 handleFormDataChange('address', {
                                     ...formData.address,
-                                    city: e.target.value,
+                                    thanhPho: e.target.value,
                                 })
                             }
                         />
@@ -36,11 +36,11 @@ function Office({ formData, handleFormDataChange }) {
                             require
                             label='Chọn quận, huyện, thị xã'
                             halfContainer
-                            value={formData.address.district}
+                            value={formData.address.quanHuyen}
                             onChange={e =>
                                 handleFormDataChange('address', {
                                     ...formData.address,
-                                    district: e.target.value,
+                                    quanHuyen: e.target.value,
                                 })
                             }
                         />
@@ -50,11 +50,11 @@ function Office({ formData, handleFormDataChange }) {
                             require
                             label='Chọn xã, phường, thị trấn'
                             halfContainer
-                            value={formData.address.ward}
+                            value={formData.address.phuongXa}
                             onChange={e =>
                                 handleFormDataChange('address', {
                                     ...formData.address,
-                                    ward: e.target.value,
+                                    phuongXa: e.target.value,
                                 })
                             }
                         />
@@ -63,11 +63,11 @@ function Office({ formData, handleFormDataChange }) {
                             require
                             label='Tên đường'
                             halfContainer
-                            value={formData.address.street}
+                            value={formData.address.tenDuong}
                             onChange={e =>
                                 handleFormDataChange('address', {
                                     ...formData.address,
-                                    street: e.target.value,
+                                    tenDuong: e.target.value,
                                 })
                             }
                         />
@@ -77,11 +77,11 @@ function Office({ formData, handleFormDataChange }) {
                             require
                             label='Số nhà'
                             halfContainer
-                            value={formData.address.number}
+                            value={formData.address.soNha}
                             onChange={e =>
                                 handleFormDataChange('address', {
                                     ...formData.address,
-                                    number: e.target.value,
+                                    soNha: e.target.value,
                                 })
                             }
                         />
@@ -90,7 +90,7 @@ function Office({ formData, handleFormDataChange }) {
             </FormGroup>
 
             {/* Vị trí BĐS */}
-            <FormGroup title='Vị trí BĐS'>
+            {/* <FormGroup title='Vị trí BĐS'>
                 <div className={styles.group}>
                     <div className={styles.halfParent}>
                         <FormInput
@@ -123,7 +123,7 @@ function Office({ formData, handleFormDataChange }) {
                         />
                     </div>
                 </div>
-            </FormGroup>
+            </FormGroup> */}
 
             {/* Thông tin chi tiết */}
             <FormGroup title='Thông tin chi tiết'>
@@ -131,9 +131,12 @@ function Office({ formData, handleFormDataChange }) {
                     <FormInput
                         require
                         label='Loại hình văn phòng'
-                        value={formData.officeType}
+                        value={formData.vanPhongLoaiHinhVanPhong}
                         onChange={e =>
-                            handleFormDataChange('officeType', e.target.value)
+                            handleFormDataChange(
+                                'vanPhongLoaiHinhVanPhong',
+                                e.target.value
+                            )
                         }
                     />
                 </div>
@@ -143,10 +146,10 @@ function Office({ formData, handleFormDataChange }) {
                             require
                             label='Hướng cửa chính(Không bắt buộc)'
                             halfContainer
-                            value={formData.officeDirection}
+                            value={formData.vanPhongHuongCuaChinh}
                             onChange={e =>
                                 handleFormDataChange(
-                                    'officeDirection',
+                                    'vanPhongHuongCuaChinh',
                                     e.target.value
                                 )
                             }
@@ -162,19 +165,22 @@ function Office({ formData, handleFormDataChange }) {
                         <FormInput
                             label='Giấy tờ pháp lý (Không bắt buộc)'
                             halfContainer
-                            value={formData.exhibit}
+                            value={formData.vanPhongGiayToPhapLy}
                             onChange={e =>
-                                handleFormDataChange('exhibit', e.target.value)
+                                handleFormDataChange(
+                                    'vanPhongGiayToPhapLy',
+                                    e.target.value
+                                )
                             }
                         />
 
                         <FormInput
                             label='Tình trạng nội thất (Không bắt buộc)'
                             halfContainer
-                            value={formData.furniture}
+                            value={formData.vanPhongTinhTrangNoiThat}
                             onChange={e =>
                                 handleFormDataChange(
-                                    'furniture',
+                                    'vanPhongTinhTrangNoiThat',
                                     e.target.value
                                 )
                             }
@@ -189,18 +195,18 @@ function Office({ formData, handleFormDataChange }) {
                     <FormInput
                         require
                         label='Diện tích'
-                        value={formData.acreage}
+                        value={formData.dienTich}
                         onChange={e =>
-                            handleFormDataChange('acreage', e.target.value)
+                            handleFormDataChange('dienTich', e.target.value)
                         }
                     />
 
                     <FormInput
                         require
                         label='Giá'
-                        value={formData.price}
+                        value={formData.gia}
                         onChange={e =>
-                            handleFormDataChange('price', e.target.value)
+                            handleFormDataChange('gia', e.target.value)
                         }
                     />
 
@@ -208,9 +214,12 @@ function Office({ formData, handleFormDataChange }) {
                         <FormInput
                             require
                             label='Số tiền cọc'
-                            value={formData.deposit}
+                            value={formData.soTienCoc}
                             onChange={e =>
-                                handleFormDataChange('deposit', e.target.value)
+                                handleFormDataChange(
+                                    'soTienCoc',
+                                    e.target.value
+                                )
                             }
                         />
                     )}

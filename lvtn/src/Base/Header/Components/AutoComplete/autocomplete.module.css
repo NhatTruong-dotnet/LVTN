@@ -7,6 +7,7 @@
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
     cursor: default;
+    z-index: 1;
 }
 .searchValue {
     padding: 15px;

@@ -1,6 +1,7 @@
 import styles from '../RealEstate/index.module.css'
-
+import AutoComplete from '../../../../Base/Header/Components/AutoComplete'
 import clsx from 'clsx'
+import { useState } from 'react'
 
 function FormInput({
     require,
@@ -9,10 +10,25 @@ function FormInput({
     value,
     onChange,
     halfContainer,
-    message,
     name,
     unit,
+    test,
 }) {
+    const [message, setMessage] = useState('')
+
+    const validateFormInput = () => {
+        if (!value && require) {
+            setMessage('Vui lòng điền vào trường này')
+        }
+    }
+
+    const handleChangeFormInput = e => {
+        if (message) {
+            setMessage('')
+        }
+        onChange(e)
+    }
+
     return (
         <>
             <div className={styles.inputGroup}>
@@ -20,9 +36,11 @@ function FormInput({
                     type={type}
                     className={styles.input}
                     value={value}
-                    onChange={onChange}
+                    onChange={handleChangeFormInput}
                     name={name}
+                    onBlur={validateFormInput}
                 />
+                {/* {test && <AutoComplete />} */}
                 <div className={styles.unit}>{unit}</div>
 
                 <label

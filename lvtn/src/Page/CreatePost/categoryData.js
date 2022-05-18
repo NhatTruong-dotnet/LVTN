@@ -10,9 +10,8 @@ import {
     GiConsoleController,
     GiSewingMachine,
 } from 'react-icons/gi'
-import Apartment from '../../features/Post/FormComponents/RealEstate/Apartment'
-import House from '../../features/Post/FormComponents/RealEstate/House'
 import RealEstate from '../../features/Post/FormComponents/RealEstate'
+import Vehicle from '../../features/Post/FormComponents/Vehicle/Vehicle'
 
 const categories = [
     {
@@ -41,6 +40,13 @@ const categories = [
         id: 2,
         name: 'Xe cộ',
         Icon: RiMotorbikeFill,
+        Component: (subCategoryId, formData, handleFormDataChange) => (
+            <Vehicle
+                subCategoryId={subCategoryId}
+                formData={formData}
+                handleFormDataChange={handleFormDataChange}
+            />
+        ),
         subCategory: [
             { id: 18, name: 'Ô tô' },
             { id: 19, name: 'Xe máy' },
