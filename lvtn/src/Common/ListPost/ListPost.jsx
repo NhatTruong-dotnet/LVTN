@@ -5,15 +5,19 @@ import styles from './listPost.module.css'
 function ListPost({ listPost = [] }) {
     return (
         <div className={styles.listPost}>
-            {listPost.map(({ _id, title, price, img }) => (
-                <Post
-                    key={_id}
-                    id={_id}
-                    title={title}
-                    price={price}
-                    imgSrc={img[0]}
-                />
-            ))}
+            {listPost.map(
+                ({ idBaiDang, tieuDe, idHinhAnh, gia, ngayTao, thanhPho }) => (
+                    <Post
+                        key={idBaiDang}
+                        id={idBaiDang}
+                        title={tieuDe}
+                        price={gia}
+                        imgId={idHinhAnh}
+                        createdDate={ngayTao}
+                        location={thanhPho}
+                    />
+                )
+            )}
         </div>
     )
 }
