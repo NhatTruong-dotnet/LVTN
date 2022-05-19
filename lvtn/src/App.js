@@ -9,6 +9,7 @@ import { loginWithToken } from './features/Auth/Login/loginSlice'
 
 function App() {
     const dispatch = useDispatch()
+
     useEffect(() => {
         dispatch(loginWithToken())
     }, [])

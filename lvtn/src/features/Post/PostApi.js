@@ -3,28 +3,27 @@ import axios from 'axios'
 const host = 'https://localhost:7298'
 
 export const createNewPost = async ({ paramUrl, ...formData }, token) => {
-    console.log(token)
-    // try {
-    //     const res = await axios.post(
-    //         `${host}/api/baiDang/${paramUrl}/newPost`,
-    //         formData,
-    //         {
-    //             headers: {
-    //                 Authorization: `Bearer ${token}`,
-    //             },
-    //         }
-    //     )
+    try {
+        const res = await axios.post(
+            `${host}/api/baiDang/${paramUrl}/newPost`,
+            formData,
+            {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            }
+        )
 
-    //     return { status: res.status }
-    // } catch ({ response, message }) {
-    //     console.log(response)
-    //     return {
-    //         status: response.status,
-    //         errorMessage:
-    //             response.data ||
-    //             'Đã có lỗi xảy ra, vui lòng chờ trong giây lát và thử lại sau',
-    //     }
-    // }
+        return { status: res.status }
+    } catch ({ response, message }) {
+        console.log(response)
+        return {
+            status: response.status,
+            errorMessage:
+                response.data ||
+                'Đã có lỗi xảy ra, vui lòng chờ trong giây lát và thử lại sau',
+        }
+    }
 }
 
 export const getPostWithSubCategoryId = async subCategoryId => {

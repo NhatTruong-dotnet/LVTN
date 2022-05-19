@@ -1,12 +1,13 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { createRoot } from 'react-dom/client'
-import { Provider } from 'react-redux'
+import { Provider, useDispatch } from 'react-redux'
 import { store } from './app/store'
 import App from './App'
 import reportWebVitals from './reportWebVitals'
 import GlobalStyle from './Common/GlobalStyle/GlobalStyle'
 import { BrowserRouter } from 'react-router-dom'
 import './index.css'
+import { loginWithToken } from './features/Auth/Login/loginSlice'
 
 const container = document.getElementById('root')
 const root = createRoot(container)

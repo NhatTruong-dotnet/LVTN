@@ -12,11 +12,13 @@ import {
 
 import { useDispatch, useSelector } from 'react-redux'
 import {
+    selectLoginStatus,
     selectToken,
     selectUsername,
 } from '../../features/Auth/Login/loginSlice'
 import ImagePicker from './Components/ImagePicker'
 import VideoPicker from './Components/VideoPicker'
+import { useNavigate } from 'react-router-dom'
 
 function CreatePost(props) {
     const [isShowCategoryPicker, setIsShowCategoryPicker] = useState(true)
@@ -39,8 +41,9 @@ function CreatePost(props) {
         description: '',
         medias: [],
     })
-    const token = useSelector(selectToken)
-    const numberPhone = useSelector(selectUsername)
+
+    const navigate = useNavigate()
+    const isLogin = useSelector(selectLoginStatus)
     const dispatch = useDispatch()
     const openCategoryPicker = () => setIsShowCategoryPicker(true)
     const closeCategoryPicker = () => setIsShowCategoryPicker(false)
@@ -113,10 +116,14 @@ function CreatePost(props) {
         dispatch({
             type: 'createPost',
             formData: formRequestData,
-            token,
-            numberPhone,
         })
     }
+
+    useEffect(() => {
+        if (!isLogin) {
+            navigate('/')
+        }
+    }, [isLogin])
 
     useEffect(() => {
         if (selectedCategory.category.id) {

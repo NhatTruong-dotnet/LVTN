@@ -17,14 +17,13 @@ export const loginSlice = createSlice({
         loginWithToken: state => {
             const token = localStorage.getItem('token')
             if (token) {
-                const { name, role } = jwt_decode(token)
+                const { name, role, exp } = jwt_decode(token)
 
-                if (jwt_decode(token).exp > Date.now() / 1000) {
+                if (exp > Date.now() / 1000) {
                     state.token = token
                     state.isLogin = true
                     state.username = name
                     state.role = role
-                    emitMessage('success', `Welcome back ${name || ''}`)
                 } else {
                     localStorage.removeItem('token')
                 }
