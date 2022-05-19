@@ -1,18 +1,41 @@
-import { put, takeLeading, call } from 'redux-saga/effects'
-import { createNewPost } from './PostApi'
+import { put, takeLeading, call, select } from 'redux-saga/effects'
+import { createNewPost, getPostWithSubCategoryId } from './PostApi'
 import {
     createPostFail,
     createPostPending,
     createPostSuccess,
+    getPostFail,
+    getPostPending,
+    getPostSuccess,
 } from './PostSlice'
+import { selectToken, selectUsername } from '../Auth/Login/loginSlice'
 
-export default function* createPostWatcher() {
+export default function* postSaga() {
     yield takeLeading('createPost', createPost)
+    yield takeLeading('getPost', getPost)
 }
 
-function* createPost({ formData, numberPhone, token }) {
+function* getPost({ lastSubCategories }) {
+    yield put(getPostPending())
+    const { status, errorMessage, postData } = yield call(
+        getPostWithSubCategoryId,
+        lastSubCategories
+    )
+    if (status === 200) {
+        yield put(getPostSuccess({ postData }))
+    } else {
+        // yield put(getPostFail({errorMessage}))
+    }
+}
+
+function* createPost({ formData }) {
     yield put(createPostPending())
-    const requestFormData = mappingFormData(formData, numberPhone)
+
+    const token = yield select(selectToken)
+    const username = yield select(selectUsername)
+
+    const requestFormData = mappingFormData(formData, username)
+
     const { status, errorMessage } = yield call(
         createNewPost,
         requestFormData,
@@ -38,6 +61,13 @@ const params = {
     15: 'batDongSanDat',
     16: 'batDongSanVanPhong',
     17: 'batDongSanPhongTro',
+    18: 'xeCoOto',
+    19: 'xeCoXeMay',
+    20: 'xeCoXeTai',
+    21: 'xeCoXeDien',
+    22: 'xeCoXeDap',
+    23: 'xeCoPhuongTienKhac',
+    24: 'xeCoPhuTungXe',
 }
 
 function mappingFormData(formData, numberPhone) {
@@ -59,5 +89,6 @@ function mappingFormData(formData, numberPhone) {
         mota: formData.description,
         idDanhMucCon: subCategoryId,
         hinhAnh_BaiDangs: formData.medias,
+        diaChiCuThe: formData.soNha + formData.tenDuong,
     }
 }

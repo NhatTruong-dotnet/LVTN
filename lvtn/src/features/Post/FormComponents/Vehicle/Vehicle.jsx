@@ -75,8 +75,25 @@ const subCategories = [
     },
 ]
 
-function Vehicle(props) {
-    return <div></div>
+function Vehicle({ subCategoryId, formData, handleFormDataChange }) {
+    const [currentSubCategory, setCurrentSubCategory] = useState(null)
+    console.log(formData)
+
+    useEffect(() => {
+        const element = subCategories.find(({ id }) => id === subCategoryId)
+        setCurrentSubCategory(element)
+    }, [subCategoryId])
+
+    return (
+        <>
+            {currentSubCategory && (
+                <currentSubCategory.Component
+                    formData={formData}
+                    handleFormDataChange={handleFormDataChange}
+                />
+            )}
+        </>
+    )
 }
 
 export default Vehicle

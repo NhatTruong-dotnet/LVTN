@@ -17,11 +17,9 @@ export const loginSlice = createSlice({
         loginWithToken: state => {
             const token = localStorage.getItem('token')
             if (token) {
-                const expireTime = localStorage.getItem('expire')
                 const { name, role } = jwt_decode(token)
-                const currentTime = new Date().getTime()
 
-                if (expireTime > currentTime) {
+                if (jwt_decode(token).exp > Date.now() / 1000) {
                     state.token = token
                     state.isLogin = true
                     state.username = name
@@ -44,7 +42,6 @@ export const loginSlice = createSlice({
             state.token = action.payload.token
             emitMessage('success', `Welcome ${name || ''}`)
             localStorage.setItem('token', action.payload.token)
-            localStorage.setItem('expire', new Date().getTime() + exp)
             console.log(exp)
         },
         loginFail: (state, action) => {

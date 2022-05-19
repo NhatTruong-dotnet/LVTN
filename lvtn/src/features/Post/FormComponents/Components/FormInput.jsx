@@ -1,7 +1,7 @@
 import styles from '../RealEstate/index.module.css'
 import AutoComplete from '../../../../Base/Header/Components/AutoComplete'
 import clsx from 'clsx'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 function FormInput({
     require,
@@ -12,7 +12,6 @@ function FormInput({
     halfContainer,
     name,
     unit,
-    test,
 }) {
     const [message, setMessage] = useState('')
 

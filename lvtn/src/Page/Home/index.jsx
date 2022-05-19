@@ -1,5 +1,8 @@
+import { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import Frame from '../../Common/Frame/Frame'
 import ListPost from '../../Common/ListPost/ListPost'
+import { selectListPost } from '../../features/Post/PostSlice'
 import styles from './home.module.css'
 
 const listBook = [
@@ -101,6 +104,14 @@ const categories = [
 ]
 
 function Home() {
+    const dispatch = useDispatch()
+    const postData = useSelector(selectListPost)
+
+    useEffect(() => {
+        const lastSubCategories = localStorage.getItem('lastSubCategories')
+        dispatch({ type: 'getPost', lastSubCategories: 12 })
+    }, [])
+
     return (
         <div className='grid wide'>
             <Frame title='Khám phá danh mục'>
@@ -120,7 +131,7 @@ function Home() {
                 </div>
             </Frame>
             <Frame title='Tin Dành cho bạn'>
-                <ListPost listPost={listBook} />
+                <ListPost listPost={postData} />
             </Frame>
         </div>
     )

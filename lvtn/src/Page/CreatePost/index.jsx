@@ -123,11 +123,11 @@ function CreatePost(props) {
             setFormData(
                 generateDefaultValueFormData(
                     selectedCategory.category.id,
-                    selectedCategory.subCategory.id
+                    selectedCategory.subCategory?.id
                 )
             )
         }
-    }, [selectedCategory.category.id, selectedCategory.subCategory.id])
+    }, [selectedCategory.category.id, selectedCategory.subCategory?.id])
 
     return (
         <div className='grid wide'>
@@ -173,7 +173,7 @@ function CreatePost(props) {
                                     onClick={openCategoryPicker}
                                 >
                                     {selectedCategory.category.name}
-                                    {selectedCategory.subCategory.id
+                                    {selectedCategory.subCategory?.id
                                         ? `${
                                               ' - ' +
                                               selectedCategory?.subCategory
@@ -208,7 +208,7 @@ function CreatePost(props) {
 
                             {selectedCategory.category.Component &&
                                 selectedCategory.category.Component(
-                                    selectedCategory.subCategory.id,
+                                    selectedCategory.subCategory?.id,
                                     formData,
                                     handleFormDataChange
                                 )}
