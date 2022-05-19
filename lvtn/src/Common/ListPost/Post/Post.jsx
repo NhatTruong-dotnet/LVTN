@@ -3,11 +3,16 @@ import styles from './post.module.css'
 import { formatCurrency } from '../../../Utils/formatCurrency'
 import { FaStore } from 'react-icons/fa'
 import { useNavigate } from 'react-router-dom'
+import vi from 'javascript-time-ago/locale/vi.json'
+import TimeAgo from 'javascript-time-ago'
 
 const imgURL = process.env.PUBLIC_URL
+TimeAgo.addDefaultLocale(vi)
 
-function Post({ id, title, imgId, gia, createdDate, location }) {
+function Post({ id, title, imgId, gia, createdDate = new Date(), location }) {
     const navigate = useNavigate()
+
+    const timeAgo = new TimeAgo('en-US')
 
     const handleNavigateDetailPage = () => {
         navigate(`/detail/${id}`)
@@ -28,7 +33,9 @@ function Post({ id, title, imgId, gia, createdDate, location }) {
                 <div className={styles.moreInfo}>
                     <FaStore className={styles.icon} />
                     <div className={styles.dot}></div>
-                    <div className={styles.time}>18 giờ trước</div>
+                    <div className={styles.time}>
+                        {timeAgo.format(createdDate)}
+                    </div>
                     <div className={styles.dot}></div>
                     <div className={styles.location}>{location}</div>
                 </div>
