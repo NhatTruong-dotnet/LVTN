@@ -88,6 +88,20 @@ function Truck({ formData, handleFormDataChange }) {
                         onChange={e =>
                             handleFormDataChange('hangXe', e.target.value)
                         }
+                        requireData={[
+                            { value: 'Hino' },
+                            { value: 'Chiến thắng ' },
+                            { value: 'Cửu Long' },
+                            { value: 'Daewoo' },
+                            { value: 'Dongben' },
+                            { value: 'Dongfeng' },
+                            { value: 'FAW' },
+                            { value: 'Forcia' },
+                            { value: 'Fusin' },
+                            { value: 'Fuso' },
+                            { value: 'Hoa mai' },
+                            { value: 'Huyndai' },
+                        ]}
                     />
                 </div>
                 <div className={styles.group}>
@@ -103,6 +117,27 @@ function Truck({ formData, handleFormDataChange }) {
                                 e.target.value
                             )
                         }
+                        requireData={[
+                            { value: '< 1 tấn' },
+                            { value: '2 tấn' },
+                            { value: '3 tấn' },
+                            { value: '4 tấn' },
+                            { value: '5 tấn' },
+                            { value: '6 tấn' },
+                            { value: '7 tấn' },
+                            { value: '8 tấn' },
+                            { value: '9 tấn' },
+                            { value: '10 tấn' },
+                            { value: '11 tấn' },
+                            { value: '12 tấn' },
+                            { value: '13 tấn' },
+                            { value: '14 tấn' },
+                            { value: '15 tấn' },
+                            { value: '16 tấn' },
+                            { value: '17 tấn' },
+                            { value: '18 tấn' },
+                            { value: '> 18 tấn' },
+                        ]}
                     />
 
                     <FormInput
@@ -113,6 +148,30 @@ function Truck({ formData, handleFormDataChange }) {
                         onChange={e =>
                             handleFormDataChange('nam', e.target.value)
                         }
+                        requireData={[
+                            { value: '2022' },
+                            { value: '2019' },
+                            { value: '2018' },
+                            { value: '2017' },
+                            { value: '2016' },
+                            { value: '2015' },
+                            { value: '2014' },
+                            { value: '2013' },
+                            { value: '2012' },
+                            { value: '2011' },
+                            { value: '2010' },
+                            { value: '2009' },
+                            { value: '2008' },
+                            { value: '2007' },
+                            { value: '2006' },
+                            { value: '2005' },
+                            { value: '2004' },
+                            { value: '2003' },
+                            { value: '2002' },
+                            { value: '2001' },
+                            { value: '2000' },
+                            { value: 'Trước năm 2000' },
+                        ]}
                     />
 
                     <div className={styles.type}>
@@ -179,6 +238,17 @@ function Truck({ formData, handleFormDataChange }) {
                             onChange={e =>
                                 handleFormDataChange('xuatxu', e.target.value)
                             }
+                            requireData={[
+                                { value: 'Việt Nam' },
+                                { value: 'Ấn Độ' },
+                                { value: 'Thái Lan' },
+                                { value: 'Hàn Quốc' },
+                                { value: 'Nhật Bản' },
+                                { value: 'Trung Quốc' },
+                                { value: 'Mỹ' },
+                                { value: 'Đức' },
+                                { value: 'Đài Loan' },
+                            ]}
                         />
 
                         <FormInput
@@ -188,6 +258,19 @@ function Truck({ formData, handleFormDataChange }) {
                             onChange={e =>
                                 handleFormDataChange('mauSac', e.target.value)
                             }
+                            requireData={[
+                                { value: 'Trắng' },
+                                { value: 'Đen' },
+                                { value: 'Bạc' },
+                                { value: 'Cam' },
+                                { value: 'Đỏ' },
+                                { value: 'Xanh dương' },
+                                { value: 'Vàng' },
+                                { value: 'Xanh lá' },
+                                { value: 'Hồng' },
+                                { value: 'Xám' },
+                                { value: 'Nâu' },
+                            ]}
                         />
                     </div>
 

@@ -11,11 +11,7 @@ import {
 } from '../../Utils/PostUtils'
 
 import { useDispatch, useSelector } from 'react-redux'
-import {
-    selectLoginStatus,
-    selectToken,
-    selectUsername,
-} from '../../features/Auth/Login/loginSlice'
+import { selectLoginStatus } from '../../features/Auth/Login/loginSlice'
 import ImagePicker from './Components/ImagePicker'
 import VideoPicker from './Components/VideoPicker'
 import { useNavigate } from 'react-router-dom'
@@ -119,11 +115,11 @@ function CreatePost(props) {
         })
     }
 
-    useEffect(() => {
-        if (!isLogin) {
-            navigate('/')
-        }
-    }, [isLogin])
+    // useEffect(() => {
+    //     if (!isLogin) {
+    //         navigate('/')
+    //     }
+    // }, [isLogin])
 
     useEffect(() => {
         if (selectedCategory.category.id) {

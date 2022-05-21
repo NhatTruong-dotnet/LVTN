@@ -121,6 +121,12 @@ function Land({ formData, handleFormDataChange }) {
                         onChange={e =>
                             handleFormDataChange('loaiHinh', e.target.value)
                         }
+                        requireData={[
+                            { value: 'Đất thổ cư' },
+                            { value: 'Đất dự án nền ' },
+                            { value: 'Đất công nghiệp' },
+                            { value: 'Đất nông nghiệp' },
+                        ]}
                     />
                 </div>
                 <div className={styles.group}>
@@ -135,6 +141,16 @@ function Land({ formData, handleFormDataChange }) {
                                     e.target.value
                                 )
                             }
+                            requireData={[
+                                { value: 'Đông' },
+                                { value: 'Tây' },
+                                { value: 'Nam' },
+                                { value: 'Bắc' },
+                                { value: 'Đông Bắc' },
+                                { value: 'Đông Nam' },
+                                { value: 'Tây Bắc' },
+                                { value: 'Tây Nam' },
+                            ]}
                         />
                     </div>
                 </div>
@@ -153,6 +169,11 @@ function Land({ formData, handleFormDataChange }) {
                                     e.target.value
                                 )
                             }
+                            requireData={[
+                                { value: 'Đã có sổ' },
+                                { value: 'Chưa có sổ' },
+                                { value: 'Giấy tờ khác' },
+                            ]}
                         />
                     </div>
 

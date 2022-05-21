@@ -4,7 +4,6 @@ import {
     createPostFail,
     createPostPending,
     createPostSuccess,
-    getPostFail,
     getPostPending,
     getPostSuccess,
 } from './PostSlice'
@@ -17,7 +16,7 @@ export default function* postSaga() {
 
 function* getPost({ lastSubCategories }) {
     yield put(getPostPending())
-    const { status, errorMessage, postData } = yield call(
+    const { status, postData } = yield call(
         getPostWithSubCategoryId,
         lastSubCategories
     )

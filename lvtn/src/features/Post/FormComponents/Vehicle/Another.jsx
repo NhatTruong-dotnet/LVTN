@@ -91,33 +91,73 @@ function Another({ formData, handleFormDataChange }) {
                                 e.target.value
                             )
                         }
+                        requireData={[
+                            { value: 'Xe chuyên dụng' },
+                            { value: 'Xe khách, xe buýt' },
+                            { value: 'Khác' },
+                        ]}
                     />
                 </div>
                 <div className={styles.group}>
-                    <FormInput
-                        require
-                        label='Dòng xe'
-                        halfContainer
-                        value={formData.phuongTienKhacDongXe}
-                        onChange={e =>
-                            handleFormDataChange(
-                                'phuongTienKhacDongXe',
-                                e.target.value
-                            )
-                        }
-                    />
+                    {formData.phuongTienKhacLoaiXe === 'Xe chuyên dụng' ? (
+                        <FormInput
+                            require
+                            label='Loại xe chuyên dụng'
+                            halfContainer
+                            value={formData.phuongTienKhacDongXe}
+                            onChange={e =>
+                                handleFormDataChange(
+                                    'phuongTienKhacDongXe',
+                                    e.target.value
+                                )
+                            }
+                            requireData={[
+                                { value: 'Xe ba gác / Xe lôi' },
+                                { value: 'Xe bồn' },
+                                { value: 'Xe chở rác' },
+                                { value: 'Xe công nông' },
+                                { value: 'Xe đầu kéo' },
+                                { value: 'Xe đông lạnh' },
+                                { value: 'Xe hút chất thải' },
+                                { value: 'Xe Lam' },
+                                { value: 'Xe Lam' },
+                                { value: 'Xe Lu' },
+                                { value: 'Xe máy cày' },
+                                { value: 'Xe nâng' },
+                                { value: 'Xe phun nước' },
+                                { value: 'Xe xúc' },
+                                { value: 'khác' },
+                            ]}
+                        />
+                    ) : (
+                        ''
+                    )}
 
-                    <FormInput
-                        label='Số chỗ'
-                        halfContainer
-                        value={formData.phuongTienKhacSoCho}
-                        onChange={e =>
-                            handleFormDataChange(
-                                'phuongTienKhacSoCho',
-                                e.target.value
-                            )
-                        }
-                    />
+                    {formData.phuongTienKhacLoaiXe === 'Xe khách, xe buýt' ? (
+                        <FormInput
+                            label='Số chỗ'
+                            halfContainer
+                            value={formData.phuongTienKhacSoCho}
+                            onChange={e =>
+                                handleFormDataChange(
+                                    'phuongTienKhacSoCho',
+                                    e.target.value
+                                )
+                            }
+                            requireData={[
+                                { value: '7 chỗ' },
+                                { value: '9 chỗ' },
+                                { value: '10 chỗ' },
+                                { value: '16 chỗ' },
+                                { value: '29 chỗ' },
+                                { value: '36 chỗ' },
+                                { value: '45 chỗ' },
+                                { value: 'Khác' },
+                            ]}
+                        />
+                    ) : (
+                        ''
+                    )}
 
                     <FormInput
                         require
@@ -127,6 +167,30 @@ function Another({ formData, handleFormDataChange }) {
                         onChange={e =>
                             handleFormDataChange('nam', e.target.value)
                         }
+                        requireData={[
+                            { value: '2022' },
+                            { value: '2019' },
+                            { value: '2018' },
+                            { value: '2017' },
+                            { value: '2016' },
+                            { value: '2015' },
+                            { value: '2014' },
+                            { value: '2013' },
+                            { value: '2012' },
+                            { value: '2011' },
+                            { value: '2010' },
+                            { value: '2009' },
+                            { value: '2008' },
+                            { value: '2007' },
+                            { value: '2006' },
+                            { value: '2005' },
+                            { value: '2004' },
+                            { value: '2003' },
+                            { value: '2002' },
+                            { value: '2001' },
+                            { value: '2000' },
+                            { value: 'Trước năm 2000' },
+                        ]}
                     />
 
                     <div className={styles.type}>
@@ -189,6 +253,17 @@ function Another({ formData, handleFormDataChange }) {
                             onChange={e =>
                                 handleFormDataChange('xuatxu', e.target.value)
                             }
+                            requireData={[
+                                { value: 'Việt Nam' },
+                                { value: 'Ấn Độ' },
+                                { value: 'Thái Lan' },
+                                { value: 'Hàn Quốc' },
+                                { value: 'Nhật Bản' },
+                                { value: 'Trung Quốc' },
+                                { value: 'Mỹ' },
+                                { value: 'Đức' },
+                                { value: 'Đài Loan' },
+                            ]}
                         />
                         <FormInput
                             label='Màu sắc (Không bắt buộc)'
@@ -197,6 +272,19 @@ function Another({ formData, handleFormDataChange }) {
                             onChange={e =>
                                 handleFormDataChange('mauSac', e.target.value)
                             }
+                            requireData={[
+                                { value: 'Trắng' },
+                                { value: 'Đen' },
+                                { value: 'Bạc' },
+                                { value: 'Cam' },
+                                { value: 'Đỏ' },
+                                { value: 'Xanh dương' },
+                                { value: 'Vàng' },
+                                { value: 'Xanh lá' },
+                                { value: 'Hồng' },
+                                { value: 'Xám' },
+                                { value: 'Nâu' },
+                            ]}
                         />
                     </div>
 

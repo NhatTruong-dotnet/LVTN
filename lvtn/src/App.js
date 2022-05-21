@@ -6,6 +6,7 @@ import ToastMessage from './Common/ToastMessage/ToastMessage'
 import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { loginWithToken } from './features/Auth/Login/loginSlice'
+import Detail from './Page/Detail/Detail'
 
 function App() {
     const dispatch = useDispatch()
@@ -21,6 +22,7 @@ function App() {
             <Routes>
                 <Route path='/' element={<Home />} />
                 <Route path='/create-post' element={<CreatePost />} />
+                <Route path='/detail/:id' element={<Detail />} />
             </Routes>
             <ToastMessage />
         </div>

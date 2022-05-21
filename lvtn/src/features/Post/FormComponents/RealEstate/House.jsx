@@ -121,6 +121,12 @@ function House({ formData, handleFormDataChange }) {
                         onChange={e =>
                             handleFormDataChange('loaiHinh', e.target.value)
                         }
+                        requireData={[
+                            { value: 'Nhà mặt phố, mặt tiền' },
+                            { value: 'Nhà ngõ, hẻm' },
+                            { value: 'Nhà biệt thự' },
+                            { value: 'Nhà phố liền kề' },
+                        ]}
                     />
                 </div>
                 <div className={styles.group}>
@@ -166,6 +172,16 @@ function House({ formData, handleFormDataChange }) {
                                     e.target.value
                                 )
                             }
+                            requireData={[
+                                { value: 'Đông' },
+                                { value: 'Tây' },
+                                { value: 'Nam' },
+                                { value: 'Bắc' },
+                                { value: 'Đông Bắc' },
+                                { value: 'Đông Nam' },
+                                { value: 'Tây Bắc' },
+                                { value: 'Tây Nam' },
+                            ]}
                         />
                     </div>
                 </div>
@@ -184,6 +200,11 @@ function House({ formData, handleFormDataChange }) {
                                     e.target.value
                                 )
                             }
+                            requireData={[
+                                { value: 'Đã có sổ' },
+                                { value: 'Chưa có sổ' },
+                                { value: 'Giấy tờ khác' },
+                            ]}
                         />
                         <FormInput
                             label='Tình trạng nội thất (Không bắt buộc)'
@@ -194,6 +215,12 @@ function House({ formData, handleFormDataChange }) {
                                     e.target.value
                                 )
                             }
+                            requireData={[
+                                { value: 'Nội thất cao cấp' },
+                                { value: 'Nội thất đầy đủ' },
+                                { value: 'Hoàn thiện cơ bản' },
+                                { value: 'Bàn giao thô' },
+                            ]}
                         />
                     </div>
 

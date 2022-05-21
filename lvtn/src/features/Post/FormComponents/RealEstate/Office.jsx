@@ -138,6 +138,12 @@ function Office({ formData, handleFormDataChange }) {
                                 e.target.value
                             )
                         }
+                        requireData={[
+                            { value: 'Mặt bằng kinh doanh' },
+                            { value: 'Văn phòng' },
+                            { value: 'ShopHouse' },
+                            { value: 'OfficeTel' },
+                        ]}
                     />
                 </div>
                 <div className={styles.group}>
@@ -153,6 +159,16 @@ function Office({ formData, handleFormDataChange }) {
                                     e.target.value
                                 )
                             }
+                            requireData={[
+                                { value: 'Đông' },
+                                { value: 'Tây' },
+                                { value: 'Nam' },
+                                { value: 'Bắc' },
+                                { value: 'Đông Bắc' },
+                                { value: 'Đông Nam' },
+                                { value: 'Tây Bắc' },
+                                { value: 'Tây Nam' },
+                            ]}
                         />
                     </div>
                 </div>
@@ -172,6 +188,11 @@ function Office({ formData, handleFormDataChange }) {
                                     e.target.value
                                 )
                             }
+                            requireData={[
+                                { value: 'Đã có sổ' },
+                                { value: 'Chưa có sổ' },
+                                { value: 'Giấy tờ khác' },
+                            ]}
                         />
 
                         <FormInput
@@ -184,6 +205,12 @@ function Office({ formData, handleFormDataChange }) {
                                     e.target.value
                                 )
                             }
+                            requireData={[
+                                { value: 'Nội thất cao cấp' },
+                                { value: 'Nội thất đầy đủ' },
+                                { value: 'Hoàn thiện cơ bản' },
+                                { value: 'Bàn giao thô' },
+                            ]}
                         />
                     </div>
                 </div>

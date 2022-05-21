@@ -2,6 +2,7 @@ import styles from '../RealEstate/index.module.css'
 import AutoComplete from '../../../../Base/Header/Components/AutoComplete'
 import clsx from 'clsx'
 import { useEffect, useState } from 'react'
+import TabContainer from '../../../../Common/TabContainer'
 
 function FormInput({
     require,
@@ -12,20 +13,49 @@ function FormInput({
     halfContainer,
     name,
     unit,
+    requireData = [],
 }) {
+    const [autoCompleteItems, setAutoCompleteItems] = useState(requireData)
     const [message, setMessage] = useState('')
+    const [displayAutoComplete, setDisplayAutoComplete] = useState(false)
 
     const validateFormInput = () => {
         if (!value && require) {
             setMessage('Vui lòng điền vào trường này')
+        } else {
+            setMessage('')
         }
     }
 
+    const filterListData = inputValue => {
+        const newAutoCompleteItems = requireData.filter(({ value }) =>
+            value.includes(inputValue)
+        )
+        setAutoCompleteItems(newAutoCompleteItems)
+    }
+
     const handleChangeFormInput = e => {
+        filterListData(e.target.value)
+
         if (message) {
             setMessage('')
         }
         onChange(e)
+    }
+
+    const handleSelectAutoCompleteItem = value => {
+        console.log(value)
+        setDisplayAutoComplete(false)
+        setMessage('')
+
+        // fake event instance =))
+        onChange({ target: { value } })
+    }
+
+    const closeListDataWhenBlur = () => {
+        if (!require) {
+            setDisplayAutoComplete(false)
+        }
     }
 
     return (
@@ -37,9 +67,22 @@ function FormInput({
                     value={value}
                     onChange={handleChangeFormInput}
                     name={name}
-                    onBlur={validateFormInput}
+                    onBlur={() => {
+                        validateFormInput()
+                        closeListDataWhenBlur()
+                    }}
+                    onFocus={() => {
+                        setDisplayAutoComplete(true)
+                    }}
                 />
-                {/* {test && <AutoComplete />} */}
+
+                {displayAutoComplete && autoCompleteItems.length > 0 && (
+                    <AutoComplete
+                        items={autoCompleteItems}
+                        onClickItem={handleSelectAutoCompleteItem}
+                    />
+                )}
+
                 <div className={styles.unit}>{unit}</div>
 
                 <label

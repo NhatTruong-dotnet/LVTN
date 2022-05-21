@@ -1,10 +1,11 @@
-import { useState } from 'react'
 import styles from './autocomplete.module.css'
 
-function AutoComplete({ searchValue, items = [], forSearch }) {
-
-    
-
+function AutoComplete({
+    searchValue,
+    items = [],
+    onClickItem = () => {},
+    forSearch,
+}) {
     return (
         <div className={styles.autoComplete}>
             {forSearch && (
@@ -12,26 +13,16 @@ function AutoComplete({ searchValue, items = [], forSearch }) {
                     Tìm kiếm từ khóa: "{searchValue}"
                 </div>
             )}
-            <div className={styles.item}>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Et,
-                odit.
-            </div>
-            <div className={styles.item}>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Et,
-                odit.
-            </div>
-            <div className={styles.item}>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Et,
-                odit.
-            </div>
-            <div className={styles.item}>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Et,
-                odit.
-            </div>
-            <div className={styles.item}>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Et,
-                odit.
-            </div>
+
+            {items.map(({ value }) => (
+                <div
+                    key={value}
+                    className={styles.item}
+                    onClick={() => onClickItem(value)}
+                >
+                    {value}
+                </div>
+            ))}
         </div>
     )
 }

@@ -88,6 +88,20 @@ function Bicycle({ formData, handleFormDataChange }) {
                         onChange={e =>
                             handleFormDataChange('hangXe', e.target.value)
                         }
+                        requireData={[
+                            { value: 'Ander' },
+                            { value: 'Asama' },
+                            { value: 'Baileys' },
+                            { value: 'Bianchi' },
+                            { value: 'Canondale' },
+                            { value: 'Dahon' },
+                            { value: 'Fornix' },
+                            { value: 'Fury' },
+                            { value: 'Galaxy' },
+                            { value: 'Giant' },
+                            { value: 'Jett' },
+                            { value: 'Khác' },
+                        ]}
                     />
                 </div>
                 <div className={styles.group}>
@@ -99,6 +113,12 @@ function Bicycle({ formData, handleFormDataChange }) {
                         onChange={e =>
                             handleFormDataChange('xeDapLoaiXe', e.target.value)
                         }
+                        requireData={[
+                            { value: 'Xe đạp trẻ em' },
+                            { value: 'Xe đạp thể thao' },
+                            { value: 'Xe đạp phổ thông' },
+                            { value: 'Xe đạp khác' },
+                        ]}
                     />
 
                     <div className={styles.halfParent}>
@@ -109,6 +129,17 @@ function Bicycle({ formData, handleFormDataChange }) {
                             onChange={e =>
                                 handleFormDataChange('xuatxu', e.target.value)
                             }
+                            requireData={[
+                                { value: 'Việt Nam' },
+                                { value: 'Ấn Độ' },
+                                { value: 'Thái Lan' },
+                                { value: 'Hàn Quốc' },
+                                { value: 'Nhật Bản' },
+                                { value: 'Trung Quốc' },
+                                { value: 'Mỹ' },
+                                { value: 'Đức' },
+                                { value: 'Đài Loan' },
+                            ]}
                         />
 
                         <FormInput
@@ -118,6 +149,19 @@ function Bicycle({ formData, handleFormDataChange }) {
                             onChange={e =>
                                 handleFormDataChange('mauSac', e.target.value)
                             }
+                            requireData={[
+                                { value: 'Trắng' },
+                                { value: 'Đen' },
+                                { value: 'Bạc' },
+                                { value: 'Cam' },
+                                { value: 'Đỏ' },
+                                { value: 'Xanh dương' },
+                                { value: 'Vàng' },
+                                { value: 'Xanh lá' },
+                                { value: 'Hồng' },
+                                { value: 'Xám' },
+                                { value: 'Nâu' },
+                            ]}
                         />
                     </div>
                     <div className={styles.halfParent}>
@@ -183,6 +227,16 @@ function Bicycle({ formData, handleFormDataChange }) {
                         onChange={e =>
                             handleFormDataChange('xeDapBaoHang', e.target.value)
                         }
+                        requireData={[
+                            { value: 'Hết bảo hành' },
+                            { value: '< 3 tháng' },
+                            { value: '3 tháng' },
+                            { value: '6 tháng' },
+                            { value: '12 tháng' },
+                            { value: '18 tháng' },
+                            { value: '24 tháng' },
+                            { value: '>24 tháng' },
+                        ]}
                     />
 
                     <FormInput

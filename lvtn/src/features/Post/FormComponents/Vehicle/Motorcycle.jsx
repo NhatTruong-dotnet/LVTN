@@ -88,6 +88,18 @@ function Motorcycle({ formData, handleFormDataChange }) {
                         onChange={e =>
                             handleFormDataChange('hangXe', e.target.value)
                         }
+                        requireData={[
+                            { value: 'Honda' },
+                            { value: 'Suzuki ' },
+                            { value: 'Yamaha' },
+                            { value: 'Kawasaki' },
+                            { value: 'Piaggio' },
+                            { value: 'SYM' },
+                            { value: 'Kymco' },
+                            { value: 'Ducati' },
+                            { value: 'Aprilia' },
+                            { value: 'BMW' },
+                        ]}
                     />
                 </div>
                 <div className={styles.group}>
@@ -109,6 +121,30 @@ function Motorcycle({ formData, handleFormDataChange }) {
                         onChange={e =>
                             handleFormDataChange('nam', e.target.value)
                         }
+                        requireData={[
+                            { value: '2022' },
+                            { value: '2019' },
+                            { value: '2018' },
+                            { value: '2017' },
+                            { value: '2016' },
+                            { value: '2015' },
+                            { value: '2014' },
+                            { value: '2013' },
+                            { value: '2012' },
+                            { value: '2011' },
+                            { value: '2010' },
+                            { value: '2009' },
+                            { value: '2008' },
+                            { value: '2007' },
+                            { value: '2006' },
+                            { value: '2005' },
+                            { value: '2004' },
+                            { value: '2003' },
+                            { value: '2002' },
+                            { value: '2001' },
+                            { value: '2000' },
+                            { value: 'Trước năm 2000' },
+                        ]}
                     />
                     <FormInput
                         require
@@ -118,6 +154,11 @@ function Motorcycle({ formData, handleFormDataChange }) {
                         onChange={e =>
                             handleFormDataChange('xeMayLoaiXe', e.target.value)
                         }
+                        requireData={[
+                            { value: 'Tay ga' },
+                            { value: 'Xe số' },
+                            { value: 'Tay côn / Moto' },
+                        ]}
                     />
                     <div className={styles.halfParent}>
                         <FormInput
@@ -130,6 +171,13 @@ function Motorcycle({ formData, handleFormDataChange }) {
                                     e.target.value
                                 )
                             }
+                            requireData={[
+                                { value: 'Dưới 50cc' },
+                                { value: '50cc - 100cc' },
+                                { value: '100cc - 175cc' },
+                                { value: 'Trên 175cc' },
+                                { value: 'Không biết rõ' },
+                            ]}
                         />
 
                         {formData.daSuDung && (

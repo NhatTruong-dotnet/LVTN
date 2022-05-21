@@ -9,7 +9,7 @@ import TimeAgo from 'javascript-time-ago'
 const imgURL = process.env.PUBLIC_URL
 TimeAgo.addDefaultLocale(vi)
 
-function Post({ id, title, imgId, gia, createdDate = new Date(), location }) {
+function Post({ id, title, imgId, price, createdDate = new Date(), location }) {
     const navigate = useNavigate()
 
     const timeAgo = new TimeAgo('en-US')
@@ -22,14 +22,17 @@ function Post({ id, title, imgId, gia, createdDate = new Date(), location }) {
         <div className={styles.wrap} onClick={handleNavigateDetailPage}>
             <div className={styles.postItem}>
                 <img
-                    src={`${imgURL}/${imgId}`}
+                    // src={`${imgURL}/${imgId}`}
+                    src={imgId}
                     alt={title}
                     className={styles.postImg}
                 />
 
                 <div className={styles.name}>{title}</div>
 
-                <div className={clsx(styles.price)}>{formatCurrency(gia)}</div>
+                <div className={clsx(styles.price)}>
+                    {formatCurrency(price)}
+                </div>
                 <div className={styles.moreInfo}>
                     <FaStore className={styles.icon} />
                     <div className={styles.dot}></div>

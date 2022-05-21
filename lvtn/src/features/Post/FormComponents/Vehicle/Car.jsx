@@ -88,6 +88,18 @@ function Car({ formData, handleFormDataChange }) {
                         onChange={e =>
                             handleFormDataChange('hangXe', e.target.value)
                         }
+                        requireData={[
+                            { value: 'Toyota' },
+                            { value: 'Vinfast ' },
+                            { value: 'Huyndai' },
+                            { value: 'Ford' },
+                            { value: 'Honda' },
+                            { value: 'Mitsubishi' },
+                            { value: 'Kia' },
+                            { value: 'Mazda' },
+                            { value: 'Acura' },
+                            { value: 'Alfa Romeo' },
+                        ]}
                     />
                 </div>
                 <div className={styles.group}>
@@ -109,6 +121,30 @@ function Car({ formData, handleFormDataChange }) {
                         onChange={e =>
                             handleFormDataChange('nam', e.target.value)
                         }
+                        requireData={[
+                            { value: '2022' },
+                            { value: '2019' },
+                            { value: '2018' },
+                            { value: '2017' },
+                            { value: '2016' },
+                            { value: '2015' },
+                            { value: '2014' },
+                            { value: '2013' },
+                            { value: '2012' },
+                            { value: '2011' },
+                            { value: '2010' },
+                            { value: '2009' },
+                            { value: '2008' },
+                            { value: '2007' },
+                            { value: '2006' },
+                            { value: '2005' },
+                            { value: '2004' },
+                            { value: '2003' },
+                            { value: '2002' },
+                            { value: '2001' },
+                            { value: '2000' },
+                            { value: 'Trước năm 2000' },
+                        ]}
                     />
                     <div className={styles.halfParent}>
                         <FormInput
@@ -118,6 +154,17 @@ function Car({ formData, handleFormDataChange }) {
                             onChange={e =>
                                 handleFormDataChange('xuatxu', e.target.value)
                             }
+                            requireData={[
+                                { value: 'Việt Nam' },
+                                { value: 'Ấn Độ' },
+                                { value: 'Thái Lan' },
+                                { value: 'Hàn Quốc' },
+                                { value: 'Nhật Bản' },
+                                { value: 'Trung Quốc' },
+                                { value: 'Mỹ' },
+                                { value: 'Đức' },
+                                { value: 'Đài Loan' },
+                            ]}
                         />
 
                         <FormInput
@@ -130,6 +177,17 @@ function Car({ formData, handleFormDataChange }) {
                                     e.target.value
                                 )
                             }
+                            requireData={[
+                                { value: 'Sedan' },
+                                { value: 'SUV / Cross over' },
+                                { value: 'Hatchback' },
+                                { value: 'Pick up (bán tải)' },
+                                { value: 'Minivan (MPV)' },
+                                { value: 'Van' },
+                                { value: 'Couple (2 cửa)' },
+                                { value: 'Mui trần' },
+                                { value: 'Kiểu dáng khác' },
+                            ]}
                         />
                     </div>
                     <div className={styles.halfParent}>
@@ -149,6 +207,19 @@ function Car({ formData, handleFormDataChange }) {
                             onChange={e =>
                                 handleFormDataChange('mauSac', e.target.value)
                             }
+                            requireData={[
+                                { value: 'Trắng' },
+                                { value: 'Đen' },
+                                { value: 'Bạc' },
+                                { value: 'Cam' },
+                                { value: 'Đỏ' },
+                                { value: 'Xanh dương' },
+                                { value: 'Vàng' },
+                                { value: 'Xanh lá' },
+                                { value: 'Hồng' },
+                                { value: 'Xám' },
+                                { value: 'Nâu' },
+                            ]}
                         />
                     </div>
                     {formData.daSuDung && (

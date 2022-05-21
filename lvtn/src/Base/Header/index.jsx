@@ -22,7 +22,7 @@ function Header(props) {
     const [searchValue, setSearchValue] = useState('')
     const [isShowAutoComplete, setIsShowAutoComplete] = useState(false)
     const [isShowForm, setIsShowForm] = useState(false)
-    // const isLoading = useSelector(selectStatus)
+    const isLoading = useSelector(selectStatus)
     const username = useSelector(selectUsername)
     const isLogin = useSelector(selectLoginStatus)
     // const dispatch = useDispatch()
@@ -105,7 +105,7 @@ function Header(props) {
                     </div>
                 </div>
             </div>
-            <DynamicModal showModal={isShowForm}>
+            <DynamicModal showModal={isShowForm} loading={isLoading}>
                 <AuthForm setIsShowForm={setIsShowForm} />
             </DynamicModal>
         </div>

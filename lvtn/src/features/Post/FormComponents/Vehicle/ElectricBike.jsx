@@ -88,6 +88,20 @@ function ElectricBike({ formData, handleFormDataChange }) {
                         onChange={e =>
                             handleFormDataChange('hangXe', e.target.value)
                         }
+                        requireData={[
+                            { value: 'Aima' },
+                            { value: 'Anbico' },
+                            { value: 'Asama' },
+                            { value: 'BMX' },
+                            { value: 'Bridgestone' },
+                            { value: 'Detech' },
+                            { value: 'Dibao' },
+                            { value: 'DKBike' },
+                            { value: 'Giant' },
+                            { value: 'Hitasa' },
+                            { value: 'HKBIKE' },
+                            { value: 'Khác' },
+                        ]}
                     />
                 </div>
                 <div className={styles.group}>
@@ -99,6 +113,11 @@ function ElectricBike({ formData, handleFormDataChange }) {
                         onChange={e =>
                             handleFormDataChange('xeDienLoaiXe', e.target.value)
                         }
+                        requireData={[
+                            { value: 'Xe đạp điện' },
+                            { value: 'Xe máy điện' },
+                            { value: 'Xe điện khác' },
+                        ]}
                     />
 
                     <FormInput
@@ -109,6 +128,14 @@ function ElectricBike({ formData, handleFormDataChange }) {
                         onChange={e =>
                             handleFormDataChange('xeDienDongCo', e.target.value)
                         }
+                        requireData={[
+                            { value: '<200W' },
+                            { value: '200 - 250W' },
+                            { value: '251 - 350W' },
+                            { value: '351 - 500W' },
+                            { value: '501 - 1000W' },
+                            { value: '>100W' },
+                        ]}
                     />
                     <div className={styles.halfParent}>
                         <FormInput
@@ -118,6 +145,17 @@ function ElectricBike({ formData, handleFormDataChange }) {
                             onChange={e =>
                                 handleFormDataChange('xuatxu', e.target.value)
                             }
+                            requireData={[
+                                { value: 'Việt Nam' },
+                                { value: 'Ấn Độ' },
+                                { value: 'Thái Lan' },
+                                { value: 'Hàn Quốc' },
+                                { value: 'Nhật Bản' },
+                                { value: 'Trung Quốc' },
+                                { value: 'Mỹ' },
+                                { value: 'Đức' },
+                                { value: 'Đài Loan' },
+                            ]}
                         />
 
                         <FormInput
@@ -127,6 +165,19 @@ function ElectricBike({ formData, handleFormDataChange }) {
                             onChange={e =>
                                 handleFormDataChange('mauSac', e.target.value)
                             }
+                            requireData={[
+                                { value: 'Trắng' },
+                                { value: 'Đen' },
+                                { value: 'Bạc' },
+                                { value: 'Cam' },
+                                { value: 'Đỏ' },
+                                { value: 'Xanh dương' },
+                                { value: 'Vàng' },
+                                { value: 'Xanh lá' },
+                                { value: 'Hồng' },
+                                { value: 'Xám' },
+                                { value: 'Nâu' },
+                            ]}
                         />
                     </div>
                     <div className={styles.type}>
@@ -170,6 +221,16 @@ function ElectricBike({ formData, handleFormDataChange }) {
                                 e.target.value
                             )
                         }
+                        requireData={[
+                            { value: 'Hết bảo hành' },
+                            { value: '< 3 tháng' },
+                            { value: '3 tháng' },
+                            { value: '6 tháng' },
+                            { value: '12 tháng' },
+                            { value: '18 tháng' },
+                            { value: '24 tháng' },
+                            { value: '>24 tháng' },
+                        ]}
                     />
 
                     <FormInput

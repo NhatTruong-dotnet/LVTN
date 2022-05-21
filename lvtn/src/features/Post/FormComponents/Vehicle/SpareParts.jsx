@@ -115,6 +115,14 @@ function SpareParts({ formData, handleFormDataChange }) {
                                 e.target.value
                             )
                         }
+                        requireData={[
+                            { value: 'Phụ tùng xe máy' },
+                            { value: 'Phụ tùng ô tô' },
+                            { value: 'Phụ tùng xe đạp' },
+                            { value: 'Phụ tùng xe điện' },
+                            { value: 'Phụ tùng xe tải/xe ben' },
+                            { value: 'Phụ tùng khác' },
+                        ]}
                     />
                 </div>
 

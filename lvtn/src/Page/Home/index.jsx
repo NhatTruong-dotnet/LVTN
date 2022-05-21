@@ -5,41 +5,6 @@ import ListPost from '../../Common/ListPost/ListPost'
 import { selectListPost } from '../../features/Post/PostSlice'
 import styles from './home.module.css'
 
-const listBook = [
-    {
-        _id: 1,
-        title: 'item1',
-        price: 20000,
-        img: [
-            'https://cdn.chotot.com/Q839gTdm_RZHqge03Gy-MgbqQ0WhUxfmQOtume0XOy4/preset:listing/plain/e88380e0852991afb10e590c6aa4c96f-2770726449161965901.jpg',
-        ],
-    },
-    {
-        _id: 2,
-        title: 'item1',
-        price: 20000,
-        img: [
-            'https://cdn.chotot.com/Q839gTdm_RZHqge03Gy-MgbqQ0WhUxfmQOtume0XOy4/preset:listing/plain/e88380e0852991afb10e590c6aa4c96f-2770726449161965901.jpg',
-        ],
-    },
-    {
-        _id: 3,
-        title: 'item1',
-        price: 20000,
-        img: [
-            'https://cdn.chotot.com/Q839gTdm_RZHqge03Gy-MgbqQ0WhUxfmQOtume0XOy4/preset:listing/plain/e88380e0852991afb10e590c6aa4c96f-2770726449161965901.jpg',
-        ],
-    },
-    {
-        _id: 4,
-        title: 'item1',
-        price: 20000,
-        img: [
-            'https://cdn.chotot.com/Q839gTdm_RZHqge03Gy-MgbqQ0WhUxfmQOtume0XOy4/preset:listing/plain/e88380e0852991afb10e590c6aa4c96f-2770726449161965901.jpg',
-        ],
-    },
-]
-
 const categories = [
     {
         id: 1,
@@ -107,6 +72,10 @@ function Home() {
     const dispatch = useDispatch()
     const postData = useSelector(selectListPost)
 
+    const handleSelectCategory = id => {
+        localStorage.setItem('lastSubCategories', id)
+    }
+
     useEffect(() => {
         const lastSubCategories = localStorage.getItem('lastSubCategories')
         dispatch({ type: 'getPost', lastSubCategories: 12 })
@@ -117,7 +86,11 @@ function Home() {
             <Frame title='Khám phá danh mục'>
                 <div className='row no-gutters'>
                     {categories.map(({ id, name, imgSrc }) => (
-                        <div className='col l-2' key={id}>
+                        <div
+                            className='col l-2'
+                            key={id}
+                            onClick={() => handleSelectCategory(id)}
+                        >
                             <div className={styles.categoryItem}>
                                 <img
                                     src={imgSrc}

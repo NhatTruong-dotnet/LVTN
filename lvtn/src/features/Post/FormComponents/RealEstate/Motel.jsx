@@ -101,6 +101,12 @@ function Motel({ formData, handleFormDataChange }) {
                                     e.target.value
                                 )
                             }
+                            requireData={[
+                                { value: 'Nội thất cao cấp' },
+                                { value: 'Nội thất đầy đủ' },
+                                { value: 'Hoàn thiện cơ bản' },
+                                { value: 'Bàn giao thô' },
+                            ]}
                         />
                     </div>
                 </div>

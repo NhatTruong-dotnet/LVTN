@@ -137,6 +137,14 @@ function Apartment({ formData, handleFormDataChange }) {
                         onChange={e =>
                             handleFormDataChange('loaiHinh', e.target.value)
                         }
+                        requireData={[
+                            { value: 'Chung cư' },
+                            { value: 'Duplex' },
+                            { value: 'PentHouse' },
+                            { value: 'Căn hộ dịch vụ, mini' },
+                            { value: 'Tập thể, cư xá' },
+                            { value: 'OfficeTel' },
+                        ]}
                     />
                 </div>
                 <div className={styles.group}>
@@ -175,6 +183,16 @@ function Apartment({ formData, handleFormDataChange }) {
                                     e.target.value
                                 )
                             }
+                            requireData={[
+                                { value: 'Đông' },
+                                { value: 'Tây' },
+                                { value: 'Nam' },
+                                { value: 'Bắc' },
+                                { value: 'Đông Bắc' },
+                                { value: 'Đông Nam' },
+                                { value: 'Tây Bắc' },
+                                { value: 'Tây Nam' },
+                            ]}
                         />
 
                         <FormInput
@@ -187,6 +205,16 @@ function Apartment({ formData, handleFormDataChange }) {
                                     e.target.value
                                 )
                             }
+                            requireData={[
+                                { value: 'Đông' },
+                                { value: 'Tây' },
+                                { value: 'Nam' },
+                                { value: 'Bắc' },
+                                { value: 'Đông Bắc' },
+                                { value: 'Đông Nam' },
+                                { value: 'Tây Bắc' },
+                                { value: 'Tây Nam' },
+                            ]}
                         />
                     </div>
                 </div>
@@ -206,6 +234,11 @@ function Apartment({ formData, handleFormDataChange }) {
                                     e.target.value
                                 )
                             }
+                            requireData={[
+                                { value: 'Đã có sổ' },
+                                { value: 'Chưa có sổ' },
+                                { value: 'Giấy tờ khác' },
+                            ]}
                         />
 
                         <FormInput
@@ -218,6 +251,12 @@ function Apartment({ formData, handleFormDataChange }) {
                                     e.target.value
                                 )
                             }
+                            requireData={[
+                                { value: 'Nội thất cao cấp' },
+                                { value: 'Nội thất đầy đủ' },
+                                { value: 'Hoàn thiện cơ bản' },
+                                { value: 'Bàn giao thô' },
+                            ]}
                         />
                     </div>
                 </div>
