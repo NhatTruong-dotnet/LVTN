@@ -67,6 +67,15 @@ const params = {
     22: 'xeCoXeDap',
     23: 'xeCoPhuongTienKhac',
     24: 'xeCoPhuTungXe',
+    25: 'doDienTuDienThoai',
+    26: 'doDienTuMayTinhBang',
+    27: 'doDienTuLaptop',
+    28: 'doDienTuMayTinhDeBan',
+    29: 'doDienTuMayAnh',
+    30: 'doDienTuTivi',
+    31: 'doDienTuThietBiDeoThongMinh',
+    32: 'doDienTuPhuKien',
+    33: 'doDienTuLinhKien',
 }
 
 function mappingFormData(formData, numberPhone) {
@@ -77,7 +86,6 @@ function mappingFormData(formData, numberPhone) {
         paramUrl: params[subCategoryId || categoryId],
         anTin: true,
         trangThai: false,
-        mienPhi: false,
         idBaiDangChiTiet: 0,
         tablesDetail: 'string',
 

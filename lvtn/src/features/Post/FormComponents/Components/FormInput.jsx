@@ -2,7 +2,6 @@ import styles from '../RealEstate/index.module.css'
 import AutoComplete from '../../../../Base/Header/Components/AutoComplete'
 import clsx from 'clsx'
 import { useEffect, useState } from 'react'
-import TabContainer from '../../../../Common/TabContainer'
 
 function FormInput({
     require,
@@ -14,6 +13,7 @@ function FormInput({
     name,
     unit,
     requireData = [],
+    // formData,
 }) {
     const [autoCompleteItems, setAutoCompleteItems] = useState(requireData)
     const [message, setMessage] = useState('')
@@ -28,6 +28,20 @@ function FormInput({
     }
 
     const filterListData = inputValue => {
+        // if (typeof requireData === 'function') {
+        //     const data = requireData()
+        //     if (data) {
+        //         const newAutoCompleteItems = data.filter(({ value }) =>
+        //             value.includes(inputValue)
+        //         )
+        //         setAutoCompleteItems(newAutoCompleteItems)
+        //     }
+        // } else {
+        //     const newAutoCompleteItems = requireData.filter(({ value }) =>
+        //         value.includes(inputValue)
+        //     )
+        //     setAutoCompleteItems(newAutoCompleteItems)
+        // }
         const newAutoCompleteItems = requireData.filter(({ value }) =>
             value.includes(inputValue)
         )
@@ -57,6 +71,13 @@ function FormInput({
             setDisplayAutoComplete(false)
         }
     }
+
+    // useEffect(() => {
+    //     if (typeof requireData === 'function') {
+    //         const newData = requireData(formData)
+    //         setAutoCompleteItems(newData)
+    //     }
+    // }, [formData?.phuKienLoaiPhuKien])
 
     return (
         <>

@@ -12,6 +12,7 @@ import {
 } from 'react-icons/gi'
 import RealEstate from '../../features/Post/FormComponents/RealEstate'
 import Vehicle from '../../features/Post/FormComponents/Vehicle/Vehicle'
+import ElectronicDevice from '../../features/Post/FormComponents/ElectronicDevice/ElectronicDevice'
 
 const categories = [
     {
@@ -61,6 +62,13 @@ const categories = [
         id: 3,
         name: 'Đồ điện tử',
         Icon: GoDeviceDesktop,
+        Component: (subCategoryId, formData, handleFormDataChange) => (
+            <ElectronicDevice
+                subCategoryId={subCategoryId}
+                formData={formData}
+                handleFormDataChange={handleFormDataChange}
+            />
+        ),
         subCategory: [
             { id: 25, name: 'Điện thoại' },
             { id: 26, name: 'Máy tính bảng' },
