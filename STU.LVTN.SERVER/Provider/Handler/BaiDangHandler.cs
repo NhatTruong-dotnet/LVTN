@@ -148,6 +148,168 @@ namespace STU.LVTN.SERVER.Provider.Handler
                     break;
                 #endregion
 
+                #region DoDienTu
+                case 25:
+                    Dictionary<string, string> detailDienThoai = baiDangDoDienTuHelper.getPost_DienThoai_ByID(post.IdBaiDangChiTiet);
+                    result.Add("detail", detailDienThoai);
+                    break;
+                case 26:
+                    Dictionary<string, string> detailMayTinhBang = baiDangDoDienTuHelper.getPost_MayTinhBang_ByID(post.IdBaiDangChiTiet);
+                    result.Add("detail", detailMayTinhBang);
+                    break;
+                case 27:
+                    Dictionary<string, string> detailLaptop = baiDangDoDienTuHelper.getPost_Laptop_ByID(post.IdBaiDangChiTiet);
+                    result.Add("detail", detailLaptop);
+                    break;
+                case 28:
+                    Dictionary<string, string> detailMayTinhDeBan = baiDangDoDienTuHelper.getPost_MayTinhDeBan_ByID(post.IdBaiDangChiTiet);
+                    result.Add("detail", detailMayTinhDeBan);
+                    break;
+                case 29:
+                    Dictionary<string, string> detailMayAnhMayQuay = baiDangDoDienTuHelper.getPost_MayAnhMayQuayOngKinh_ByID(post.IdBaiDangChiTiet);
+                    result.Add("detail", detailMayAnhMayQuay);
+                    break;
+                case 30:
+                    Dictionary<string, string> detailTiviAmThanh = baiDangDoDienTuHelper.getPost_TiviAmThanh_ByID(post.IdBaiDangChiTiet);
+                    result.Add("detail", detailTiviAmThanh);
+                    break;
+                case 31:
+                    Dictionary<string, string> detailThietBiDeoThongMinh = baiDangDoDienTuHelper.getPost_ThietBiDeoThongMinh_ByID(post.IdBaiDangChiTiet);
+                    result.Add("detail", detailThietBiDeoThongMinh);
+                    break;
+                case 32:
+                    Dictionary<string, string> detailPhuKien = baiDangDoDienTuHelper.getPost_PhuKien_ByID(post.IdBaiDangChiTiet);
+                    result.Add("detail", detailPhuKien);
+                    break;
+                case 33:
+                    Dictionary<string, string> detailLinhKien = baiDangDoDienTuHelper.getPost_LinhKien_ByID(post.IdBaiDangChiTiet);
+                    result.Add("detail", detailLinhKien);
+                    break;
+                #endregion
+
+                #region ViecLam
+                case 4:
+                    Dictionary<string, string> detailViecLam = baiDangViecLamHelper.getPost_ViecLam_ByID(post.IdBaiDangChiTiet);
+                    result.Add("detail", detailViecLam);
+                    break;
+                #endregion
+
+                #region ThuCung
+                case 34:
+                case 37:
+                case 38:
+                    Dictionary<string, string> detailThuCung= baiDangThuCungHelper.getPost_ThuCungGaMeoThuCungKhac_ByID(post.IdBaiDangChiTiet);
+                    result.Add("detail", detailThuCung);
+                    break;
+                case 36:
+                    Dictionary<string, string> detailThuCungChim = baiDangThuCungHelper.getPost_ThuCungChim_ByID(post.IdBaiDangChiTiet);
+                    result.Add("detail", detailThuCungChim);
+                    break;
+                case 35:
+                    Dictionary<string, string> detailThuCungCho = baiDangThuCungHelper.getPost_ThuCungCho_ByID(post.IdBaiDangChiTiet);
+                    result.Add("detail", detailThuCungCho);
+                    break;
+                #endregion
+
+                #region DoAn ThucPham
+                case 6:
+                    Dictionary<string, string> detailDoAn = baiDangDoAnThucPhamHelper.getPost_DoAn_ByID(post.IdBaiDangChiTiet);
+                    result.Add("detail", detailDoAn);
+                    break;
+                #endregion
+
+                #region TuLanh
+                case 40:
+                    Dictionary<string, string> detailTuLanh = baiDangTuLanhHelper.getPost_TuLanh_ByID(post.IdBaiDangChiTiet);
+                    result.Add("detail", detailTuLanh);
+                    break;
+                case 41:
+                    Dictionary<string, string> detailMayLanhMayDieuHoa = baiDangTuLanhHelper.getPost_MayLanhDieuHoa_ByID(post.IdBaiDangChiTiet);
+                    result.Add("detail", detailMayLanhMayDieuHoa);
+                    break;
+                case 42:
+                    Dictionary<string, string> detailMayGiat= baiDangTuLanhHelper.getPost_MayGiat_ByID(post.IdBaiDangChiTiet);
+                    result.Add("detail", detailMayGiat);
+                    break;
+                #endregion
+
+                #region DoGiaDung
+                case 43:
+                    Dictionary<string, string> detailBanGhe = baiDangDoGiaDungHelper.getPost_BanGhe_ByID(post.IdBaiDangChiTiet);
+                    result.Add("detail", detailBanGhe );
+                    break;
+                case 44:
+                    Dictionary<string, string> detailTuKe = baiDangDoGiaDungHelper.getPost_TuKe_ByID(post.IdBaiDangChiTiet);
+                    result.Add("detail", detailTuKe);
+                    break;
+                case 45:
+                    Dictionary<string, string> detailGiuong = baiDangDoGiaDungHelper.getPost_Giuong_ByID(post.IdBaiDangChiTiet);
+                    result.Add("detail", detailGiuong);
+                    break;
+                case 46:
+                    Dictionary<string, string> detailBep = baiDangDoGiaDungHelper.getPost_Bep_ByID(post.IdBaiDangChiTiet);
+                    result.Add("detail", detailBep);
+                    break;
+                case 48:
+                    Dictionary<string, string> detailQuat = baiDangDoGiaDungHelper.getPost_Quat_ByID(post.IdBaiDangChiTiet);
+                    result.Add("detail", detailQuat);
+                    break;
+                case 49:
+                case 50:
+                case 52:
+                    Dictionary<string, string> detailDenCayCanhNoiThat = baiDangDoGiaDungHelper.getPost_DenCayCanhNoiThat_ByID(post.IdBaiDangChiTiet);
+                    result.Add("detail", detailDenCayCanhNoiThat);
+                    break;
+                case 51:
+                    Dictionary<string, string> detailThietBiVeSinh = baiDangDoGiaDungHelper.getPost_ThietBiVeSinh_ByID(post.IdBaiDangChiTiet);
+                    result.Add("detail", detailThietBiVeSinh);
+                    break;
+                #endregion
+
+                #region MevaBe
+                case 9:
+                    Dictionary<string, string> detailMeVaBe = baiDangMeVaBeHelper.getPost_MeVaBe_ByID(post.IdBaiDangChiTiet);
+                    result.Add("detail", detailMeVaBe);
+                    break;
+                #endregion
+
+                #region ThoiTrang
+                case 53:
+                case 54:
+                case 55:
+                case 56:
+                case 57:
+                case 58:
+                    Dictionary<string, string> detailThoiTrang = baiDangThoiTrangHelper.getPost_ThoiTrang_ByID(post.IdBaiDangChiTiet);
+                    result.Add("detail", detailThoiTrang);
+                    break;
+                #endregion
+
+                #region GiaiTri
+                case 60:
+                case 61:
+                case 63:
+                case 64:
+                    Dictionary<string, string> detailGiaiTri = baiDangGiaiTriHelper.getPost_SachDoTheThaoThietBiChoiGameSoThichKhac_ByID(post.IdBaiDangChiTiet);
+                    result.Add("detail", detailGiaiTri);
+                    break;
+                case 59:
+                    Dictionary<string, string> detailNhacCu = baiDangGiaiTriHelper.getPost_NhacCu_ByID(post.IdBaiDangChiTiet);
+                    result.Add("detail", detailNhacCu);
+                    break;
+                case 62:
+                    Dictionary<string, string> detailDoSuuTam = baiDangGiaiTriHelper.getPost_DoSuuTam_ByID(post.IdBaiDangChiTiet);
+                    result.Add("detail", detailDoSuuTam);
+                    break;
+                #endregion
+
+                #region DoDungVanPhong
+                case 65:
+                case 66:
+                    Dictionary<string, string> detailDoDung = baiDangDoDungVanPhongHelper.getPost_ThoiTrang_ByID(post.IdBaiDangChiTiet);
+                    result.Add("detail", detailDoDung);
+                    break;
+                #endregion
                 default:
                     break;
             }

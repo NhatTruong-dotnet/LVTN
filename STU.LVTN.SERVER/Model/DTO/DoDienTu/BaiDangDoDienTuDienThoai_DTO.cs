@@ -29,6 +29,8 @@
         public string? DienThoaiHang { get; set; }
         public string? DienThoaiMauSac { get; set; }
         public string? DienThoaiDungLuong { get; set; }
+        public string? DienThoaiDongMay { get; set; }
+
         #endregion
         public List<HinhAnh_BaiDangDTO> hinhAnh_BaiDangs { get; set; }
 

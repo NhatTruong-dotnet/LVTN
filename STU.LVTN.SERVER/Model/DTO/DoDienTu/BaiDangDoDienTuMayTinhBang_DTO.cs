@@ -23,12 +23,16 @@
         public DateTime? CreatedDate { get; set; } = DateTime.Now;
         #endregion
 
-        #region BaiDangDienThoai
+        #region BaiDangMayTinhBang
         public bool? BaoHanh { get; set; }
         public string? TinhTrang { get; set; }
         public bool? MayTinhBangQuocTe { get; set; }
         public bool? MayTinhBang4g { get; set; }
+        public string? MayTinhBangHang { get; set; }
+        public string? MayTinhBangDongMay { get; set; }
         public string? MayTinhBangDungLuong { get; set; }
+        public string? MayTinhBangKichCoManHinh { get; set; }
+
         #endregion
         public List<HinhAnh_BaiDangDTO> hinhAnh_BaiDangs { get; set; }
 

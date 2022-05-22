@@ -7,5 +7,6 @@ namespace STU.LVTN.SERVER.Model
     {
         public int IdBaiDang { get; set; }
         public bool? DaSuDung { get; set; }
+        public string LoaiSanPham { get; set; }
     }
 }

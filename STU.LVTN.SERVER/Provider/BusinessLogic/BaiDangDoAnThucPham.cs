@@ -18,5 +18,12 @@ namespace STU.LVTN.SERVER.Provider.BusinessLogic
                 return -1;
             }
         }
+        public Dictionary<string, string> getPost_DoAn_ByID(int? idPostDetail)
+        {
+            Dictionary<string, string> post = new Dictionary<string, string>();
+            BaiDangDoAnThucPhamEntities entity = _context.BaiDangDoAnThucPhams.Where(item => item.IdBaiDang == idPostDetail).FirstOrDefault();
+            post.Add("Loại thực phẩm: ", entity.LoaiThucPham.ToString());
+            return post;
+        }
     }
 }

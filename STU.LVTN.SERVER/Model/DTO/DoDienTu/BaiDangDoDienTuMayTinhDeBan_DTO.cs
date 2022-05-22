@@ -32,6 +32,8 @@
         public bool? MayTinhDeBanHdd { get; set; }
         public string? MayTinhDeBanCardManHinh { get; set; }
         public string? MayTinhDeBanKichCoManHinh { get; set; }
+        public bool? MayTinhDeBanMienPhi { get; set; }
+
         #endregion
         public List<HinhAnh_BaiDangDTO> hinhAnh_BaiDangs { get; set; }
 

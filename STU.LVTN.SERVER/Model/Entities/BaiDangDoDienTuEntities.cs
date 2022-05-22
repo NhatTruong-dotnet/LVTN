@@ -10,8 +10,12 @@ namespace STU.LVTN.SERVER.Model
         public string? DienThoaiHang { get; set; }
         public string? DienThoaiMauSac { get; set; }
         public string? DienThoaiDungLuong { get; set; }
+        public string? DienThoaiDongMay { get; set; }
+        public string? MayTinhBangHang { get; set; }
         public bool? MayTinhBangQuocTe { get; set; }
         public bool? MayTinhBang4g { get; set; }
+        public string? MayTinhBangKichCoManHinh { get; set; }
+        public string? MayTinhBangDongMay { get; set; }
         public string? MayTinhBangDungLuong { get; set; }
         public string? MayTinhDeBanBoViXuly { get; set; }
         public string? MayTinhDeBanRam { get; set; }
@@ -19,6 +23,7 @@ namespace STU.LVTN.SERVER.Model
         public bool? MayTinhDeBanHdd { get; set; }
         public string? MayTinhDeBanCardManHinh { get; set; }
         public string? MayTinhDeBanKichCoManHinh { get; set; }
+        public bool? MayTinhDeBanMienPhi { get; set; }
         public string? LaptopBoViXuly { get; set; }
         public string? LaptopRam { get; set; }
         public string? LaptopOcung { get; set; }
@@ -26,9 +31,12 @@ namespace STU.LVTN.SERVER.Model
         public string? LaptopCardManHinh { get; set; }
         public string? LaptopKichCoManHinh { get; set; }
         public string? LaptopHang { get; set; }
+        public string? LaptopDongMay { get; set; }
         public string? MayAnhThietBi { get; set; }
+        public string? ThietBiDongMay { get; set; }
         public string? MayAnhTinhTrang { get; set; }
         public string? TiviThietBi { get; set; }
+        public string? TiviHang { get; set; }
         public string? TiviTinhTrang { get; set; }
         public string? ThietBiDeoThongMinhThietBi { get; set; }
         public string? ThietBiDeoThongMinhTinhTrang { get; set; }

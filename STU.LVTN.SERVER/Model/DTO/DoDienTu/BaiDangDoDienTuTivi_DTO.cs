@@ -27,6 +27,8 @@
         public bool? BaoHanh { get; set; }
         public string? TinhTrang { get; set; }
         public string? TiviThietBi { get; set; }
+        public string? TiviHang { get; set; }
+
         #endregion
         public List<HinhAnh_BaiDangDTO> hinhAnh_BaiDangs { get; set; }
 
