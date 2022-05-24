@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using STU.LVTN.SERVER.Model;
 using STU.LVTN.SERVER.Model.DTO;
@@ -39,6 +40,14 @@ namespace STU.LVTN.SERVER.Controllers
                 return BadRequest(response);
             }
             return Ok(response);
+        }
+
+        [HttpGet("profile"),Authorize]
+        public async Task<ActionResult<UserProfileDTO>> UserProfile()
+        {
+            string sdt = User.Identity.Name;
+            UserProfileDTO profileUser = await nguoiDungHandler.UserProfile(sdt);
+            return Ok(profileUser);
         }
     }
 }

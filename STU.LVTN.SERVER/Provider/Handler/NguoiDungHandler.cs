@@ -22,6 +22,7 @@ namespace STU.LVTN.SERVER.Provider.Handler
             nguoiDungHelper.CreatePasswordHash(userRequest.Password, out byte[] passwordHash, out byte[] passwordSalt);
             user.PasswordSalt = passwordSalt;
             user.PasswordHash = passwordHash;
+            user.Ten = "User "+ user.CreatedDate.ToString().Split(" ")[1];
 
             return nguoiDungHelper.AddUser(user);
         }
@@ -43,6 +44,16 @@ namespace STU.LVTN.SERVER.Provider.Handler
             }
         }
 
-       
+        public async Task<UserProfileDTO> UserProfile(string soDienThoai)
+        {
+            NguoiDungEntities nguoiDung = await nguoiDungHelper.GetNguoiDungBySoDienThoai(soDienThoai);
+            UserProfileDTO userProfile = new UserProfileDTO();
+            userProfile.CreatedDate = nguoiDung.CreatedDate;
+            userProfile.Ten = nguoiDung.Ten;
+            userProfile.SoDienThoai = soDienThoai;
+            userProfile.DiaChi = nguoiDung.DiaChi;
+            userProfile.DanhGiaHeThong = nguoiDung.DanhGiaHeThong;
+            return userProfile;
+        }
     }
 }

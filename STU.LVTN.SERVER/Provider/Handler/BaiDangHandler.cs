@@ -72,10 +72,10 @@ namespace STU.LVTN.SERVER.Provider.Handler
             return await baiDangHelper.GetSoldPostBySoDienThoai(soDienThoai);
         }
 
-        public async Task<Dictionary<string, Dictionary<string ,string>>> GetPostByID(int IDPost)
+        public async Task<Dictionary<string, Dictionary<string, string>>> GetPostByID(int IDPost)
         {
             BaiDangEntities post = await baiDangHelper.GetPostByID(IDPost);
-            Dictionary<string, Dictionary<string ,string>> result = new Dictionary<string, Dictionary<string ,string>>();
+            Dictionary<string, Dictionary<string, string>> result = new Dictionary<string, Dictionary<string, string>>();
             int idDanhMucSanPham = post.IdDanhMucCha;
             int? idDanhMucBaiDang = post.IdDanhMucCon;
             #region BaiDang global
@@ -198,7 +198,7 @@ namespace STU.LVTN.SERVER.Provider.Handler
                 case 34:
                 case 37:
                 case 38:
-                    Dictionary<string, string> detailThuCung= baiDangThuCungHelper.getPost_ThuCungGaMeoThuCungKhac_ByID(post.IdBaiDangChiTiet);
+                    Dictionary<string, string> detailThuCung = baiDangThuCungHelper.getPost_ThuCungGaMeoThuCungKhac_ByID(post.IdBaiDangChiTiet);
                     result.Add("detail", detailThuCung);
                     break;
                 case 36:
@@ -228,7 +228,7 @@ namespace STU.LVTN.SERVER.Provider.Handler
                     result.Add("detail", detailMayLanhMayDieuHoa);
                     break;
                 case 42:
-                    Dictionary<string, string> detailMayGiat= baiDangTuLanhHelper.getPost_MayGiat_ByID(post.IdBaiDangChiTiet);
+                    Dictionary<string, string> detailMayGiat = baiDangTuLanhHelper.getPost_MayGiat_ByID(post.IdBaiDangChiTiet);
                     result.Add("detail", detailMayGiat);
                     break;
                 #endregion
@@ -236,7 +236,7 @@ namespace STU.LVTN.SERVER.Provider.Handler
                 #region DoGiaDung
                 case 43:
                     Dictionary<string, string> detailBanGhe = baiDangDoGiaDungHelper.getPost_BanGhe_ByID(post.IdBaiDangChiTiet);
-                    result.Add("detail", detailBanGhe );
+                    result.Add("detail", detailBanGhe);
                     break;
                 case 44:
                     Dictionary<string, string> detailTuKe = baiDangDoGiaDungHelper.getPost_TuKe_ByID(post.IdBaiDangChiTiet);
@@ -313,6 +313,21 @@ namespace STU.LVTN.SERVER.Provider.Handler
                 default:
                     break;
             }
+
+            Dictionary<string, string> hinhAnhDictionary = new Dictionary<string, string>();
+            Dictionary<string, string> videoDictionary = new Dictionary<string, string>();
+            List<HinhAnhBaiDangEntities> hinhAnhBaiDang = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(IDPost);
+            for (int i = 1; i <= hinhAnhBaiDang.Count; i++)
+            {
+                
+                    if (!(bool)hinhAnhBaiDang[i - 1].VideoType)
+                        hinhAnhDictionary.Add(i.ToString(), hinhAnhBaiDang[i - 1].IdMediaCloud.ToString());
+                    else
+                        videoDictionary.Add((videoDictionary.Count + 1).ToString(), hinhAnhBaiDang[i - 1].IdMediaCloud.ToString());
+
+            }
+            result.Add("HinhAnh", hinhAnhDictionary);
+            result.Add("Video", videoDictionary);
             return result;
         }
 

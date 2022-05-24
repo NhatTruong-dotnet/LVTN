@@ -17,5 +17,11 @@ namespace STU.LVTN.SERVER.Provider.BusinessLogic
                 
             }
         }
+
+        public async Task<List<HinhAnhBaiDangEntities>> getHinhAnhBaiDangByIDPost(int idPost)
+        {
+            List<HinhAnhBaiDangEntities> result = _context.HinhAnhBaiDangs.Where(item => item.IdSanPham == idPost).ToList();
+            return result;
+        }
     }
 }
