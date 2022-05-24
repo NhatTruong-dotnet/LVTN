@@ -1,72 +1,61 @@
 import { useEffect, useState } from 'react'
-import styles from './vehicle.module.css'
-import Another from './Another'
-import Bicycle from './Bicycle'
-import Car from './Car'
-import Motorcycle from './Motorcycle'
-import SpareParts from './SpareParts'
-import ElectricBike from './ElectricBike'
-import Truck from './Truck'
+import Clothes from './Clothes'
+import Watch from './Watch'
+import Footwear from './Footwear'
+import HandBag from './HandBag'
+import Perfume from './Perfume'
+import FashionAccessories from './FashionAccessories'
 
 const subCategories = [
     {
-        id: 18,
+        id: 53,
         Component: ({ formData, handleFormDataChange }) => (
-            <Car
+            <Clothes
                 handleFormDataChange={handleFormDataChange}
                 formData={formData}
             />
         ),
     },
     {
-        id: 19,
+        id: 54,
         Component: ({ formData, handleFormDataChange }) => (
-            <Motorcycle
+            <Watch
                 handleFormDataChange={handleFormDataChange}
                 formData={formData}
             />
         ),
     },
     {
-        id: 20,
+        id: 55,
         Component: ({ formData, handleFormDataChange }) => (
-            <Truck
+            <Footwear
                 handleFormDataChange={handleFormDataChange}
                 formData={formData}
             />
         ),
     },
     {
-        id: 21,
+        id: 56,
         Component: ({ formData, handleFormDataChange }) => (
-            <ElectricBike
+            <HandBag
                 handleFormDataChange={handleFormDataChange}
                 formData={formData}
             />
         ),
     },
     {
-        id: 22,
+        id: 57,
         Component: ({ formData, handleFormDataChange }) => (
-            <Bicycle
+            <Perfume
                 handleFormDataChange={handleFormDataChange}
                 formData={formData}
             />
         ),
     },
     {
-        id: 23,
+        id: 58,
         Component: ({ formData, handleFormDataChange }) => (
-            <Another
-                handleFormDataChange={handleFormDataChange}
-                formData={formData}
-            />
-        ),
-    },
-    {
-        id: 24,
-        Component: ({ formData, handleFormDataChange }) => (
-            <SpareParts
+            <FashionAccessories
                 handleFormDataChange={handleFormDataChange}
                 formData={formData}
             />
@@ -74,7 +63,7 @@ const subCategories = [
     },
 ]
 
-function Vehicle({ subCategoryId, formData, handleFormDataChange }) {
+function Fashion({ subCategoryId, formData, handleFormDataChange }) {
     const [currentSubCategory, setCurrentSubCategory] = useState(null)
     console.log(formData)
 
@@ -95,4 +84,4 @@ function Vehicle({ subCategoryId, formData, handleFormDataChange }) {
     )
 }
 
-export default Vehicle
+export default Fashion

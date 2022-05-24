@@ -1,72 +1,61 @@
 import { useEffect, useState } from 'react'
-import styles from './vehicle.module.css'
-import Another from './Another'
-import Bicycle from './Bicycle'
-import Car from './Car'
-import Motorcycle from './Motorcycle'
-import SpareParts from './SpareParts'
-import ElectricBike from './ElectricBike'
-import Truck from './Truck'
+import Bird from './Bird'
+import Chicken from './Chicken'
+import Dog from './Dog'
+import Cat from './Cat'
+import AnotherPet from './AnotherPet'
+import PetService from './PetService'
 
 const subCategories = [
     {
-        id: 18,
+        id: 34,
         Component: ({ formData, handleFormDataChange }) => (
-            <Car
+            <Chicken
                 handleFormDataChange={handleFormDataChange}
                 formData={formData}
             />
         ),
     },
     {
-        id: 19,
+        id: 35,
         Component: ({ formData, handleFormDataChange }) => (
-            <Motorcycle
+            <Dog
                 handleFormDataChange={handleFormDataChange}
                 formData={formData}
             />
         ),
     },
     {
-        id: 20,
+        id: 36,
         Component: ({ formData, handleFormDataChange }) => (
-            <Truck
+            <Bird
                 handleFormDataChange={handleFormDataChange}
                 formData={formData}
             />
         ),
     },
     {
-        id: 21,
+        id: 37,
         Component: ({ formData, handleFormDataChange }) => (
-            <ElectricBike
+            <Cat
                 handleFormDataChange={handleFormDataChange}
                 formData={formData}
             />
         ),
     },
     {
-        id: 22,
+        id: 38,
         Component: ({ formData, handleFormDataChange }) => (
-            <Bicycle
+            <AnotherPet
                 handleFormDataChange={handleFormDataChange}
                 formData={formData}
             />
         ),
     },
     {
-        id: 23,
+        id: 39,
         Component: ({ formData, handleFormDataChange }) => (
-            <Another
-                handleFormDataChange={handleFormDataChange}
-                formData={formData}
-            />
-        ),
-    },
-    {
-        id: 24,
-        Component: ({ formData, handleFormDataChange }) => (
-            <SpareParts
+            <PetService
                 handleFormDataChange={handleFormDataChange}
                 formData={formData}
             />
@@ -74,7 +63,7 @@ const subCategories = [
     },
 ]
 
-function Vehicle({ subCategoryId, formData, handleFormDataChange }) {
+function Pet({ subCategoryId, formData, handleFormDataChange }) {
     const [currentSubCategory, setCurrentSubCategory] = useState(null)
     console.log(formData)
 
@@ -82,17 +71,18 @@ function Vehicle({ subCategoryId, formData, handleFormDataChange }) {
         const element = subCategories.find(({ id }) => id === subCategoryId)
         setCurrentSubCategory(element)
     }, [subCategoryId])
-
     return (
         <>
-            {currentSubCategory && (
-                <currentSubCategory.Component
-                    formData={formData}
-                    handleFormDataChange={handleFormDataChange}
-                />
-            )}
+            <>
+                {currentSubCategory && formData.canBan !== null && (
+                    <currentSubCategory.Component
+                        formData={formData}
+                        handleFormDataChange={handleFormDataChange}
+                    />
+                )}
+            </>
         </>
     )
 }
 
-export default Vehicle
+export default Pet

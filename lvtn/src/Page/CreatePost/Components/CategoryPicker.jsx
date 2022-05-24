@@ -26,7 +26,7 @@ function CategoryPicker({
         else if (subCategory === null) {
             setSelectedCategory({
                 ...selectedCategory,
-                category: { id, name },
+                category: { id, name, Component },
                 subCategory: null,
             })
             closeCategoryPicker()

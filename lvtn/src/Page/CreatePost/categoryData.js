@@ -13,6 +13,15 @@ import {
 import RealEstate from '../../features/Post/FormComponents/RealEstate'
 import Vehicle from '../../features/Post/FormComponents/Vehicle/Vehicle'
 import ElectronicDevice from '../../features/Post/FormComponents/ElectronicDevice/ElectronicDevice'
+import Job from '../../features/Post/FormComponents/Job/Job'
+import Pet from '../../features/Post/FormComponents/Pet/Pet'
+import Food from '../../features/Post/FormComponents/Food/Food'
+import HouseWare from '../../features/Post/FormComponents/Houseware/Houseware'
+import Furniture from '../../features/Post/FormComponents/Furniture/Furniture'
+import MomAndBaby from '../../features/Post/FormComponents/MomAndBaby/MomAndBaby'
+import Fashion from '../../features/Post/FormComponents/Fashion/Fashion'
+import Entertainment from '../../features/Post/FormComponents/Entertainment/Entertainment'
+import Requisite from '../../features/Post/FormComponents/RequisiteAndIndustryAndAgriculture'
 
 const categories = [
     {
@@ -86,11 +95,25 @@ const categories = [
         name: 'Việc làm',
         Icon: MdShoppingBag,
         subCategory: null,
+        Component: (subCategoryId, formData, handleFormDataChange) => (
+            <Job
+                subCategoryId={subCategoryId}
+                formData={formData}
+                handleFormDataChange={handleFormDataChange}
+            />
+        ),
     },
     {
         id: 5,
         name: 'Thú cưng',
         Icon: MdPets,
+        Component: (subCategoryId, formData, handleFormDataChange) => (
+            <Pet
+                subCategoryId={subCategoryId}
+                formData={formData}
+                handleFormDataChange={handleFormDataChange}
+            />
+        ),
         subCategory: [
             { id: 34, name: 'Gà' },
             { id: 35, name: 'Chó' },
@@ -105,11 +128,26 @@ const categories = [
         name: 'Đồ ăn, thực phẩm các loại',
         Icon: GiForkKnifeSpoon,
         subCategory: null,
+        Component: (subCategoryId, formData, handleFormDataChange) => (
+            <Food
+                subCategoryId={subCategoryId}
+                formData={formData}
+                handleFormDataChange={handleFormDataChange}
+            />
+        ),
     },
     {
         id: 7,
         name: 'Tủ lạnh, máy lạnh, máy giặt',
         Icon: RiFridgeFill,
+        Component: (subCategoryId, formData, handleFormDataChange) => (
+            <HouseWare
+                subCategoryId={subCategoryId}
+                formData={formData}
+                handleFormDataChange={handleFormDataChange}
+            />
+        ),
+
         subCategory: [
             { id: 40, name: 'Tủ lạnh' },
             { id: 41, name: 'Máy lạnh, điều hòa' },
@@ -120,6 +158,13 @@ const categories = [
         id: 8,
         name: 'Đồ gia dụng, nội thất, cây cảnh',
         Icon: GiSofa,
+        Component: (subCategoryId, formData, handleFormDataChange) => (
+            <Furniture
+                subCategoryId={subCategoryId}
+                formData={formData}
+                handleFormDataChange={handleFormDataChange}
+            />
+        ),
         subCategory: [
             { id: 43, name: 'Bàn ghế' },
             { id: 44, name: 'Tủ, kệ gia đình' },
@@ -133,11 +178,30 @@ const categories = [
             { id: 52, name: 'Nội thất, đồ gia dụng khác' },
         ],
     },
-    { id: 9, name: 'Mẹ và bé', Icon: FaBabyCarriage, subCategory: null },
+    {
+        id: 9,
+        name: 'Mẹ và bé',
+        Icon: FaBabyCarriage,
+        subCategory: null,
+        Component: (subCategoryId, formData, handleFormDataChange) => (
+            <MomAndBaby
+                subCategoryId={subCategoryId}
+                formData={formData}
+                handleFormDataChange={handleFormDataChange}
+            />
+        ),
+    },
     {
         id: 10,
         name: 'Thời trang, đồ dùng cá nhân',
         Icon: GiDress,
+        Component: (subCategoryId, formData, handleFormDataChange) => (
+            <Fashion
+                subCategoryId={subCategoryId}
+                formData={formData}
+                handleFormDataChange={handleFormDataChange}
+            />
+        ),
         subCategory: [
             { id: 53, name: 'Quần áo' },
             { id: 54, name: 'Đồng hồ' },
@@ -151,11 +215,18 @@ const categories = [
         id: 11,
         name: 'Giải trí, thể thao, sở thích',
         Icon: GiConsoleController,
+        Component: (subCategoryId, formData, handleFormDataChange) => (
+            <Entertainment
+                subCategoryId={subCategoryId}
+                formData={formData}
+                handleFormDataChange={handleFormDataChange}
+            />
+        ),
         subCategory: [
             { id: 59, name: 'Nhạc cụ' },
             { id: 60, name: 'Sách' },
             { id: 61, name: 'Đồ thể thao, dã ngoại' },
-            { id: 62, name: 'Đồ sưu tâm, đồ cổ' },
+            { id: 62, name: 'Đồ sưu tầm, đồ cổ' },
             { id: 63, name: 'Thiết bị chơi game' },
             { id: 64, name: 'Sở thích khác' },
         ],
@@ -164,6 +235,13 @@ const categories = [
         id: 12,
         name: 'Đồ dùng văn phòng, công nông nghiệp',
         Icon: GiSewingMachine,
+        Component: (subCategoryId, formData, handleFormDataChange) => (
+            <Requisite
+                subCategoryId={subCategoryId}
+                formData={formData}
+                handleFormDataChange={handleFormDataChange}
+            />
+        ),
         subCategory: [
             { id: 65, name: 'Đồ dùng văn phòng' },
             { id: 66, name: 'Đồ chuyên dụng, Giống nuôi trồng' },

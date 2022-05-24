@@ -411,6 +411,7 @@ const array = [
                     soNha: '',
                 },
             },
+            // linh kiện
             {
                 subCategoryId: 33,
                 gia: '',
@@ -419,6 +420,587 @@ const array = [
                 mienPhi: false,
                 linhKienLoaiPhuKien: '',
                 linhKienThietBi: '',
+                address: {
+                    thanhPho: '',
+                    quanHuyen: '',
+                    phuongXa: '',
+                    tenDuong: '',
+                    soNha: '',
+                },
+            },
+        ],
+    },
+    // Việc làm
+    {
+        categoryId: 4,
+        tinhTrang: '',
+        caNhan: false,
+        tenHoKinhDoanh: '',
+        soLuongTuyenDung: '',
+        nganhNghe: '',
+        loaiCongViec: '',
+        hinhThucTraLuong: '',
+        luongToiThieu: '',
+        luongToiDa: '',
+        doTuoiToiThieu: '',
+        doTuoiToiDa: '',
+        nam: false,
+        hocVanToiThieu: '',
+        kinhNghiem: '',
+        chungChi: '',
+        quyenLoi: '',
+        address: {
+            thanhPho: '',
+            quanHuyen: '',
+            phuongXa: '',
+            tenDuong: '',
+            soNha: '',
+        },
+    },
+    {
+        categoryId: 5,
+        subCategories: [
+            {
+                subCategoryId: 34,
+                mienPhi: '',
+                gia: '',
+                giongThuCung: '',
+                doTuoi: '',
+                address: {
+                    thanhPho: '',
+                    quanHuyen: '',
+                    phuongXa: '',
+                    tenDuong: '',
+                    soNha: '',
+                },
+            },
+            {
+                subCategoryId: 35,
+                mienPhi: '',
+                gia: '',
+                giongThuCung: '',
+                doTuoi: '',
+                choKichCo: '',
+                address: {
+                    thanhPho: '',
+                    quanHuyen: '',
+                    phuongXa: '',
+                    tenDuong: '',
+                    soNha: '',
+                },
+            },
+            {
+                subCategoryId: 36,
+                mienPhi: '',
+                gia: '',
+                giongThuCung: '',
+                doTuoi: '',
+                chimGioiTinh: '',
+                address: {
+                    thanhPho: '',
+                    quanHuyen: '',
+                    phuongXa: '',
+                    tenDuong: '',
+                    soNha: '',
+                },
+            },
+            {
+                subCategoryId: 37,
+                mienPhi: '',
+                gia: '',
+                giongThuCung: '',
+                doTuoi: '',
+                address: {
+                    thanhPho: '',
+                    quanHuyen: '',
+                    phuongXa: '',
+                    tenDuong: '',
+                    soNha: '',
+                },
+            },
+            {
+                subCategoryId: 38,
+                mienPhi: '',
+                gia: '',
+                giongThuCung: '',
+                address: {
+                    thanhPho: '',
+                    quanHuyen: '',
+                    phuongXa: '',
+                    tenDuong: '',
+                    soNha: '',
+                },
+            },
+        ],
+    },
+    {
+        categoryId: 6,
+        mienPhi: '',
+        gia: '',
+        loaiThucPham: '',
+        address: {
+            thanhPho: '',
+            quanHuyen: '',
+            phuongXa: '',
+            tenDuong: '',
+            soNha: '',
+        },
+    },
+    {
+        categoryId: 7,
+        subCategories: [
+            {
+                subCategoryId: 40,
+                mienPhi: '',
+                gia: '',
+                hang: '',
+                daSuDung: false,
+                tuLanhTheTich: '',
+                address: {
+                    thanhPho: '',
+                    quanHuyen: '',
+                    phuongXa: '',
+                    tenDuong: '',
+                    soNha: '',
+                },
+            },
+            {
+                subCategoryId: 41,
+                mienPhi: '',
+                gia: '',
+                hang: '',
+                daSuDung: false,
+                mayLanhCongSuat: '',
+                address: {
+                    thanhPho: '',
+                    quanHuyen: '',
+                    phuongXa: '',
+                    tenDuong: '',
+                    soNha: '',
+                },
+            },
+            {
+                subCategoryId: 42,
+                mienPhi: '',
+                gia: '',
+                hang: '',
+                daSuDung: false,
+                mayGiatCuaMayGiat: '',
+                mayGiatKhoiLuongGiat: '',
+                address: {
+                    thanhPho: '',
+                    quanHuyen: '',
+                    phuongXa: '',
+                    tenDuong: '',
+                    soNha: '',
+                },
+            },
+        ],
+    },
+    {
+        categoryId: 8,
+        subCategories: [
+            // bàn ghế
+            {
+                subCategoryId: 43,
+                mienPhi: '',
+                gia: '',
+                hang: '',
+                daSuDung: false,
+                loaiSanPham: '',
+                banGheChatLieu: '',
+                address: {
+                    thanhPho: '',
+                    quanHuyen: '',
+                    phuongXa: '',
+                    tenDuong: '',
+                    soNha: '',
+                },
+            },
+            // tủ kệ
+            {
+                subCategoryId: 44,
+                mienPhi: '',
+                gia: '',
+                hang: '',
+                daSuDung: false,
+                loaiSanPham: '',
+                tuKeChatLieu: '',
+                address: {
+                    thanhPho: '',
+                    quanHuyen: '',
+                    phuongXa: '',
+                    tenDuong: '',
+                    soNha: '',
+                },
+            },
+            // giường
+            {
+                subCategoryId: 45,
+                mienPhi: '',
+                gia: '',
+                hang: '',
+                daSuDung: false,
+                loaiSanPham: '',
+                giuongChatLieu: '',
+                address: {
+                    thanhPho: '',
+                    quanHuyen: '',
+                    phuongXa: '',
+                    tenDuong: '',
+                    soNha: '',
+                },
+            },
+            // bếp
+            {
+                subCategoryId: 46,
+                mienPhi: '',
+                gia: '',
+                hang: '',
+                daSuDung: false,
+                loaiSanPham: '',
+                bepThuongHieu: '',
+                address: {
+                    thanhPho: '',
+                    quanHuyen: '',
+                    phuongXa: '',
+                    tenDuong: '',
+                    soNha: '',
+                },
+            },
+            // dụng cụ bếp
+            {
+                subCategoryId: 47,
+                mienPhi: '',
+                gia: '',
+                hang: '',
+                daSuDung: false,
+                loaiSanPham: '',
+                address: {
+                    thanhPho: '',
+                    quanHuyen: '',
+                    phuongXa: '',
+                    tenDuong: '',
+                    soNha: '',
+                },
+            },
+            // quạt
+            {
+                subCategoryId: 48,
+                mienPhi: '',
+                gia: '',
+                hang: '',
+                daSuDung: false,
+                loaiSanPham: '',
+                quatThuongHieu: '',
+                address: {
+                    thanhPho: '',
+                    quanHuyen: '',
+                    phuongXa: '',
+                    tenDuong: '',
+                    soNha: '',
+                },
+            },
+            // Đèn
+            {
+                subCategoryId: 49,
+                mienPhi: '',
+                gia: '',
+                hang: '',
+                daSuDung: false,
+                loaiSanPham: '',
+                address: {
+                    thanhPho: '',
+                    quanHuyen: '',
+                    phuongXa: '',
+                    tenDuong: '',
+                    soNha: '',
+                },
+            },
+            // cây
+            {
+                subCategoryId: 50,
+                mienPhi: '',
+                gia: '',
+                hang: '',
+                daSuDung: false,
+                loaiSanPham: '',
+                address: {
+                    thanhPho: '',
+                    quanHuyen: '',
+                    phuongXa: '',
+                    tenDuong: '',
+                    soNha: '',
+                },
+            },
+            // vệ sinh
+            {
+                subCategoryId: 51,
+                mienPhi: '',
+                gia: '',
+                hang: '',
+                daSuDung: false,
+                loaiSanPham: '',
+                thietBiVeSinhThuongHieu: '',
+                address: {
+                    thanhPho: '',
+                    quanHuyen: '',
+                    phuongXa: '',
+                    tenDuong: '',
+                    soNha: '',
+                },
+            },
+            {
+                subCategoryId: 52,
+                mienPhi: '',
+                gia: '',
+                hang: '',
+                daSuDung: false,
+                address: {
+                    thanhPho: '',
+                    quanHuyen: '',
+                    phuongXa: '',
+                    tenDuong: '',
+                    soNha: '',
+                },
+            },
+        ],
+    },
+    {
+        categoryId: 9,
+        mienPhi: '',
+        gia: '',
+        hang: '',
+        daSuDung: false,
+        loaiSanPham: '',
+        address: {
+            thanhPho: '',
+            quanHuyen: '',
+            phuongXa: '',
+            tenDuong: '',
+            soNha: '',
+        },
+    },
+    {
+        categoryId: 10,
+        subCategories: [
+            // quần áo
+            {
+                subCategoryId: 53,
+                mienPhi: '',
+                gia: '',
+                hang: '',
+                daSuDung: false,
+                address: {
+                    thanhPho: '',
+                    quanHuyen: '',
+                    phuongXa: '',
+                    tenDuong: '',
+                    soNha: '',
+                },
+            },
+            // đồng hồ
+            {
+                subCategoryId: 54,
+                mienPhi: '',
+                gia: '',
+                hang: '',
+                daSuDung: false,
+                loaiSanPham: '',
+                address: {
+                    thanhPho: '',
+                    quanHuyen: '',
+                    phuongXa: '',
+                    tenDuong: '',
+                    soNha: '',
+                },
+            },
+            // giày dép
+            {
+                subCategoryId: 55,
+                mienPhi: '',
+                gia: '',
+                hang: '',
+                daSuDung: false,
+                loaiSanPham: '',
+                address: {
+                    thanhPho: '',
+                    quanHuyen: '',
+                    phuongXa: '',
+                    tenDuong: '',
+                    soNha: '',
+                },
+            },
+            // túi xách
+            {
+                subCategoryId: 56,
+                mienPhi: '',
+                gia: '',
+                hang: '',
+                daSuDung: false,
+                loaiSanPham: '',
+                address: {
+                    thanhPho: '',
+                    quanHuyen: '',
+                    phuongXa: '',
+                    tenDuong: '',
+                    soNha: '',
+                },
+            },
+            // nước hoa
+            {
+                subCategoryId: 57,
+                mienPhi: '',
+                gia: '',
+                hang: '',
+                daSuDung: false,
+                loaiSanPham: '',
+                address: {
+                    thanhPho: '',
+                    quanHuyen: '',
+                    phuongXa: '',
+                    tenDuong: '',
+                    soNha: '',
+                },
+            },
+            // phụ kiện
+            {
+                subCategoryId: 58,
+                mienPhi: '',
+                gia: '',
+                hang: '',
+                daSuDung: false,
+                loaiSanPham: '',
+                address: {
+                    thanhPho: '',
+                    quanHuyen: '',
+                    phuongXa: '',
+                    tenDuong: '',
+                    soNha: '',
+                },
+            },
+        ],
+    },
+    {
+        categoryId: 11,
+        subCategories: [
+            // nhạc cụ
+            {
+                subCategoryId: 59,
+                mienPhi: '',
+                gia: '',
+                hang: '',
+                daSuDung: false,
+                nhacCuLoaiNhacCu: '',
+                address: {
+                    thanhPho: '',
+                    quanHuyen: '',
+                    phuongXa: '',
+                    tenDuong: '',
+                    soNha: '',
+                },
+            },
+            // sách
+            {
+                subCategoryId: 60,
+                mienPhi: '',
+                gia: '',
+                hang: '',
+                daSuDung: false,
+                address: {
+                    thanhPho: '',
+                    quanHuyen: '',
+                    phuongXa: '',
+                    tenDuong: '',
+                    soNha: '',
+                },
+            },
+            // đồ thể thao
+            {
+                subCategoryId: 61,
+                mienPhi: '',
+                gia: '',
+                hang: '',
+                daSuDung: false,
+                address: {
+                    thanhPho: '',
+                    quanHuyen: '',
+                    phuongXa: '',
+                    tenDuong: '',
+                    soNha: '',
+                },
+            },
+            // đồ sưu tầm
+            {
+                subCategoryId: 62,
+                mienPhi: '',
+                gia: '',
+                hang: '',
+                daSuDung: false,
+                doSuuTamLoaiSanPham: '',
+                address: {
+                    thanhPho: '',
+                    quanHuyen: '',
+                    phuongXa: '',
+                    tenDuong: '',
+                    soNha: '',
+                },
+            },
+            // game
+            {
+                subCategoryId: 63,
+                mienPhi: '',
+                gia: '',
+                hang: '',
+                daSuDung: false,
+                address: {
+                    thanhPho: '',
+                    quanHuyen: '',
+                    phuongXa: '',
+                    tenDuong: '',
+                    soNha: '',
+                },
+            },
+            // khác
+            {
+                subCategoryId: 64,
+                mienPhi: '',
+                gia: '',
+                hang: '',
+                daSuDung: false,
+                address: {
+                    thanhPho: '',
+                    quanHuyen: '',
+                    phuongXa: '',
+                    tenDuong: '',
+                    soNha: '',
+                },
+            },
+        ],
+    },
+    {
+        categoryId: 12,
+        subCategories: [
+            {
+                subCategoryId: 65,
+                mienPhi: '',
+                gia: '',
+                hang: '',
+                daSuDung: false,
+                address: {
+                    thanhPho: '',
+                    quanHuyen: '',
+                    phuongXa: '',
+                    tenDuong: '',
+                    soNha: '',
+                },
+            },
+            {
+                subCategoryId: 66,
+                mienPhi: '',
+                gia: '',
+                hang: '',
+                daSuDung: false,
                 address: {
                     thanhPho: '',
                     quanHuyen: '',
@@ -440,14 +1022,25 @@ export const generateDefaultValueFormData = (id, subCategoryId) => {
     array.forEach(({ categoryId, subCategories }) => {
         if (id === categoryId) {
             defaultFormData.categoryId = id
-            subCategories.forEach(subCategory => {
-                if (subCategory.subCategoryId === subCategoryId) {
-                    defaultFormData = {
-                        ...defaultFormData,
-                        ...subCategory,
-                    }
+            if (!subCategoryId) {
+                const form = array.find(item => item.categoryId === categoryId)
+                defaultFormData = {
+                    ...defaultFormData,
+                    ...form,
+                    title: '',
+                    description: '',
+                    medias: [],
                 }
-            })
+            } else {
+                subCategories.forEach(subCategory => {
+                    if (subCategory.subCategoryId === subCategoryId) {
+                        defaultFormData = {
+                            ...defaultFormData,
+                            ...subCategory,
+                        }
+                    }
+                })
+            }
         }
     })
 

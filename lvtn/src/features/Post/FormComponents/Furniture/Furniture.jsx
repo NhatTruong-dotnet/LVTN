@@ -1,72 +1,101 @@
 import { useEffect, useState } from 'react'
-import styles from './vehicle.module.css'
-import Another from './Another'
-import Bicycle from './Bicycle'
-import Car from './Car'
-import Motorcycle from './Motorcycle'
-import SpareParts from './SpareParts'
-import ElectricBike from './ElectricBike'
-import Truck from './Truck'
+import Bed from './Bed'
+import Cabinet from './Cabinet'
+import Fan from './Fan'
+import Kitchen from './Kitchen'
+import KitchenTools from './KitchenTools'
+import Lamp from './Lamp'
+import SanitaryEquipment from './SanitaryEquipment'
+import TableAndChair from './TableAndChair'
+import Tree from './Tree'
+import FurnitureAnother from './FurnitureAnother'
 
 const subCategories = [
     {
-        id: 18,
+        id: 43,
         Component: ({ formData, handleFormDataChange }) => (
-            <Car
+            <TableAndChair
                 handleFormDataChange={handleFormDataChange}
                 formData={formData}
             />
         ),
     },
     {
-        id: 19,
+        id: 44,
         Component: ({ formData, handleFormDataChange }) => (
-            <Motorcycle
+            <Cabinet
                 handleFormDataChange={handleFormDataChange}
                 formData={formData}
             />
         ),
     },
     {
-        id: 20,
+        id: 45,
         Component: ({ formData, handleFormDataChange }) => (
-            <Truck
+            <Bed
                 handleFormDataChange={handleFormDataChange}
                 formData={formData}
             />
         ),
     },
     {
-        id: 21,
+        id: 46,
         Component: ({ formData, handleFormDataChange }) => (
-            <ElectricBike
+            <Kitchen
                 handleFormDataChange={handleFormDataChange}
                 formData={formData}
             />
         ),
     },
     {
-        id: 22,
+        id: 47,
         Component: ({ formData, handleFormDataChange }) => (
-            <Bicycle
+            <KitchenTools
                 handleFormDataChange={handleFormDataChange}
                 formData={formData}
             />
         ),
     },
     {
-        id: 23,
+        id: 48,
         Component: ({ formData, handleFormDataChange }) => (
-            <Another
+            <Fan
                 handleFormDataChange={handleFormDataChange}
                 formData={formData}
             />
         ),
     },
     {
-        id: 24,
+        id: 49,
         Component: ({ formData, handleFormDataChange }) => (
-            <SpareParts
+            <Lamp
+                handleFormDataChange={handleFormDataChange}
+                formData={formData}
+            />
+        ),
+    },
+    {
+        id: 50,
+        Component: ({ formData, handleFormDataChange }) => (
+            <Tree
+                handleFormDataChange={handleFormDataChange}
+                formData={formData}
+            />
+        ),
+    },
+    {
+        id: 51,
+        Component: ({ formData, handleFormDataChange }) => (
+            <SanitaryEquipment
+                handleFormDataChange={handleFormDataChange}
+                formData={formData}
+            />
+        ),
+    },
+    {
+        id: 52,
+        Component: ({ formData, handleFormDataChange }) => (
+            <FurnitureAnother
                 handleFormDataChange={handleFormDataChange}
                 formData={formData}
             />
@@ -74,7 +103,7 @@ const subCategories = [
     },
 ]
 
-function Vehicle({ subCategoryId, formData, handleFormDataChange }) {
+function Furniture({ subCategoryId, formData, handleFormDataChange }) {
     const [currentSubCategory, setCurrentSubCategory] = useState(null)
     console.log(formData)
 
@@ -95,4 +124,4 @@ function Vehicle({ subCategoryId, formData, handleFormDataChange }) {
     )
 }
 
-export default Vehicle
+export default Furniture

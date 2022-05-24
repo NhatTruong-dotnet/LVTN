@@ -1,72 +1,61 @@
 import { useEffect, useState } from 'react'
-import styles from './vehicle.module.css'
-import Another from './Another'
-import Bicycle from './Bicycle'
-import Car from './Car'
-import Motorcycle from './Motorcycle'
-import SpareParts from './SpareParts'
-import ElectricBike from './ElectricBike'
-import Truck from './Truck'
+import MusicalInstrument from './MusicalInstrument'
+import Book from './Book'
+import SportsWear from './SportsWear'
+import Collectibles from './Collectibles'
+import GamingDevice from './GamingDevice'
+import Other from './Other'
 
 const subCategories = [
     {
-        id: 18,
+        id: 59,
         Component: ({ formData, handleFormDataChange }) => (
-            <Car
+            <MusicalInstrument
                 handleFormDataChange={handleFormDataChange}
                 formData={formData}
             />
         ),
     },
     {
-        id: 19,
+        id: 60,
         Component: ({ formData, handleFormDataChange }) => (
-            <Motorcycle
+            <Book
                 handleFormDataChange={handleFormDataChange}
                 formData={formData}
             />
         ),
     },
     {
-        id: 20,
+        id: 61,
         Component: ({ formData, handleFormDataChange }) => (
-            <Truck
+            <SportsWear
                 handleFormDataChange={handleFormDataChange}
                 formData={formData}
             />
         ),
     },
     {
-        id: 21,
+        id: 62,
         Component: ({ formData, handleFormDataChange }) => (
-            <ElectricBike
+            <Collectibles
                 handleFormDataChange={handleFormDataChange}
                 formData={formData}
             />
         ),
     },
     {
-        id: 22,
+        id: 63,
         Component: ({ formData, handleFormDataChange }) => (
-            <Bicycle
+            <GamingDevice
                 handleFormDataChange={handleFormDataChange}
                 formData={formData}
             />
         ),
     },
     {
-        id: 23,
+        id: 64,
         Component: ({ formData, handleFormDataChange }) => (
-            <Another
-                handleFormDataChange={handleFormDataChange}
-                formData={formData}
-            />
-        ),
-    },
-    {
-        id: 24,
-        Component: ({ formData, handleFormDataChange }) => (
-            <SpareParts
+            <Other
                 handleFormDataChange={handleFormDataChange}
                 formData={formData}
             />
@@ -74,7 +63,7 @@ const subCategories = [
     },
 ]
 
-function Vehicle({ subCategoryId, formData, handleFormDataChange }) {
+function Entertainment({ subCategoryId, formData, handleFormDataChange }) {
     const [currentSubCategory, setCurrentSubCategory] = useState(null)
     console.log(formData)
 
@@ -82,7 +71,6 @@ function Vehicle({ subCategoryId, formData, handleFormDataChange }) {
         const element = subCategories.find(({ id }) => id === subCategoryId)
         setCurrentSubCategory(element)
     }, [subCategoryId])
-
     return (
         <>
             {currentSubCategory && (
@@ -95,4 +83,4 @@ function Vehicle({ subCategoryId, formData, handleFormDataChange }) {
     )
 }
 
-export default Vehicle
+export default Entertainment

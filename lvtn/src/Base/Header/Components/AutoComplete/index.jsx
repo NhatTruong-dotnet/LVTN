@@ -18,7 +18,9 @@ function AutoComplete({
                 <div
                     key={value}
                     className={styles.item}
-                    onClick={() => onClickItem(value)}
+                    onClick={() => {
+                        onClickItem(value)
+                    }}
                 >
                     {value}
                 </div>

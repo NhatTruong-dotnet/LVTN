@@ -1,7 +1,6 @@
 import FormInput from '../Components/FormInput'
 import FormGroup from '../Components/FormGroup'
 import styles from '../RealEstate/index.module.css'
-import clsx from 'clsx'
 
 function Laptop({ formData, handleFormDataChange }) {
     return (

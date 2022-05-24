@@ -123,6 +123,7 @@ function CreatePost(props) {
 
     useEffect(() => {
         if (selectedCategory.category.id) {
+            console.log('set form')
             setFormData(
                 generateDefaultValueFormData(
                     selectedCategory.category.id,
