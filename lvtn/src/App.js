@@ -7,9 +7,23 @@ import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { loginWithToken } from './features/Auth/Login/loginSlice'
 import Detail from './Page/Detail/Detail'
+import WishList from './Page/WishList/WishList'
+import { getWishList } from './features/Post/PostSlice'
 
 function App() {
     const dispatch = useDispatch()
+
+    // init wish list
+    useEffect(() => {
+        const wishList = JSON.parse(localStorage.getItem('wishList'))
+        if (!Array.isArray(wishList)) {
+            localStorage.setItem('wishList', JSON.stringify([]))
+        }
+    }, [])
+
+    useEffect(() => {
+        dispatch(getWishList())
+    }, [])
 
     useEffect(() => {
         dispatch(loginWithToken())
@@ -22,7 +36,8 @@ function App() {
             <Routes>
                 <Route path='/' element={<Home />} />
                 <Route path='/create-post' element={<CreatePost />} />
-                <Route path='/detail/:id' element={<Detail />} />
+                <Route path='/detail/:idPost' element={<Detail />} />
+                <Route path='/wish-list' element={<WishList />} />
             </Routes>
             <ToastMessage />
         </div>

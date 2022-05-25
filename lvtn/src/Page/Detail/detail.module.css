@@ -57,11 +57,13 @@
 .numberPhone {
     cursor: pointer;
     color: #33659c;
+    text-decoration: underline;
+    font-weight: 550;
 }
 .detail {
     padding: 20px 0 10px;
     display: flex;
-    max-width: 70%;
+    max-width: 90%;
     justify-content: space-between;
     flex-wrap: wrap;
 }

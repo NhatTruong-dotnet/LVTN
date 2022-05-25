@@ -1,0 +1,23 @@
+.moreInfo {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 10px;
+    font-size: 12px;
+    color: #9b9b9b;
+    font-weight: 600;
+    position: relative;
+    bottom: -20px;
+}
+.moreInfo > * {
+    margin-right: 5px;
+}
+.icon {
+    font-size: 18px;
+    color: #fe9900;
+}
+.dot::after {
+    content: '\B7';
+    display: inline-block;
+    vertical-align: middle;
+}

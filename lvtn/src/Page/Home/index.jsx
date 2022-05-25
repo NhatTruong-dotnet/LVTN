@@ -71,6 +71,7 @@ const categories = [
 function Home() {
     const dispatch = useDispatch()
     const postData = useSelector(selectListPost)
+    console.log(postData)
 
     const handleSelectCategory = id => {
         localStorage.setItem('lastSubCategories', id)
@@ -78,7 +79,7 @@ function Home() {
 
     useEffect(() => {
         const lastSubCategories = localStorage.getItem('lastSubCategories')
-        dispatch({ type: 'getPost', lastSubCategories: 12 })
+        dispatch({ type: 'getPost', lastSubCategories: lastSubCategories || 0 }) // default value = 0
     }, [])
 
     return (

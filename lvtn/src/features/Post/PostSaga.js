@@ -1,9 +1,16 @@
-import { put, takeLeading, call, select } from 'redux-saga/effects'
-import { createNewPost, getPostWithSubCategoryId } from './PostApi'
+import { put, takeLeading, takeLatest, call, select } from 'redux-saga/effects'
+import {
+    createNewPost,
+    getPostDetailWithId,
+    getPostWithSubCategoryId,
+} from './PostApi'
 import {
     createPostFail,
     createPostPending,
     createPostSuccess,
+    getPostDetailFail,
+    getPostDetailPending,
+    getPostDetailSuccess,
     getPostPending,
     getPostSuccess,
 } from './PostSlice'
@@ -12,6 +19,7 @@ import { selectToken, selectUsername } from '../Auth/Login/loginSlice'
 export default function* postSaga() {
     yield takeLeading('createPost', createPost)
     yield takeLeading('getPost', getPost)
+    yield takeLatest('getPostDetail', getPostDetail)
 }
 
 function* getPost({ lastSubCategories }) {
@@ -24,6 +32,20 @@ function* getPost({ lastSubCategories }) {
         yield put(getPostSuccess({ postData }))
     } else {
         // yield put(getPostFail({errorMessage}))
+    }
+}
+
+function* getPostDetail({ idPost }) {
+    console.log(idPost)
+    yield put(getPostDetailPending())
+    const { status, postDetail, errorMessage } = yield call(
+        getPostDetailWithId,
+        idPost
+    )
+    if (status === 200) {
+        yield put(getPostDetailSuccess({ postDetail }))
+    } else {
+        yield put(getPostDetailFail({ errorMessage }))
     }
 }
 

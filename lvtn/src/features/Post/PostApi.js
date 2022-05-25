@@ -33,8 +33,23 @@ export const getPostWithSubCategoryId = async subCategoryId => {
         )
         const postData = res.data
         const status = res.status
-
         return { postData, status }
+    } catch ({ response }) {
+        return {
+            status: response.status,
+            errorMessage:
+                response.data ||
+                'Đã có lỗi xảy ra, vui lòng chờ trong giây lát và tải lại trang',
+        }
+    }
+}
+
+export const getPostDetailWithId = async idPost => {
+    try {
+        const res = await axios.get(`${host}/api/baiDang/detail/${idPost}`)
+
+        const { data, status } = res
+        return { status, postDetail: data }
     } catch ({ response }) {
         return {
             status: response.status,
