@@ -19,7 +19,7 @@ namespace STU.LVTN.SERVER.Controllers
             searchHandler = new SearchHandler(_mapper);
         }
         [HttpGet("{searchParams}")]
-        public async Task<ActionResult<List<BaiDangHomePageDTO>>> Search(string searchParams = "")
+        public async Task<ActionResult<List<BaiDangHomePageDTO>>> SearchPost(string searchParams = "")
         {
             return await searchHandler.Search(searchParams);
         }
