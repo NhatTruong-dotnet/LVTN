@@ -10,8 +10,13 @@ function WishList(props) {
 
     return (
         <div className='grid wide'>
-            <Frame title={'Tin đăng đã lưu'}>
+            <Frame title={`Tin đăng đã lưu ${wishList.length}/100`}>
                 <div className={styles.WishListContainer}>
+                    {wishList.length ? (
+                        ''
+                    ) : (
+                        <HorizontalPost empty></HorizontalPost>
+                    )}
                     {wishList.map(
                         ({
                             idPost,
@@ -35,7 +40,6 @@ function WishList(props) {
                             />
                         )
                     )}
-                    {/* <HorizontalPost /> */}
                 </div>
             </Frame>
         </div>

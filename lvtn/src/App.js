@@ -9,6 +9,7 @@ import { loginWithToken } from './features/Auth/Login/loginSlice'
 import Detail from './Page/Detail/Detail'
 import WishList from './Page/WishList/WishList'
 import { getWishList } from './features/Post/PostSlice'
+import ProfileUser from './Page/ProfileUser/ProfileUser'
 
 function App() {
     const dispatch = useDispatch()
@@ -38,6 +39,10 @@ function App() {
                 <Route path='/create-post' element={<CreatePost />} />
                 <Route path='/detail/:idPost' element={<Detail />} />
                 <Route path='/wish-list' element={<WishList />} />
+                <Route
+                    path='/user/:profileUserNumberPhone'
+                    element={<ProfileUser />}
+                />
             </Routes>
             <ToastMessage />
         </div>

@@ -4,10 +4,11 @@ import TimeAgo from 'javascript-time-ago'
 import { ImUserTie } from 'react-icons/im'
 import { useNavigate } from 'react-router-dom'
 import { FaRegHeart } from 'react-icons/fa'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import {
     removeItemWishList,
     addWishList,
+    selectWishList,
 } from '../../../features/Post/PostSlice'
 import clsx from 'clsx'
 
@@ -21,17 +22,19 @@ function HorizontalPost({
     imgId,
     location,
     authorName,
-    saved,
-    wishList,
+    isMyPost,
+    empty,
 }) {
     const timeAgo = new TimeAgo('en-US')
     const navigate = useNavigate()
     const dispatch = useDispatch()
+    const wishList = useSelector(selectWishList)
 
     const redirectToDetailPage = () => {
         navigate(`/detail/${idPost}`)
     }
-    const handleWishList = () => {
+    const handleWishList = e => {
+        e.stopPropagation()
         if (checkSavedPost(idPost)) {
             dispatch(removeItemWishList(idPost))
         } else {
@@ -53,16 +56,36 @@ function HorizontalPost({
         const findPost = wishList.find(({ idPost }) => id === idPost)
         return Boolean(findPost)
     }
+    if (empty) {
+        return (
+            <div
+                style={{
+                    height: 200,
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    fontSize: 30,
+                    fontWeight: 700,
+                }}
+            >
+                <div>Bạn chưa có bài đăng yêu thích nào</div>
+            </div>
+        )
+    }
 
     return (
         <div className={styles.horizontalPost} onClick={redirectToDetailPage}>
-            <div
-                className={clsx(styles.savePost, styles.saved)}
-                onClick={handleWishList}
-            >
-                {checkSavedPost(idPost) ? 'Đã lưu' : 'Lưu tin'}
-                <FaRegHeart className={styles.icon} />
-            </div>
+            {!isMyPost && (
+                <div
+                    className={clsx(styles.savePost, {
+                        [styles.saved]: checkSavedPost(idPost),
+                    })}
+                    onClick={handleWishList}
+                >
+                    {checkSavedPost(idPost) ? 'Đã lưu' : 'Lưu tin'}
+                    <FaRegHeart className={styles.icon} />
+                </div>
+            )}
             <img
                 // src='https://cdn.chotot.com/l6nzMpYlbv1VCXs2iIFUbVfIU62JpKQUZdcwhjzwDRU/preset:listing/plain/98ef2bd9efc5371aae2340d37bad701e-2768418666813430784.jpg'
                 src={`${imgURL}${imgId}`}
