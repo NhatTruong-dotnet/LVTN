@@ -10,6 +10,17 @@ const initialState = {
     role: null,
 }
 
+function getUserInfoInToken(token) {
+    const decoded = jwt_decode(token)
+    const { exp } = decoded
+
+    const username =
+        decoded['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name']
+    const role =
+        decoded['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/role']
+    return { username, role, exp }
+}
+
 export const loginSlice = createSlice({
     name: 'login',
     initialState,
@@ -17,12 +28,12 @@ export const loginSlice = createSlice({
         loginWithToken: state => {
             const token = localStorage.getItem('token')
             if (token) {
-                const { name, role, exp } = jwt_decode(token)
+                const { username, role, exp } = getUserInfoInToken(token)
 
                 if (exp > Date.now() / 1000) {
                     state.token = token
                     state.isLogin = true
-                    state.username = name
+                    state.username = username
                     state.role = role
                 } else {
                     localStorage.removeItem('token')
@@ -33,13 +44,16 @@ export const loginSlice = createSlice({
             state.isLoading = true
         },
         loginSuccess: (state, action) => {
-            const { exp, name, role } = jwt_decode(action.payload.token)
+            const { username, role, exp } = getUserInfoInToken(
+                action.payload.token
+            )
+
             state.isLoading = false
             state.isLogin = true
-            state.username = name
+            state.username = username
             state.role = role
             state.token = action.payload.token
-            emitMessage('success', `Welcome ${name || ''}`)
+            emitMessage('success', `Welcome ${username || ''}`)
             localStorage.setItem('token', action.payload.token)
             console.log(exp)
         },

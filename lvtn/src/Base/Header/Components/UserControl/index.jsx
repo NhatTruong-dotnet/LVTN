@@ -5,12 +5,18 @@ import styles from './usercontrol.module.css'
 import TabContainer from '../../../../Common/TabContainer'
 import { useDispatch } from 'react-redux'
 import { logout } from '../../../../features/Auth/Login/loginSlice'
+import { useNavigate } from 'react-router-dom'
 
 function UserControl({ username }) {
     const [isShowControlTab, setIsShowControlTab] = useState(false)
     const dispatch = useDispatch()
+    const navigate = useNavigate()
     const handleLogout = () => {
         dispatch(logout())
+    }
+
+    const handleNavigate = to => {
+        navigate(to)
     }
 
     return (
@@ -22,7 +28,10 @@ function UserControl({ username }) {
             {isShowControlTab && (
                 <TabContainer onClickOutside={() => setIsShowControlTab(false)}>
                     <div className={styles.controlTab}>
-                        <div className={styles.userInfo}>
+                        <div
+                            className={styles.userInfo}
+                            onClick={() => handleNavigate(`/user/${username}`)}
+                        >
                             <AiOutlineUser className={styles.userInfoIcon} />
                             <div className={styles.name}>
                                 {username}
@@ -32,7 +41,12 @@ function UserControl({ username }) {
                             </div>
                         </div>
                         <div className={styles.controlContainer}>
-                            <div className={styles.controlItem}>
+                            <div
+                                className={styles.controlItem}
+                                onClick={() =>
+                                    handleNavigate(`user/${username}`)
+                                }
+                            >
                                 <img
                                     src='https://static.chotot.com/storage/chotot-icons/svg/escrow-orders.svg'
                                     alt='icon'
@@ -52,7 +66,10 @@ function UserControl({ username }) {
                                     Đơn mua
                                 </span>
                             </div>
-                            <div className={styles.controlItem}>
+                            <div
+                                className={styles.controlItem}
+                                onClick={() => handleNavigate(`/wish-list`)}
+                            >
                                 <img
                                     src='https://static.chotot.com/storage/chotot-icons/svg/menu-saved-ad.svg'
                                     alt='icon'
