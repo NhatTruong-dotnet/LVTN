@@ -42,10 +42,9 @@ namespace STU.LVTN.SERVER.Controllers
             return Ok(response);
         }
 
-        [HttpGet("profile"),Authorize]
-        public async Task<ActionResult<UserProfileDTO>> UserProfile()
+        [HttpGet("profile")]
+        public async Task<ActionResult<UserProfileDTO>> UserProfile(string sdt)
         {
-            string sdt = User.Identity.Name;
             UserProfileDTO profileUser = await nguoiDungHandler.UserProfile(sdt);
             return Ok(profileUser);
         }

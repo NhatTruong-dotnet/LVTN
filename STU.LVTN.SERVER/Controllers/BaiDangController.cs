@@ -48,10 +48,9 @@ namespace STU.LVTN.SERVER.Controllers
             return await baiDangHandler.RenderHomePage(lastestSubCategories);
         }
 
-        [HttpGet("mySold"), Authorize]
-        public async Task<ActionResult<List<BaiDangHomePageDTO>>> MySoldPost()
+        [HttpGet("mySold")]
+        public async Task<ActionResult<List<BaiDangHomePageDTO>>> MySoldPost(string soDienThoai)
         {
-            var soDienThoai = User.Identity.Name;
             return await baiDangHandler.GetSoldPostBySoDienThoai(soDienThoai);
         }
 
