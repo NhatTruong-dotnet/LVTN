@@ -1,0 +1,27 @@
+.mediaPickerContainer {
+    display: flex;
+    flex-direction: column;
+}
+.group {
+    padding: 10px 0 20px;
+}
+.button {
+    font-size: 1rem;
+    line-height: 1.25;
+    padding: 9px 19px;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 5px;
+    min-width: 300px;
+    cursor: pointer;
+    transition: all 0.2s linear;
+}
+.button.solid {
+    background-color: #fe9900;
+    color: #fff;
+}
+.button.solid:hover {
+    color: #fff;
+    background-color: #ffb647;
+    border-color: #ffb647;
+}

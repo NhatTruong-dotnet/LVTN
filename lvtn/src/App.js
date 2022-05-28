@@ -10,6 +10,7 @@ import Detail from './Page/Detail/Detail'
 import WishList from './Page/WishList/WishList'
 import { getWishList } from './features/Post/PostSlice'
 import ProfileUser from './Page/ProfileUser/ProfileUser'
+import EditProfileUser from './Page/ProfileUser/EditProfileUser'
 
 function App() {
     const dispatch = useDispatch()
@@ -42,6 +43,10 @@ function App() {
                 <Route
                     path='/user/:profileUserNumberPhone'
                     element={<ProfileUser />}
+                />
+                <Route
+                    path='/user/edit-profile/:profileUserNumberPhone'
+                    element={<EditProfileUser />}
                 />
             </Routes>
             <ToastMessage />
