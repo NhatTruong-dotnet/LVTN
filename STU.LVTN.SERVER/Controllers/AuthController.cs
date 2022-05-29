@@ -48,5 +48,29 @@ namespace STU.LVTN.SERVER.Controllers
             UserProfileDTO profileUser = await nguoiDungHandler.UserProfile(sdt);
             return Ok(profileUser);
         }
+
+        [HttpPost("update"),Authorize]
+        public async Task<ActionResult<UserProfileDTO>> UpdateProfile(UserProfileDTO requestProfile)
+        {
+            if (await nguoiDungHandler.UpdateProfile(requestProfile))
+            {
+                return Ok("Update success");
+            }
+            else
+            {
+                return BadRequest("Some error occur");
+            }
+            
+        }
+
+        [HttpPost("changePassword"),Authorize]
+        public async Task<ActionResult<string>> ChangePassword(Login_RegisterDTO userRequest)
+        {
+
+            if (await nguoiDungHandler.ChangePassword(userRequest))
+                return Ok();
+            else
+                return BadRequest("Some thing wrong here!");
+        }
     }
 }

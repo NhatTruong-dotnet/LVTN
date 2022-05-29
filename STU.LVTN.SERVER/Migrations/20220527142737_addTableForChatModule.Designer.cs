@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using STU.LVTN.SERVER.Model;
 
@@ -11,9 +12,10 @@ using STU.LVTN.SERVER.Model;
 namespace STU.LVTN.SERVER.Migrations
 {
     [DbContext(typeof(LVTNContext))]
-    partial class LVTNContextModelSnapshot : ModelSnapshot
+    [Migration("20220527142737_addTableForChatModule")]
+    partial class addTableForChatModule
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -550,9 +552,9 @@ namespace STU.LVTN.SERVER.Migrations
 
                     b.HasKey("IdBaiDang");
 
-                    b.HasIndex(new[] { "SdtNguoiBan" }, "IX_BaiDang_Sdt_NguoiBan");
+                    b.HasIndex("IdDanhMucCon");
 
-                    b.HasIndex(new[] { "IdDanhMucCon" }, "IX_BaiDang_id_DanhMucCon");
+                    b.HasIndex("SdtNguoiBan");
 
                     b.ToTable("BaiDang", (string)null);
                 });
@@ -601,9 +603,7 @@ namespace STU.LVTN.SERVER.Migrations
 
                     b.Property<string>("LoaiSanPham")
                         .IsRequired()
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("nvarchar(max)")
-                        .HasDefaultValueSql("(N'')");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("IdBaiDang");
 
@@ -915,28 +915,6 @@ namespace STU.LVTN.SERVER.Migrations
                     b.ToTable("BaiDang_XeCo", (string)null);
                 });
 
-            modelBuilder.Entity("STU.LVTN.SERVER.Model.ConversationEntites", b =>
-                {
-                    b.Property<int>("ConversationId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasColumnName("ConversationID");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ConversationId"), 1L, 1);
-
-                    b.Property<string>("SdtNguoiMua")
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<string>("SdtNguoiban")
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.HasKey("ConversationId");
-
-                    b.ToTable("Conversations");
-                });
-
             modelBuilder.Entity("STU.LVTN.SERVER.Model.DanhMuc", b =>
                 {
                     b.Property<int>("IdDanhMuc")
@@ -957,7 +935,7 @@ namespace STU.LVTN.SERVER.Migrations
 
                     b.HasKey("IdDanhMuc");
 
-                    b.HasIndex(new[] { "IdDanhMucCha" }, "IX_DanhMuc_id_DanhMucCha");
+                    b.HasIndex("IdDanhMucCha");
 
                     b.ToTable("DanhMuc", (string)null);
                 });
@@ -994,9 +972,9 @@ namespace STU.LVTN.SERVER.Migrations
 
                     b.HasKey("IdDatCoc");
 
-                    b.HasIndex(new[] { "SdtBan" }, "IX_GiaoDich_DatCoc_sdtBan");
+                    b.HasIndex("SdtBan");
 
-                    b.HasIndex(new[] { "SdtMua" }, "IX_GiaoDich_DatCoc_sdtMua");
+                    b.HasIndex("SdtMua");
 
                     b.ToTable("GiaoDich_DatCoc", (string)null);
                 });
@@ -1025,34 +1003,9 @@ namespace STU.LVTN.SERVER.Migrations
 
                     b.HasKey("IdHinhAnh");
 
-                    b.HasIndex(new[] { "IdSanPham" }, "IX_HinhAnh_BaiDang_id_SanPham");
+                    b.HasIndex("IdSanPham");
 
                     b.ToTable("HinhAnh_BaiDang", (string)null);
-                });
-
-            modelBuilder.Entity("STU.LVTN.SERVER.Model.MessageEntities", b =>
-                {
-                    b.Property<int>("MessageId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasColumnName("MessageID");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MessageId"), 1L, 1);
-
-                    b.Property<int?>("ConversationId")
-                        .HasColumnType("int")
-                        .HasColumnName("ConversationID");
-
-                    b.Property<string>("MessageBy")
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<string>("Messages")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("MessageId");
-
-                    b.ToTable("Messages");
                 });
 
             modelBuilder.Entity("STU.LVTN.SERVER.Model.NguoiDungEntities", b =>
@@ -1063,9 +1016,6 @@ namespace STU.LVTN.SERVER.Migrations
 
                     b.Property<bool?>("Admin")
                         .HasColumnType("bit");
-
-                    b.Property<string>("AnhDaiDienSource")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("CreatedDate")
                         .HasColumnType("datetime2");

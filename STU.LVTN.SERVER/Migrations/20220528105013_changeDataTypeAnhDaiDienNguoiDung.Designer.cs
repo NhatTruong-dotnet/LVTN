@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using STU.LVTN.SERVER.Model;
 
@@ -11,9 +12,10 @@ using STU.LVTN.SERVER.Model;
 namespace STU.LVTN.SERVER.Migrations
 {
     [DbContext(typeof(LVTNContext))]
-    partial class LVTNContextModelSnapshot : ModelSnapshot
+    [Migration("20220528105013_changeDataTypeAnhDaiDienNguoiDung")]
+    partial class changeDataTypeAnhDaiDienNguoiDung
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -44,6 +44,7 @@ namespace STU.LVTN.SERVER.Provider.Handler
         BaiDangGiaiTri baiDangGiaiTriHelper;
         BaiDangDoDungVanPhong baiDangDoDungVanPhongHelper;
         HinhAnh_BaiDang hinhAnhBaiDangHelper;
+        ThongBao thongBaoHelper;
         public BaiDangHandler(IMapper mapper)
         {
             _mapper = mapper;
@@ -61,6 +62,7 @@ namespace STU.LVTN.SERVER.Provider.Handler
             baiDangGiaiTriHelper = new BaiDangGiaiTri();
             baiDangDoDungVanPhongHelper = new BaiDangDoDungVanPhong();
             hinhAnhBaiDangHelper = new HinhAnh_BaiDang();
+            thongBaoHelper = new ThongBao();
         }
         public async Task<List<BaiDangHomePageDTO>> RenderHomePage(int lastestSubCategories)
         {
@@ -319,24 +321,31 @@ namespace STU.LVTN.SERVER.Provider.Handler
             List<HinhAnhBaiDangEntities> hinhAnhBaiDang = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(IDPost);
             for (int i = 1; i <= hinhAnhBaiDang.Count; i++)
             {
-                
-                    if (!(bool)hinhAnhBaiDang[i - 1].VideoType)
-                        hinhAnhDictionary.Add(i.ToString(), hinhAnhBaiDang[i - 1].IdMediaCloud.ToString());
-                    else
-                        videoDictionary.Add((videoDictionary.Count + 1).ToString(), hinhAnhBaiDang[i - 1].IdMediaCloud.ToString());
+
+                if (!(bool)hinhAnhBaiDang[i - 1].VideoType)
+                    hinhAnhDictionary.Add(i.ToString(), hinhAnhBaiDang[i - 1].IdMediaCloud.ToString());
+                else
+                    videoDictionary.Add((videoDictionary.Count + 1).ToString(), hinhAnhBaiDang[i - 1].IdMediaCloud.ToString());
 
             }
             result.Add("HinhAnh", hinhAnhDictionary);
             result.Add("Video", videoDictionary);
+
             return result;
         }
 
+        public int NumberOfPost()
+        {
+            return baiDangHelper.NumberOfPost();
+        }
         #region Create
+       
         #region BaiDangBatDongSan
         public async Task<bool> AddBaiDangBatDongSanCC(BaiDangBatDongSanCC_DTO baiDangRequest)
         {
             BaiDangBatDongSanEntities baiDangBatDongSanCC = _mapper.Map<BaiDangBatDongSanEntities>(baiDangRequest);
             int lastIDPost = baiDangBatDongSanHelper.AddBaiDang(baiDangBatDongSanCC);
+
             if (lastIDPost == -1)
             {
                 return false;
@@ -492,7 +501,6 @@ namespace STU.LVTN.SERVER.Provider.Handler
                 return await baiDangHelper.AddBaiDang(baiDangGlobal);
             }
         }
-
         public async Task<bool> AddBaiDangXeCoXeMay(BaiDangXeCoXeMay_DTO baiDangRequest)
         {
             BaiDangXeCoEntities baiDangXeCoOto = _mapper.Map<BaiDangXeCoEntities>(baiDangRequest);
@@ -519,7 +527,6 @@ namespace STU.LVTN.SERVER.Provider.Handler
                 return await baiDangHelper.AddBaiDang(baiDangGlobal);
             }
         }
-
         public async Task<bool> AddBaiDangXeCoXeTai(BaiDangXeCoXeTai_DTO baiDangRequest)
         {
             BaiDangXeCoEntities baiDangXeCoOto = _mapper.Map<BaiDangXeCoEntities>(baiDangRequest);
@@ -546,7 +553,6 @@ namespace STU.LVTN.SERVER.Provider.Handler
                 return await baiDangHelper.AddBaiDang(baiDangGlobal);
             }
         }
-
         public async Task<bool> AddBaiDangXeCoXeDien(BaiDangXeCoXeDien_DTO baiDangRequest)
         {
             BaiDangXeCoEntities baiDangXeCoOto = _mapper.Map<BaiDangXeCoEntities>(baiDangRequest);
@@ -568,12 +574,12 @@ namespace STU.LVTN.SERVER.Provider.Handler
                         hinhAnhRequest.VideoType = false;
                     hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
                 }
+                #endregion
                 BaiDangEntities baiDangGlobal = _mapper.Map<BaiDangEntities>(baiDangRequest);
                 baiDangGlobal.IdBaiDangChiTiet = lastIDPost;
                 return await baiDangHelper.AddBaiDang(baiDangGlobal);
             }
         }
-
         public async Task<bool> AddBaiDangXeCoXeDap(BaiDangXeCoXeDap_DTO baiDangRequest)
         {
             BaiDangXeCoEntities baiDangXeCoOto = _mapper.Map<BaiDangXeCoEntities>(baiDangRequest);
@@ -600,7 +606,6 @@ namespace STU.LVTN.SERVER.Provider.Handler
                 return await baiDangHelper.AddBaiDang(baiDangGlobal);
             }
         }
-
         public async Task<bool> AddBaiDangXeCoPhuongTienKhac(BaiDangXeCoPhuongTienKhac_DTO baiDangRequest)
         {
             BaiDangXeCoEntities baiDangXeCoOto = _mapper.Map<BaiDangXeCoEntities>(baiDangRequest);
@@ -627,7 +632,6 @@ namespace STU.LVTN.SERVER.Provider.Handler
                 return await baiDangHelper.AddBaiDang(baiDangGlobal);
             }
         }
-
         public async Task<bool> AddBaiDangXeCoPhuTungKhac(BaiDangXeCoPhuTungXe_DTO baiDangRequest)
         {
             BaiDangXeCoEntities baiDangXeCoOto = _mapper.Map<BaiDangXeCoEntities>(baiDangRequest);
@@ -654,7 +658,6 @@ namespace STU.LVTN.SERVER.Provider.Handler
                 return await baiDangHelper.AddBaiDang(baiDangGlobal);
             }
         }
-        #endregion
 
         #region BaiDangDoDienTu
         public async Task<bool> AddBaiDangDoDienTuDienThoai(BaiDangDoDienTuDienThoai_DTO baiDangRequest)

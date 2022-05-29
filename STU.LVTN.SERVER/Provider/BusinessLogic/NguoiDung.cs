@@ -1,5 +1,6 @@
 ﻿using Microsoft.IdentityModel.Tokens;
 using STU.LVTN.SERVER.Model;
+using STU.LVTN.SERVER.Model.DTO;
 using System.Configuration;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
@@ -78,10 +79,38 @@ namespace STU.LVTN.SERVER.Provider.BusinessLogic
             }
             
         }
+        public bool UpdatePassword(NguoiDungEntities requestUser)
+        {
+            try
+            {
+                _context.NguoiDungs.Update(requestUser);
+                _context.SaveChanges();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
 
+        }
         public async Task<NguoiDungEntities> GetNguoiDungBySoDienThoai(string soDienThoai)
         {
             return _context.NguoiDungs.Where(user => user.SoDienThoai == soDienThoai).FirstOrDefault();
+        }
+
+        public async Task<bool> UpdateProfile(NguoiDungEntities userRequest)
+        {
+            try
+            {
+                _context.NguoiDungs.Update(userRequest);
+                _context.SaveChanges();
+                return true;
+
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
     }
 }

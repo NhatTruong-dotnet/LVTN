@@ -116,7 +116,10 @@ namespace STU.LVTN.SERVER.Provider.BusinessLogic
                 return null;
             }
         }
-       
+       public int NumberOfPost()
+        {
+            return _context.BaiDangs.OrderByDescending(item => item.IdBaiDang).FirstOrDefault().IdBaiDang;
+        }
     }
 }
 

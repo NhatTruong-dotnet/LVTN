@@ -33,6 +33,7 @@ namespace STU.LVTN.SERVER.Model
         public virtual DbSet<GiaoDichDatCoc> GiaoDichDatCocs { get; set; } = null!;
         public virtual DbSet<HinhAnhBaiDangEntities> HinhAnhBaiDangs { get; set; } = null!;
         public virtual DbSet<NguoiDungEntities> NguoiDungs { get; set; } = null!;
+        public virtual DbSet<ThongBaoEntities> ThongBaos { get; set; } = null!;
         public virtual DbSet<ThuocTinhDanhMuc> ThuocTinhDanhMucs { get; set; } = null!;
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -51,6 +52,10 @@ namespace STU.LVTN.SERVER.Model
                 entity.HasKey(e => e.IdBaiDang);
 
                 entity.ToTable("BaiDang");
+
+                entity.HasIndex(e => e.SdtNguoiBan, "IX_BaiDang_Sdt_NguoiBan");
+
+                entity.HasIndex(e => e.IdDanhMucCon, "IX_BaiDang_id_DanhMucCon");
 
                 entity.Property(e => e.IdBaiDang).HasColumnName("id_BaiDang");
 
@@ -395,6 +400,8 @@ namespace STU.LVTN.SERVER.Model
                 entity.ToTable("BaiDang_MeVaBe");
 
                 entity.Property(e => e.IdBaiDang).HasColumnName("id_BaiDang");
+
+                entity.Property(e => e.LoaiSanPham).HasDefaultValueSql("(N'')");
             });
 
             modelBuilder.Entity<BaiDangThoiTrangEntities>(entity =>
@@ -570,6 +577,8 @@ namespace STU.LVTN.SERVER.Model
 
                 entity.ToTable("DanhMuc");
 
+                entity.HasIndex(e => e.IdDanhMucCha, "IX_DanhMuc_id_DanhMucCha");
+
                 entity.Property(e => e.IdDanhMuc).HasColumnName("id_DanhMuc");
 
                 entity.Property(e => e.IdDanhMucCha).HasColumnName("id_DanhMucCha");
@@ -587,6 +596,10 @@ namespace STU.LVTN.SERVER.Model
                 entity.HasKey(e => e.IdDatCoc);
 
                 entity.ToTable("GiaoDich_DatCoc");
+
+                entity.HasIndex(e => e.SdtBan, "IX_GiaoDich_DatCoc_sdtBan");
+
+                entity.HasIndex(e => e.SdtMua, "IX_GiaoDich_DatCoc_sdtMua");
 
                 entity.Property(e => e.IdDatCoc).HasColumnName("idDatCoc");
 
@@ -618,6 +631,8 @@ namespace STU.LVTN.SERVER.Model
                 entity.HasKey(e => e.IdHinhAnh);
 
                 entity.ToTable("HinhAnh_BaiDang");
+
+                entity.HasIndex(e => e.IdSanPham, "IX_HinhAnh_BaiDang_id_SanPham");
 
                 entity.Property(e => e.IdHinhAnh).HasColumnName("id_HinhAnh");
 
@@ -667,6 +682,21 @@ namespace STU.LVTN.SERVER.Model
                 entity.Property(e => e.Ten)
                     .HasMaxLength(50)
                     .HasColumnName("ten");
+            });
+
+            modelBuilder.Entity<ThongBaoEntities>(entity =>
+            {
+                entity.HasKey(e => e.IdThongBao);
+
+                entity.ToTable("ThongBao");
+
+                entity.Property(e => e.IdThongBao).HasColumnName("idThongBao");
+
+                entity.Property(e => e.Checked).HasColumnName("checked");
+
+                entity.Property(e => e.Comment).HasColumnName("comment");
+
+                entity.Property(e => e.SdtNguoiDung).HasMaxLength(50);
             });
 
             modelBuilder.Entity<ThuocTinhDanhMuc>(entity =>

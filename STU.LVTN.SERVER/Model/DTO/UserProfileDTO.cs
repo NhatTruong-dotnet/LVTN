@@ -7,6 +7,8 @@
         public string? DiaChi { get; set; }
         public string? DanhGiaHeThong { get; set; }
         public DateTime? CreatedDate { get; set; } = DateTime.Now;
+        public string? AnhDaiDienSource { get; set; }
+        public string? CMND { get; set; }
 
     }
 }

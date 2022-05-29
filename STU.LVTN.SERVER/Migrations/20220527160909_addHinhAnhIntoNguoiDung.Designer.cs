@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using STU.LVTN.SERVER.Model;
 
@@ -11,9 +12,10 @@ using STU.LVTN.SERVER.Model;
 namespace STU.LVTN.SERVER.Migrations
 {
     [DbContext(typeof(LVTNContext))]
-    partial class LVTNContextModelSnapshot : ModelSnapshot
+    [Migration("20220527160909_addHinhAnhIntoNguoiDung")]
+    partial class addHinhAnhIntoNguoiDung
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -1064,8 +1066,8 @@ namespace STU.LVTN.SERVER.Migrations
                     b.Property<bool?>("Admin")
                         .HasColumnType("bit");
 
-                    b.Property<string>("AnhDaiDienSource")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("AnhDaiDienID")
+                        .HasColumnType("int");
 
                     b.Property<DateTime?>("CreatedDate")
                         .HasColumnType("datetime2");

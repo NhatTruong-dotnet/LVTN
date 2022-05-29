@@ -9,11 +9,12 @@ namespace STU.LVTN.SERVER.Provider.Handler
         public static NguoiDungEntities user;
         private readonly IConfiguration _configuration;
         NguoiDung nguoiDungHelper;
-
+        HinhAnh_BaiDang hinhAnhBaiDangHelper;
         public NguoiDungHandler(IConfiguration configuration)
         {
             _configuration = configuration;
             nguoiDungHelper = new NguoiDung(_configuration);
+            hinhAnhBaiDangHelper = new HinhAnh_BaiDang();
         }
         public async Task<bool> Register(Login_RegisterDTO userRequest)
         {
@@ -27,6 +28,16 @@ namespace STU.LVTN.SERVER.Provider.Handler
             return nguoiDungHelper.AddUser(user);
         }
 
+        public async Task<bool> ChangePassword(Login_RegisterDTO userRequest)
+        {
+            user = new NguoiDungEntities();
+            user.SoDienThoai = userRequest.SoDienThoai;
+            nguoiDungHelper.CreatePasswordHash(userRequest.Password, out byte[] passwordHash, out byte[] passwordSalt);
+            user.PasswordSalt = passwordSalt;
+            user.PasswordHash = passwordHash;
+
+            return nguoiDungHelper.UpdatePassword(user);
+        }
         public async Task<string> Login(Login_RegisterDTO userRequest)
         {
             //
@@ -54,6 +65,28 @@ namespace STU.LVTN.SERVER.Provider.Handler
             userProfile.DiaChi = nguoiDung.DiaChi;
             userProfile.DanhGiaHeThong = nguoiDung.DanhGiaHeThong;
             return userProfile;
+        }
+
+        public async Task<bool> UpdateProfile(UserProfileDTO requestProfile)
+        {
+            NguoiDungEntities nguoiDung = await nguoiDungHelper.GetNguoiDungBySoDienThoai(requestProfile.SoDienThoai);
+            if (requestProfile.Ten != null)
+                nguoiDung.Ten = requestProfile.Ten;
+            if (requestProfile.DiaChi != null)
+                nguoiDung.DiaChi = requestProfile.DiaChi;
+            if (requestProfile.CMND != null)
+                nguoiDung.SoCmnd = requestProfile.CMND;
+            if (requestProfile.AnhDaiDienSource != null)
+                nguoiDung.AnhDaiDienSource = requestProfile.AnhDaiDienSource;
+            try
+            {
+                await nguoiDungHelper.UpdateProfile(nguoiDung);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            } 
         }
     }
 }
