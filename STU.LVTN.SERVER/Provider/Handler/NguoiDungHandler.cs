@@ -50,7 +50,8 @@ namespace STU.LVTN.SERVER.Provider.Handler
             else
             {
                 string secretKey = _configuration.GetSection("AppSettings:Token").Value;
-                string token = nguoiDungHelper.CreateToken(userRequest.SoDienThoai,user.Admin, secretKey);
+                
+                string token = nguoiDungHelper.CreateToken(user.Ten == null ? "":user.Ten,userRequest.SoDienThoai,user.Admin, secretKey);
                 return token;
             }
         }

@@ -41,12 +41,13 @@ namespace STU.LVTN.SERVER.Provider.BusinessLogic
             }
         }
 
-        public  string CreateToken(string soDienThoai,bool? isAdmin, string secretKey)
+        public  string CreateToken(string ten,string soDienThoai,bool? isAdmin, string secretKey)
         {
             string admin = isAdmin == true?"admin":"user";
             List<Claim> claims = new List<Claim>
             {
-                new Claim(ClaimTypes.Name, soDienThoai),
+                new Claim(ClaimTypes.Name, ten),
+                new Claim(ClaimTypes.GivenName, soDienThoai),
                 new Claim(ClaimTypes.Role, admin)
 
             };
