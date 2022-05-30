@@ -34,6 +34,7 @@
         public string? CcGiayToPhapLy { get; set; }
         public string? CcTinhTrangNoiThat { get; set; }
         public float? SoTienCoc { get; set; }
+        public bool? isReviewed { get; set; } = false;
         public List<HinhAnh_BaiDangDTO> hinhAnh_BaiDangs { get; set; }
          
     }

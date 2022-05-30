@@ -333,7 +333,11 @@ namespace STU.LVTN.SERVER.Provider.Handler
 
             return result;
         }
-
+       
+        public async Task<bool> SendApproveResult(bool approveResult, int IDPost)
+        {
+            return await baiDangHelper.SendApproveResult(approveResult, IDPost);
+        }
         public int NumberOfPost()
         {
             return baiDangHelper.NumberOfPost();

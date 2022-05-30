@@ -2,6 +2,7 @@
 using STU.LVTN.SERVER.Model;
 using STU.LVTN.SERVER.Model.DTO;
 using STU.LVTN.SERVER.Model.DTO.BaiDangBatDongSan;
+using System.Globalization;
 
 namespace STU.LVTN.SERVER.Provider.BusinessLogic
 {
@@ -13,13 +14,29 @@ namespace STU.LVTN.SERVER.Provider.BusinessLogic
         {
             _mapper = mapper;
         }
+        public async Task<bool> SendApproveResult(bool approveResult, int IDPost)
+        { 
+            try
+            {
+                BaiDangEntities baiDang = _context.BaiDangs.Where(item => item.IdBaiDang == IDPost).FirstOrDefault();
+                baiDang.TrangThai = approveResult;
+                baiDang.isReviewed = true;
+                _context.BaiDangs.Update(baiDang);
+                _context.SaveChanges();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
         public async Task<List<BaiDangHomePageDTO>> RenderHomePage(int lastestSubCategories)
         {
             List<BaiDangHomePageDTO> baiDangHomePageDTOs = new List<BaiDangHomePageDTO>();
             if (lastestSubCategories == 0)
             {
                List<BaiDangEntities> lastest20BaiDang =  _context.BaiDangs
-                    .Where(baiDang => baiDang.AnTin == false && baiDang.TrangThai == true)
+                    .Where(baiDang => baiDang.AnTin == false && baiDang.TrangThai == true && baiDang.isReviewed == true)
                     .OrderByDescending(baidang => baidang.IdBaiDang)
                     .Take(20)
                     .ToList();
@@ -33,7 +50,7 @@ namespace STU.LVTN.SERVER.Provider.BusinessLogic
                     newBaiDang.TieuDe = baiDang.TieuDe;
                     newBaiDang.ThanhPho = baiDang.ThanhPho;
                     newBaiDang.Gia = baiDang.Gia;
-                    newBaiDang.NgayTao = baiDang.CreatedDate;
+                    newBaiDang.NgayTao = $"{baiDang.CreatedDate:dd-MM-yyyy HH:mm}" ;
 
                     baiDangHomePageDTOs.Add(newBaiDang);
                 }
@@ -41,7 +58,7 @@ namespace STU.LVTN.SERVER.Provider.BusinessLogic
             else
             {
                 List<BaiDangEntities> lastest20BaiDang = _context.BaiDangs
-                    .Where(baiDang => baiDang.AnTin == false && baiDang.TrangThai == true && baiDang.IdDanhMucCon == lastestSubCategories)
+                    .Where(baiDang => baiDang.AnTin == false && baiDang.TrangThai == true && baiDang.IdDanhMucCon == lastestSubCategories && baiDang.isReviewed == true)
                     .OrderByDescending(baidang => baidang.IdBaiDang)
                     .Take(20)
                     .ToList();
@@ -56,7 +73,7 @@ namespace STU.LVTN.SERVER.Provider.BusinessLogic
                     newBaiDang.TieuDe = baiDang.TieuDe;
                     newBaiDang.ThanhPho = baiDang.ThanhPho;
                     newBaiDang.Gia = baiDang.Gia;
-                    newBaiDang.NgayTao = baiDang.CreatedDate;
+                    newBaiDang.NgayTao = $"{baiDang.CreatedDate:dd-MM-yyyy HH:mm}";
 
                     baiDangHomePageDTOs.Add(newBaiDang);
                 }
@@ -82,7 +99,7 @@ namespace STU.LVTN.SERVER.Provider.BusinessLogic
                     newBaiDang.TieuDe = baiDang.TieuDe;
                     newBaiDang.ThanhPho = baiDang.ThanhPho;
                     newBaiDang.Gia = baiDang.Gia;
-                    newBaiDang.NgayTao = baiDang.CreatedDate;
+                    newBaiDang.NgayTao = $"{baiDang.CreatedDate:dd-MM-yyyy HH:mm}";
 
                     baiDangHomePageDTOs.Add(newBaiDang);
                 }

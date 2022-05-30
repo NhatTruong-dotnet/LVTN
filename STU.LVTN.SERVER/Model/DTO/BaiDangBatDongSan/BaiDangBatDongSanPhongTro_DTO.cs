@@ -25,6 +25,7 @@
         public double? DienTich { get; set; }
         public string? PhongTroTinhTrangNoiThat { get; set; }
         public double? PhongTroSoTienCoc { get; set; }
+        public bool? isReviewed { get; set; } = false;
         public List<HinhAnh_BaiDangDTO> hinhAnh_BaiDangs { get; set; }
 
     }

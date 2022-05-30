@@ -36,6 +36,7 @@
         public string? OtoNhieuLieu { get; set; }
         public string? OtoKieuDang { get; set; }
         public byte? OtoSocho { get; set; }
+        public bool? isReviewed { get; set; } = false;
         #endregion
         public List<HinhAnh_BaiDangDTO> hinhAnh_BaiDangs { get; set; }
 

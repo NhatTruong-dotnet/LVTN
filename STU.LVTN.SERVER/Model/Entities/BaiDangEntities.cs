@@ -29,7 +29,7 @@ namespace STU.LVTN.SERVER.Model
         public double? Gia { get; set; }
         public bool? CaNhan { get; set; }
         public DateTime? CreatedDate { get; set; }
-
+        public bool? isReviewed { get; set; } = false;
         public virtual DanhMuc? IdDanhMucConNavigation { get; set; }
         public virtual NguoiDungEntities? SdtNguoiBanNavigation { get; set; }
         public virtual ICollection<HinhAnhBaiDangEntities> HinhAnhBaiDangs { get; set; }

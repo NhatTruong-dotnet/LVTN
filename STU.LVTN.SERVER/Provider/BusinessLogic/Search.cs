@@ -46,7 +46,7 @@ namespace STU.LVTN.SERVER.Provider.BusinessLogic
                 BaiDangHomePageDTO post = new BaiDangHomePageDTO();
                 post.Gia = entity.Gia;
                 post.TieuDe = entity.TieuDe;
-                post.NgayTao = entity.CreatedDate;
+                post.NgayTao = entity.CreatedDate.ToString();
                 post.ThanhPho = entity.ThanhPho;
                 post.TieuDe = entity.TieuDe;
                 post.IDBaiDang = entity.IdBaiDang;

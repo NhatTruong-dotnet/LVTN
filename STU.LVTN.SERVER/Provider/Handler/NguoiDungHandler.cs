@@ -64,6 +64,8 @@ namespace STU.LVTN.SERVER.Provider.Handler
             userProfile.SoDienThoai = soDienThoai;
             userProfile.DiaChi = nguoiDung.DiaChi;
             userProfile.DanhGiaHeThong = nguoiDung.DanhGiaHeThong;
+            userProfile.AnhDaiDienSource = nguoiDung.AnhDaiDienSource;
+            userProfile.CMND = nguoiDung.SoCmnd;
             return userProfile;
         }
 

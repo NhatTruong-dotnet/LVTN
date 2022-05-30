@@ -34,6 +34,7 @@
         public string? LaptopKichCoManHinh { get; set; }
         public string? LaptopHang { get; set; }
         public string? LaptopDongMay { get; set; }
+        public bool? isReviewed { get; set; } = false;
 
         #endregion
         public List<HinhAnh_BaiDangDTO> hinhAnh_BaiDangs { get; set; }

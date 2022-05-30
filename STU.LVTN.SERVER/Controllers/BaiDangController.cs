@@ -803,11 +803,19 @@ namespace STU.LVTN.SERVER.Controllers
         #endregion
 
         [HttpPost("checkedNotifications")]
-        public async Task<bool> CheckedNotifycations(int idPost = 1)
+        public async Task<ActionResult> CheckedNotifycations(int idPost = 1)
         {
             if (await thongBaoHandler.ThongBaoChecked(idPost))
-                return true;
-            return false;
+                return Ok(true);
+            return BadRequest();
+        }
+
+        [HttpPost("sendApproveResult")]
+        public async Task<ActionResult> SendApproveResult(bool resultApprove, int IDPost = 1)
+        {
+            if (await baiDangHandler.SendApproveResult(resultApprove, IDPost))
+                return Ok(true);
+            return BadRequest();
         }
     }
 }

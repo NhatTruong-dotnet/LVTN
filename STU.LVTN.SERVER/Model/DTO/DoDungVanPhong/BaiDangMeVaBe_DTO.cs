@@ -21,6 +21,7 @@
         public double? Gia { get; set; }
         public bool? CaNhan { get; set; }
         public DateTime? CreatedDate { get; set; } = DateTime.Now;
+        public bool? isReviewed { get; set; } = false;
         #endregion
 
         #region BaiDangDoDungVanPhong
