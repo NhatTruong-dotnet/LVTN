@@ -9,6 +9,7 @@ function ImagePicker({
     multiple,
     bindingId,
     style,
+    title,
 }) {
     const renderPreviewImage = () => {
         return multiple ? (
@@ -122,7 +123,9 @@ function ImagePicker({
                             </g>
                         </g>
                     </svg>
-                    <div className={styles.text}>Đăng từ 3 đến 10 hình</div>
+                    <div className={styles.text}>
+                        {title || 'Đăng từ 3 đến 10 hình'}
+                    </div>
                 </label>
             )}
         </>

@@ -7,10 +7,36 @@ import { useEffect, useState } from 'react'
 import { convertFile, uploadImage } from '../../Utils/PostUtils'
 import FormGroup from '../../features/Post/FormComponents/Components/FormGroup'
 import FormInput from '../../features/Post/FormComponents/Components/FormInput'
+import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate, useParams } from 'react-router-dom'
+import {
+    selectPendingState,
+    selectUserInfo,
+} from '../../features/User/UserSlice'
+import { selectUsername } from '../../features/Auth/Login/loginSlice'
+import DynamicModal from '../../Common/DynamicModal/DynamicModal'
 
 function EditProfileUser(props) {
     const [listPreviewImage, setListPreviewImage] = useState([])
     const [listFileDataMedia, setListFileDataMedia] = useState([])
+    const userInfo = useSelector(selectUserInfo)
+    const [formData, setFormData] = useState({
+        ten: userInfo.ten,
+        diaChi: userInfo.diaChi,
+        cmnd: userInfo.cmnd,
+    })
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
+    const { profileUserNumberPhone } = useParams()
+    const loginUserNumberPhone = useSelector(selectUsername)
+    const isLoading = useSelector(selectPendingState)
+
+    const handleFormDataChange = (name, value) => {
+        setFormData({
+            ...formData,
+            [name]: value,
+        })
+    }
 
     const handleSelectMediaFile = e => {
         console.log(e.target.files[0])
@@ -36,6 +62,7 @@ function EditProfileUser(props) {
             setListFileDataMedia([...listFileDataMedia, dataSend])
         })
     }
+
     const deleteFile = (type, index, indexInFileData) => {
         if (type === 'image') {
             const newListPreviewImage = [...listPreviewImage]
@@ -48,8 +75,31 @@ function EditProfileUser(props) {
         newListFileDataMedia.splice(indexInFileData, 1)
         setListFileDataMedia(newListFileDataMedia)
     }
+
+    const handleSubmitForm = async e => {
+        e.preventDefault()
+        let formRequestData = {
+            ...formData,
+        }
+
+        if (listFileDataMedia.length !== 0) {
+            const fileIdArray = await uploadImage(listFileDataMedia)
+            formRequestData.anhDaiDienSource = fileIdArray[0].id
+        }
+        dispatch({
+            type: 'updateProfileUser',
+            payload: { sdt: profileUserNumberPhone, formData: formRequestData },
+        })
+    }
+
+    useEffect(() => {
+        if (loginUserNumberPhone !== profileUserNumberPhone) {
+            navigate('/')
+        }
+    }, [loginUserNumberPhone, profileUserNumberPhone])
     return (
         <div className='grid wide'>
+            <DynamicModal showModal={isLoading} loading />
             <Frame>
                 <div className='row'>
                     <div className='col l-3'>
@@ -59,33 +109,58 @@ function EditProfileUser(props) {
                                 name='filePicker'
                                 id='filePicker'
                                 hidden
-                                accept='image/*,.mp4'
+                                accept='image/*'
                                 onChange={handleSelectMediaFile}
                             />
                             <ImagePicker
                                 listPreviewImage={listPreviewImage}
                                 deleteFile={deleteFile}
-                                multiple
+                                title='Chọn 1 hình (không bắt buộc)'
                             />
                         </div>
                     </div>
                     <div className='col l-9'>
                         <FormGroup title={'Thông tin cá nhân'}>
                             <div className={styles.group}>
-                                <FormInput require label={'Họ tên'} />
+                                <FormInput
+                                    require
+                                    label={'Họ tên'}
+                                    onChange={e =>
+                                        handleFormDataChange(
+                                            'ten',
+                                            e.target.value
+                                        )
+                                    }
+                                    value={formData.ten}
+                                />
                             </div>
+
                             <div className={styles.group}>
-                                <FormInput require label={'Số điện thoại'} />
-                            </div>
-                            <div className={styles.group}>
-                                <FormInput require label={'Địa chỉ'} />
+                                <FormInput
+                                    require
+                                    label={'Địa chỉ'}
+                                    onChange={e =>
+                                        handleFormDataChange(
+                                            'diaChi',
+                                            e.target.value
+                                        )
+                                    }
+                                    value={formData.diaChi}
+                                />
                             </div>
                             <div className={styles.group}>
                                 <FormInput
                                     require
                                     label={'Số CMND/Thẻ căn cước'}
+                                    onChange={e =>
+                                        handleFormDataChange(
+                                            'cmnd',
+                                            e.target.value
+                                        )
+                                    }
+                                    value={formData.cmnd}
                                 />
-                                <div
+                                {/* <div
                                     className={styles.group}
                                     style={{
                                         display: 'flex',
@@ -103,12 +178,13 @@ function EditProfileUser(props) {
                                         deleteFile={deleteFile}
                                         style={{ width: 350 }}
                                     />
-                                </div>
+                                </div> */}
                             </div>
                         </FormGroup>
                         <div style={{ textAlign: 'right' }}>
                             <button
                                 className={clsx(styles.button, styles.solid)}
+                                onClick={handleSubmitForm}
                             >
                                 Cập nhật
                             </button>

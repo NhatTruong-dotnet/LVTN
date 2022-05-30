@@ -19,3 +19,25 @@ export const getUserPost = async sdt => {
         return { userPost: data, status }
     } catch (error) {}
 }
+
+export const updateProfileUser = async (sdt, formData, token) => {
+    try {
+        const res = await axios.post(
+            `${host}/api/Auth/update`,
+            { ...formData, soDienThoai: sdt },
+            {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            }
+        )
+        const message = res.data
+        const status = res.status
+        return { message, status }
+    } catch ({ response }) {
+        return {
+            status: response.status,
+            message: response.data,
+        }
+    }
+}

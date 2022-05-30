@@ -4,12 +4,20 @@ import { FaUserCircle } from 'react-icons/fa'
 import { AiOutlineStar, AiOutlinePhone } from 'react-icons/ai'
 import { IoLocationOutline } from 'react-icons/io5'
 import HorizontalPost from '../../Common/ListPost/Post/HorizontalPost'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { selectUsername } from '../../features/Auth/Login/loginSlice'
 import { useEffect } from 'react'
-import { selectUserInfo, selectUserPost } from '../../features/User/UserSlice'
+import {
+    selectPendingState,
+    selectUserInfo,
+    selectUserPost,
+} from '../../features/User/UserSlice'
 import TimeAgo from 'javascript-time-ago'
+import clsx from 'clsx'
+import DynamicModal from '../../Common/DynamicModal/DynamicModal'
+
+const imgSrc = process.env.REACT_APP_BASE_IMG_URL
 
 function ProfileUser(props) {
     const timeAgo = new TimeAgo('en-US')
@@ -18,6 +26,9 @@ function ProfileUser(props) {
     const userProfile = useSelector(selectUserInfo)
     const userPost = useSelector(selectUserPost)
     const dispatch = useDispatch()
+    const navigate = useNavigate()
+    const isLoading = useSelector(selectPendingState)
+    console.log(isLoading)
 
     useEffect(() => {
         dispatch({ type: 'getProfile', sdt: profileUserNumberPhone })
@@ -25,10 +36,22 @@ function ProfileUser(props) {
 
     return (
         <div className='grid wide'>
+            <DynamicModal showModal={isLoading} loading />
             <Frame>
                 <div className={styles.userInfoContainer}>
                     <div className={styles.userInfo}>
-                        <FaUserCircle className={styles.icon} />
+                        {userProfile.andDaiDienSource ? (
+                            <img
+                                src={imgSrc + userProfile.andDaiDienSource}
+                                alt='avatar'
+                                width={60}
+                                height={60}
+                                className={styles.avatar}
+                            />
+                        ) : (
+                            <FaUserCircle className={styles.icon} />
+                        )}
+
                         <div className={styles.info}>
                             <div className={styles.name}>{userProfile.ten}</div>
                             <div className={styles.follow}>
@@ -95,8 +118,8 @@ function ProfileUser(props) {
                                 Ngày tham gia:
                             </span>
                             <span style={{ fontWeight: 500 }}>
-                                {userProfile.createdDate &&
-                                    timeAgo(userProfile.createdDate)}
+                                {/* {userProfile.createdDate &&
+                                    timeAgo(userProfile.createdDate)} */}
                             </span>
                         </div>
                         <div className={styles.infoItem}>
@@ -131,6 +154,20 @@ function ProfileUser(props) {
                                 {userProfile.soDienThoai}
                             </span>
                         </div>
+                        {profileUserNumberPhone === loginUserNumberPhone ? (
+                            <button
+                                className={clsx(styles.savePost, styles.small)}
+                                onClick={() =>
+                                    navigate(
+                                        `/user/edit-profile/${profileUserNumberPhone}`
+                                    )
+                                }
+                            >
+                                Chỉnh sửa thông tin
+                            </button>
+                        ) : (
+                            ''
+                        )}
                     </div>
                 </div>
             </Frame>
