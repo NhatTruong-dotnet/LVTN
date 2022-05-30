@@ -226,37 +226,39 @@ function House({ formData, handleFormDataChange }) {
 
                     <div className={styles.special}>
                         <div className={styles.title}>Đặc điểm nhà / đất</div>
-                        <div className={styles.checkboxGroup}>
-                            <label className={styles.checkboxLabel}>
-                                Hẻm xe hơi
-                            </label>
-                            <input
-                                type='checkbox'
-                                id='car'
-                                checked={formData.nhaOhemXeHoi}
-                                onChange={e =>
-                                    handleFormDataChange(
-                                        'nhaOhemXeHoi',
-                                        e.target.checked
-                                    )
-                                }
-                            />
-                        </div>
-                        <div className={styles.checkboxGroup}>
-                            <label className={styles.checkboxLabel}>
-                                Nở hậu
-                            </label>
-                            <input
-                                type='checkbox'
-                                id='car'
-                                checked={formData.nhaOnoHau}
-                                onChange={e =>
-                                    handleFormDataChange(
-                                        'nhaOnoHau',
-                                        e.target.checked
-                                    )
-                                }
-                            />
+                        <div className={styles.wrap}>
+                            <div className={styles.checkboxGroup}>
+                                <label className={styles.checkboxLabel}>
+                                    Hẻm xe hơi
+                                </label>
+                                <input
+                                    type='checkbox'
+                                    id='car'
+                                    checked={formData.nhaOhemXeHoi}
+                                    onChange={e =>
+                                        handleFormDataChange(
+                                            'nhaOhemXeHoi',
+                                            e.target.checked
+                                        )
+                                    }
+                                />
+                            </div>
+                            <div className={styles.checkboxGroup}>
+                                <label className={styles.checkboxLabel}>
+                                    Nở hậu
+                                </label>
+                                <input
+                                    type='checkbox'
+                                    id='car'
+                                    checked={formData.nhaOnoHau}
+                                    onChange={e =>
+                                        handleFormDataChange(
+                                            'nhaOnoHau',
+                                            e.target.checked
+                                        )
+                                    }
+                                />
+                            </div>
                         </div>
                     </div>
                 </div>

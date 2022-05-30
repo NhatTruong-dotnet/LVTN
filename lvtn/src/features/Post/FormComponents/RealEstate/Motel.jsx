@@ -116,7 +116,7 @@ function Motel({ formData, handleFormDataChange }) {
             <FormGroup title='Diện tích và giá'>
                 <div className={styles.group}>
                     <FormInput
-                        label='Diện tích đất'
+                        label='Diện tích'
                         require
                         value={formData.dienTich}
                         onChange={e =>

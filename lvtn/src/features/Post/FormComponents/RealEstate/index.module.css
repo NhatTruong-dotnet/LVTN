@@ -141,7 +141,6 @@ input::-webkit-inner-spin-button {
     display: flex;
     justify-content: space-between;
     flex-direction: column;
-    /* position: relative; */
 }
 .wrap {
     display: flex;
@@ -151,8 +150,11 @@ input::-webkit-inner-spin-button {
 .checkboxGroup {
     border-bottom: 1px solid #cacaca;
     display: inline-flex;
-    /* flex-direction: row-reverse; */
     -webkit-box-pack: justify;
     justify-content: space-between;
     width: 30%;
+    margin-top: 10px;
 }
+/* .checkboxGroup + .checkboxGroup {
+    margin-top: 40px;
+} */

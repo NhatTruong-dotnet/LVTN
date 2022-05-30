@@ -149,7 +149,6 @@ function Office({ formData, handleFormDataChange }) {
                 <div className={styles.group}>
                     <div className={styles.halfParent}>
                         <FormInput
-                            require
                             label='Hướng cửa chính(Không bắt buộc)'
                             halfContainer
                             value={formData.vanPhongHuongCuaChinh}

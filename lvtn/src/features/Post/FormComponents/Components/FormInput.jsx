@@ -67,9 +67,9 @@ function FormInput({
     }
 
     const closeListDataWhenBlur = () => {
-        if (!require) {
+        setTimeout(() => {
             setDisplayAutoComplete(false)
-        }
+        }, 100)
     }
 
     // useEffect(() => {

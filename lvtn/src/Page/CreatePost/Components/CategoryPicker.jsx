@@ -1,6 +1,5 @@
 import DynamicModal from '../../../Common/DynamicModal/DynamicModal'
 import { useState } from 'react'
-import { FaTimes } from 'react-icons/fa'
 import { MdOutlineKeyboardArrowRight } from 'react-icons/md'
 import data from '../categoryData'
 import styles from './categorypicker.module.css'
@@ -42,61 +41,47 @@ function CategoryPicker({
     }
     return (
         <DynamicModal>
-            <TabContainer onClickOutside={closeCategoryPicker}>
-                <div className={styles.cateModalContainer}>
-                    <div className={styles.header}>
-                        <FaTimes
-                            className={styles.icon}
-                            onClick={closeCategoryPicker}
-                        />
-                        <div className={styles.headerText}>
-                            Chọn danh mục đăng tin
-                        </div>
-                    </div>
-                    <div className={styles.listCategory}>
-                        <div className={styles.box}>
-                            {categories.map(
-                                ({
-                                    id,
-                                    name,
-                                    Icon,
-                                    subCategory,
-                                    Component,
-                                }) => (
-                                    <div
-                                        className={styles.categoryItem}
-                                        key={id}
-                                        onClick={() =>
-                                            chooseParentCategory(
-                                                id,
-                                                name,
-                                                subCategory,
-                                                Component
-                                            )
-                                        }
-                                    >
-                                        <div className={styles.nameWrap}>
-                                            {Icon && (
-                                                <Icon
-                                                    className={
-                                                        styles.pickerIcon
-                                                    }
-                                                />
-                                            )}
-                                            <span className={styles.name}>
-                                                {name}
-                                            </span>
-                                        </div>
-                                        <MdOutlineKeyboardArrowRight
-                                            className={styles.pickerIcon}
-                                        />
-                                    </div>
-                                )
-                            )}
-                        </div>
+            <div className={styles.cateModalContainer}>
+                <div className={styles.header}>
+                    <div className={styles.headerText}>
+                        Chọn danh mục đăng tin
                     </div>
                 </div>
-            </TabContainer>
+                <div className={styles.listCategory}>
+                    <div className={styles.box}>
+                        {categories.map(
+                            ({ id, name, Icon, subCategory, Component }) => (
+                                <div
+                                    className={styles.categoryItem}
+                                    key={id}
+                                    onClick={() =>
+                                        chooseParentCategory(
+                                            id,
+                                            name,
+                                            subCategory,
+                                            Component
+                                        )
+                                    }
+                                >
+                                    <div className={styles.nameWrap}>
+                                        {Icon && (
+                                            <Icon
+                                                className={styles.pickerIcon}
+                                            />
+                                        )}
+                                        <span className={styles.name}>
+                                            {name}
+                                        </span>
+                                    </div>
+                                    <MdOutlineKeyboardArrowRight
+                                        className={styles.pickerIcon}
+                                    />
+                                </div>
+                            )
+                        )}
+                    </div>
+                </div>
+            </div>
         </DynamicModal>
     )
 }
