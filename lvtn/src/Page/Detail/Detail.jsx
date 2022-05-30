@@ -12,9 +12,11 @@ import { useDispatch, useSelector } from 'react-redux'
 import {
     addWishList,
     removeItemWishList,
+    selectPendingStatusPost,
     selectPostDetail,
     selectWishList,
 } from '../../features/Post/PostSlice'
+import DynamicModal from '../../Common/DynamicModal/DynamicModal'
 
 const imgURL = process.env.REACT_APP_BASE_IMG_URL
 
@@ -105,10 +107,7 @@ function Detail(props) {
     const dispatch = useDispatch()
     const postDetail = useSelector(selectPostDetail)
     const wishList = useSelector(selectWishList)
-    // const [wishList, setWishList] = useState(
-    //     JSON.parse(localStorage.getItem('wishList'))
-    // )
-    console.log(postDetail)
+    const isLoading = useSelector(selectPendingStatusPost)
 
     const handleWishList = () => {
         if (checkSavedPost(idPost)) {
@@ -147,6 +146,7 @@ function Detail(props) {
 
     return (
         <div className='grid wide'>
+            <DynamicModal showModal={isLoading} loading />
             <Frame>
                 <div className='row'>
                     <div className='col l-8'>

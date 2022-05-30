@@ -3,7 +3,6 @@ import { useState } from 'react'
 import { MdOutlineKeyboardArrowRight } from 'react-icons/md'
 import data from '../categoryData'
 import styles from './categorypicker.module.css'
-import TabContainer from '../../../Common/TabContainer'
 
 function CategoryPicker({
     closeCategoryPicker,

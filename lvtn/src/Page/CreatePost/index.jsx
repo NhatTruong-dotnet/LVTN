@@ -15,6 +15,8 @@ import { selectLoginStatus } from '../../features/Auth/Login/loginSlice'
 import ImagePicker from './Components/ImagePicker'
 import VideoPicker from './Components/VideoPicker'
 import { useNavigate } from 'react-router-dom'
+import { selectPendingStatusPost } from '../../features/Post/PostSlice'
+import DynamicModal from '../../Common/DynamicModal/DynamicModal'
 
 function CreatePost(props) {
     const [isShowCategoryPicker, setIsShowCategoryPicker] = useState(true)
@@ -41,6 +43,8 @@ function CreatePost(props) {
     const navigate = useNavigate()
     const isLogin = useSelector(selectLoginStatus)
     const dispatch = useDispatch()
+    const isLoading = useSelector(selectPendingStatusPost)
+
     const openCategoryPicker = () => setIsShowCategoryPicker(true)
     const closeCategoryPicker = () => setIsShowCategoryPicker(false)
 
@@ -115,11 +119,11 @@ function CreatePost(props) {
         })
     }
 
-    // useEffect(() => {
-    //     if (!isLogin) {
-    //         navigate('/')
-    //     }
-    // }, [isLogin])
+    useEffect(() => {
+        if (!isLogin) {
+            navigate('/')
+        }
+    }, [isLogin])
 
     useEffect(() => {
         if (selectedCategory.category.id) {
@@ -135,6 +139,7 @@ function CreatePost(props) {
 
     return (
         <div className='grid wide'>
+            <DynamicModal showModal={isLoading} loading />
             <Frame>
                 <div className='row'>
                     <div className='col l-4'>

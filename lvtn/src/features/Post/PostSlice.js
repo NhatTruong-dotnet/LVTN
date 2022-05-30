@@ -100,5 +100,6 @@ export const {
 export const selectListPost = state => state.post.listPost
 export const selectPostDetail = state => state.post.selectedPostDetail
 export const selectWishList = state => state.post.wishList
+export const selectPendingStatusPost = state => state.post.isLoading
 
 export default reducer
