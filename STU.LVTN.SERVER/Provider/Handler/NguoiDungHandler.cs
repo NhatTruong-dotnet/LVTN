@@ -30,8 +30,7 @@ namespace STU.LVTN.SERVER.Provider.Handler
 
         public async Task<bool> ChangePassword(Login_RegisterDTO userRequest)
         {
-            user = new NguoiDungEntities();
-            user.SoDienThoai = userRequest.SoDienThoai;
+            user = await nguoiDungHelper.GetNguoiDungBySoDienThoai(userRequest.SoDienThoai);
             nguoiDungHelper.CreatePasswordHash(userRequest.Password, out byte[] passwordHash, out byte[] passwordSalt);
             user.PasswordSalt = passwordSalt;
             user.PasswordHash = passwordHash;
