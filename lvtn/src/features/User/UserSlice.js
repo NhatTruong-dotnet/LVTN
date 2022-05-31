@@ -10,7 +10,7 @@ const initialState = {
         danhGiaHeThong: '',
         cmnd: '',
         createdDate: '',
-        andDaiDienSource: '',
+        anhDaiDienSource: '',
     },
     userPost: [],
 }

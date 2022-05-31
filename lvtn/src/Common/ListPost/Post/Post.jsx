@@ -38,7 +38,7 @@ function Post({ id, title, imgId, price, createdDate = new Date(), location }) {
                     <FaStore className={styles.icon} />
                     <div className={styles.dot}></div>
                     <div className={styles.time}>
-                        {/* {createdDate && timeAgo.format(createdDate)} */}
+                        {createdDate && timeAgo.format(createdDate)}
                     </div>
                     <div className={styles.dot}></div>
                     <div className={styles.location}>{location}</div>

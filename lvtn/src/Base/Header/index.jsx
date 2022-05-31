@@ -14,6 +14,7 @@ import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import {
     selectLoginStatus,
+    selectNumberPhone,
     selectStatus,
     selectUsername,
 } from '../../features/Auth/Login/loginSlice'
@@ -24,6 +25,7 @@ function Header(props) {
     const [isShowForm, setIsShowForm] = useState(false)
     const isLoading = useSelector(selectStatus)
     const username = useSelector(selectUsername)
+    const sdt = useSelector(selectNumberPhone)
     const isLogin = useSelector(selectLoginStatus)
     // const dispatch = useDispatch()
 
@@ -40,6 +42,8 @@ function Header(props) {
             setIsShowForm(false)
         }
     }, [isLogin])
+    console.log(sdt)
+    console.log(username)
 
     return (
         <div className={styles.container}>
@@ -74,7 +78,7 @@ function Header(props) {
                     <div className={styles.userControl}>
                         {isLogin ? (
                             <>
-                                <UserControl username={username} />
+                                <UserControl username={username} sdt={sdt} />
                                 <Notification />
                             </>
                         ) : (

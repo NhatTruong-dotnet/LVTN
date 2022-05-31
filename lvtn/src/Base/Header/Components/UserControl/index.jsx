@@ -3,34 +3,58 @@ import { FaUserAlt } from 'react-icons/fa'
 import { AiOutlineUser } from 'react-icons/ai'
 import styles from './usercontrol.module.css'
 import TabContainer from '../../../../Common/TabContainer'
-import { useDispatch } from 'react-redux'
-import { logout } from '../../../../features/Auth/Login/loginSlice'
+import { useDispatch, useSelector } from 'react-redux'
+import {
+    logout,
+    selectStatus,
+} from '../../../../features/Auth/Login/loginSlice'
 import { useNavigate } from 'react-router-dom'
+import DynamicModal from '../../../../Common/DynamicModal/DynamicModal'
+import ResetPasswordForm from '../ResetPasswordForm'
 
-function UserControl({ username }) {
+function UserControl({ username, sdt }) {
     const [isShowControlTab, setIsShowControlTab] = useState(false)
+    const [isShowResetPasswordForm, setIsShowResetPasswordForm] =
+        useState(false)
     const dispatch = useDispatch()
     const navigate = useNavigate()
+    const isLoading = useSelector(selectStatus)
+
     const handleLogout = () => {
         dispatch(logout())
     }
 
     const handleNavigate = to => {
         navigate(to)
+        setIsShowControlTab(false)
     }
 
     return (
         <span className={styles.wrap}>
             <FaUserAlt
                 className={styles.userIcon}
-                onClick={() => setIsShowControlTab(true)}
+                onClick={() => setIsShowControlTab(prev => !prev)}
             />
+            <DynamicModal
+                showModal={isShowResetPasswordForm}
+                loading={isLoading}
+            >
+                <TabContainer
+                    onClickOutside={() => setIsShowResetPasswordForm(false)}
+                >
+                    {isShowResetPasswordForm && (
+                        <ResetPasswordForm
+                            setIsShowForm={setIsShowResetPasswordForm}
+                        />
+                    )}
+                </TabContainer>
+            </DynamicModal>
             {isShowControlTab && (
                 <TabContainer onClickOutside={() => setIsShowControlTab(false)}>
                     <div className={styles.controlTab}>
                         <div
                             className={styles.userInfo}
-                            onClick={() => handleNavigate(`/user/${username}`)}
+                            onClick={() => handleNavigate(`/user/${sdt}`)}
                         >
                             <AiOutlineUser className={styles.userInfoIcon} />
                             <div className={styles.name}>
@@ -43,9 +67,7 @@ function UserControl({ username }) {
                         <div className={styles.controlContainer}>
                             <div
                                 className={styles.controlItem}
-                                onClick={() =>
-                                    handleNavigate(`user/${username}`)
-                                }
+                                onClick={() => handleNavigate(`user/${sdt}`)}
                             >
                                 <img
                                     src='https://static.chotot.com/storage/chotot-icons/svg/escrow-orders.svg'
@@ -77,6 +99,19 @@ function UserControl({ username }) {
                                 />
                                 <span className={styles.controlLabel}>
                                     Yêu thích
+                                </span>
+                            </div>
+                            <div
+                                className={styles.controlItem}
+                                onClick={() => setIsShowResetPasswordForm(true)}
+                            >
+                                <img
+                                    src='https://st.chotot.com/storage/chotot-icons/svg/settings.svg'
+                                    alt='icon'
+                                    className={styles.icon}
+                                />
+                                <span className={styles.controlLabel}>
+                                    Đổi mật khẩu
                                 </span>
                             </div>
                             <div

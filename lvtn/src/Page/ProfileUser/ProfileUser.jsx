@@ -6,7 +6,7 @@ import { IoLocationOutline } from 'react-icons/io5'
 import HorizontalPost from '../../Common/ListPost/Post/HorizontalPost'
 import { useNavigate, useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { selectUsername } from '../../features/Auth/Login/loginSlice'
+import { selectNumberPhone } from '../../features/Auth/Login/loginSlice'
 import { useEffect } from 'react'
 import {
     selectPendingState,
@@ -22,30 +22,31 @@ const imgSrc = process.env.REACT_APP_BASE_IMG_URL
 function ProfileUser(props) {
     const timeAgo = new TimeAgo('en-US')
     const { profileUserNumberPhone } = useParams()
-    const loginUserNumberPhone = useSelector(selectUsername)
+    const loginUserNumberPhone = useSelector(selectNumberPhone)
     const userProfile = useSelector(selectUserInfo)
     const userPost = useSelector(selectUserPost)
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const isLoading = useSelector(selectPendingState)
-    console.log(isLoading)
+    console.log(profileUserNumberPhone)
+    console.log(loginUserNumberPhone)
 
     useEffect(() => {
         dispatch({ type: 'getProfile', sdt: profileUserNumberPhone })
     }, [profileUserNumberPhone])
-
+    console.log(userProfile)
     return (
         <div className='grid wide'>
             <DynamicModal showModal={isLoading} loading />
             <Frame>
                 <div className={styles.userInfoContainer}>
                     <div className={styles.userInfo}>
-                        {userProfile.andDaiDienSource ? (
+                        {userProfile.anhDaiDienSource ? (
                             <img
-                                src={imgSrc + userProfile.andDaiDienSource}
+                                src={imgSrc + userProfile.anhDaiDienSource}
                                 alt='avatar'
-                                width={60}
-                                height={60}
+                                width={100}
+                                height={100}
                                 className={styles.avatar}
                             />
                         ) : (

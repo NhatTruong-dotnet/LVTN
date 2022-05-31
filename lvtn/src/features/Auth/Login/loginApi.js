@@ -17,3 +17,23 @@ export async function Login(formData) {
         }
     }
 }
+
+export async function changePassword({ token, soDienThoai, password }) {
+    try {
+        const res = await axios.post(
+            `${baseApiURL}/api/auth/changePassword`,
+            { soDienThoai, password },
+            {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            }
+        )
+        return { status: res.status }
+    } catch (response) {
+        return {
+            status: response.status,
+            errorMessage: response.data,
+        }
+    }
+}

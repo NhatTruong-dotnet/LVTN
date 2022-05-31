@@ -13,7 +13,7 @@ import {
     selectPendingState,
     selectUserInfo,
 } from '../../features/User/UserSlice'
-import { selectUsername } from '../../features/Auth/Login/loginSlice'
+import { selectNumberPhone } from '../../features/Auth/Login/loginSlice'
 import DynamicModal from '../../Common/DynamicModal/DynamicModal'
 
 function EditProfileUser(props) {
@@ -28,7 +28,7 @@ function EditProfileUser(props) {
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const { profileUserNumberPhone } = useParams()
-    const loginUserNumberPhone = useSelector(selectUsername)
+    const loginUserNumberPhone = useSelector(selectNumberPhone)
     const isLoading = useSelector(selectPendingState)
 
     const handleFormDataChange = (name, value) => {
