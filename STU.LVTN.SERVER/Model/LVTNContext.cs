@@ -29,9 +29,11 @@ namespace STU.LVTN.SERVER.Model
         public virtual DbSet<BaiDangTuLanhEntities> BaiDangTuLanhs { get; set; } = null!;
         public virtual DbSet<BaiDangViecLamEntities> BaiDangViecLams { get; set; } = null!;
         public virtual DbSet<BaiDangXeCoEntities> BaiDangXeCos { get; set; } = null!;
+        public virtual DbSet<ConversationEntities> Conversations { get; set; } = null!;
         public virtual DbSet<DanhMuc> DanhMucs { get; set; } = null!;
         public virtual DbSet<GiaoDichDatCoc> GiaoDichDatCocs { get; set; } = null!;
         public virtual DbSet<HinhAnhBaiDangEntities> HinhAnhBaiDangs { get; set; } = null!;
+        public virtual DbSet<MessageEntities> Messages { get; set; } = null!;
         public virtual DbSet<NguoiDungEntities> NguoiDungs { get; set; } = null!;
         public virtual DbSet<ThongBaoEntities> ThongBaos { get; set; } = null!;
         public virtual DbSet<ThuocTinhDanhMuc> ThuocTinhDanhMucs { get; set; } = null!;
@@ -66,6 +68,8 @@ namespace STU.LVTN.SERVER.Model
                 entity.Property(e => e.IdDanhMucCha).HasColumnName("id_DanhMucCha");
 
                 entity.Property(e => e.IdDanhMucCon).HasColumnName("id_DanhMucCon");
+
+                entity.Property(e => e.isReviewed).HasColumnName("isReviewed");
 
                 entity.Property(e => e.PhuongXa).HasMaxLength(150);
 
@@ -571,6 +575,15 @@ namespace STU.LVTN.SERVER.Model
                 entity.Property(e => e.Xuatxu).HasMaxLength(50);
             });
 
+            modelBuilder.Entity<ConversationEntities>(entity =>
+            {
+                entity.Property(e => e.ConversationId).HasColumnName("ConversationID");
+
+                entity.Property(e => e.SdtNguoiBan).HasMaxLength(50);
+
+                entity.Property(e => e.SdtNguoiMua).HasMaxLength(50);
+            });
+
             modelBuilder.Entity<DanhMuc>(entity =>
             {
                 entity.HasKey(e => e.IdDanhMuc);
@@ -649,6 +662,15 @@ namespace STU.LVTN.SERVER.Model
                     .HasConstraintName("FK_HinhAnh_BaiDang_BaiDang");
             });
 
+            modelBuilder.Entity<MessageEntities>(entity =>
+            {
+                entity.Property(e => e.MessageId).HasColumnName("MessageID");
+
+                entity.Property(e => e.ConversationId).HasColumnName("ConversationID");
+
+                entity.Property(e => e.MessagesBy).HasMaxLength(50);
+            });
+
             modelBuilder.Entity<NguoiDungEntities>(entity =>
             {
                 entity.HasKey(e => e.SoDienThoai);
@@ -695,6 +717,8 @@ namespace STU.LVTN.SERVER.Model
                 entity.Property(e => e.Checked).HasColumnName("checked");
 
                 entity.Property(e => e.Comment).HasColumnName("comment");
+
+                entity.Property(e => e.IDPost).HasColumnName("IDPost");
 
                 entity.Property(e => e.SdtNguoiDung).HasMaxLength(50);
             });
