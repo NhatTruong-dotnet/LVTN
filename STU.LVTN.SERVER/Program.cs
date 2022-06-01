@@ -14,6 +14,14 @@ builder.Services.AddControllers();
 builder.Services.AddSignalR();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+builder.Services.AddCors(option => 
+    option.AddDefaultPolicy(builder =>
+    {
+        builder.WithOrigins("https://localhost:3000")
+        .AllowAnyHeader()
+        .AllowAnyMethod()
+        .AllowCredentials();
+    }));
 builder.Services.AddSwaggerGen(options =>
 {
     options.AddSecurityDefinition("oauth2", new Microsoft.OpenApi.Models.OpenApiSecurityScheme
@@ -47,12 +55,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseCors(option =>
-{
-    option.WithOrigins("http://localhost:8080");
-    option.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin();
 
-});
 app.UseHttpsRedirection();
 
 app.UseAuthentication();
@@ -60,5 +63,6 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
-app.MapHub<ThongBaoHub>("/notify");
+app.UseCors();
+app.MapHub<ThongBaoHub>("notify");
 app.Run();
