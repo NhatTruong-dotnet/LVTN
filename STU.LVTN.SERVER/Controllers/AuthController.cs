@@ -72,5 +72,15 @@ namespace STU.LVTN.SERVER.Controllers
             else
                 return BadRequest("Some thing wrong here!");
         }
+
+        [HttpGet("changePassword"), Authorize]
+        public async Task<ActionResult<string>> ChangePassword(Login_RegisterDTO userRequest)
+        {
+
+            if (await nguoiDungHandler.ChangePassword(userRequest))
+                return Ok();
+            else
+                return BadRequest("Some thing wrong here!");
+        }
     }
 }
