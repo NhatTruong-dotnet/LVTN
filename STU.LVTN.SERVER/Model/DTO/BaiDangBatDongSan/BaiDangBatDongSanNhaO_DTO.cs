@@ -32,6 +32,8 @@
         public double? NhaOChieuNgang { get; set; }
         public double? NhaOChieuDai { get; set; }
         public bool? isReviewed { get; set; } = false;
+        public float? SoTienCoc { get; set; }
+
         public List<HinhAnh_BaiDangDTO> hinhAnh_BaiDangs { get; set; }
 
     }

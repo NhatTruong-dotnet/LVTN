@@ -8,6 +8,6 @@ namespace STU.LVTN.SERVER.Controllers
     public class ChatController : ControllerBase
     {
         //Chat, attach Image, delete coversation
-        [HttpPost("/chat")]
+        
     }
 }

@@ -59,9 +59,9 @@ namespace STU.LVTN.SERVER.Provider.BusinessLogic
             BaiDangBatDongSanEntities entity = _context.BaiDangBatDongSans.Where(item => item.IdBaiDang == idPostDetail).FirstOrDefault();
             post.Add("Diện tích đất : ", entity.DienTich.ToString());
             if ((bool)entity.DatHemXeHoi)
-                post.Add("Đặc điểm đất: ",  "Hẻm xe hơi" );
+                post.Add("Đặc điểm đất 1: ",  "Hẻm xe hơi" );
             if ( (bool)entity.DatNoHau)
-                post.Add("Đặc điểm đất: ",  "Nở hậu");
+                post.Add("Đặc điểm đất 2: ",  "Nở hậu");
             if ((bool)entity.DatMatTien)
                 post.Add("Đặc điểm đất: " ,"Đất mặt tiền");
             post.Add("Loại hình đất: ", entity.DatLoaiHinhDat.ToString());
