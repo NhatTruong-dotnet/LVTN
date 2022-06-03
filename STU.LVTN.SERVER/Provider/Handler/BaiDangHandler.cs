@@ -86,6 +86,7 @@ namespace STU.LVTN.SERVER.Provider.Handler
             postDictionary.Add("moTa", post.Mota);
             postDictionary.Add("gia", post.Gia.ToString());
             postDictionary.Add("sdt", post.SdtNguoiBan);
+            postDictionary.Add("idDanhMuc", post.IdDanhMucCon.ToString());
             postDictionary.Add("khuVuc", post.PhuongXa + ", " + post.QuanHuyen + ", " + post.ThanhPho);
             result.Add("BaiDang", postDictionary);
             #endregion

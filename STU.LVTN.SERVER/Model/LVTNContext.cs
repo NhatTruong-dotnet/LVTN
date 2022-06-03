@@ -577,6 +577,7 @@ namespace STU.LVTN.SERVER.Model
 
             modelBuilder.Entity<ConversationEntities>(entity =>
             {
+                entity.HasKey(e => e.ConversationId);
                 entity.Property(e => e.ConversationId).HasColumnName("ConversationID");
 
                 entity.Property(e => e.SdtNguoiBan).HasMaxLength(50);
@@ -664,6 +665,7 @@ namespace STU.LVTN.SERVER.Model
 
             modelBuilder.Entity<MessageEntities>(entity =>
             {
+                entity.HasKey(e => e.MessageId);
                 entity.Property(e => e.MessageId).HasColumnName("MessageID");
 
                 entity.Property(e => e.ConversationId).HasColumnName("ConversationID");
