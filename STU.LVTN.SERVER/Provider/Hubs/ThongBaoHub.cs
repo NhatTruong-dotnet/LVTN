@@ -12,11 +12,13 @@ namespace STU.LVTN.SERVER.Provider.Hubs
             BaiDangEntities lastestPostFromSDT = _context.BaiDangs
                 .OrderByDescending(item => item.IdBaiDang)
                 .Last();
+            
             ThongBaoDTO NotifyContext = new ThongBaoDTO();
             NotifyContext.SdtNguoiDung = SdtRecentlySubmit;
             NotifyContext.Mota = lastestPostFromSDT.Mota;
             NotifyContext.TieuDeThongBao = lastestPostFromSDT.TieuDe;
             NotifyContext.IDPost = lastestPostFromSDT.IdBaiDang;
+            NotifyContext.ImageSource = _context.HinhAnhBaiDangs.Where(item => item.IdSanPham == lastestPostFromSDT.IdBaiDang && item.VideoType == false).First().IdMediaCloud;
             await Clients.All.SendAsync("AdminReceiveNotify", NotifyContext);
         }
     }
