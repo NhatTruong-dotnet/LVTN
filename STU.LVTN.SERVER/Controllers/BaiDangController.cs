@@ -65,14 +65,14 @@ namespace STU.LVTN.SERVER.Controllers
         [HttpPost("batDongSanCC/newPost"), Authorize]
         public async Task<ActionResult<bool>> newPostBatDongSanCC(BaiDangBatDongSanCC_DTO baiDangCC_Request)
         {
-            baiDangCC_Request.SdtNguoiBan = User.Identity.Name;
+            baiDangCC_Request.SdtNguoiBan = baiDangCC_Request.SdtNguoiBan;
             if (await baiDangHandler.AddBaiDangBatDongSanCC(baiDangCC_Request))
             {
                 ThongBaoDTO thongBao = new ThongBaoDTO();
                 thongBao.Checked = false;
                 thongBao.IDPost = baiDangHandler.NumberOfPost();
                 thongBao.TieuDeThongBao = "Bạn có một bài đăng cần được phê duyệt";
-                thongBao.SdtNguoiDung = User.Identity.Name;
+                thongBao.SdtNguoiDung = baiDangCC_Request.SdtNguoiBan;
                 await thongBaoHandler.AddThongBao(thongBao);
                 return Ok();
             }
@@ -82,7 +82,7 @@ namespace STU.LVTN.SERVER.Controllers
         [HttpPost("batDongSanNhaO/newPost"), Authorize]
         public async Task<ActionResult<bool>> newPostBatDongSanNhaO(BaiDangBatDongSanNhaO_DTO baiDangCC_Request)
         {
-            baiDangCC_Request.SdtNguoiBan = User.Identity.Name;
+            baiDangCC_Request.SdtNguoiBan = baiDangCC_Request.SdtNguoiBan;
             if (await baiDangHandler.AddBaiDangBatDongSanNhaO(baiDangCC_Request))
             {
                 ThongBaoDTO thongBao = new ThongBaoDTO();
@@ -99,7 +99,7 @@ namespace STU.LVTN.SERVER.Controllers
         [HttpPost("batDongSanDat/newPost"), Authorize]
         public async Task<ActionResult<bool>> newPostBatDongSanDat(BaiDangBatDongSanDat_DTO baiDangCC_Request)
         {
-            baiDangCC_Request.SdtNguoiBan = User.Identity.Name;
+            baiDangCC_Request.SdtNguoiBan = baiDangCC_Request.SdtNguoiBan;
             if (await baiDangHandler.AddBaiDangBatDongSanDat(baiDangCC_Request))
             {
                 ThongBaoDTO thongBao = new ThongBaoDTO();
@@ -116,7 +116,7 @@ namespace STU.LVTN.SERVER.Controllers
         [HttpPost("batDongSanVanPhong/newPost"), Authorize]
         public async Task<ActionResult<bool>> newPostBatDongSanVanPhong(BaiDangBatDongSanVanPhong_DTO baiDangCC_Request)
         {
-            baiDangCC_Request.SdtNguoiBan = User.Identity.Name;
+            baiDangCC_Request.SdtNguoiBan = baiDangCC_Request.SdtNguoiBan;
             if (await baiDangHandler.AddBaiDangBatDongSanVanPhong(baiDangCC_Request))
             {
                 ThongBaoDTO thongBao = new ThongBaoDTO();
@@ -133,7 +133,7 @@ namespace STU.LVTN.SERVER.Controllers
         [HttpPost("batDongSanPhongTro/newPost"), Authorize]
         public async Task<ActionResult<bool>> newPostBatDongSanPhongTro(BaiDangBatDongSanPhongTro_DTO baiDangCC_Request)
         {
-            baiDangCC_Request.SdtNguoiBan = User.Identity.Name;
+            baiDangCC_Request.SdtNguoiBan = baiDangCC_Request.SdtNguoiBan;
             if (await baiDangHandler.AddBaiDangBatDongSanPhongTro(baiDangCC_Request))
             {
                 ThongBaoDTO thongBao = new ThongBaoDTO();
@@ -153,7 +153,7 @@ namespace STU.LVTN.SERVER.Controllers
         [HttpPost("xeCoOto/newPost"), Authorize]
         public async Task<ActionResult<bool>> newPostXeCoOto(BaiDangXeCoOto_DTO baiDangOTo_Request)
         {
-            baiDangOTo_Request.SdtNguoiBan = User.Identity.Name;
+            baiDangOTo_Request.SdtNguoiBan = baiDangOTo_Request.SdtNguoiBan;
             if (await baiDangHandler.AddBaiDangXeCoOTo(baiDangOTo_Request))
             {
                 ThongBaoDTO thongBao = new ThongBaoDTO();
@@ -170,7 +170,7 @@ namespace STU.LVTN.SERVER.Controllers
         [HttpPost("xeCoXeMay/newPost"), Authorize]
         public async Task<ActionResult<bool>> newPostXeCoXeMay(BaiDangXeCoXeMay_DTO baiDangXeMay_Request)
         {
-            baiDangXeMay_Request.SdtNguoiBan = User.Identity.Name;
+            baiDangXeMay_Request.SdtNguoiBan = baiDangXeMay_Request.SdtNguoiBan;
             if (await baiDangHandler.AddBaiDangXeCoXeMay(baiDangXeMay_Request))
             {
                 ThongBaoDTO thongBao = new ThongBaoDTO();
@@ -187,7 +187,7 @@ namespace STU.LVTN.SERVER.Controllers
         [HttpPost("xeCoXeTai/newPost"), Authorize]
         public async Task<ActionResult<bool>> newPostXeCoXeTai(BaiDangXeCoXeTai_DTO baiDangXeTai_Request)
         {
-            baiDangXeTai_Request.SdtNguoiBan = User.Identity.Name;
+            baiDangXeTai_Request.SdtNguoiBan = baiDangXeTai_Request.SdtNguoiBan;
             if (await baiDangHandler.AddBaiDangXeCoXeTai(baiDangXeTai_Request))
             {
                 ThongBaoDTO thongBao = new ThongBaoDTO();
@@ -204,7 +204,7 @@ namespace STU.LVTN.SERVER.Controllers
         [HttpPost("xeCoXeDien/newPost"), Authorize]
         public async Task<ActionResult<bool>> newPostXeCoXeDien(BaiDangXeCoXeDien_DTO baiDangXeDien_Request)
         {
-            baiDangXeDien_Request.SdtNguoiBan = User.Identity.Name;
+            baiDangXeDien_Request.SdtNguoiBan = baiDangXeDien_Request.SdtNguoiBan;
             if (await baiDangHandler.AddBaiDangXeCoXeDien(baiDangXeDien_Request))
             {
                 ThongBaoDTO thongBao = new ThongBaoDTO();
@@ -221,7 +221,7 @@ namespace STU.LVTN.SERVER.Controllers
         [HttpPost("xeCoXeDap/newPost"), Authorize]
         public async Task<ActionResult<bool>> newPostXeCoXeDap(BaiDangXeCoXeDap_DTO baiDangXeDap_Request)
         {
-            baiDangXeDap_Request.SdtNguoiBan = User.Identity.Name;
+            baiDangXeDap_Request.SdtNguoiBan = baiDangXeDap_Request.SdtNguoiBan;
             if (await baiDangHandler.AddBaiDangXeCoXeDap(baiDangXeDap_Request))
             {
                 ThongBaoDTO thongBao = new ThongBaoDTO();
@@ -238,7 +238,7 @@ namespace STU.LVTN.SERVER.Controllers
         [HttpPost("xeCoPhuongTienKhac/newPost"), Authorize]
         public async Task<ActionResult<bool>> newPostXeCoPhuongTienKhac(BaiDangXeCoPhuongTienKhac_DTO baiDangPhuongTienKhac_Request)
         {
-            baiDangPhuongTienKhac_Request.SdtNguoiBan = User.Identity.Name;
+            baiDangPhuongTienKhac_Request.SdtNguoiBan = baiDangPhuongTienKhac_Request.SdtNguoiBan;
             if (await baiDangHandler.AddBaiDangXeCoPhuongTienKhac(baiDangPhuongTienKhac_Request))
             {
                 ThongBaoDTO thongBao = new ThongBaoDTO();
@@ -255,7 +255,7 @@ namespace STU.LVTN.SERVER.Controllers
         [HttpPost("xeCoPhuTungXe/newPost"), Authorize]
         public async Task<ActionResult<bool>> newPostXeCoPhuTungXe(BaiDangXeCoPhuTungXe_DTO baiDangPhuTungXe_Request)
         {
-            baiDangPhuTungXe_Request.SdtNguoiBan = User.Identity.Name;
+            baiDangPhuTungXe_Request.SdtNguoiBan = baiDangPhuTungXe_Request.SdtNguoiBan;
             if (await baiDangHandler.AddBaiDangXeCoPhuTungKhac(baiDangPhuTungXe_Request))
             {
                 ThongBaoDTO thongBao = new ThongBaoDTO();
@@ -274,7 +274,7 @@ namespace STU.LVTN.SERVER.Controllers
         [HttpPost("doDienTuDienThoai/newPost"), Authorize]
         public async Task<ActionResult<bool>> newPostDoDienTuDienThoai(BaiDangDoDienTuDienThoai_DTO baiDangDienThoai_Request)
         {
-            baiDangDienThoai_Request.SdtNguoiBan = User.Identity.Name;
+            baiDangDienThoai_Request.SdtNguoiBan = baiDangDienThoai_Request.SdtNguoiBan;
             if (await baiDangHandler.AddBaiDangDoDienTuDienThoai(baiDangDienThoai_Request))
             {
                 ThongBaoDTO thongBao = new ThongBaoDTO();
@@ -291,7 +291,7 @@ namespace STU.LVTN.SERVER.Controllers
         [HttpPost("doDienTuLaptop/newPost"), Authorize]
         public async Task<ActionResult<bool>> newPostDoDienTuLaptop(BaiDangDoDienTuLaptop_DTO baiDangLaptop_Request)
         {
-            baiDangLaptop_Request.SdtNguoiBan = User.Identity.Name;
+            baiDangLaptop_Request.SdtNguoiBan = baiDangLaptop_Request.SdtNguoiBan;
             if (await baiDangHandler.AddBaiDangDoDienTuLaptop(baiDangLaptop_Request))
             {
                 ThongBaoDTO thongBao = new ThongBaoDTO();
@@ -308,14 +308,14 @@ namespace STU.LVTN.SERVER.Controllers
         [HttpPost("doDienTuLinhKien/newPost"), Authorize]
         public async Task<ActionResult<bool>> newPostDoDienTuLinhKien(BaiDangDoDienTuLinhKien_DTO baiDangLinhKien_Request)
         {
-            baiDangLinhKien_Request.SdtNguoiBan = User.Identity.Name;
+            baiDangLinhKien_Request.SdtNguoiBan = baiDangLinhKien_Request.SdtNguoiBan;
             if (await baiDangHandler.AddBaiDangDoDienTuLinhKien(baiDangLinhKien_Request))
             {
                 ThongBaoDTO thongBao = new ThongBaoDTO();
                 thongBao.Checked = false;
                 thongBao.IDPost = baiDangHandler.NumberOfPost();
                 thongBao.TieuDeThongBao = "Bạn có một bài đăng cần được phê duyệt";
-                thongBao.SdtNguoiDung = User.Identity.Name;
+                thongBao.SdtNguoiDung = baiDangLinhKien_Request.SdtNguoiBan;
                 await thongBaoHandler.AddThongBao(thongBao);
                 return Ok();
             }
@@ -325,14 +325,14 @@ namespace STU.LVTN.SERVER.Controllers
         [HttpPost("doDienTuMayAnh/newPost"), Authorize]
         public async Task<ActionResult<bool>> newPostDoDienTuMayAnh(BaiDangDoDienTuMayAnh_DTO baiDangMayAnh_Request)
         {
-            baiDangMayAnh_Request.SdtNguoiBan = User.Identity.Name;
+            baiDangMayAnh_Request.SdtNguoiBan = baiDangMayAnh_Request.SdtNguoiBan;
             if (await baiDangHandler.AddBaiDangDoDienTuMayAnh(baiDangMayAnh_Request))
             {
                 ThongBaoDTO thongBao = new ThongBaoDTO();
                 thongBao.Checked = false;
                 thongBao.IDPost = baiDangHandler.NumberOfPost();
                 thongBao.TieuDeThongBao = "Bạn có một bài đăng cần được phê duyệt";
-                thongBao.SdtNguoiDung = User.Identity.Name;
+                thongBao.SdtNguoiDung = baiDangMayAnh_Request.SdtNguoiBan;
                 await thongBaoHandler.AddThongBao(thongBao);
                 return Ok();
             }
@@ -342,14 +342,14 @@ namespace STU.LVTN.SERVER.Controllers
         [HttpPost("doDienTuMayTinhBang/newPost"), Authorize]
         public async Task<ActionResult<bool>> newPostDoDienTuMayTinhBang(BaiDangDoDienTuMayTinhBang_DTO baiDangMayTinhBang_Request)
         {
-            baiDangMayTinhBang_Request.SdtNguoiBan = User.Identity.Name;
+            baiDangMayTinhBang_Request.SdtNguoiBan = baiDangMayTinhBang_Request.SdtNguoiBan;
             if (await baiDangHandler.AddBaiDangDoDienTuMayTinhBang(baiDangMayTinhBang_Request))
             {
                 ThongBaoDTO thongBao = new ThongBaoDTO();
                 thongBao.Checked = false;
                 thongBao.IDPost = baiDangHandler.NumberOfPost();
                 thongBao.TieuDeThongBao = "Bạn có một bài đăng cần được phê duyệt";
-                thongBao.SdtNguoiDung = User.Identity.Name;
+                thongBao.SdtNguoiDung = baiDangMayTinhBang_Request.SdtNguoiBan;
                 await thongBaoHandler.AddThongBao(thongBao);
                 return Ok();
             }
@@ -359,14 +359,14 @@ namespace STU.LVTN.SERVER.Controllers
         [HttpPost("doDienTuMayTinhDeBan/newPost"), Authorize]
         public async Task<ActionResult<bool>> newPostDoDienTuMayTinhDeBan(BaiDangDoDienTuMayTinhDeBan_DTO baiDangMayTinhDeBan_Request)
         {
-            baiDangMayTinhDeBan_Request.SdtNguoiBan = User.Identity.Name;
+            baiDangMayTinhDeBan_Request.SdtNguoiBan = baiDangMayTinhDeBan_Request.SdtNguoiBan;
             if (await baiDangHandler.AddBaiDangDoDienTuMayTinhDeBan(baiDangMayTinhDeBan_Request))
             {
                 ThongBaoDTO thongBao = new ThongBaoDTO();
                 thongBao.Checked = false;
                 thongBao.IDPost = baiDangHandler.NumberOfPost();
                 thongBao.TieuDeThongBao = "Bạn có một bài đăng cần được phê duyệt";
-                thongBao.SdtNguoiDung = User.Identity.Name;
+                thongBao.SdtNguoiDung = baiDangMayTinhDeBan_Request.SdtNguoiBan;
                 await thongBaoHandler.AddThongBao(thongBao);
                 return Ok();
             }
@@ -376,14 +376,14 @@ namespace STU.LVTN.SERVER.Controllers
         [HttpPost("doDienTuPhuKien/newPost"), Authorize]
         public async Task<ActionResult<bool>> newPostDoDienTuPhuKien(BaiDangDoDienTuPhuKien_DTO baiDangPhuKien_Request)
         {
-            baiDangPhuKien_Request.SdtNguoiBan = User.Identity.Name;
+            baiDangPhuKien_Request.SdtNguoiBan = baiDangPhuKien_Request.SdtNguoiBan;
             if (await baiDangHandler.AddBaiDangDoDienTuPhuKien(baiDangPhuKien_Request))
             {
                 ThongBaoDTO thongBao = new ThongBaoDTO();
                 thongBao.Checked = false;
                 thongBao.IDPost = baiDangHandler.NumberOfPost();
                 thongBao.TieuDeThongBao = "Bạn có một bài đăng cần được phê duyệt";
-                thongBao.SdtNguoiDung = User.Identity.Name;
+                thongBao.SdtNguoiDung = baiDangPhuKien_Request.SdtNguoiBan;
                 await thongBaoHandler.AddThongBao(thongBao);
                 return Ok();
             }
@@ -393,14 +393,14 @@ namespace STU.LVTN.SERVER.Controllers
         [HttpPost("doDienTuThietBiDeoThongMinh/newPost"), Authorize]
         public async Task<ActionResult<bool>> newPostDoDienTuThietBiDeoThongMinh(BaiDangDoDienTuThietBiDeoThongMinh_DTO baiDangThietBiDeoThongMinh_Request)
         {
-            baiDangThietBiDeoThongMinh_Request.SdtNguoiBan = User.Identity.Name;
+            baiDangThietBiDeoThongMinh_Request.SdtNguoiBan = baiDangThietBiDeoThongMinh_Request.SdtNguoiBan;
             if (await baiDangHandler.AddBaiDangDoDienTuThietBiDeoThongMinh(baiDangThietBiDeoThongMinh_Request))
             {
                 ThongBaoDTO thongBao = new ThongBaoDTO();
                 thongBao.Checked = false;
                 thongBao.IDPost = baiDangHandler.NumberOfPost();
                 thongBao.TieuDeThongBao = "Bạn có một bài đăng cần được phê duyệt";
-                thongBao.SdtNguoiDung = User.Identity.Name;
+                thongBao.SdtNguoiDung = baiDangThietBiDeoThongMinh_Request.SdtNguoiBan;
                 await thongBaoHandler.AddThongBao(thongBao);
                 return Ok();
             }
@@ -410,14 +410,14 @@ namespace STU.LVTN.SERVER.Controllers
         [HttpPost("doDienTuTivi/newPost"), Authorize]
         public async Task<ActionResult<bool>> newPostDoDienTuTivi(BaiDangDoDienTuTivi_DTO baiDangTivi_Request)
         {
-            baiDangTivi_Request.SdtNguoiBan = User.Identity.Name;
+            baiDangTivi_Request.SdtNguoiBan = baiDangTivi_Request.SdtNguoiBan;
             if (await baiDangHandler.AddBaiDangDoDienTuTivi(baiDangTivi_Request))
             {
                 ThongBaoDTO thongBao = new ThongBaoDTO();
                 thongBao.Checked = false;
                 thongBao.IDPost = baiDangHandler.NumberOfPost();
                 thongBao.TieuDeThongBao = "Bạn có một bài đăng cần được phê duyệt";
-                thongBao.SdtNguoiDung = User.Identity.Name;
+                thongBao.SdtNguoiDung = baiDangTivi_Request.SdtNguoiBan;
                 await thongBaoHandler.AddThongBao(thongBao);
                 return Ok();
             }
@@ -429,14 +429,14 @@ namespace STU.LVTN.SERVER.Controllers
         [HttpPost("viecLam/newPost"), Authorize]
         public async Task<ActionResult<bool>> newPostViecLam(BaiDangViecLamDTO baiDangViecLam_Request)
         {
-            baiDangViecLam_Request.SdtNguoiBan = User.Identity.Name;
+            baiDangViecLam_Request.SdtNguoiBan = baiDangViecLam_Request.SdtNguoiBan;
             if (await baiDangHandler.AddBaiDangViecLam(baiDangViecLam_Request))
             {
                 ThongBaoDTO thongBao = new ThongBaoDTO();
                 thongBao.Checked = false;
                 thongBao.IDPost = baiDangHandler.NumberOfPost();
                 thongBao.TieuDeThongBao = "Bạn có một bài đăng cần được phê duyệt";
-                thongBao.SdtNguoiDung = User.Identity.Name;
+                thongBao.SdtNguoiDung = baiDangViecLam_Request.SdtNguoiBan;
                 await thongBaoHandler.AddThongBao(thongBao);
                 return Ok();
             }
@@ -448,14 +448,14 @@ namespace STU.LVTN.SERVER.Controllers
         [HttpPost("thuCungChim/newPost"), Authorize]
         public async Task<ActionResult<bool>> newPostThuCungChim(BaiDangThuCungChim_DTO baiDangThuCungChim_Request)
         {
-            baiDangThuCungChim_Request.SdtNguoiBan = User.Identity.Name;
+            baiDangThuCungChim_Request.SdtNguoiBan = baiDangThuCungChim_Request.SdtNguoiBan;
             if (await baiDangHandler.AddBaiDangThuCungChim(baiDangThuCungChim_Request))
             {
                 ThongBaoDTO thongBao = new ThongBaoDTO();
                 thongBao.Checked = false;
                 thongBao.IDPost = baiDangHandler.NumberOfPost();
                 thongBao.TieuDeThongBao = "Bạn có một bài đăng cần được phê duyệt";
-                thongBao.SdtNguoiDung = User.Identity.Name;
+                thongBao.SdtNguoiDung = baiDangThuCungChim_Request.SdtNguoiBan;
                 await thongBaoHandler.AddThongBao(thongBao);
                 return Ok();
             }
@@ -465,14 +465,14 @@ namespace STU.LVTN.SERVER.Controllers
         [HttpPost("thuCungCho/newPost"), Authorize]
         public async Task<ActionResult<bool>> newPostThuCungCho(BaiDangThuCungCho_DTO baiDangThuCungCho_Request)
         {
-            baiDangThuCungCho_Request.SdtNguoiBan = User.Identity.Name;
+            baiDangThuCungCho_Request.SdtNguoiBan = baiDangThuCungCho_Request.SdtNguoiBan;
             if (await baiDangHandler.AddBaiDangThuCungCho(baiDangThuCungCho_Request))
             {
                 ThongBaoDTO thongBao = new ThongBaoDTO();
                 thongBao.Checked = false;
                 thongBao.IDPost = baiDangHandler.NumberOfPost();
                 thongBao.TieuDeThongBao = "Bạn có một bài đăng cần được phê duyệt";
-                thongBao.SdtNguoiDung = User.Identity.Name;
+                thongBao.SdtNguoiDung = baiDangThuCungCho_Request.SdtNguoiBan;
                 await thongBaoHandler.AddThongBao(thongBao);
                 return Ok();
             }
@@ -482,14 +482,14 @@ namespace STU.LVTN.SERVER.Controllers
         [HttpPost("thuCungGaMeoThuCungKhac/newPost"), Authorize]
         public async Task<ActionResult<bool>> newPostThuCungGaMeoThuCungKhac(BaiDangThuCungGaMeoThuCungKhac_DTO baiDangThuCungGaMeoThuCungKhac_Request)
         {
-            baiDangThuCungGaMeoThuCungKhac_Request.SdtNguoiBan = User.Identity.Name;
+            baiDangThuCungGaMeoThuCungKhac_Request.SdtNguoiBan = baiDangThuCungGaMeoThuCungKhac_Request.SdtNguoiBan;
             if (await baiDangHandler.AddBaiDangThuCungGaMeoThuCungKhac(baiDangThuCungGaMeoThuCungKhac_Request))
             {
                 ThongBaoDTO thongBao = new ThongBaoDTO();
                 thongBao.Checked = false;
                 thongBao.IDPost = baiDangHandler.NumberOfPost();
                 thongBao.TieuDeThongBao = "Bạn có một bài đăng cần được phê duyệt";
-                thongBao.SdtNguoiDung = User.Identity.Name;
+                thongBao.SdtNguoiDung = baiDangThuCungGaMeoThuCungKhac_Request.SdtNguoiBan;
                 await thongBaoHandler.AddThongBao(thongBao);
                 return Ok();
             }
@@ -501,14 +501,14 @@ namespace STU.LVTN.SERVER.Controllers
         [HttpPost("doAnThucPham/newPost"), Authorize]
         public async Task<ActionResult<bool>> newPostDoAnThucPham(BaiDangDoAnThucPham_DTO baiDangDoAnThucPham_Request)
         {
-            baiDangDoAnThucPham_Request.SdtNguoiBan = User.Identity.Name;
+            baiDangDoAnThucPham_Request.SdtNguoiBan = baiDangDoAnThucPham_Request.SdtNguoiBan;
             if (await baiDangHandler.AddBaiDangDoAnThucPham(baiDangDoAnThucPham_Request))
             {
                 ThongBaoDTO thongBao = new ThongBaoDTO();
                 thongBao.Checked = false;
                 thongBao.IDPost = baiDangHandler.NumberOfPost();
                 thongBao.TieuDeThongBao = "Bạn có một bài đăng cần được phê duyệt";
-                thongBao.SdtNguoiDung = User.Identity.Name;
+                thongBao.SdtNguoiDung = baiDangDoAnThucPham_Request.SdtNguoiBan;
                 await thongBaoHandler.AddThongBao(thongBao);
                 return Ok();
             }
@@ -520,14 +520,14 @@ namespace STU.LVTN.SERVER.Controllers
         [HttpPost("baiDangTuLanh/newPost"), Authorize]
         public async Task<ActionResult<bool>> newPostTuLanh(BaiDangTuLanhTL_DTO baiDangTuLanh_Request)
         {
-            baiDangTuLanh_Request.SdtNguoiBan = User.Identity.Name;
+            baiDangTuLanh_Request.SdtNguoiBan = baiDangTuLanh_Request.SdtNguoiBan;
             if (await baiDangHandler.AddBaiDangTuLanh(baiDangTuLanh_Request))
             {
                 ThongBaoDTO thongBao = new ThongBaoDTO();
                 thongBao.Checked = false;
                 thongBao.IDPost = baiDangHandler.NumberOfPost();
                 thongBao.TieuDeThongBao = "Bạn có một bài đăng cần được phê duyệt";
-                thongBao.SdtNguoiDung = User.Identity.Name;
+                thongBao.SdtNguoiDung = baiDangTuLanh_Request.SdtNguoiBan;
                 await thongBaoHandler.AddThongBao(thongBao);
                 return Ok();
             }
