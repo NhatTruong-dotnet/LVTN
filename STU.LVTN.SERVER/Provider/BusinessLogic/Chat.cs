@@ -21,12 +21,19 @@ namespace STU.LVTN.SERVER.Provider.BusinessLogic
             }
             return result;
         }
-        public async Task<List<ConversationEntities>> GetAllConversations(string sdt)
+       
+        public async Task<bool> AddMessage(MessageEntities messageRequest)
         {
-            Dictionary<string, string> result = new Dictionary<string, string>();
-            List<ConversationEntities> conversations = _context.Conversations.Where(item => item.SdtNguoiMua == sdt).ToList();
-            conversations.AddRange(_context.Conversations.Where(item => item.SdtNguoiBan == sdt).ToList());
-            return conversations;
+            try
+            {
+                _context.Messages.Add(messageRequest);
+                _context.SaveChanges();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
     }
 }
