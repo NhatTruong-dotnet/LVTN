@@ -10,7 +10,7 @@ namespace STU.LVTN.SERVER.Provider.Hubs
         public async Task NotifyAdmin(string SdtRecentlySubmit)
         {
             BaiDangEntities lastestPostFromSDT = _context.BaiDangs
-                .OrderByDescending(item => item.IdBaiDang)
+                .OrderByDescending(item => item.IdBaiDang).Where(item => item.SdtNguoiBan == SdtRecentlySubmit)
                 .Last();
             
             ThongBaoDTO NotifyContext = new ThongBaoDTO();
