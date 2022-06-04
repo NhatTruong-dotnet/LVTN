@@ -16,7 +16,7 @@ namespace STU.LVTN.SERVER.Provider.BusinessLogic
                 message.MessageText = item.MessageText == null ? null: item.MessageText;
                 message.MessageImageSource = item.MessageImageSource == null ? null : item.MessageImageSource;
                 message.MessagesBy = item.MessagesBy ;
-                message.Time = item.Time;
+                message.Time =  $"{item.Time:dd-MM-yyyy HH:mm}";
                 result.Add(message);
             }
             return result;

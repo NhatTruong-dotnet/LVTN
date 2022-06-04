@@ -29,11 +29,11 @@ namespace STU.LVTN.SERVER.Controllers
         }
 
         [HttpGet("conversations/{sdt?}"), Authorize]
-        public async Task<ActionResult<List<ConversationEntities>>> GetAllConversations()
+        public async Task<ActionResult<List<ConversationsDTO>>> GetAllConversations(string sdt)
         {
             try
             {
-                return Ok(await chatHandler.GetAllConversations(User.Identity.Name));
+                return Ok(await chatHandler.GetAllConversations(sdt));
             }
             catch (Exception)
             {
