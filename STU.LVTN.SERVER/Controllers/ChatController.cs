@@ -14,7 +14,7 @@ namespace STU.LVTN.SERVER.Controllers
     {
         //Chat, attach Image, delete coversation
         ChatHandler chatHandler = new ChatHandler();
-        [HttpGet("conversation/{idConversations?}")]
+        [HttpGet("conversation/details/{idConversations?}")]
         public async Task<ActionResult<List<MessagesDTO>>> LoadConversations(int idConversations)
         {
             try
@@ -28,12 +28,12 @@ namespace STU.LVTN.SERVER.Controllers
             
         }
 
-        [HttpGet("conversations"), Authorize]
-        public async Task<ActionResult<List<ConversationEntities>>> GetAllConversations()
+        [HttpGet("conversations/{sdt?}"), Authorize]
+        public async Task<ActionResult<List<ConversationsDTO>>> GetAllConversations(string sdt)
         {
             try
             {
-                return Ok(await chatHandler.GetAllConversations(User.Identity.Name));
+                return Ok(await chatHandler.GetAllConversations(sdt));
             }
             catch (Exception)
             {

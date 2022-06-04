@@ -12,7 +12,7 @@ namespace STU.LVTN.SERVER.Provider.Handler
         {
             MessageEntities message = new MessageEntities();
             message.MessagesBy = messageRequest.MessagesBy;
-            message.Time = messageRequest.Time;
+            message.Time = DateTime.Now ;
             message.MessageText = messageRequest.MessageText != null ? messageRequest.MessageText : null;
             message.MessageImageSource = messageRequest.MessageImageSource != null ? messageRequest.MessageImageSource : null;
             if (conversationHelper.ConversationExist(messageRequest.MessagesBy, messageRequest.MessageTo))
@@ -28,7 +28,7 @@ namespace STU.LVTN.SERVER.Provider.Handler
                 await chatHelper.AddMessage(message);
             }
         }
-        public async Task<List<ConversationEntities>> GetAllConversations(string sdt)
+        public async Task<List<ConversationsDTO>> GetAllConversations(string sdt)
         {
             return await conversationHelper.GetAllConversations(sdt);
         }
