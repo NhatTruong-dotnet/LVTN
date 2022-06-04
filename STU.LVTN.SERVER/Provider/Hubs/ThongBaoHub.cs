@@ -11,7 +11,7 @@ namespace STU.LVTN.SERVER.Provider.Hubs
         {
             BaiDangEntities lastestPostFromSDT = _context.BaiDangs
                 .OrderByDescending(item => item.IdBaiDang).Where(item => item.SdtNguoiBan == SdtRecentlySubmit)
-                .Last();
+                .First();
             
             ThongBaoDTO NotifyContext = new ThongBaoDTO();
             NotifyContext.SdtNguoiDung = SdtRecentlySubmit;
