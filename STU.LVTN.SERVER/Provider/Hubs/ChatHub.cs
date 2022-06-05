@@ -1,13 +1,24 @@
 ﻿using Microsoft.AspNetCore.SignalR;
+using STU.LVTN.SERVER.Model;
+using STU.LVTN.SERVER.Model.DTO;
 
 namespace STU.LVTN.SERVER.Provider.Hubs
 {
     public class ChatHub:Hub
     {
-        public async Task SendMessage()
+        private LVTNContext _context = new LVTNContext();
+
+        public async Task SendMessage(string sdt)
         {
             //trả về thêm message mới
-            await Clients.All.SendAsync("ReceiveMessage");
+            MessageEntities lastMessages = _context.Messages.OrderByDescending(item => item.MessageId).Where(item => item.MessagesBy == sdt).First();
+            Dictionary<string, string> MessageNotify = new Dictionary<string, string>();
+            
+            MessageNotify.Add("MessageBy", _context.NguoiDungs.Where(item => item.SoDienThoai == sdt).First().Ten);
+            MessageNotify.Add("SDT", lastMessages.MessagesBy);
+            MessageNotify.Add("MessageText", lastMessages.MessageText);
+
+            await Clients.All.SendAsync("ReceiveMessage", MessageNotify);
         }
     }
 }

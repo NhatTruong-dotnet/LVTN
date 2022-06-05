@@ -26,7 +26,7 @@ namespace STU.LVTN.SERVER.Provider.BusinessLogic
             BaiDangBatDongSanEntities entity = _context.BaiDangBatDongSans.Where(item => item.IdBaiDang == idPostDetail).FirstOrDefault();
             post.Add("Tên dự án: ", entity.TenDuAn);
             post.Add("Diện tích: ", entity.DienTich.ToString());
-            post.Add("Cần bán: ", entity.CanBan == true ? "true" : "false");
+            post.Add("Nhu cầu: ", entity.CanBan == true ? "Bán" : "Cho thuê");
             post.Add("Mã căn: ", entity.CcMaCan);
             post.Add("Tên phân khu/Lô/Block/Tháp: ", entity.CcBlock);
             post.Add("Tầng số: ", entity.CcTangSo);

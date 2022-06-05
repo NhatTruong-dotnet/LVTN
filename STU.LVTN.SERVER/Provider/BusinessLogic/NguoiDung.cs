@@ -98,7 +98,6 @@ namespace STU.LVTN.SERVER.Provider.BusinessLogic
         {
             return _context.NguoiDungs.Where(user => user.SoDienThoai == soDienThoai).FirstOrDefault();
         }
-
         public async Task<bool> UpdateProfile(NguoiDungEntities userRequest)
         {
             try
@@ -112,6 +111,21 @@ namespace STU.LVTN.SERVER.Provider.BusinessLogic
             {
                 return false;
             }
+        }
+        public async Task<List<Admin_NguoiDungDTO>> GetAll()
+        {
+            List<NguoiDungEntities> nguoiDungs = _context.NguoiDungs.ToList();
+            List<Admin_NguoiDungDTO> result = new List<Admin_NguoiDungDTO>();
+            foreach (var nguoiDung in nguoiDungs)
+            {
+                Admin_NguoiDungDTO user = new Admin_NguoiDungDTO();
+                user.XacThuc = nguoiDung.SoCmnd == null ? false : true;
+                user.Ten = nguoiDung.Ten;
+                user.DanhGiaHeThong = nguoiDung.DanhGiaHeThong;
+                user.Sdt = nguoiDung.SoDienThoai;
+                result.Add(user);
+            }
+            return result;
         }
     }
 }

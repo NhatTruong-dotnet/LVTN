@@ -83,6 +83,7 @@ namespace STU.LVTN.SERVER.Provider.Handler
             #region BaiDang global
             Dictionary<string, string> postDictionary = new Dictionary<string, string>();
             postDictionary.Add("tieuDe", post.TieuDe);
+            postDictionary.Add("IsReviewed", post.isReviewed.ToString());
             postDictionary.Add("moTa", post.Mota);
             postDictionary.Add("gia", post.Gia.ToString());
             postDictionary.Add("sdt", post.SdtNguoiBan);
@@ -95,27 +96,27 @@ namespace STU.LVTN.SERVER.Provider.Handler
                 #region BatDongSan
                 case 13:
                     Dictionary<string, string> detailCC = baiDangBatDongSanHelper.getPost_CC_ByID(post.IdBaiDangChiTiet);
-                    detailCC.Add("Giá/m2: ", post.Gia.ToString());
+                    //detailCC.Add("Giá/m2: ", post.Gia.ToString());
                     result.Add("detail", detailCC);
                     break;
                 case 14:
                     Dictionary<string, string> detailNhaO = baiDangBatDongSanHelper.getPost_NhaO_ByID(post.IdBaiDangChiTiet);
-                    detailNhaO.Add("Giá/m2: ", post.Gia.ToString());
+                   // detailNhaO.Add("Giá/m2: ", post.Gia.ToString());
                     result.Add("detail", detailNhaO);
                     break;
                 case 15:
                     Dictionary<string, string> detailDat = baiDangBatDongSanHelper.getPost_Dat_ByID(post.IdBaiDangChiTiet);
-                    detailDat.Add("Giá/m2: ", post.Gia.ToString());
+                   // detailDat.Add("Giá/m2: ", post.Gia.ToString());
                     result.Add("detail", detailDat);
                     break;
                 case 16:
                     Dictionary<string, string> detailMatBangKinhDoanh = baiDangBatDongSanHelper.getPost_VanPhong_ByID(post.IdBaiDangChiTiet);
-                    detailMatBangKinhDoanh.Add("Giá/m2: ", post.Gia.ToString());
+                   // detailMatBangKinhDoanh.Add("Giá/m2: ", post.Gia.ToString());
                     result.Add("detail", detailMatBangKinhDoanh);
                     break;
                 case 17:
                     Dictionary<string, string> detailPhongTro = baiDangBatDongSanHelper.getPost_VanPhong_ByID(post.IdBaiDangChiTiet);
-                    detailPhongTro.Add("Giá/m2: ", post.Gia.ToString());
+                   // detailPhongTro.Add("Giá/m2: ", post.Gia.ToString());
                     result.Add("detail", detailPhongTro);
                     break;
                 #endregion
@@ -335,9 +336,13 @@ namespace STU.LVTN.SERVER.Provider.Handler
             return result;
         }
 
-        public async Task<bool> SendApproveResult(bool approveResult, int IDPost)
+        public async Task<bool> SendApproveResult(ApproveResultDTO approveResult)
         {
-            return await baiDangHelper.SendApproveResult(approveResult, IDPost);
+            return await baiDangHelper.SendApproveResult(approveResult);
+        }
+        public async Task<List<Admin_PostDTO>> GetAllPost()
+        {
+            return baiDangHelper.GetAllPost();
         }
         public int NumberOfPost()
         {

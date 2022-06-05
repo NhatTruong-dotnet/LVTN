@@ -14,14 +14,22 @@ namespace STU.LVTN.SERVER.Provider.BusinessLogic
         {
             _mapper = mapper;
         }
-        public async Task<bool> SendApproveResult(bool approveResult, int IDPost)
+        public async Task<bool> SendApproveResult(ApproveResultDTO approveResult)
         { 
             try
             {
-                BaiDangEntities baiDang = _context.BaiDangs.Where(item => item.IdBaiDang == IDPost).FirstOrDefault();
-                baiDang.TrangThai = approveResult;
+                BaiDangEntities baiDang = _context.BaiDangs.Where(item => item.IdBaiDang == approveResult.IDPost).FirstOrDefault();
+                baiDang.TrangThai = approveResult.ApproveResult;
                 baiDang.isReviewed = true;
                 _context.BaiDangs.Update(baiDang);
+
+                ThongBaoEntities thongBao = new ThongBaoEntities();
+                thongBao.IDPost = baiDang.IdBaiDang;
+                thongBao.SdtNguoiDung = baiDang.SdtNguoiBan;
+                thongBao.TieuDeThongBao = approveResult.ApproveResult == false ? "Bài đăng của bạn đã bị từ chối" :"Bài đăng của bạn đã được phê duyệt";
+                thongBao.Comment = approveResult.Comment == null ? null : approveResult.Comment;
+                thongBao.Checked = false;
+                _context.ThongBaos.Add(thongBao);
                 _context.SaveChanges();
                 return true;
             }
@@ -133,9 +141,25 @@ namespace STU.LVTN.SERVER.Provider.BusinessLogic
                 return null;
             }
         }
-       public int NumberOfPost()
+        public int NumberOfPost()
         {
             return _context.BaiDangs.OrderByDescending(item => item.IdBaiDang).FirstOrDefault().IdBaiDang;
+        }
+        public List<Admin_PostDTO> GetAllPost()
+        {
+            List<BaiDangEntities> baiDangs = _context.BaiDangs.OrderByDescending(item => item.IdBaiDang).ToList();
+            List<Admin_PostDTO> result = new List<Admin_PostDTO>();
+            foreach (var item in baiDangs)
+            {
+                Admin_PostDTO temp = new Admin_PostDTO();
+                temp.IDPost = item.IdBaiDang;
+                temp.SDTNguoiBan = item.SdtNguoiBan;
+                temp.TieuDe = item.TieuDe;
+                temp.IsReviewed = (bool)item.isReviewed;
+                temp.TenDanhMuc = _context.DanhMucs.Where(danhMuc => danhMuc.IdDanhMuc == item.IdDanhMucCon).First().TenDanhMuc;
+                result.Add(temp);
+            }
+            return result;
         }
     }
 }

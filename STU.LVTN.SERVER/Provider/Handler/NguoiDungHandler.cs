@@ -37,6 +37,11 @@ namespace STU.LVTN.SERVER.Provider.Handler
 
             return nguoiDungHelper.UpdatePassword(user);
         }
+
+        public async Task<List<Admin_NguoiDungDTO>> GetAll()
+        {
+            return await nguoiDungHelper.GetAll();
+        }
         public async Task<string> Login(Login_RegisterDTO userRequest)
         {
             //
