@@ -75,7 +75,7 @@ const array = [
                 },
 
                 datMatTien: false,
-                loaiHinh: '',
+                datLoaiHinhDat: '',
                 datHuongDat: '',
                 datGiayToPhapLy: '',
                 datHemXeHoi: false,
@@ -462,7 +462,7 @@ const array = [
         subCategories: [
             {
                 subCategoryId: 34,
-                mienPhi: '',
+                mienPhi: false,
                 gia: '',
                 giongThuCung: '',
                 doTuoi: '',
@@ -476,7 +476,7 @@ const array = [
             },
             {
                 subCategoryId: 35,
-                mienPhi: '',
+                mienPhi: false,
                 gia: '',
                 giongThuCung: '',
                 doTuoi: '',
@@ -491,7 +491,7 @@ const array = [
             },
             {
                 subCategoryId: 36,
-                mienPhi: '',
+                mienPhi: false,
                 gia: '',
                 giongThuCung: '',
                 doTuoi: '',
@@ -506,7 +506,7 @@ const array = [
             },
             {
                 subCategoryId: 37,
-                mienPhi: '',
+                mienPhi: false,
                 gia: '',
                 giongThuCung: '',
                 doTuoi: '',
@@ -520,7 +520,7 @@ const array = [
             },
             {
                 subCategoryId: 38,
-                mienPhi: '',
+                mienPhi: false,
                 gia: '',
                 giongThuCung: '',
                 address: {
@@ -535,7 +535,7 @@ const array = [
     },
     {
         categoryId: 6,
-        mienPhi: '',
+        mienPhi: false,
         gia: '',
         loaiThucPham: '',
         address: {
@@ -551,7 +551,7 @@ const array = [
         subCategories: [
             {
                 subCategoryId: 40,
-                mienPhi: '',
+                mienPhi: false,
                 gia: '',
                 hang: '',
                 daSuDung: false,
@@ -566,7 +566,7 @@ const array = [
             },
             {
                 subCategoryId: 41,
-                mienPhi: '',
+                mienPhi: false,
                 gia: '',
                 hang: '',
                 daSuDung: false,
@@ -581,7 +581,7 @@ const array = [
             },
             {
                 subCategoryId: 42,
-                mienPhi: '',
+                mienPhi: false,
                 gia: '',
                 hang: '',
                 daSuDung: false,
@@ -603,7 +603,7 @@ const array = [
             // bàn ghế
             {
                 subCategoryId: 43,
-                mienPhi: '',
+                mienPhi: false,
                 gia: '',
                 hang: '',
                 daSuDung: false,
@@ -620,7 +620,7 @@ const array = [
             // tủ kệ
             {
                 subCategoryId: 44,
-                mienPhi: '',
+                mienPhi: false,
                 gia: '',
                 hang: '',
                 daSuDung: false,
@@ -637,7 +637,7 @@ const array = [
             // giường
             {
                 subCategoryId: 45,
-                mienPhi: '',
+                mienPhi: false,
                 gia: '',
                 hang: '',
                 daSuDung: false,
@@ -654,7 +654,7 @@ const array = [
             // bếp
             {
                 subCategoryId: 46,
-                mienPhi: '',
+                mienPhi: false,
                 gia: '',
                 hang: '',
                 daSuDung: false,
@@ -671,7 +671,7 @@ const array = [
             // dụng cụ bếp
             {
                 subCategoryId: 47,
-                mienPhi: '',
+                mienPhi: false,
                 gia: '',
                 hang: '',
                 daSuDung: false,
@@ -687,7 +687,7 @@ const array = [
             // quạt
             {
                 subCategoryId: 48,
-                mienPhi: '',
+                mienPhi: false,
                 gia: '',
                 hang: '',
                 daSuDung: false,
@@ -704,7 +704,7 @@ const array = [
             // Đèn
             {
                 subCategoryId: 49,
-                mienPhi: '',
+                mienPhi: false,
                 gia: '',
                 hang: '',
                 daSuDung: false,
@@ -720,7 +720,7 @@ const array = [
             // cây
             {
                 subCategoryId: 50,
-                mienPhi: '',
+                mienPhi: false,
                 gia: '',
                 hang: '',
                 daSuDung: false,
@@ -736,7 +736,7 @@ const array = [
             // vệ sinh
             {
                 subCategoryId: 51,
-                mienPhi: '',
+                mienPhi: false,
                 gia: '',
                 hang: '',
                 daSuDung: false,
@@ -752,7 +752,7 @@ const array = [
             },
             {
                 subCategoryId: 52,
-                mienPhi: '',
+                mienPhi: false,
                 gia: '',
                 hang: '',
                 daSuDung: false,
@@ -768,7 +768,7 @@ const array = [
     },
     {
         categoryId: 9,
-        mienPhi: '',
+        mienPhi: false,
         gia: '',
         hang: '',
         daSuDung: false,
@@ -787,7 +787,7 @@ const array = [
             // quần áo
             {
                 subCategoryId: 53,
-                mienPhi: '',
+                mienPhi: false,
                 gia: '',
                 hang: '',
                 daSuDung: false,
@@ -802,7 +802,7 @@ const array = [
             // đồng hồ
             {
                 subCategoryId: 54,
-                mienPhi: '',
+                mienPhi: false,
                 gia: '',
                 hang: '',
                 daSuDung: false,
@@ -818,7 +818,7 @@ const array = [
             // giày dép
             {
                 subCategoryId: 55,
-                mienPhi: '',
+                mienPhi: false,
                 gia: '',
                 hang: '',
                 daSuDung: false,
@@ -834,7 +834,7 @@ const array = [
             // túi xách
             {
                 subCategoryId: 56,
-                mienPhi: '',
+                mienPhi: false,
                 gia: '',
                 hang: '',
                 daSuDung: false,
@@ -850,7 +850,7 @@ const array = [
             // nước hoa
             {
                 subCategoryId: 57,
-                mienPhi: '',
+                mienPhi: false,
                 gia: '',
                 hang: '',
                 daSuDung: false,
@@ -866,7 +866,7 @@ const array = [
             // phụ kiện
             {
                 subCategoryId: 58,
-                mienPhi: '',
+                mienPhi: false,
                 gia: '',
                 hang: '',
                 daSuDung: false,
@@ -887,7 +887,7 @@ const array = [
             // nhạc cụ
             {
                 subCategoryId: 59,
-                mienPhi: '',
+                mienPhi: false,
                 gia: '',
                 hang: '',
                 daSuDung: false,
@@ -903,7 +903,7 @@ const array = [
             // sách
             {
                 subCategoryId: 60,
-                mienPhi: '',
+                mienPhi: false,
                 gia: '',
                 hang: '',
                 daSuDung: false,
@@ -918,7 +918,7 @@ const array = [
             // đồ thể thao
             {
                 subCategoryId: 61,
-                mienPhi: '',
+                mienPhi: false,
                 gia: '',
                 hang: '',
                 daSuDung: false,
@@ -933,7 +933,7 @@ const array = [
             // đồ sưu tầm
             {
                 subCategoryId: 62,
-                mienPhi: '',
+                mienPhi: false,
                 gia: '',
                 hang: '',
                 daSuDung: false,
@@ -949,7 +949,7 @@ const array = [
             // game
             {
                 subCategoryId: 63,
-                mienPhi: '',
+                mienPhi: false,
                 gia: '',
                 hang: '',
                 daSuDung: false,
@@ -964,7 +964,7 @@ const array = [
             // khác
             {
                 subCategoryId: 64,
-                mienPhi: '',
+                mienPhi: false,
                 gia: '',
                 hang: '',
                 daSuDung: false,
@@ -983,7 +983,7 @@ const array = [
         subCategories: [
             {
                 subCategoryId: 65,
-                mienPhi: '',
+                mienPhi: false,
                 gia: '',
                 hang: '',
                 daSuDung: false,
@@ -997,7 +997,7 @@ const array = [
             },
             {
                 subCategoryId: 66,
-                mienPhi: '',
+                mienPhi: false,
                 gia: '',
                 hang: '',
                 daSuDung: false,

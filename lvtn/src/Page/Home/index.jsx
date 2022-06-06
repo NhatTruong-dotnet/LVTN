@@ -79,7 +79,7 @@ function Home() {
 
     useEffect(() => {
         const lastSubCategories = localStorage.getItem('lastSubCategories')
-        // dispatch({ type: 'getPost', lastSubCategories: lastSubCategories || 0 }) // default value = 0
+        dispatch({ type: 'getPost', lastSubCategories: lastSubCategories || 0 }) // default value = 0
     }, [])
 
     return (

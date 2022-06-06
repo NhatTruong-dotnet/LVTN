@@ -6,7 +6,10 @@ function ListPost({ listPost = [] }) {
     return (
         <div className={styles.listPost}>
             {listPost.map(
-                ({ idBaiDang, tieuDe, idHinhAnh, gia, ngayTao, thanhPho }) => (
+                (
+                    { idBaiDang, tieuDe, idHinhAnh, gia, ngayTao, thanhPho },
+                    index
+                ) => (
                     <Post
                         key={idBaiDang}
                         id={idBaiDang}

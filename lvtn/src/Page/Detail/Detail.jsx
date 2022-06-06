@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { Navigate, useNavigate, useParams } from 'react-router-dom'
 import 'react-responsive-carousel/lib/styles/carousel.min.css'
 import { Carousel } from 'react-responsive-carousel'
 import styles from './detail.module.css'
@@ -14,50 +14,14 @@ import {
     removeItemWishList,
     selectPendingStatusPost,
     selectPostDetail,
+    selectRelatedPost,
     selectWishList,
 } from '../../features/Post/PostSlice'
 import DynamicModal from '../../Common/DynamicModal/DynamicModal'
+import { formatCurrency } from '../../Utils/formatCurrency'
 
 const imgURL = process.env.REACT_APP_BASE_IMG_URL
 
-const array = [
-    {
-        idBaiDang: 1,
-        tieuDe: 'bai dang 1',
-        idHinhAnh:
-            'https://cdn.chotot.com/i3Pu-GHom-VwJjFyuHMofKGQ3qmoB50vggUAdgiifr8/preset:view/plain/ead255d58d5fa3a16d7bfd199ccef858-2772334573435722045.jpg',
-        gia: 6,
-        ngayTao: new Date(),
-        thanhPho: 'hcm',
-    },
-    {
-        idBaiDang: 2,
-        tieuDe: 'bai dang 1',
-        idHinhAnh:
-            'https://cdn.chotot.com/i3Pu-GHom-VwJjFyuHMofKGQ3qmoB50vggUAdgiifr8/preset:view/plain/ead255d58d5fa3a16d7bfd199ccef858-2772334573435722045.jpg',
-        gia: 6,
-        ngayTao: new Date(),
-        thanhPho: 'hcm',
-    },
-    {
-        idBaiDang: 3,
-        tieuDe: 'bai dang 1',
-        idHinhAnh:
-            'https://cdn.chotot.com/i3Pu-GHom-VwJjFyuHMofKGQ3qmoB50vggUAdgiifr8/preset:view/plain/ead255d58d5fa3a16d7bfd199ccef858-2772334573435722045.jpg',
-        gia: 6,
-        ngayTao: new Date(),
-        thanhPho: 'hcm',
-    },
-    {
-        idBaiDang: 4,
-        tieuDe: 'bai dang 1',
-        idHinhAnh:
-            'https://cdn.chotot.com/i3Pu-GHom-VwJjFyuHMofKGQ3qmoB50vggUAdgiifr8/preset:view/plain/ead255d58d5fa3a16d7bfd199ccef858-2772334573435722045.jpg',
-        gia: 6,
-        ngayTao: new Date(),
-        thanhPho: 'hcm',
-    },
-]
 function isEmptyObject(obj) {
     return Object.keys(obj).length === 0
 }
@@ -80,7 +44,7 @@ function renderImage(obj) {
             <div key={key}>
                 <img
                     src={`${imgURL}${obj[key]}`}
-                    style={{ maxHeight: '100vh' }}
+                    style={{ maxHeight: '500px' }}
                 />
             </div>
         )
@@ -105,7 +69,9 @@ function renderVideo(obj) {
 function Detail(props) {
     const { idPost } = useParams()
     const dispatch = useDispatch()
+    const navigate = useNavigate()
     const postDetail = useSelector(selectPostDetail)
+    const relatedPost = useSelector(selectRelatedPost)
     const wishList = useSelector(selectWishList)
     const isLoading = useSelector(selectPendingStatusPost)
 
@@ -139,6 +105,10 @@ function Detail(props) {
         }
     }, [idPost])
 
+    useEffect(() => {
+        dispatch({ type: 'getRelatedPost', categoryId: 0 })
+    }, [])
+
     if (isEmptyObject(postDetail)) {
         return ''
     }
@@ -153,15 +123,6 @@ function Detail(props) {
                         <Carousel infiniteLoop={true}>
                             {renderImage(postDetail.result.HinhAnh)}
                             {renderVideo(postDetail.result.Video)}
-                            {/* <div>
-                                <img src='https://cdn.chotot.com/i3Pu-GHom-VwJjFyuHMofKGQ3qmoB50vggUAdgiifr8/preset:view/plain/ead255d58d5fa3a16d7bfd199ccef858-2772334573435722045.jpg' />
-                            </div>
-                            <div>
-                                <img src='https://cdn.chotot.com/wDhwB8UnRJIW3-hSafZC309nZvZu1ROnP57NXar0bZo/preset:view/plain/88bc6137e3970fe54b869df9212c9715-2772334569845266749.jpg' />
-                            </div>
-                            <div>
-                                <img src='https://cdn.chotot.com/xjwkhUb5gwnTX0GE-eKx9KQlbiWLy7XaVXg9xGvqO3E/preset:view/plain/84a5bc5f3376ca291470115100af1766-2772334573301975305.jpg' />
-                            </div> */}
                         </Carousel>
 
                         <div className={styles.detailContainer}>
@@ -169,7 +130,10 @@ function Detail(props) {
                                 {postDetail.result.BaiDang.tieuDe}
                             </div>
                             <div className={styles.price}>
-                                {postDetail.result.BaiDang.gia}
+                                {postDetail.result.BaiDang.gia &&
+                                    formatCurrency(
+                                        postDetail.result.BaiDang.gia
+                                    )}
                             </div>
                             <div className={styles.description}>
                                 {postDetail.result.BaiDang.moTa}
@@ -178,7 +142,9 @@ function Detail(props) {
                                 Liên hệ: {postDetail.result.BaiDang.sdt}
                             </div>
                             <div
-                                className={styles.savePost}
+                                className={clsx(styles.savePost, {
+                                    [styles.saved]: checkSavedPost(idPost),
+                                })}
                                 onClick={handleWishList}
                             >
                                 {checkSavedPost(idPost) ? 'Đã lưu' : 'Lưu tin'}{' '}
@@ -198,12 +164,35 @@ function Detail(props) {
 
                     <div className='col l-4'>
                         <div className={styles.vendorInfo}>
-                            <div className={styles.avatar}>
-                                <FaUserCircle />
+                            {postDetail?.userProfile.anhDaiDienSource ? (
+                                <img
+                                    src={
+                                        postDetail?.userProfile.anhDaiDienSource
+                                    }
+                                    alt='avatar'
+                                    width={60}
+                                    height={60}
+                                    style={{
+                                        borderRadius: 100,
+                                        marginRight: 10,
+                                    }}
+                                />
+                            ) : (
+                                <div className={styles.avatar}>
+                                    <FaUserCircle />
+                                </div>
+                            )}
+
+                            <div className={styles.name}>
+                                {postDetail?.userProfile?.ten}
                             </div>
-                            <div className={styles.name}>Nguyễn Trọng Trí</div>
                             <div
                                 className={clsx(styles.savePost, styles.small)}
+                                onClick={() =>
+                                    navigate(
+                                        `/user/${postDetail.result.BaiDang.sdt}`
+                                    )
+                                }
                             >
                                 Xem trang
                             </div>
@@ -221,15 +210,20 @@ function Detail(props) {
                             <div className={styles.line}></div>
 
                             <div className={styles.infoItem}>
-                                <div className={styles.infoText}>Đánh giá</div>
-                                <div className={styles.infoValue}>86%</div>
+                                <div className={styles.infoText}>
+                                    Đánh giá hệ thống
+                                </div>
+                                <div className={styles.infoValue}>
+                                    {postDetail?.userProfile?.danhGiaHeThong ||
+                                        'Chưa có đánh giá'}
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </Frame>
             <Frame title='Tin đăng tương tự'>
-                {/* <ListPost listPost={array} /> */}
+                <ListPost listPost={relatedPost} />
             </Frame>
         </div>
     )

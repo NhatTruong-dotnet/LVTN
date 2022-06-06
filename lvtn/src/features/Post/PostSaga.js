@@ -13,13 +13,16 @@ import {
     getPostDetailSuccess,
     getPostPending,
     getPostSuccess,
+    getRelatedPostSuccess,
 } from './PostSlice'
-import { selectToken, selectUsername } from '../Auth/Login/loginSlice'
+import { selectNumberPhone, selectToken } from '../Auth/Login/loginSlice'
+import { getUserProfile } from '../User/UserApi'
 
 export default function* postSaga() {
     yield takeLeading('createPost', createPost)
     yield takeLeading('getPost', getPost)
     yield takeLatest('getPostDetail', getPostDetail)
+    yield takeLatest('getRelatedPost', getRelatedPost)
 }
 
 function* getPost({ lastSubCategories }) {
@@ -35,6 +38,18 @@ function* getPost({ lastSubCategories }) {
     }
 }
 
+function* getRelatedPost({ categoryId }) {
+    const { status, postData } = yield call(
+        getPostWithSubCategoryId,
+        categoryId
+    )
+    if (status === 200) {
+        yield put(getRelatedPostSuccess({ relatedPost: postData }))
+    } else {
+        // yield put(getPostFail({errorMessage}))
+    }
+}
+
 function* getPostDetail({ idPost }) {
     console.log(idPost)
     yield put(getPostDetailPending())
@@ -42,20 +57,29 @@ function* getPostDetail({ idPost }) {
         getPostDetailWithId,
         idPost
     )
+
     if (status === 200) {
-        yield put(getPostDetailSuccess({ postDetail }))
+        const sdt = postDetail.result.BaiDang.sdt
+        const { userProfile } = yield call(getUserProfile, sdt)
+        yield put(
+            getPostDetailSuccess({
+                postDetail: {
+                    ...postDetail,
+                    userProfile,
+                },
+            })
+        )
     } else {
         yield put(getPostDetailFail({ errorMessage }))
     }
 }
 
 function* createPost({ formData }) {
-    yield put(createPostPending())
-
+    const sdt = yield select(selectNumberPhone)
     const token = yield select(selectToken)
-    const username = yield select(selectUsername)
 
-    const requestFormData = mappingFormData(formData, username)
+    const requestFormData = mappingFormData(formData, sdt)
+    console.log(requestFormData)
 
     const { status, errorMessage } = yield call(
         createNewPost,
@@ -63,6 +87,8 @@ function* createPost({ formData }) {
         token
     )
     if (status === 200) {
+        console.log(sdt)
+        window.invokeMethod('NotifyAdmin', sdt)
         yield put(createPostSuccess())
     } else if (status === 401) {
         yield put(
@@ -74,6 +100,9 @@ function* createPost({ formData }) {
     } else {
         yield put(createPostFail({ errorMessage }))
     }
+
+    console.log(sdt)
+    window.invokeMethod('NotifyAdmin', sdt)
 }
 
 const params = {
@@ -135,10 +164,11 @@ const params = {
     66: 'baiDangDoDungVanPhong',
 }
 
-function mappingFormData(formData, numberPhone) {
+function mappingFormData({ address, ...formData }, numberPhone) {
     const { subCategoryId, categoryId } = formData
 
     return {
+        ...address,
         ...formData,
         paramUrl: params[subCategoryId || categoryId],
         anTin: true,
@@ -153,6 +183,6 @@ function mappingFormData(formData, numberPhone) {
         mota: formData.description,
         idDanhMucCon: subCategoryId,
         hinhAnh_BaiDangs: formData.medias,
-        diaChiCuThe: formData.soNha + formData.tenDuong,
+        diaChiCuThe: address.soNha + address.tenDuong,
     }
 }

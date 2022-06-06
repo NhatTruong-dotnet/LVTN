@@ -303,10 +303,10 @@ function House({ formData, handleFormDataChange }) {
                         <FormInput
                             label={'Chiều dài'}
                             halfContainer
-                            value={formData.nhaOChieuDai}
+                            value={formData.nhaOchieuDai}
                             onChange={e =>
                                 handleFormDataChange(
-                                    'nhaOChieuDai',
+                                    'nhaOchieuDai',
                                     e.target.value
                                 )
                             }

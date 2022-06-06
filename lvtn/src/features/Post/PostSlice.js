@@ -6,6 +6,7 @@ const initialState = {
     listPost: [],
     selectedPostDetail: {},
     wishList: [],
+    relatedPost: [],
 }
 
 const postSlice = createSlice({
@@ -41,6 +42,7 @@ const postSlice = createSlice({
         getPostDetailSuccess(state, action) {
             state.isLoading = false
             state.selectedPostDetail = action.payload.postDetail
+            console.log(action.payload.postDetail)
         },
         getPostDetailFail(state, action) {
             state.isLoading = false
@@ -73,6 +75,13 @@ const postSlice = createSlice({
             state.wishList = []
             localStorage.setItem('wishList', JSON.stringify([]))
         },
+        // --------------------------------------------------------
+        getRelatedPostSuccess(state, action) {
+            const relatedPost = action.payload.relatedPost
+            if (Array.isArray(relatedPost)) {
+                state.relatedPost = relatedPost.splice(0, 4)
+            }
+        },
     },
 })
 
@@ -95,11 +104,14 @@ export const {
     addWishList,
     removeItemWishList,
     removeWishList,
+    // ------------
+    getRelatedPostSuccess,
 } = actions
 
 export const selectListPost = state => state.post.listPost
 export const selectPostDetail = state => state.post.selectedPostDetail
 export const selectWishList = state => state.post.wishList
+export const selectRelatedPost = state => state.post.relatedPost
 export const selectPendingStatusPost = state => state.post.isLoading
 
 export default reducer

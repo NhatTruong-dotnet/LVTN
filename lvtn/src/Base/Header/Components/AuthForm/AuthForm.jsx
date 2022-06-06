@@ -52,7 +52,7 @@ function AuthForm({ setIsShowForm }) {
     return (
         <div className={styles.loginFormContainer}>
             <h1 className={styles.title}>
-                {formMode === 'login' ? 'Welcome back' : 'Create Account'}
+                {formMode === 'login' ? 'Đăng Nhập' : 'Đăng Ký'}
             </h1>
             <FaTimes
                 className={styles.closeModalIcon}

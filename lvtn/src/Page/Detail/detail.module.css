@@ -48,6 +48,10 @@
     background-color: #c90927;
     color: #fff;
 }
+.saved {
+    background-color: #c90927;
+    color: #fff;
+}
 .icon {
     position: relative;
     top: 5px;
@@ -110,13 +114,15 @@
     font-weight: 600;
 }
 .vendorInfo {
-    padding: 10px 0 20px;
+    padding: 10px 0;
     border-top: 1px solid #ccc;
     display: flex;
     position: relative;
 }
 
 .avatar {
-    margin-right: 20px;
-    font-size: 40px;
+    margin-right: 10px;
+    font-size: 60px;
+    position: relative;
+    top: -26px;
 }

@@ -4,6 +4,8 @@ import loginReducer from '../features/Auth/Login/loginSlice'
 import registerReducer from '../features/Auth/Register/registerSlice'
 import postReducer from '../features/Post/PostSlice'
 import userReducer from '../features/User/UserSlice'
+import signalRReducer from '../features/SignalR/SignalRSlice'
+
 import createSagaMiddleware from 'redux-saga'
 
 import RootSaga from './RootSaga'
@@ -17,6 +19,7 @@ export const store = configureStore({
         register: registerReducer,
         post: postReducer,
         user: userReducer,
+        signalR: signalRReducer,
     },
     middleware: getDefaultMiddleware =>
         getDefaultMiddleware().concat(sagaMiddleware),

@@ -13,14 +13,12 @@ import {
     selectUserInfo,
     selectUserPost,
 } from '../../features/User/UserSlice'
-import TimeAgo from 'javascript-time-ago'
 import clsx from 'clsx'
 import DynamicModal from '../../Common/DynamicModal/DynamicModal'
 
 const imgSrc = process.env.REACT_APP_BASE_IMG_URL
 
 function ProfileUser(props) {
-    const timeAgo = new TimeAgo('en-US')
     const { profileUserNumberPhone } = useParams()
     const loginUserNumberPhone = useSelector(selectNumberPhone)
     const userProfile = useSelector(selectUserInfo)
@@ -28,11 +26,11 @@ function ProfileUser(props) {
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const isLoading = useSelector(selectPendingState)
-    console.log(profileUserNumberPhone)
-    console.log(loginUserNumberPhone)
+    console.log(userPost)
 
     useEffect(() => {
         dispatch({ type: 'getProfile', sdt: profileUserNumberPhone })
+        dispatch({ type: 'getUserPost', sdt: profileUserNumberPhone })
     }, [profileUserNumberPhone])
     console.log(userProfile)
     return (
@@ -79,8 +77,6 @@ function ProfileUser(props) {
                                 <AiOutlineStar
                                     style={{
                                         fontSize: 20,
-                                        position: 'relative',
-                                        top: 5,
                                         marginRight: 8,
                                     }}
                                 />
@@ -95,8 +91,6 @@ function ProfileUser(props) {
                                 <AiOutlineStar
                                     style={{
                                         fontSize: 20,
-                                        position: 'relative',
-                                        top: 5,
                                         marginRight: 8,
                                     }}
                                 />
@@ -111,16 +105,13 @@ function ProfileUser(props) {
                                 <AiOutlineStar
                                     style={{
                                         fontSize: 20,
-                                        position: 'relative',
-                                        top: 5,
                                         marginRight: 8,
                                     }}
                                 />
                                 Ngày tham gia:
                             </span>
                             <span style={{ fontWeight: 500 }}>
-                                {/* {userProfile.createdDate &&
-                                    timeAgo(userProfile.createdDate)} */}
+                                {userProfile.createdDate}
                             </span>
                         </div>
                         <div className={styles.infoItem}>
@@ -128,8 +119,6 @@ function ProfileUser(props) {
                                 <IoLocationOutline
                                     style={{
                                         fontSize: 20,
-                                        position: 'relative',
-                                        top: 5,
                                         marginRight: 8,
                                     }}
                                 />
@@ -144,8 +133,6 @@ function ProfileUser(props) {
                                 <AiOutlinePhone
                                     style={{
                                         fontSize: 20,
-                                        position: 'relative',
-                                        top: 5,
                                         marginRight: 8,
                                     }}
                                 />
@@ -174,7 +161,14 @@ function ProfileUser(props) {
             </Frame>
             <Frame title={'Tin đang đăng'}>
                 {userPost.map(
-                    (tieuDe, idHinhAnh, gia, ngayTao, thanhPho, idBaiDang) => (
+                    ({
+                        tieuDe,
+                        idHinhAnh,
+                        gia,
+                        ngayTao,
+                        thanhPho,
+                        idBaiDang,
+                    }) => (
                         <HorizontalPost
                             key={idBaiDang}
                             idPost={idBaiDang}

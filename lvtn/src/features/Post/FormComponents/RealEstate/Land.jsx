@@ -117,9 +117,12 @@ function Land({ formData, handleFormDataChange }) {
                     <FormInput
                         label='Loại hình đất'
                         require
-                        value={formData.loaiHinh}
+                        value={formData.datLoaiHinhDat}
                         onChange={e =>
-                            handleFormDataChange('loaiHinh', e.target.value)
+                            handleFormDataChange(
+                                'datLoaiHinhDat',
+                                e.target.value
+                            )
                         }
                         requireData={[
                             { value: 'Đất thổ cư' },

@@ -15,10 +15,13 @@ import { selectLoginStatus } from '../../features/Auth/Login/loginSlice'
 import ImagePicker from './Components/ImagePicker'
 import VideoPicker from './Components/VideoPicker'
 import { useNavigate } from 'react-router-dom'
-import { selectPendingStatusPost } from '../../features/Post/PostSlice'
+import {
+    createPostPending,
+    selectPendingStatusPost,
+} from '../../features/Post/PostSlice'
 import DynamicModal from '../../Common/DynamicModal/DynamicModal'
 
-function CreatePost(props) {
+function CreatePost({ signalRConnection, invokeMethod }) {
     const [isShowCategoryPicker, setIsShowCategoryPicker] = useState(true)
     const [listFileDataMedia, setListFileDataMedia] = useState([])
     const [listPreviewImage, setListPreviewImage] = useState([])
@@ -107,11 +110,10 @@ function CreatePost(props) {
 
     const handleSubmitForm = async e => {
         e.preventDefault()
+        dispatch(createPostPending())
 
         const fileIdArray = await uploadImage(listFileDataMedia)
         const formRequestData = { ...formData, medias: fileIdArray }
-
-        console.log(formRequestData)
 
         dispatch({
             type: 'createPost',
@@ -155,11 +157,13 @@ function CreatePost(props) {
                             <ImagePicker
                                 listPreviewImage={listPreviewImage}
                                 deleteFile={deleteFile}
+                                multiple
                             />
 
                             <VideoPicker
                                 listPreviewVideo={listPreviewVideo}
                                 deleteFile={deleteFile}
+                                multiple
                             />
                         </div>
                     </div>

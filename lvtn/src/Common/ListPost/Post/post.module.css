@@ -18,7 +18,7 @@
 
 .postImg {
     width: 100%;
-    max-height: 150px;
+    height: 200px;
     margin-bottom: 10px;
 }
 
@@ -43,7 +43,7 @@
     font-weight: 600;
     min-height: 25px;
     font-family: sans-serif;
-    margin-top: 4px;
+    margin-top: 10px;
 }
 .horizontalPost .moreInfo {
     font-size: 14px;

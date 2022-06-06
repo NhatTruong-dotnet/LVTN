@@ -11,6 +11,7 @@ import {
     selectWishList,
 } from '../../../features/Post/PostSlice'
 import clsx from 'clsx'
+import { formatCurrency } from '../../../Utils/formatCurrency'
 
 const imgURL = process.env.REACT_APP_BASE_IMG_URL
 
@@ -87,21 +88,18 @@ function HorizontalPost({
                 </div>
             )}
             <img
-                // src='https://cdn.chotot.com/l6nzMpYlbv1VCXs2iIFUbVfIU62JpKQUZdcwhjzwDRU/preset:listing/plain/98ef2bd9efc5371aae2340d37bad701e-2768418666813430784.jpg'
                 src={`${imgURL}${imgId}`}
                 alt={title}
                 className={styles.background}
             />
             <div className={styles.postDetail}>
                 <div className={styles.title}>{title}</div>
-                <div className={styles.price}>{price}</div>
+                <div className={styles.price}>{formatCurrency(price)}</div>
                 <div className={styles.moreInfo}>
                     <ImUserTie />
 
                     <div className={styles.dot}></div>
-                    <div className={styles.time}>
-                        {createdDate && timeAgo.format(createdDate)}
-                    </div>
+                    <div className={styles.time}>{createdDate}</div>
                     <div className={styles.dot}></div>
                     <div className={styles.location}>{location}</div>
                 </div>

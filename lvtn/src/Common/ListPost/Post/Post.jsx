@@ -15,8 +15,8 @@ function Post({ id, title, imgId, price, createdDate = new Date(), location }) {
     const timeAgo = new TimeAgo('en-US')
 
     const handleNavigateDetailPage = () => {
-        // navigate(`/detail/${id}`)
-        navigate(`/detail/${2}`)
+        navigate(`/detail/${id}`)
+        // navigate(`/detail/${2}`)
     }
 
     return (
@@ -38,7 +38,8 @@ function Post({ id, title, imgId, price, createdDate = new Date(), location }) {
                     <FaStore className={styles.icon} />
                     <div className={styles.dot}></div>
                     <div className={styles.time}>
-                        {createdDate && timeAgo.format(createdDate)}
+                        {/* {createdDate && timeAgo.format(createdDate)} */}
+                        {createdDate}
                     </div>
                     <div className={styles.dot}></div>
                     <div className={styles.location}>{location}</div>

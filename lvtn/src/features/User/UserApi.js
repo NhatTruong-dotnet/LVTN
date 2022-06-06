@@ -13,7 +13,7 @@ export const getUserProfile = async sdt => {
 export const getUserPost = async sdt => {
     try {
         const res = await axios.get(
-            `${host}/api/baiDang/mySold$soDienThoai=${sdt}`
+            `${host}/api/BaiDang/mySold?soDienThoai=${sdt}`
         )
         const { data, status } = res
         return { userPost: data, status }
