@@ -16,7 +16,10 @@ namespace STU.LVTN.SERVER.Provider.BusinessLogic
                 temp.ConversationId = conversation.ConversationId;
                 temp.SdtNguoiBan = conversation.SdtNguoiBan;
                 temp.SdtNguoiMua = conversation.SdtNguoiMua;
-
+                temp.ImageSourceNguoiBan = _context.NguoiDungs.Where(item => item.SoDienThoai == conversation.SdtNguoiBan).First().AnhDaiDienSource == null 
+                    ? null: _context.NguoiDungs.Where(item => item.SoDienThoai == conversation.SdtNguoiBan).First().AnhDaiDienSource;
+                temp.ImageSourceNguoiMua = _context.NguoiDungs.Where(item => item.SoDienThoai == conversation.SdtNguoiMua).First().AnhDaiDienSource == null
+                    ? null : _context.NguoiDungs.Where(item => item.SoDienThoai == conversation.SdtNguoiBan).First().AnhDaiDienSource;
                 MessageEntities messages =  _context.Messages.OrderByDescending(item => item.MessageId).Where(item => item.ConversationId == conversation.ConversationId).ToList().First();
                 temp.LastMessage = messages.MessageText;
                 temp.Time = $"{messages.Time:dd-MM-yyyy HH:mm}";

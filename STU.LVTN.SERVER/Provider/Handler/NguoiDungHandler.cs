@@ -64,7 +64,7 @@ namespace STU.LVTN.SERVER.Provider.Handler
         {
             NguoiDungEntities nguoiDung = await nguoiDungHelper.GetNguoiDungBySoDienThoai(soDienThoai);
             UserProfileDTO userProfile = new UserProfileDTO();
-            userProfile.CreatedDate = nguoiDung.CreatedDate;
+            userProfile.CreatedDate =$"{ nguoiDung.CreatedDate:dd-MM-yyyy HH:mm}";
             userProfile.Ten = nguoiDung.Ten;
             userProfile.SoDienThoai = soDienThoai;
             userProfile.DiaChi = nguoiDung.DiaChi;
