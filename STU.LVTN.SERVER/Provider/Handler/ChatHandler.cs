@@ -8,7 +8,7 @@ namespace STU.LVTN.SERVER.Provider.Handler
     {
         Chat chatHelper = new Chat();
         Conversation conversationHelper = new Conversation();
-        public async Task AddMessage(MessagesDTO messageRequest)
+        public async Task<int> AddMessage(MessagesDTO messageRequest)
         {
             MessageEntities message = new MessageEntities();
             message.MessagesBy = messageRequest.MessagesBy;
@@ -20,12 +20,15 @@ namespace STU.LVTN.SERVER.Provider.Handler
                 int conversationID = conversationHelper.GetConversationID(messageRequest.MessagesBy, messageRequest.MessageTo);
                 message.ConversationId = conversationID;
                 await chatHelper.AddMessage(message);
+                return conversationID;
             }
             else
             {
                 int conversationID = conversationHelper.AddConversation(messageRequest.MessagesBy, messageRequest.MessageTo);
                 message.ConversationId = conversationID;
                 await chatHelper.AddMessage(message);
+                return conversationID;
+
             }
         }
         public async Task<List<ConversationsDTO>> GetAllConversations(string sdt)

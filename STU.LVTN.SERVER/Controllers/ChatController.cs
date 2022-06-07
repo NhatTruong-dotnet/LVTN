@@ -42,10 +42,9 @@ namespace STU.LVTN.SERVER.Controllers
         }
 
         [HttpPost("addMessage"), Authorize]
-        public async Task<ActionResult> AddMessage(MessagesDTO messageRequest)
+        public async Task<ActionResult<int>> AddMessage(MessagesDTO messageRequest)
         {
-            chatHandler.AddMessage(messageRequest);
-            return Ok();
+            return Ok(await chatHandler.AddMessage(messageRequest));
         }
     }
 }
