@@ -65,4 +65,5 @@ app.UseAuthorization();
 app.MapControllers();
 app.UseCors();
 app.MapHub<ThongBaoHub>("notify");
+app.MapHub<ChatHub>("chat");
 app.Run();
