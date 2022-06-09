@@ -40,6 +40,7 @@ namespace STU.LVTN.SERVER.Provider.Handler
                 temp.Mota = item.Comment;
                 temp.ImageSource = _context.HinhAnhBaiDangs.Where(baiDang => baiDang.IdSanPham == item.IDPost && baiDang.VideoType == false).First().IdMediaCloud;
                 temp.TieuDeThongBao = _context.BaiDangs.Where(baiDang => baiDang.IdBaiDang == item.IDPost).First().TieuDe;
+                temp.SdtNguoiDung = item.SdtNguoiDung;
 
                 result.Add(temp);
             }
