@@ -27,5 +27,9 @@ namespace STU.LVTN.SERVER.Provider.Handler
             await thongBaoHelper.AddThongBao(thongBao);
             return true;
         }
+        public async Task<List<ThongBaoEntities>> GetAllThongBao(string sdt)
+        {
+            return _context.ThongBaos.OrderByDescending(item => item.IdThongBao).Where(item => item.SdtNguoiDung == sdt).ToList();
+        }
     }
 }

@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using STU.LVTN.SERVER.Model;
 using STU.LVTN.SERVER.Model.DTO;
 using STU.LVTN.SERVER.Model.DTO.BaiDangBatDongSan;
 using STU.LVTN.SERVER.Model.DTO.BaiDangXeCo;
@@ -802,7 +803,7 @@ namespace STU.LVTN.SERVER.Controllers
 
         #endregion
 
-        [HttpPost("checkedNotifications")]
+        [HttpPost("checkedNotifications/{idPost?}")]
         public async Task<ActionResult> CheckedNotifycations(int idPost = 1)
         {
             if (await thongBaoHandler.ThongBaoChecked(idPost))
@@ -810,6 +811,11 @@ namespace STU.LVTN.SERVER.Controllers
             return BadRequest();
         }
 
+        [HttpGet("notifications/{sdt?}")]
+        public async Task<List<ThongBaoEntities>> GetAllNotifcations(string sdt)
+        {
+            return await thongBaoHandler.GetAllThongBao(sdt);
+        }
         [HttpPost("sendApproveResult")]
         public async Task<ActionResult> SendApproveResult(ApproveResultDTO approveResult )
         {
