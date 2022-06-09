@@ -27,9 +27,23 @@ namespace STU.LVTN.SERVER.Provider.Handler
             await thongBaoHelper.AddThongBao(thongBao);
             return true;
         }
-        public async Task<List<ThongBaoEntities>> GetAllThongBao(string sdt)
+        public async Task<List<ThongBaoDTO>> GetAllThongBao(string sdt)
         {
-            return _context.ThongBaos.OrderByDescending(item => item.IdThongBao).Where(item => item.SdtNguoiDung == sdt).ToList();
+            List<ThongBaoEntities> thongBaos =  _context.ThongBaos.OrderByDescending(item => item.IdThongBao).Where(item => item.SdtNguoiDung == sdt).ToList();
+            List<ThongBaoDTO> result = new List<ThongBaoDTO>();
+            foreach (var item in thongBaos)
+            {
+
+                ThongBaoDTO temp = new ThongBaoDTO();
+                temp.Checked = item.Checked;
+                temp.IDPost = item.IDPost;
+                temp.Mota = item.Comment;
+                temp.ImageSource = _context.HinhAnhBaiDangs.Where(baiDang => baiDang.IdSanPham == item.IDPost && baiDang.VideoType == false).First().IdMediaCloud;
+                temp.TieuDeThongBao = _context.BaiDangs.Where(baiDang => baiDang.IdBaiDang == item.IDPost).First().TieuDe;
+
+                result.Add(temp);
+            }
+            return result;
         }
     }
 }

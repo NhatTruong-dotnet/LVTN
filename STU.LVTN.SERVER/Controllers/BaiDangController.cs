@@ -812,7 +812,7 @@ namespace STU.LVTN.SERVER.Controllers
         }
 
         [HttpGet("notifications/{sdt?}")]
-        public async Task<List<ThongBaoEntities>> GetAllNotifcations(string sdt)
+        public async Task<List<ThongBaoDTO>> GetAllNotifcations(string sdt)
         {
             return await thongBaoHandler.GetAllThongBao(sdt);
         }
