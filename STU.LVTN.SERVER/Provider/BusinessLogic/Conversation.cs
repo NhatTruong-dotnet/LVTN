@@ -9,6 +9,7 @@ namespace STU.LVTN.SERVER.Provider.BusinessLogic
         public async Task<List<ConversationsDTO>> GetAllConversations(string sdt)
         {
             List<ConversationEntities> conversations = _context.Conversations.Where(item => item.SdtNguoiBan == sdt).ToList();
+            conversations.AddRange(_context.Conversations.Where(item => item.SdtNguoiMua == sdt).ToList());
             List<ConversationsDTO> conversationsDTOs = new List<ConversationsDTO>();
             foreach (var conversation in conversations)
             {
