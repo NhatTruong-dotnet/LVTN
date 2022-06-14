@@ -34,8 +34,9 @@
     background-color: #e8e8e8;
 }
 .notifyImage {
-    width: 70px;
-    height: 70px;
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
     border-radius: 10px;
     margin-right: 15px;
 }
@@ -47,9 +48,22 @@
 .subTitle {
     font-size: 15px;
 }
-.timeAgo {
-    font-size: 14px;
+.isApprove {
+    font-size: 12px;
     font-weight: 600;
     margin-top: 10px;
-    color: #aaa;
+    color: red;
+}
+.unChecked {
+    position: absolute;
+    left: -8px;
+    color: #fff;
+    background-color: #f00;
+    width: 18px;
+    height: 18px;
+    border-radius: 100%;
+    text-align: center;
+    line-height: 18px;
+    font-size: 12px;
+    font-weight: 700;
 }

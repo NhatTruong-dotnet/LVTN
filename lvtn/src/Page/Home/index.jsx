@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 import Frame from '../../Common/Frame/Frame'
 import ListPost from '../../Common/ListPost/ListPost'
 import { selectListPost } from '../../features/Post/PostSlice'
@@ -71,10 +72,11 @@ const categories = [
 function Home() {
     const dispatch = useDispatch()
     const postData = useSelector(selectListPost)
+    const navigate = useNavigate()
     console.log(postData)
 
     const handleSelectCategory = id => {
-        localStorage.setItem('lastSubCategories', id)
+        navigate(`/category/${id}`)
     }
 
     useEffect(() => {

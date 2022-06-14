@@ -1,11 +1,11 @@
 import Header from './Base/Header'
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, useLocation } from 'react-router-dom'
 import { lazy, useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { loginWithToken } from './features/Auth/Login/loginSlice'
 import { getWishList } from './features/Post/PostSlice'
 import { HubConnectionBuilder, LogLevel } from '@microsoft/signalr'
-import ToastMessage from './Common/ToastMessage/ToastMessage'
+import ToastMessage, { emitMessage } from './Common/ToastMessage/ToastMessage'
 const Home = lazy(() => import('./Page/Home'))
 const CreatePost = lazy(() => import('./Page/CreatePost'))
 const Detail = lazy(() => import('./Page/Detail/Detail'))
@@ -13,12 +13,19 @@ const WishList = lazy(() => import('./Page/WishList/WishList'))
 const ProfileUser = lazy(() => import('./Page/ProfileUser/ProfileUser'))
 const EditProfileUser = lazy(() => import('./Page/ProfileUser/EditProfileUser'))
 const Chat = lazy(() => import('./Page/Chat/Chat'))
+const Category = lazy(() => import('./Page/Category/Category'))
 
 function App() {
     const [connection, setConnection] = useState(null)
+    const [notifyConnection, setNotifyConnection] = useState(null)
     const dispatch = useDispatch()
+    const { pathname } = useLocation()
 
-    const connectSignalRServer = async (url, callbackOnConnectionClose) => {
+    const connectSignalRServer = async (
+        url,
+        setConnection,
+        callbackOnConnectionClose
+    ) => {
         const connection = new HubConnectionBuilder()
             .withUrl(url)
             .configureLogging(LogLevel.Information)
@@ -56,6 +63,16 @@ function App() {
         }
     }
 
+    const receiveMessage = message => {
+        if (pathname !== '/chat') {
+            emitMessage(
+                'success',
+                `Bạn có tin nhắn mới từ ${message.MessageBy}`
+            )
+        }
+        dispatch({ type: 'ReceiveMessage', message })
+    }
+
     // init wish list
     useEffect(() => {
         const wishList = JSON.parse(localStorage.getItem('wishList'))
@@ -76,14 +93,31 @@ function App() {
 
     // connect signalR
     useEffect(() => {
-        connectSignalRServer('https://localhost:7298/notify')
+        connectSignalRServer('https://localhost:7298/chat', setConnection)
+        connectSignalRServer(
+            'https://localhost:7298/notify',
+            setNotifyConnection
+        )
     }, [])
 
-    // set global signalR method
+    // set global signalR notify method
+    useEffect(() => {
+        window.notifyConnection = connection
+        window.notifyInvokeMethod = invokeMethod
+        window.notifyListen = listen
+    }, [notifyConnection])
+
+    // set global signalR chat method
     useEffect(() => {
         window.connection = connection
         window.invokeMethod = invokeMethod
         window.listen = listen
+    }, [connection])
+
+    useEffect(() => {
+        if (connection) {
+            listen('ReceiveMessage', receiveMessage)
+        }
     }, [connection])
 
     return (
@@ -113,6 +147,7 @@ function App() {
                     element={<EditProfileUser />}
                 />
                 <Route path='/chat' element={<Chat />} />
+                <Route path='/category/:categoryId' element={<Category />} />
             </Routes>
             <ToastMessage />
         </div>

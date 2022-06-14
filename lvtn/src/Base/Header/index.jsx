@@ -11,13 +11,15 @@ import AuthForm from './Components/AuthForm/AuthForm'
 import UserControl from './Components/UserControl'
 import Notification from './Components/Notification'
 import { useNavigate } from 'react-router-dom'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import {
     selectLoginStatus,
     selectNumberPhone,
     selectStatus,
     selectUsername,
 } from '../../features/Auth/Login/loginSlice'
+import ChatNotify from './Components/ChatNotify/ChatNotify'
+import { addNewNotify } from '../../features/Notify/NotifySlice'
 
 function Header(props) {
     const [searchValue, setSearchValue] = useState('')
@@ -27,7 +29,7 @@ function Header(props) {
     const username = useSelector(selectUsername)
     const sdt = useSelector(selectNumberPhone)
     const isLogin = useSelector(selectLoginStatus)
-    // const dispatch = useDispatch()
+    const dispatch = useDispatch()
 
     const navigate = useNavigate()
 
@@ -42,8 +44,14 @@ function Header(props) {
             setIsShowForm(false)
         }
     }, [isLogin])
-    console.log(sdt)
-    console.log(username)
+
+    useEffect(() => {
+        if (window.notifyConnection) {
+            window.notifyListen('ClientReceiveNotify', notify => {
+                dispatch(addNewNotify({ newNotify: notify }))
+            })
+        }
+    }, [window.notifyConnection])
 
     return (
         <div className={styles.container}>
@@ -78,6 +86,8 @@ function Header(props) {
                     <div className={styles.userControl}>
                         {isLogin ? (
                             <>
+                                <ChatNotify />
+
                                 <UserControl username={username} sdt={sdt} />
                                 <Notification />
                             </>

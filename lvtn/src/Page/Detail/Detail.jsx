@@ -19,6 +19,9 @@ import {
 } from '../../features/Post/PostSlice'
 import DynamicModal from '../../Common/DynamicModal/DynamicModal'
 import { formatCurrency } from '../../Utils/formatCurrency'
+import { Button } from 'reactstrap'
+import { setReceiveUserInfo } from '../../features/Chat/ChatSlice'
+import { selectNumberPhone } from '../../features/Auth/Login/loginSlice'
 
 const imgURL = process.env.REACT_APP_BASE_IMG_URL
 
@@ -44,7 +47,7 @@ function renderImage(obj) {
             <div key={key}>
                 <img
                     src={`${imgURL}${obj[key]}`}
-                    style={{ maxHeight: '500px' }}
+                    style={{ maxHeight: '500px', objectFit: 'contain' }}
                 />
             </div>
         )
@@ -74,7 +77,9 @@ function Detail(props) {
     const relatedPost = useSelector(selectRelatedPost)
     const wishList = useSelector(selectWishList)
     const isLoading = useSelector(selectPendingStatusPost)
+    const loginUserSdt = useSelector(selectNumberPhone)
 
+    console.log(postDetail.userProfile)
     const handleWishList = () => {
         if (checkSavedPost(idPost)) {
             dispatch(removeItemWishList(idPost))
@@ -99,6 +104,15 @@ function Detail(props) {
         return Boolean(findPost)
     }
 
+    const handleCreateConversation = () => {
+        dispatch(
+            setReceiveUserInfo({
+                userInfo: postDetail.userProfile,
+            })
+        )
+        navigate('/chat')
+    }
+
     useEffect(() => {
         if (idPost) {
             dispatch({ type: 'getPostDetail', idPost })
@@ -112,7 +126,6 @@ function Detail(props) {
     if (isEmptyObject(postDetail)) {
         return ''
     }
-    console.log(renderDetailObject(postDetail.result.detail))
 
     return (
         <div className='grid wide'>
@@ -219,6 +232,18 @@ function Detail(props) {
                                 </div>
                             </div>
                         </div>
+                        {postDetail.userProfile === loginUserSdt ? (
+                            ''
+                        ) : (
+                            <Button
+                                color='primary'
+                                className='mt-5'
+                                block
+                                onClick={handleCreateConversation}
+                            >
+                                Nhắn tin với người bán
+                            </Button>
+                        )}
                     </div>
                 </div>
             </Frame>

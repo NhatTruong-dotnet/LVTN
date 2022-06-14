@@ -56,6 +56,10 @@
     font-weight: bold;
     margin-bottom: 5px;
 }
+.moreInfo {
+    width: 100%;
+    text-align: right;
+}
 .lastMessage {
     font-size: 14px;
 }
@@ -63,6 +67,8 @@
     font-size: 12px;
     color: #c4c6c7;
     margin-top: 4px;
+    width: 100%;
+    padding-right: 10px;
 }
 .unRead {
     border-radius: 50%;
@@ -111,11 +117,14 @@
 .haveImage {
     height: 330px !important;
 }
+.message {
+}
 .message > .text {
     max-width: 500px;
 }
 .message.owner {
     align-self: flex-end;
+    text-align: right;
 }
 .message + .message {
     margin-top: 15px;
@@ -129,7 +138,7 @@
     font-size: 14px;
 }
 .message.owner > .text {
-    border-radius: 15px;
+    border-radius: 20px;
     /* border-top-right-radius: 0; */
     background-color: #449cef;
     color: #fff;
