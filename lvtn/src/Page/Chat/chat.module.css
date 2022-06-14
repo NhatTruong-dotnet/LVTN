@@ -61,6 +61,7 @@
     text-align: right;
 }
 .lastMessage {
+    width: 150px;
     font-size: 14px;
 }
 .lastMessageTime {

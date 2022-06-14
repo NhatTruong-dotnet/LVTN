@@ -116,7 +116,13 @@ function App() {
 
     useEffect(() => {
         if (connection) {
+            console.log('listen')
             listen('ReceiveMessage', receiveMessage)
+        }
+        return () => {
+            if (connection) {
+                connection.off('ReceiveMessage')
+            }
         }
     }, [connection])
 

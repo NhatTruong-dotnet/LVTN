@@ -1,6 +1,5 @@
 import React from 'react'
 import styles from './post.module.css'
-import TimeAgo from 'javascript-time-ago'
 import { ImUserTie } from 'react-icons/im'
 import { useNavigate } from 'react-router-dom'
 import { FaRegHeart } from 'react-icons/fa'
@@ -26,7 +25,6 @@ function HorizontalPost({
     isMyPost,
     empty,
 }) {
-    const timeAgo = new TimeAgo('en-US')
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const wishList = useSelector(selectWishList)

@@ -18,6 +18,7 @@ import {
     selectReceiveUserInfo,
     selectReceiveUserSdt,
     setCurrentConversationId,
+    setReceiveUserInfo,
 } from '../../features/Chat/ChatSlice'
 import Conversation from './components/Conversation'
 import ChatInput from './components/ChatInput'
@@ -89,10 +90,26 @@ function Chat(props) {
         const currentConversationId = localStorage.getItem('lastConversation')
         if (currentConversationId && !receiveUserSdt) {
             dispatch(setCurrentConversationId(currentConversationId))
+            const receiveUser = listConversation.find(
+                ({ conversationId }) =>
+                    conversationId === +currentConversationId
+            )
+            if (receiveUser) {
+                console.log('dispatch')
+                dispatch(
+                    setReceiveUserInfo({
+                        userInfo: {
+                            ten: receiveUser.sdtNguoiMua,
+                            soDienThoai: receiveUser.sdtNguoiMua,
+                            anhDaiDienSource: receiveUser.imageSourceNguoiMua,
+                        },
+                    })
+                )
+            }
         } else if (!currentConversationId && !receiveUserSdt) {
             dispatch(setCurrentConversationId(0))
         }
-    }, [])
+    }, [listConversation])
 
     useEffect(() => {
         dispatch({ type: 'getAllConversation' })

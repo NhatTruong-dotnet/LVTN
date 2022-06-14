@@ -1,8 +1,10 @@
 import styles from '../chat.module.css'
 import clsx from 'clsx'
 import { Input } from 'reactstrap'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { selectReceiveUserSdt } from '../../../features/Chat/ChatSlice'
+import { useEffect } from 'react'
+import { selectNumberPhone } from '../../../features/Auth/Login/loginSlice'
 
 function ListConversation({
     listConversation,
@@ -10,6 +12,15 @@ function ListConversation({
     handleSelectConversation,
 }) {
     const receiveUserSdt = useSelector(selectReceiveUserSdt)
+    const loginUserSdt = useSelector(selectNumberPhone)
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        if (loginUserSdt) {
+            dispatch({ type: 'getAllConversation' })
+        }
+    }, [loginUserSdt])
+
     return (
         <div className={clsx(styles.sideBar, 'shadow')}>
             <div className={styles.wrap}>
