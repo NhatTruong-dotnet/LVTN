@@ -60,13 +60,6 @@ C:\DEVELOPMENT\STU.LVTN.SERVER\obj\Debug\net6.0\staticwebassets.development.json
 C:\DEVELOPMENT\STU.LVTN.SERVER\obj\Debug\net6.0\scopedcss\bundle\STU.LVTN.SERVER.styles.css
 C:\DEVELOPMENT\STU.LVTN.SERVER\obj\Debug\net6.0\STU.LVTN.SERVER.csproj.CopyComplete
 C:\DEVELOPMENT\STU.LVTN.SERVER\obj\Debug\net6.0\STU.LVTN.SERVER.genruntimeconfig.cache
-C:\DEVELOPMENT\LVTN\STU.LVTN.SERVER\obj\Debug\net6.0\STU.LVTN.SERVER.csproj.AssemblyReference.cache
-C:\DEVELOPMENT\LVTN\STU.LVTN.SERVER\obj\Debug\net6.0\STU.LVTN.SERVER.GeneratedMSBuildEditorConfig.editorconfig
-C:\DEVELOPMENT\LVTN\STU.LVTN.SERVER\obj\Debug\net6.0\STU.LVTN.SERVER.AssemblyInfoInputs.cache
-C:\DEVELOPMENT\LVTN\STU.LVTN.SERVER\obj\Debug\net6.0\STU.LVTN.SERVER.AssemblyInfo.cs
-C:\DEVELOPMENT\LVTN\STU.LVTN.SERVER\obj\Debug\net6.0\STU.LVTN.SERVER.csproj.CoreCompileInputs.cache
-C:\DEVELOPMENT\LVTN\STU.LVTN.SERVER\obj\Debug\net6.0\STU.LVTN.SERVER.MvcApplicationPartsAssemblyInfo.cs
-C:\DEVELOPMENT\LVTN\STU.LVTN.SERVER\obj\Debug\net6.0\STU.LVTN.SERVER.MvcApplicationPartsAssemblyInfo.cache
 C:\DEVELOPMENT\LVTN\STU.LVTN.SERVER\bin\Debug\net6.0\appsettings.Development.json
 C:\DEVELOPMENT\LVTN\STU.LVTN.SERVER\bin\Debug\net6.0\appsettings.json
 C:\DEVELOPMENT\LVTN\STU.LVTN.SERVER\bin\Debug\net6.0\STU.LVTN.SERVER.exe
@@ -119,6 +112,13 @@ C:\DEVELOPMENT\LVTN\STU.LVTN.SERVER\bin\Debug\net6.0\runtimes\win\lib\net6.0\Sys
 C:\DEVELOPMENT\LVTN\STU.LVTN.SERVER\bin\Debug\net6.0\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
 C:\DEVELOPMENT\LVTN\STU.LVTN.SERVER\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
 C:\DEVELOPMENT\LVTN\STU.LVTN.SERVER\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
+C:\DEVELOPMENT\LVTN\STU.LVTN.SERVER\obj\Debug\net6.0\STU.LVTN.SERVER.csproj.AssemblyReference.cache
+C:\DEVELOPMENT\LVTN\STU.LVTN.SERVER\obj\Debug\net6.0\STU.LVTN.SERVER.GeneratedMSBuildEditorConfig.editorconfig
+C:\DEVELOPMENT\LVTN\STU.LVTN.SERVER\obj\Debug\net6.0\STU.LVTN.SERVER.AssemblyInfoInputs.cache
+C:\DEVELOPMENT\LVTN\STU.LVTN.SERVER\obj\Debug\net6.0\STU.LVTN.SERVER.AssemblyInfo.cs
+C:\DEVELOPMENT\LVTN\STU.LVTN.SERVER\obj\Debug\net6.0\STU.LVTN.SERVER.csproj.CoreCompileInputs.cache
+C:\DEVELOPMENT\LVTN\STU.LVTN.SERVER\obj\Debug\net6.0\STU.LVTN.SERVER.MvcApplicationPartsAssemblyInfo.cs
+C:\DEVELOPMENT\LVTN\STU.LVTN.SERVER\obj\Debug\net6.0\STU.LVTN.SERVER.MvcApplicationPartsAssemblyInfo.cache
 C:\DEVELOPMENT\LVTN\STU.LVTN.SERVER\obj\Debug\net6.0\staticwebassets.build.json
 C:\DEVELOPMENT\LVTN\STU.LVTN.SERVER\obj\Debug\net6.0\staticwebassets.development.json
 C:\DEVELOPMENT\LVTN\STU.LVTN.SERVER\obj\Debug\net6.0\scopedcss\bundle\STU.LVTN.SERVER.styles.css

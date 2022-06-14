@@ -9,14 +9,14 @@ namespace STU.LVTN.SERVER.Provider.BusinessLogic
         public async Task<List<ConversationsDTO>> GetAllConversations(string sdt)
         {
             List<ConversationEntities> conversations = _context.Conversations.Where(item => item.SdtNguoiBan == sdt).ToList();
-            conversations.AddRange(_context.Conversations.Where(item => item.SdtNguoiMua == sdt).ToList());
             List<ConversationsDTO> conversationsDTOs = new List<ConversationsDTO>();
             foreach (var conversation in conversations)
             {
                 ConversationsDTO temp = new ConversationsDTO();
-                temp.ConversationId = conversation.ConversationId;
+                  temp.ConversationId = conversation.ConversationId;
                 temp.SdtNguoiBan = conversation.SdtNguoiBan;
                 temp.SdtNguoiMua = conversation.SdtNguoiMua;
+                temp.Ten = _context.NguoiDungs.Where(item => item.SoDienThoai == conversation.SdtNguoiBan).First().Ten;
                 temp.ImageSourceNguoiBan = _context.NguoiDungs.Where(item => item.SoDienThoai == conversation.SdtNguoiBan).First().AnhDaiDienSource == null 
                     ? null: _context.NguoiDungs.Where(item => item.SoDienThoai == conversation.SdtNguoiBan).First().AnhDaiDienSource;
                 temp.ImageSourceNguoiMua = _context.NguoiDungs.Where(item => item.SoDienThoai == conversation.SdtNguoiMua).First().AnhDaiDienSource == null
@@ -25,8 +25,25 @@ namespace STU.LVTN.SERVER.Provider.BusinessLogic
                 temp.LastMessage = messages.MessageText;
                 temp.Time = $"{messages.Time:dd-MM-yyyy HH:mm}";
                 conversationsDTOs.Add(temp);
-            }    
-            conversations.AddRange(_context.Conversations.Where(item => item.SdtNguoiBan == sdt).ToList());
+            }
+            conversations = _context.Conversations.Where(item => item.SdtNguoiMua == sdt).ToList();
+            foreach (var conversation in conversations)
+            {
+                ConversationsDTO temp = new ConversationsDTO();
+                temp.ConversationId = conversation.ConversationId;
+                temp.SdtNguoiMua = conversation.SdtNguoiBan;
+                temp.SdtNguoiBan = conversation.SdtNguoiMua;
+                temp.Ten = _context.NguoiDungs.Where(item => item.SoDienThoai == conversation.SdtNguoiMua).First().Ten;
+
+                temp.ImageSourceNguoiBan = _context.NguoiDungs.Where(item => item.SoDienThoai == conversation.SdtNguoiBan).First().AnhDaiDienSource == null
+                    ? null : _context.NguoiDungs.Where(item => item.SoDienThoai == conversation.SdtNguoiBan).First().AnhDaiDienSource;
+                temp.ImageSourceNguoiMua = _context.NguoiDungs.Where(item => item.SoDienThoai == conversation.SdtNguoiMua).First().AnhDaiDienSource == null
+                    ? null : _context.NguoiDungs.Where(item => item.SoDienThoai == conversation.SdtNguoiBan).First().AnhDaiDienSource;
+                MessageEntities messages = _context.Messages.OrderByDescending(item => item.MessageId).Where(item => item.ConversationId == conversation.ConversationId).ToList().First();
+                temp.LastMessage = messages.MessageText;
+                temp.Time = $"{messages.Time:dd-MM-yyyy HH:mm}";
+                conversationsDTOs.Add(temp);
+            }
             return conversationsDTOs;
         }
 
@@ -54,7 +71,7 @@ namespace STU.LVTN.SERVER.Provider.BusinessLogic
 
                 _context.Conversations.Add(conversation);
                 _context.SaveChanges();
-                return _context.Conversations.Count();
+                return _context.Conversations.OrderBy(item => item.ConversationId).Last().ConversationId;
             
 
         }
