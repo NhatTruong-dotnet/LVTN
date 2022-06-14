@@ -53,7 +53,12 @@ function ListConversation({
                             key={conversationId}
                             onClick={() => {
                                 console.log('click')
-                                handleSelectConversation(conversationId)
+                                handleSelectConversation({
+                                    id: conversationId,
+                                    ten: sdtNguoiMua,
+                                    soDienThoai: sdtNguoiMua,
+                                    anhDaiDienSource: imageSourceNguoiMua,
+                                })
                             }}
                         >
                             <img

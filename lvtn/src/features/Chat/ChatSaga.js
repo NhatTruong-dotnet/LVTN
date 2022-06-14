@@ -115,7 +115,6 @@ function* addNewMessageSaga({ messageText, listFileDataMedia }) {
     const sdt = yield select(selectNumberPhone)
     const token = yield select(selectToken)
     const currentChatUserSdt = yield select(selectReceiveUserSdt)
-    console.log(currentChatUserSdt)
     const currentConversationId = yield select(selectCurrentConversationId)
     if (!token) {
         return

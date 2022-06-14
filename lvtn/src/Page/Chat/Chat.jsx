@@ -82,8 +82,22 @@ function Chat(props) {
         setListFileDataMedia(newListFileDataMedia)
     }
 
-    const handleSelectConversation = id => {
+    const handleSelectConversation = ({
+        id,
+        ten,
+        soDienThoai,
+        anhDaiDienSource,
+    }) => {
         dispatch(setCurrentConversationId(id))
+        dispatch(
+            setReceiveUserInfo({
+                userInfo: {
+                    ten,
+                    soDienThoai,
+                    anhDaiDienSource,
+                },
+            })
+        )
     }
 
     useEffect(() => {
