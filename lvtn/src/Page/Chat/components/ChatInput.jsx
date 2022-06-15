@@ -5,23 +5,31 @@ import { IoIosSend } from 'react-icons/io'
 import { ImAttachment } from 'react-icons/im'
 import { TiDeleteOutline } from 'react-icons/ti'
 import { useDispatch } from 'react-redux'
+import { uploadImage } from '../../../Utils/PostUtils'
 
 function ChatInput({
     listPreviewImage,
     listFileDataMedia,
     handleSelectMediaFile,
     deleteFile,
+    deleteAllFile,
 }) {
     const [messageText, setTextMessage] = useState('')
     const dispatch = useDispatch()
 
-    const handleAddNewMessage = () => {
+    const handleAddNewMessage = async () => {
+        const responseArray = await uploadImage(listFileDataMedia)
+        let imageId = ''
+        if (responseArray.length !== 0) {
+            imageId = responseArray[0].id
+        }
         dispatch({
             type: 'addNewMessage',
             messageText,
-            listFileDataMedia,
+            imageId,
         })
         setTextMessage('')
+        deleteAllFile()
     }
 
     return (

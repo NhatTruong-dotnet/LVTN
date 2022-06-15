@@ -6,17 +6,36 @@ const imgURL = process.env.REACT_APP_BASE_IMG_URL
 
 function Message({
     messagesBy,
-    type,
-    messageText,
     time,
+    messageText,
     messageImageSource,
     setSelectViewImageUrl,
 }) {
     const loginUserSdt = useSelector(selectNumberPhone)
 
-    return (
-        <>
-            {type === 'text' ? (
+    if (messageText && !messageImageSource) {
+        return (
+            <MessageText
+                messagesBy={messagesBy}
+                messageText={messageText}
+                time={time}
+                setSelectViewImageUrl={setSelectViewImageUrl}
+                loginUserSdt={loginUserSdt}
+            />
+        )
+    } else if (!messageText && messageImageSource) {
+        return (
+            <MessageImage
+                messagesBy={messagesBy}
+                messageImageSource={messageImageSource}
+                time={time}
+                setSelectViewImageUrl={setSelectViewImageUrl}
+                loginUserSdt={loginUserSdt}
+            />
+        )
+    } else {
+        return (
+            <>
                 <MessageText
                     messagesBy={messagesBy}
                     messageText={messageText}
@@ -24,7 +43,6 @@ function Message({
                     setSelectViewImageUrl={setSelectViewImageUrl}
                     loginUserSdt={loginUserSdt}
                 />
-            ) : (
                 <MessageImage
                     messagesBy={messagesBy}
                     messageImageSource={messageImageSource}
@@ -32,9 +50,31 @@ function Message({
                     setSelectViewImageUrl={setSelectViewImageUrl}
                     loginUserSdt={loginUserSdt}
                 />
-            )}
-        </>
-    )
+            </>
+        )
+    }
+
+    // return (
+    //     <>
+    //         {type === 'text' ? (
+    //             <MessageText
+    //                 messagesBy={messagesBy}
+    //                 messageText={messageText}
+    //                 time={time}
+    //                 setSelectViewImageUrl={setSelectViewImageUrl}
+    //                 loginUserSdt={loginUserSdt}
+    //             />
+    //         ) : (
+    //             <MessageImage
+    //                 messagesBy={messagesBy}
+    //                 messageImageSource={messageImageSource}
+    //                 time={time}
+    //                 setSelectViewImageUrl={setSelectViewImageUrl}
+    //                 loginUserSdt={loginUserSdt}
+    //             />
+    //         )}
+    //     </>
+    // )
 }
 
 export default Message

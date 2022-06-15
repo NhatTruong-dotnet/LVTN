@@ -46,11 +46,6 @@ function Conversation({ listPreviewImage, deleteFile }) {
                     }) => (
                         <Message
                             key={nanoid()}
-                            type={
-                                !messageText && messageImageSource
-                                    ? 'image'
-                                    : 'text'
-                            }
                             messagesBy={messagesBy}
                             // time={time}
                             messageText={messageText}

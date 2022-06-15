@@ -23,6 +23,9 @@ import {
 import Conversation from './components/Conversation'
 import ChatInput from './components/ChatInput'
 import ListConversation from './components/ListConversation'
+import { FaUserCircle } from 'react-icons/fa'
+
+const imgURL = process.env.REACT_APP_BASE_IMG_URL
 
 function Chat(props) {
     const [listPreviewImage, setListPreviewImage] = useState([])
@@ -81,7 +84,7 @@ function Chat(props) {
         newListFileDataMedia.splice(indexInFileData, 1)
         setListFileDataMedia(newListFileDataMedia)
     }
-
+    console.log(listFileDataMedia)
     const handleSelectConversation = ({
         id,
         ten,
@@ -113,7 +116,7 @@ function Chat(props) {
                 dispatch(
                     setReceiveUserInfo({
                         userInfo: {
-                            ten: receiveUser.sdtNguoiMua,
+                            ten: receiveUser.ten,
                             soDienThoai: receiveUser.sdtNguoiMua,
                             anhDaiDienSource: receiveUser.imageSourceNguoiMua,
                         },
@@ -166,13 +169,24 @@ function Chat(props) {
                             )}
                         >
                             <div className={styles.selectedUserInfo}>
-                                <img
-                                    className={styles.selectedUserAvatar}
-                                    src='https://i.pinimg.com/236x/23/31/03/233103d32c9696866e2dda84e4ec983a.jpg'
-                                    alt='avatar'
-                                    width={50}
-                                    height={50}
-                                />
+                                {receiveUserInfo.anhDaiDienSource ? (
+                                    <img
+                                        className={styles.selectedUserAvatar}
+                                        // src='https://i.pinimg.com/236x/23/31/03/233103d32c9696866e2dda84e4ec983a.jpg'
+                                        src={`${imgURL}${receiveUserInfo.anhDaiDienSource}`}
+                                        alt='avatar'
+                                        width={50}
+                                        height={50}
+                                    />
+                                ) : (
+                                    <FaUserCircle
+                                        style={{
+                                            width: 50,
+                                            height: 50,
+                                            marginRight: 10,
+                                        }}
+                                    />
+                                )}
                                 <div className={styles.selectedUserName}>
                                     {receiveUserInfo.ten}
                                 </div>
@@ -186,6 +200,7 @@ function Chat(props) {
                                 listFileDataMedia={listFileDataMedia}
                                 handleSelectMediaFile={handleSelectMediaFile}
                                 deleteFile={deleteFile}
+                                deleteAllFile={clearAllImageSelect}
                             />
                         </div>
                     </Col>

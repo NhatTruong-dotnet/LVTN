@@ -100,6 +100,7 @@ function* receiveMessageSaga() {
 }
 
 function* handleReceiveMessage(message) {
+    console.log(message)
     yield put(
         addMessage({
             newMessage: {
@@ -111,7 +112,7 @@ function* handleReceiveMessage(message) {
     )
 }
 
-function* addNewMessageSaga({ messageText, listFileDataMedia }) {
+function* addNewMessageSaga({ messageText, imageId }) {
     const sdt = yield select(selectNumberPhone)
     const token = yield select(selectToken)
     const currentChatUserSdt = yield select(selectReceiveUserSdt)
@@ -126,7 +127,7 @@ function* addNewMessageSaga({ messageText, listFileDataMedia }) {
                 messagesBy: sdt,
                 messageTo: currentChatUserSdt,
                 messageText,
-                messageImageSource: '',
+                messageImageSource: imageId,
             },
         })
     )
@@ -137,7 +138,7 @@ function* addNewMessageSaga({ messageText, listFileDataMedia }) {
         sdt,
         currentChatUserSdt,
         messageText,
-        listFileDataMedia
+        imageId
     )
     if (status === 200) {
         yield put(addNewMessageApiSuccess())

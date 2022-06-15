@@ -47,6 +47,9 @@ const chatSlice = createSlice({
         getAllMessageSuccess: (state, action) => {
             state.currentConversation.listMessage = action.payload.listMessage
         },
+        getAllMessageFail: (state, action) => {
+            console.log(action.payload)
+        },
         setCurrentConversationId: (state, action) => {
             state.currentConversation.id = action.payload
         },

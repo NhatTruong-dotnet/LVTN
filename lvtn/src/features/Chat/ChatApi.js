@@ -43,7 +43,7 @@ export const addNewMessage = async (
     sdt,
     currentChatUserSdt,
     messageText,
-    listFileDataMedia
+    imageId
 ) => {
     try {
         const res = await axios.post(
@@ -52,7 +52,7 @@ export const addNewMessage = async (
                 messagesBy: sdt,
                 messageTo: currentChatUserSdt,
                 messageText,
-                messageImageSource: '',
+                messageImageSource: imageId,
             },
             {
                 headers: {

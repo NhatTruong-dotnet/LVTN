@@ -61,8 +61,8 @@
     text-align: right;
 }
 .lastMessage {
-    width: 150px;
-    font-size: 14px;
+    width: 180px;
+    font-size: 12px;
 }
 .lastMessageTime {
     font-size: 12px;
@@ -93,6 +93,8 @@
     font-family: 'Roboto', sans-serif;
     height: 85vh !important;
     overflow-y: hidden;
+    display: flex;
+    flex-direction: column;
 }
 .selectedUserInfo {
     padding: 15px 30px;
@@ -109,15 +111,12 @@
     margin-top: 5px;
 }
 .conversation {
-    padding: 50px 30px 0 30px;
+    padding: 50px 30px 10px 30px;
     display: flex;
     flex-direction: column;
-    height: 400px !important;
     overflow-y: auto;
 }
-.haveImage {
-    height: 330px !important;
-}
+
 .message {
 }
 .message > .text {

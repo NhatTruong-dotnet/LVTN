@@ -5,6 +5,9 @@ import { useSelector, useDispatch } from 'react-redux'
 import { selectReceiveUserSdt } from '../../../features/Chat/ChatSlice'
 import { useEffect } from 'react'
 import { selectNumberPhone } from '../../../features/Auth/Login/loginSlice'
+import { FaUserCircle } from 'react-icons/fa'
+
+const imgURL = process.env.REACT_APP_BASE_IMG_URL
 
 function ListConversation({
     listConversation,
@@ -41,6 +44,7 @@ function ListConversation({
                         conversationId,
                         sdtNguoiBan,
                         sdtNguoiMua,
+                        ten,
                         imageSourceNguoiBan,
                         imageSourceNguoiMua,
                         lastMessage,
@@ -52,26 +56,37 @@ function ListConversation({
                             })}
                             key={conversationId}
                             onClick={() => {
-                                console.log('click')
                                 handleSelectConversation({
                                     id: conversationId,
-                                    ten: sdtNguoiMua,
+                                    ten: ten,
                                     soDienThoai: sdtNguoiMua,
                                     anhDaiDienSource: imageSourceNguoiMua,
                                 })
                             }}
                         >
-                            <img
-                                src='https://i.pinimg.com/236x/23/31/03/233103d32c9696866e2dda84e4ec983a.jpg'
-                                alt='avatar'
-                                width={50}
-                                height={50}
-                                className={styles.avatar}
-                            />
+                            {imageSourceNguoiMua ? (
+                                <img
+                                    // src='https://i.pinimg.com/236x/23/31/03/233103d32c9696866e2dda84e4ec983a.jpg'
+                                    src={`${imgURL}${imageSourceNguoiMua}`}
+                                    alt='avatar'
+                                    width={50}
+                                    height={50}
+                                    className={styles.avatar}
+                                />
+                            ) : (
+                                <FaUserCircle
+                                    style={{
+                                        width: 100,
+                                        height: 50,
+                                        marginRight: 10,
+                                    }}
+                                />
+                            )}
+
                             <div className={styles.userInfo}>
-                                <div className={styles.name}>{sdtNguoiMua}</div>
+                                <div className={styles.name}>{ten}</div>
                                 <div className={styles.lastMessage}>
-                                    {lastMessage}
+                                    {lastMessage || `${ten} đã gửi 1 hình ảnh`}
                                 </div>
                             </div>
                             <div className={styles.moreInfo}>
