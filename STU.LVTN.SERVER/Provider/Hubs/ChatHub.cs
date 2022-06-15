@@ -18,7 +18,7 @@ namespace STU.LVTN.SERVER.Provider.Hubs
             MessageNotify.Add("SDT", lastMessages.MessagesBy);
             MessageNotify.Add("MessageText", lastMessages.MessageText);
 
-            await Clients.All.SendAsync("ReceiveMessage", MessageNotify);
+            await Clients.Others.SendAsync("ReceiveMessage", MessageNotify);
         }
     }
 }
