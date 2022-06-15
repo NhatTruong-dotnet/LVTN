@@ -16,7 +16,8 @@ namespace STU.LVTN.SERVER.Provider.Hubs
             
             MessageNotify.Add("MessageBy", _context.NguoiDungs.Where(item => item.SoDienThoai == sdt).First().Ten);
             MessageNotify.Add("SDT", lastMessages.MessagesBy);
-            MessageNotify.Add("MessageText", lastMessages.MessageText);
+            MessageNotify.Add("MessageText", lastMessages.MessageText == null? null: lastMessages.MessageText);
+            MessageNotify.Add("MessageImageSource", lastMessages.MessageImageSource == null? null : lastMessages.MessageImageSource);
 
             await Clients.Others.SendAsync("ReceiveMessage", MessageNotify);
         }
