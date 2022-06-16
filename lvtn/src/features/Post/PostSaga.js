@@ -3,6 +3,7 @@ import {
     createNewPost,
     getPostDetailWithId,
     getPostWithSubCategoryId,
+    loadLocationData,
 } from './PostApi'
 import {
     createPostFail,
@@ -14,6 +15,7 @@ import {
     getPostPending,
     getPostSuccess,
     getRelatedPostSuccess,
+    setLocation,
 } from './PostSlice'
 import { selectNumberPhone, selectToken } from '../Auth/Login/loginSlice'
 import { getUserProfile } from '../User/UserApi'
@@ -23,6 +25,7 @@ export default function* postSaga() {
     yield takeLeading('getPost', getPost)
     yield takeLatest('getPostDetail', getPostDetail)
     yield takeLatest('getRelatedPost', getRelatedPost)
+    yield takeLatest('loadLocationData', loadLocationDataSaga)
 }
 
 function* getPost({ lastSubCategories }) {
@@ -103,6 +106,11 @@ function* createPost({ formData }) {
 
     console.log(sdt)
     window.invokeMethod('NotifyAdmin', sdt)
+}
+
+function* loadLocationDataSaga() {
+    const { locationData } = yield call(loadLocationData)
+    yield put(setLocation({ locationData }))
 }
 
 const params = {

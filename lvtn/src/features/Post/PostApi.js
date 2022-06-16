@@ -59,3 +59,12 @@ export const getPostDetailWithId = async idPost => {
         }
     }
 }
+
+export const loadLocationData = async () => {
+    try {
+        const res = await axios.get('./LocationData/tree.json')
+        return { locationData: res.data }
+    } catch (error) {
+        return {}
+    }
+}

@@ -5,7 +5,22 @@ function AutoComplete({
     items = [],
     onClickItem = () => {},
     forSearch,
+    functionMapping,
 }) {
+    const mapFunction =
+        typeof functionMapping === 'function'
+            ? functionMapping
+            : ({ value }) => (
+                  <div
+                      key={value}
+                      className={styles.item}
+                      onClick={() => {
+                          onClickItem(value)
+                      }}
+                  >
+                      {value}
+                  </div>
+              )
     return (
         <div className={styles.autoComplete}>
             {forSearch && (
@@ -14,17 +29,7 @@ function AutoComplete({
                 </div>
             )}
 
-            {items.map(({ value }) => (
-                <div
-                    key={value}
-                    className={styles.item}
-                    onClick={() => {
-                        onClickItem(value)
-                    }}
-                >
-                    {value}
-                </div>
-            ))}
+            {items.map(mapFunction)}
         </div>
     )
 }

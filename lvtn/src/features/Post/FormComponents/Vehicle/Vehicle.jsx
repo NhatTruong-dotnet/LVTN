@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-import styles from './vehicle.module.css'
 import Another from './Another'
 import Bicycle from './Bicycle'
 import Car from './Car'

@@ -2,81 +2,16 @@ import FormInput from '../Components/FormInput'
 import FormGroup from '../Components/FormGroup'
 import styles from '../RealEstate/index.module.css'
 import clsx from 'clsx'
+import AddressPicker from '../../../../Page/CreatePost/Components/AddressPicker'
 
 function FashionAccessories({ formData, handleFormDataChange }) {
     return (
         <>
             <FormGroup title='Địa chỉ và Hình ảnh'>
-                <div className={styles.group}>
-                    <div className={styles.halfParent}>
-                        <FormInput
-                            label='Chọn thành phố'
-                            require
-                            halfContainer
-                            value={formData.address.thanhPho}
-                            onChange={e =>
-                                handleFormDataChange('address', {
-                                    ...formData.address,
-                                    thanhPho: e.target.value,
-                                })
-                            }
-                        />
-
-                        <FormInput
-                            require
-                            label='Chọn quận, huyện, thị xã'
-                            halfContainer
-                            value={formData.address.quanHuyen}
-                            onChange={e =>
-                                handleFormDataChange('address', {
-                                    ...formData.address,
-                                    quanHuyen: e.target.value,
-                                })
-                            }
-                        />
-                    </div>
-                    <div className={styles.halfParent}>
-                        <FormInput
-                            require
-                            label='Chọn xã, phường, thị trấn'
-                            halfContainer
-                            value={formData.address.phuongXa}
-                            onChange={e =>
-                                handleFormDataChange('address', {
-                                    ...formData.address,
-                                    phuongXa: e.target.value,
-                                })
-                            }
-                        />
-
-                        <FormInput
-                            require
-                            label='Tên đường'
-                            halfContainer
-                            value={formData.address.tenDuong}
-                            onChange={e =>
-                                handleFormDataChange('address', {
-                                    ...formData.address,
-                                    tenDuong: e.target.value,
-                                })
-                            }
-                        />
-                    </div>
-                    <div className={styles.halfParent}>
-                        <FormInput
-                            require
-                            label='Số nhà'
-                            halfContainer
-                            value={formData.address.soNha}
-                            onChange={e =>
-                                handleFormDataChange('address', {
-                                    ...formData.address,
-                                    soNha: e.target.value,
-                                })
-                            }
-                        />
-                    </div>
-                </div>
+                <AddressPicker
+                    formData={formData}
+                    handleFormDataChange={handleFormDataChange}
+                />
             </FormGroup>
             <div className={styles.type}>
                 <div className={styles.title}>

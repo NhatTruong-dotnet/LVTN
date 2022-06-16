@@ -17,6 +17,7 @@ import VideoPicker from './Components/VideoPicker'
 import { useNavigate } from 'react-router-dom'
 import {
     createPostPending,
+    selectLocation,
     selectPendingStatusPost,
 } from '../../features/Post/PostSlice'
 import DynamicModal from '../../Common/DynamicModal/DynamicModal'
@@ -47,6 +48,7 @@ function CreatePost({ signalRConnection, invokeMethod }) {
     const isLogin = useSelector(selectLoginStatus)
     const dispatch = useDispatch()
     const isLoading = useSelector(selectPendingStatusPost)
+    const listLocation = useSelector(selectLocation)
 
     const openCategoryPicker = () => setIsShowCategoryPicker(true)
     const closeCategoryPicker = () => setIsShowCategoryPicker(false)
@@ -138,6 +140,11 @@ function CreatePost({ signalRConnection, invokeMethod }) {
             )
         }
     }, [selectedCategory.category.id, selectedCategory.subCategory?.id])
+
+    useEffect(() => {
+        dispatch({ type: 'loadLocationData' })
+    }, [])
+    console.log(listLocation)
 
     return (
         <div className='grid wide'>

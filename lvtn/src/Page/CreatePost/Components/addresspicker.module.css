@@ -1,0 +1,32 @@
+.group {
+    padding: 10px 0 20px;
+}
+.halfParent {
+    display: flex;
+    justify-content: space-between;
+}
+.halfParent + .halfParent {
+    margin-top: 30px;
+}
+.inputGroup + .halfParent {
+    margin: 30px 0;
+}
+.halfParent > .inputGroup {
+    flex: 0 0 48%;
+}
+:not(.halfParent) > .inputGroup + .inputGroup {
+    margin-top: 20px;
+}
+.item {
+    padding: 10px 15px;
+    color: #333;
+    transition: all 0.2s linear;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: capitalize;
+}
+
+.item:hover {
+    background-color: #e8e8e8;
+}

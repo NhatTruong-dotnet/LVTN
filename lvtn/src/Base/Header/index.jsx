@@ -59,7 +59,8 @@ function Header(props) {
                 <div className={styles.wrap}>
                     <span className={styles.logo} onClick={() => navigate('/')}>
                         <SiEventstore className={styles.icon} />
-                        𝓣𝓣𝓝𝓣
+                        {/* 𝓣𝓣𝓝𝓣 */}
+                        STU
                     </span>
                     <form className={styles.searchForm}>
                         <AiOutlineSearch className={styles.searchIcon} />

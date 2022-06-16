@@ -13,6 +13,7 @@ function FormInput({
     name,
     unit,
     requireData = [],
+    functionMapping,
     // formData,
 }) {
     const [autoCompleteItems, setAutoCompleteItems] = useState(requireData)
@@ -79,6 +80,10 @@ function FormInput({
     //     }
     // }, [formData?.phuKienLoaiPhuKien])
 
+    // useEffect(() => {
+    //     setAutoCompleteItems(requireData)
+    // }, [requireData])
+
     return (
         <>
             <div className={styles.inputGroup}>
@@ -97,10 +102,12 @@ function FormInput({
                     }}
                 />
 
-                {displayAutoComplete && autoCompleteItems.length > 0 && (
+                {/* {displayAutoComplete && autoCompleteItems.length > 0 && ( */}
+                {displayAutoComplete && requireData.length > 0 && (
                     <AutoComplete
-                        items={autoCompleteItems}
+                        items={requireData}
                         onClickItem={handleSelectAutoCompleteItem}
+                        functionMapping={functionMapping}
                     />
                 )}
 

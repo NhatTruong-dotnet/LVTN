@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import Frame from '../../Common/Frame/Frame'
 import ListPost from '../../Common/ListPost/ListPost'
-import { selectListPost } from '../../features/Post/PostSlice'
+import { selectListPost, clearListPost } from '../../features/Post/PostSlice'
 import styles from './home.module.css'
 
 const categories = [
@@ -82,6 +82,9 @@ function Home() {
     useEffect(() => {
         const lastSubCategories = localStorage.getItem('lastSubCategories')
         dispatch({ type: 'getPost', lastSubCategories: lastSubCategories || 0 }) // default value = 0
+        return () => {
+            dispatch(clearListPost())
+        }
     }, [])
 
     return (

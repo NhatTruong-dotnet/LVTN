@@ -7,6 +7,7 @@ const initialState = {
     selectedPostDetail: {},
     wishList: [],
     relatedPost: [],
+    locationData: [],
 }
 
 const postSlice = createSlice({
@@ -34,6 +35,9 @@ const postSlice = createSlice({
         },
         getPostFail(state) {
             state.isLoading = false
+        },
+        clearListPost(state) {
+            state.listPost = []
         },
         // -------------------------------------
         getPostDetailPending(state) {
@@ -82,6 +86,15 @@ const postSlice = createSlice({
                 state.relatedPost = relatedPost.splice(0, 4)
             }
         },
+        // --------------------------------------------------------
+        setLocation(state, action) {
+            const locationData = action.payload.locationData
+            const locationArray = []
+            for (let key in locationData) {
+                locationArray.push(locationData[key])
+            }
+            state.locationData = locationArray
+        },
     },
 })
 
@@ -95,6 +108,7 @@ export const {
     getPostPending,
     getPostSuccess,
     getPostFail,
+    clearListPost,
     // ------------
     getPostDetailPending,
     getPostDetailSuccess,
@@ -106,6 +120,8 @@ export const {
     removeWishList,
     // ------------
     getRelatedPostSuccess,
+    // ------------
+    setLocation,
 } = actions
 
 export const selectListPost = state => state.post.listPost
@@ -113,5 +129,6 @@ export const selectPostDetail = state => state.post.selectedPostDetail
 export const selectWishList = state => state.post.wishList
 export const selectRelatedPost = state => state.post.relatedPost
 export const selectPendingStatusPost = state => state.post.isLoading
+export const selectLocation = state => state.post.locationData
 
 export default reducer
