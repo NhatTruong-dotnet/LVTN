@@ -41,7 +41,9 @@ function Header(props) {
 
     const handleSearch = e => {
         e.preventDefault()
-        navigate(`/search/${searchValue}`)
+        if (searchValue) {
+            navigate(`/search/${searchValue}`)
+        }
     }
 
     // close form if login success

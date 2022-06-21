@@ -11,7 +11,6 @@ import {
 } from '../../features/Search/SearchSlice'
 import { useParams } from 'react-router-dom'
 import { useEffect } from 'react'
-import { AiOutlineLoading, AiFillInfoCircle } from 'react-icons/ai'
 import Loading from '../../Common/Loading/Loading'
 
 function Search(props) {
@@ -59,3 +58,4 @@ function Search(props) {
         </div>
     )
 }
+export default Search
