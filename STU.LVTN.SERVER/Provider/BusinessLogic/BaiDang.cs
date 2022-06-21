@@ -147,7 +147,8 @@ namespace STU.LVTN.SERVER.Provider.BusinessLogic
                     default:
                         break;
                 }
-                
+                if (lastest20BaiDang.Count == 0)
+                    lastest20BaiDang =await GetPostByIdDanhMucCon(lastestSubCategories);
                 foreach (var baiDang in lastest20BaiDang)
                 {
                     BaiDangHomePageDTO newBaiDang = new BaiDangHomePageDTO();
