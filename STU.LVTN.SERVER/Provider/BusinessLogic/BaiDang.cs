@@ -65,12 +65,89 @@ namespace STU.LVTN.SERVER.Provider.BusinessLogic
             }
             else
             {
-                List<BaiDangEntities> lastest20BaiDang = _context.BaiDangs
-                    .Where(baiDang => baiDang.AnTin == false && baiDang.TrangThai == true && baiDang.IdDanhMucCon == lastestSubCategories && baiDang.isReviewed == true)
-                    .OrderByDescending(baidang => baidang.IdBaiDang)
-                    .Take(20)
-                    .ToList();
-
+                List<BaiDangEntities> lastest20BaiDang = new List<BaiDangEntities>();
+                switch (lastestSubCategories)
+                {
+                    case 1:
+                        lastest20BaiDang = await GetPostByIdDanhMucCon(13);
+                        lastest20BaiDang.AddRange(await GetPostByIdDanhMucCon(14));
+                        lastest20BaiDang.AddRange(await GetPostByIdDanhMucCon(15));
+                        lastest20BaiDang.AddRange(await GetPostByIdDanhMucCon(16));
+                        lastest20BaiDang.AddRange(await GetPostByIdDanhMucCon(17));
+                        break;
+                    case 2:
+                        lastest20BaiDang = await GetPostByIdDanhMucCon(18);
+                        lastest20BaiDang.AddRange(await GetPostByIdDanhMucCon(19));
+                        lastest20BaiDang.AddRange(await GetPostByIdDanhMucCon(20));
+                        lastest20BaiDang.AddRange(await GetPostByIdDanhMucCon(21));
+                        lastest20BaiDang.AddRange(await GetPostByIdDanhMucCon(22));
+                        lastest20BaiDang.AddRange(await GetPostByIdDanhMucCon(23));
+                        lastest20BaiDang.AddRange(await GetPostByIdDanhMucCon(24));
+                        break;
+                    case 3:
+                        lastest20BaiDang = await GetPostByIdDanhMucCon(25);
+                        lastest20BaiDang.AddRange(await GetPostByIdDanhMucCon(26));
+                        lastest20BaiDang.AddRange(await GetPostByIdDanhMucCon(27));
+                        lastest20BaiDang.AddRange(await GetPostByIdDanhMucCon(28));
+                        lastest20BaiDang.AddRange(await GetPostByIdDanhMucCon(29));
+                        lastest20BaiDang.AddRange(await GetPostByIdDanhMucCon(30));
+                        lastest20BaiDang.AddRange(await GetPostByIdDanhMucCon(31));
+                        lastest20BaiDang.AddRange(await GetPostByIdDanhMucCon(32));
+                        lastest20BaiDang.AddRange(await GetPostByIdDanhMucCon(33));
+                        break;
+                    case 5:
+                        lastest20BaiDang = await GetPostByIdDanhMucCon(34);
+                        lastest20BaiDang.AddRange(await GetPostByIdDanhMucCon(35));
+                        lastest20BaiDang.AddRange(await GetPostByIdDanhMucCon(36));
+                        lastest20BaiDang.AddRange(await GetPostByIdDanhMucCon(37));
+                        lastest20BaiDang.AddRange(await GetPostByIdDanhMucCon(38));
+                        lastest20BaiDang.AddRange(await GetPostByIdDanhMucCon(39));
+                        break;
+                    case 7:
+                        lastest20BaiDang = await GetPostByIdDanhMucCon(40);
+                        lastest20BaiDang.AddRange(await GetPostByIdDanhMucCon(41));
+                        lastest20BaiDang.AddRange(await GetPostByIdDanhMucCon(42));
+                        break;
+                    case 8:
+                        lastest20BaiDang = await GetPostByIdDanhMucCon(43);
+                        lastest20BaiDang.AddRange(await GetPostByIdDanhMucCon(41));
+                        lastest20BaiDang.AddRange(await GetPostByIdDanhMucCon(42));
+                        lastest20BaiDang.AddRange(await GetPostByIdDanhMucCon(43));
+                        lastest20BaiDang.AddRange(await GetPostByIdDanhMucCon(44));
+                        lastest20BaiDang.AddRange(await GetPostByIdDanhMucCon(45));
+                        lastest20BaiDang.AddRange(await GetPostByIdDanhMucCon(46));
+                        lastest20BaiDang.AddRange(await GetPostByIdDanhMucCon(47));
+                        lastest20BaiDang.AddRange(await GetPostByIdDanhMucCon(48));
+                        lastest20BaiDang.AddRange(await GetPostByIdDanhMucCon(49));
+                        lastest20BaiDang.AddRange(await GetPostByIdDanhMucCon(50));
+                        lastest20BaiDang.AddRange(await GetPostByIdDanhMucCon(51));
+                        lastest20BaiDang.AddRange(await GetPostByIdDanhMucCon(52));
+                        break;
+                    case 10:
+                        lastest20BaiDang = await GetPostByIdDanhMucCon(53);
+                        lastest20BaiDang.AddRange(await GetPostByIdDanhMucCon(54));
+                        lastest20BaiDang.AddRange(await GetPostByIdDanhMucCon(55));
+                        lastest20BaiDang.AddRange(await GetPostByIdDanhMucCon(56));
+                        lastest20BaiDang.AddRange(await GetPostByIdDanhMucCon(57));
+                        lastest20BaiDang.AddRange(await GetPostByIdDanhMucCon(58));
+                        break;
+                    case 11:
+                        lastest20BaiDang = await GetPostByIdDanhMucCon(59);
+                        lastest20BaiDang.AddRange(await GetPostByIdDanhMucCon(60));
+                        lastest20BaiDang.AddRange(await GetPostByIdDanhMucCon(61));
+                        lastest20BaiDang.AddRange(await GetPostByIdDanhMucCon(62));
+                        lastest20BaiDang.AddRange(await GetPostByIdDanhMucCon(63));
+                        lastest20BaiDang.AddRange(await GetPostByIdDanhMucCon(63));
+                        lastest20BaiDang.AddRange(await GetPostByIdDanhMucCon(64));
+                        break;
+                    case 12:
+                        lastest20BaiDang = await GetPostByIdDanhMucCon(65);
+                        lastest20BaiDang.AddRange(await GetPostByIdDanhMucCon(66));
+                        break;
+                    default:
+                        break;
+                }
+                
                 foreach (var baiDang in lastest20BaiDang)
                 {
                     BaiDangHomePageDTO newBaiDang = new BaiDangHomePageDTO();
@@ -88,7 +165,14 @@ namespace STU.LVTN.SERVER.Provider.BusinessLogic
             }
             return baiDangHomePageDTOs;
         }
-
+        public async Task<List<BaiDangEntities>> GetPostByIdDanhMucCon(int IdDanhMucCon)
+        {
+            return  _context.BaiDangs
+                    .Where(baiDang => baiDang.AnTin == false && baiDang.TrangThai == true && baiDang.IdDanhMucCon == IdDanhMucCon && baiDang.isReviewed == true)
+                    .OrderByDescending(baidang => baidang.IdBaiDang)
+                    .Take(20)
+                    .ToList();
+        }
         public async Task<List<BaiDangHomePageDTO>> GetSoldPostBySoDienThoai(string soDienThoai)
         {
             List<BaiDangHomePageDTO> baiDangHomePageDTOs = new List<BaiDangHomePageDTO>();
