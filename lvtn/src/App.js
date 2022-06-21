@@ -14,6 +14,7 @@ const ProfileUser = lazy(() => import('./Page/ProfileUser/ProfileUser'))
 const EditProfileUser = lazy(() => import('./Page/ProfileUser/EditProfileUser'))
 const Chat = lazy(() => import('./Page/Chat/Chat'))
 const Category = lazy(() => import('./Page/Category/Category'))
+const Search = lazy(() => import('./Page/Search/Search'))
 
 function App() {
     const [connection, setConnection] = useState(null)
@@ -154,6 +155,7 @@ function App() {
                 />
                 <Route path='/chat' element={<Chat />} />
                 <Route path='/category/:categoryId' element={<Category />} />
+                <Route path='/search/:searchValue' element={<Search />} />
             </Routes>
             <ToastMessage />
         </div>

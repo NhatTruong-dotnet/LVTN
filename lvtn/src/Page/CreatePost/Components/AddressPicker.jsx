@@ -39,7 +39,6 @@ function AddressPicker({ formData, handleFormDataChange }) {
     }
 
     const mappingDistrict = ({ code, name_with_type, ...rest }) => {
-        console.log('map')
         return (
             <div
                 key={code}
@@ -79,7 +78,6 @@ function AddressPicker({ formData, handleFormDataChange }) {
             <FormInput
                 label='Chọn thành phố'
                 require
-                halfContainer
                 value={formData.address.thanhPho}
                 onChange={e =>
                     handleFormDataChange('address', {
@@ -94,7 +92,6 @@ function AddressPicker({ formData, handleFormDataChange }) {
             <FormInput
                 require
                 label='Chọn quận, huyện, thị xã'
-                halfContainer
                 value={formData.address.quanHuyen}
                 onChange={e =>
                     handleFormDataChange('address', {
@@ -112,7 +109,6 @@ function AddressPicker({ formData, handleFormDataChange }) {
             <FormInput
                 require
                 label='Chọn xã, phường, thị trấn'
-                halfContainer
                 value={formData.address.phuongXa}
                 onChange={e =>
                     handleFormDataChange('address', {
@@ -127,7 +123,6 @@ function AddressPicker({ formData, handleFormDataChange }) {
             <FormInput
                 require
                 label='Tên đường'
-                halfContainer
                 value={formData.address.tenDuong}
                 onChange={e =>
                     handleFormDataChange('address', {
@@ -139,7 +134,6 @@ function AddressPicker({ formData, handleFormDataChange }) {
             <FormInput
                 require
                 label='Số nhà'
-                halfContainer
                 value={formData.address.soNha}
                 onChange={e =>
                     handleFormDataChange('address', {

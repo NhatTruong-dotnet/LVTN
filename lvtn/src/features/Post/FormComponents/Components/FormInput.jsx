@@ -43,10 +43,10 @@ function FormInput({
         //     )
         //     setAutoCompleteItems(newAutoCompleteItems)
         // }
-        const newAutoCompleteItems = requireData.filter(({ value }) =>
-            value.includes(inputValue)
-        )
-        setAutoCompleteItems(newAutoCompleteItems)
+        // const newAutoCompleteItems = requireData.filter(({ value }) =>
+        //     value.includes(inputValue)
+        // )
+        // setAutoCompleteItems(newAutoCompleteItems)
     }
 
     const handleChangeFormInput = e => {

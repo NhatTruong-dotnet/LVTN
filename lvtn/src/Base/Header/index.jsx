@@ -10,7 +10,7 @@ import DynamicModal from '../../Common/DynamicModal/DynamicModal'
 import AuthForm from './Components/AuthForm/AuthForm'
 import UserControl from './Components/UserControl'
 import Notification from './Components/Notification'
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import {
     selectLoginStatus,
@@ -30,12 +30,18 @@ function Header(props) {
     const sdt = useSelector(selectNumberPhone)
     const isLogin = useSelector(selectLoginStatus)
     const dispatch = useDispatch()
+    // const {pathname} = useLocation()
 
     const navigate = useNavigate()
 
-    const handleSearch = e => {
+    const handleSearchInputChange = e => {
         setIsShowAutoComplete(Boolean(e.target.value))
         setSearchValue(e.target.value)
+    }
+
+    const handleSearch = e => {
+        e.preventDefault()
+        navigate(`/search/${searchValue}`)
     }
 
     // close form if login success
@@ -62,7 +68,7 @@ function Header(props) {
                         {/* 𝓣𝓣𝓝𝓣 */}
                         STU
                     </span>
-                    <form className={styles.searchForm}>
+                    <form className={styles.searchForm} onSubmit={handleSearch}>
                         <AiOutlineSearch className={styles.searchIcon} />
                         <div className='searchGroup'>
                             <input
@@ -70,7 +76,7 @@ function Header(props) {
                                 placeholder='Tìm kiếm'
                                 className={styles.searchInput}
                                 value={searchValue}
-                                onChange={handleSearch}
+                                onChange={handleSearchInputChange}
                                 onBlur={() => setIsShowAutoComplete(false)}
                                 onFocus={() =>
                                     setIsShowAutoComplete(Boolean(searchValue))

@@ -27,7 +27,7 @@ function Conversation({ listPreviewImage, deleteFile }) {
                         setSelectViewImageUrl('')
                     }}
                 >
-                    <img src={selectViewImageUrl} alt='preview' />
+                    <img src={selectViewImageUrl} alt='preview' height={600} />
                 </TabContainer>
             </DynamicModal>
             <div

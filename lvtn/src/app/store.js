@@ -7,6 +7,7 @@ import userReducer from '../features/User/UserSlice'
 import signalRReducer from '../features/SignalR/SignalRSlice'
 import chatReducer from '../features/Chat/ChatSlice'
 import notifyReducer from '../features/Notify/NotifySlice'
+import searchReducer from '../features/Search/SearchSlice'
 
 import createSagaMiddleware from 'redux-saga'
 
@@ -24,6 +25,7 @@ export const store = configureStore({
         signalR: signalRReducer,
         chat: chatReducer,
         notify: notifyReducer,
+        search: searchReducer,
     },
     middleware: getDefaultMiddleware =>
         getDefaultMiddleware().concat(sagaMiddleware),
