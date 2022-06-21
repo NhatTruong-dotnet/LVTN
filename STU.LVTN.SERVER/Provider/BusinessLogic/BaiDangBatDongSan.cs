@@ -57,13 +57,16 @@ namespace STU.LVTN.SERVER.Provider.BusinessLogic
         {
             Dictionary<string, string> post = new Dictionary<string, string>();
             BaiDangBatDongSanEntities entity = _context.BaiDangBatDongSans.Where(item => item.IdBaiDang == idPostDetail).FirstOrDefault();
+            string DacDiemDat = null;
             post.Add("Diện tích đất : ", entity.DienTich.ToString());
             if ((bool)entity.DatHemXeHoi)
-                post.Add("Đặc điểm đất 1: ",  "Hẻm xe hơi" );
+                DacDiemDat += "Hẻm xe hơi";
             if ( (bool)entity.DatNoHau)
-                post.Add("Đặc điểm đất 2: ",  "Nở hậu");
+                DacDiemDat += ", Nở hậu";
             if ((bool)entity.DatMatTien)
-                post.Add("Đặc điểm đất: " ,"Đất mặt tiền");
+                DacDiemDat += ", Đất mặt tiền";
+            if(DacDiemDat != null)
+                post.Add("Đặc điểm đất: ",DacDiemDat);
             post.Add("Loại hình đất: ", entity.DatLoaiHinhDat.ToString());
             post.Add("Hướng đất: ", entity.DatHuongDat.ToString());
             post.Add("Chiều ngang: ", entity.DatChieuNgang.ToString());

@@ -16,7 +16,7 @@ namespace STU.LVTN.SERVER.Provider.BusinessLogic
                   temp.ConversationId = conversation.ConversationId;
                 temp.SdtNguoiBan = conversation.SdtNguoiBan;
                 temp.SdtNguoiMua = conversation.SdtNguoiMua;
-                temp.Ten = _context.NguoiDungs.Where(item => item.SoDienThoai == conversation.SdtNguoiBan).First().Ten;
+                temp.Ten = _context.NguoiDungs.Where(item => item.SoDienThoai == conversation.SdtNguoiMua).First().Ten;
                 temp.ImageSourceNguoiBan = _context.NguoiDungs.Where(item => item.SoDienThoai == conversation.SdtNguoiBan).First().AnhDaiDienSource == null 
                     ? null: _context.NguoiDungs.Where(item => item.SoDienThoai == conversation.SdtNguoiBan).First().AnhDaiDienSource;
                 temp.ImageSourceNguoiMua = _context.NguoiDungs.Where(item => item.SoDienThoai == conversation.SdtNguoiMua).First().AnhDaiDienSource == null
@@ -33,7 +33,7 @@ namespace STU.LVTN.SERVER.Provider.BusinessLogic
                 temp.ConversationId = conversation.ConversationId;
                 temp.SdtNguoiMua = conversation.SdtNguoiBan;
                 temp.SdtNguoiBan = conversation.SdtNguoiMua;
-                temp.Ten = _context.NguoiDungs.Where(item => item.SoDienThoai == conversation.SdtNguoiMua).First().Ten;
+                temp.Ten = _context.NguoiDungs.Where(item => item.SoDienThoai == conversation.SdtNguoiBan).First().Ten;
 
                 temp.ImageSourceNguoiBan = _context.NguoiDungs.Where(item => item.SoDienThoai == conversation.SdtNguoiBan).First().AnhDaiDienSource == null
                     ? null : _context.NguoiDungs.Where(item => item.SoDienThoai == conversation.SdtNguoiBan).First().AnhDaiDienSource;
