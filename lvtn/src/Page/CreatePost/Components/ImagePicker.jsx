@@ -124,7 +124,7 @@ function ImagePicker({
                         </g>
                     </svg>
                     <div className={styles.text}>
-                        {title || 'Đăng từ 3 đến 10 hình'}
+                        {title || 'Đăng từ 1 đến 5 hình'}
                     </div>
                 </label>
             )}

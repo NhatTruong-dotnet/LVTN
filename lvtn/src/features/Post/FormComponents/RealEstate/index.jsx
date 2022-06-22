@@ -65,7 +65,7 @@ function RealEstate({ subCategoryId, formData, handleFormDataChange }) {
     }, [subCategoryId])
 
     return (
-        <div>
+        <>
             {formData.subCategoryId !== 17 && (
                 <div className={styles.type}>
                     <div className={styles.title}>
@@ -158,7 +158,7 @@ function RealEstate({ subCategoryId, formData, handleFormDataChange }) {
                     </div>
                 </div>
             )}
-        </div>
+        </>
     )
 }
 

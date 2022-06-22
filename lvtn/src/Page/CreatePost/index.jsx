@@ -108,19 +108,57 @@ function CreatePost({ signalRConnection, invokeMethod }) {
         newListFileDataMedia.splice(indexInFileData, 1)
         setListFileDataMedia(newListFileDataMedia)
     }
-    console.log(listFileDataMedia)
 
     const handleSubmitForm = async e => {
         e.preventDefault()
-        dispatch(createPostPending())
 
-        const fileIdArray = await uploadImage(listFileDataMedia)
-        const formRequestData = { ...formData, medias: fileIdArray }
+        const listErrorMessage = document.querySelectorAll(
+            '[class*="formMessage"]'
+        )
+        const listInputGroup = document.querySelectorAll(
+            '[class*="inputGroup"]'
+        )
+        let validForm = true
 
-        dispatch({
-            type: 'createPost',
-            formData: formRequestData,
-        })
+        for (let formMessage of listErrorMessage) {
+            if (formMessage.textContent) {
+                validForm = false
+                break
+            }
+        }
+
+        for (let inputGroup of listInputGroup) {
+            if (!inputGroup.childNodes[0].value) {
+                validForm = false
+                break
+            }
+        }
+
+        if (listPreviewImage.length > 5) {
+            validForm = false
+            emitMessage('error', 'Bạn chỉ có thể chọn tối đa 5 hình')
+        } else if (listPreviewImage.length === 0) {
+            validForm = false
+            emitMessage('error', 'Bạn chưa chọn hình')
+        }
+
+        if (listPreviewVideo.length > 2) {
+            validForm = false
+            emitMessage('error', 'Bạn chỉ có thể chọn tối đa 2 video')
+        }
+
+        if (validForm) {
+            console.log('submit')
+            // dispatch(createPostPending())
+            // const fileIdArray = await uploadImage(listFileDataMedia)
+            // const formRequestData = { ...formData, medias: fileIdArray }
+            // dispatch({
+            //     type: 'createPost',
+            //     formData: formRequestData,
+            // })
+        } else {
+            emitMessage('error', 'Bạn chưa điền đầy đủ thông tin hợp lệ')
+        }
     }
 
     useEffect(() => {
@@ -128,6 +166,12 @@ function CreatePost({ signalRConnection, invokeMethod }) {
             navigate('/')
         }
     }, [isLogin])
+
+    // useEffect(() => {
+    //     if (isSubmitForm && isValidForm) {
+    //         console.log('submit')
+    //     }
+    // }, [isSubmitForm])
 
     useEffect(() => {
         if (selectedCategory.category.id) {
@@ -145,6 +189,8 @@ function CreatePost({ signalRConnection, invokeMethod }) {
         dispatch({ type: 'loadLocationData' })
     }, [])
     console.log(listLocation)
+
+    console.log(document.querySelectorAll('[class*="formMessage"]'))
 
     return (
         <div className='grid wide'>

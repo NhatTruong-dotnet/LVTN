@@ -85,7 +85,7 @@ function VideoPicker({ listPreviewVideo, deleteFile }) {
                             mask='url(#path-2-inside-1_289_1913)'
                         ></path>
                     </svg>
-                    <div className={styles.text}>Đăng 1 video</div>
+                    <div className={styles.text}>Đăng tối đa 1 video</div>
                 </label>
             )}
         </>
