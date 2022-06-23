@@ -7,7 +7,6 @@ import { emitMessage } from '../../Common/ToastMessage/ToastMessage'
 import {
     generateDefaultValueFormData,
     convertFile,
-    uploadImage,
 } from '../../Utils/PostUtils'
 
 import { useDispatch, useSelector } from 'react-redux'
@@ -16,7 +15,6 @@ import ImagePicker from './Components/ImagePicker'
 import VideoPicker from './Components/VideoPicker'
 import { useNavigate } from 'react-router-dom'
 import {
-    createPostPending,
     selectLocation,
     selectPendingStatusPost,
 } from '../../features/Post/PostSlice'

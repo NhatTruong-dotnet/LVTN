@@ -53,6 +53,10 @@ function Category(props) {
         }
     }, [selectedSubCategoryId])
 
+    useEffect(() => {
+        document.title = 'Khám phá danh mục'
+    }, [])
+
     return (
         <div className='grid wide'>
             <Frame title={`Khám phá danh mục ${getCategoryName(categoryId)}`}>

@@ -53,7 +53,11 @@ function Search(props) {
             </Frame>
 
             <Frame>
-                {isLoading ? <Loading /> : <ListPost listPost={searchPosts} />}
+                {isLoading ? (
+                    <Loading height={400} />
+                ) : (
+                    <ListPost listPost={searchPosts} />
+                )}
             </Frame>
         </div>
     )

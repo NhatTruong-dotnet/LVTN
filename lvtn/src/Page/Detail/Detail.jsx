@@ -21,7 +21,10 @@ import DynamicModal from '../../Common/DynamicModal/DynamicModal'
 import { formatCurrency } from '../../Utils/formatCurrency'
 import { Button } from 'reactstrap'
 import { setReceiveUserInfo } from '../../features/Chat/ChatSlice'
-import { selectNumberPhone } from '../../features/Auth/Login/loginSlice'
+import {
+    selectLoginStatus,
+    selectNumberPhone,
+} from '../../features/Auth/Login/loginSlice'
 
 const imgURL = process.env.REACT_APP_BASE_IMG_URL
 
@@ -78,6 +81,7 @@ function Detail(props) {
     const wishList = useSelector(selectWishList)
     const isLoading = useSelector(selectPendingStatusPost)
     const loginUserSdt = useSelector(selectNumberPhone)
+    const isLogin = useSelector(selectLoginStatus)
 
     console.log(postDetail.userProfile)
     const handleWishList = () => {
@@ -105,6 +109,10 @@ function Detail(props) {
     }
 
     const handleCreateConversation = () => {
+        if (!isLogin) {
+            window.showLoginForm()
+            return
+        }
         dispatch(
             setReceiveUserInfo({
                 userInfo: postDetail.userProfile,
@@ -122,6 +130,13 @@ function Detail(props) {
     useEffect(() => {
         dispatch({ type: 'getRelatedPost', categoryId: 0 })
     }, [])
+
+    useEffect(() => {
+        document.title = postDetail.result?.BaiDang.tieuDe
+        return () => {
+            document.title = 'STU'
+        }
+    }, [postDetail.result?.BaiDang.tieuDe])
 
     if (isEmptyObject(postDetail)) {
         return ''

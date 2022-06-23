@@ -3,7 +3,12 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import Frame from '../../Common/Frame/Frame'
 import ListPost from '../../Common/ListPost/ListPost'
-import { selectListPost, clearListPost } from '../../features/Post/PostSlice'
+import Loading from '../../Common/Loading/Loading'
+import {
+    selectListPost,
+    clearListPost,
+    selectPendingStatusPost,
+} from '../../features/Post/PostSlice'
 import styles from './home.module.css'
 
 const categories = [
@@ -73,7 +78,7 @@ function Home() {
     const dispatch = useDispatch()
     const postData = useSelector(selectListPost)
     const navigate = useNavigate()
-    console.log(postData)
+    const isLoading = useSelector(selectPendingStatusPost)
 
     const handleSelectCategory = id => {
         navigate(`/category/${id}`)
@@ -110,7 +115,7 @@ function Home() {
                 </div>
             </Frame>
             <Frame title='Tin Dành cho bạn'>
-                <ListPost listPost={postData} />
+                {isLoading ? <Loading /> : <ListPost listPost={postData} />}
             </Frame>
         </div>
     )

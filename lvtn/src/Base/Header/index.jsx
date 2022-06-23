@@ -10,7 +10,7 @@ import DynamicModal from '../../Common/DynamicModal/DynamicModal'
 import AuthForm from './Components/AuthForm/AuthForm'
 import UserControl from './Components/UserControl'
 import Notification from './Components/Notification'
-import { useLocation, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import {
     selectLoginStatus,
@@ -30,7 +30,6 @@ function Header(props) {
     const sdt = useSelector(selectNumberPhone)
     const isLogin = useSelector(selectLoginStatus)
     const dispatch = useDispatch()
-    // const {pathname} = useLocation()
 
     const navigate = useNavigate()
 
@@ -60,6 +59,10 @@ function Header(props) {
             })
         }
     }, [window.notifyConnection])
+
+    useEffect(() => {
+        window.showLoginForm = () => setIsShowForm(true)
+    }, [])
 
     return (
         <div className={styles.container}>

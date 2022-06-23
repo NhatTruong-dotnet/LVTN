@@ -54,7 +54,6 @@ export const getPostDetailWithId = async idPost => {
         return {
             status: response.status,
             errorMessage:
-                response.data ||
                 'Đã có lỗi xảy ra, vui lòng chờ trong giây lát và tải lại trang',
         }
     }

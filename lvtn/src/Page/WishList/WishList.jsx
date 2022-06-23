@@ -3,10 +3,14 @@ import styles from './wishList.module.css'
 import HorizontalPost from '../../Common/ListPost/Post/HorizontalPost'
 import { useSelector } from 'react-redux'
 import { selectWishList } from '../../features/Post/PostSlice'
+import { useEffect } from 'react'
 
 function WishList(props) {
     const wishList = useSelector(selectWishList)
-    console.log(wishList)
+    useEffect(() => {
+        document.title = 'Tin yêu thích'
+        return () => (document.title = 'STU')
+    }, [])
 
     return (
         <div className='grid wide'>

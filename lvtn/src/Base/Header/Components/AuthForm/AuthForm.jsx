@@ -9,6 +9,7 @@ import {
     selectRegisterState,
     setDefaultRegisterState,
 } from '../../../../features/Auth/Register/registerSlice'
+import { selectLoginStatus } from '../../../../features/Auth/Login/loginSlice'
 
 function AuthForm({ setIsShowForm }) {
     const [formMode, setFormMode] = useState('login')
@@ -18,6 +19,7 @@ function AuthForm({ setIsShowForm }) {
     })
     const registerState = useSelector(selectRegisterState)
     const dispatch = useDispatch()
+    const isLogin = useSelector(selectLoginStatus)
 
     const handleFormDataChange = e => {
         setFormData({
@@ -35,6 +37,12 @@ function AuthForm({ setIsShowForm }) {
             dispatch(setDefaultRegisterState())
         }
     }, [registerState])
+
+    useEffect(() => {
+        if (isLogin) {
+            setIsShowForm(false)
+        }
+    }, [isLogin])
 
     const handleSubmitForm = e => {
         e.preventDefault()

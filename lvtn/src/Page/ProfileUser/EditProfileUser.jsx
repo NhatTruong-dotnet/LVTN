@@ -97,6 +97,11 @@ function EditProfileUser(props) {
             navigate('/')
         }
     }, [loginUserNumberPhone, profileUserNumberPhone])
+
+    useEffect(() => {
+        document.title = `Chỉnh sửa: ${formData.ten}`
+        return () => (document.title = 'STU')
+    }, [])
     return (
         <div className='grid wide'>
             <DynamicModal showModal={isLoading} loading />

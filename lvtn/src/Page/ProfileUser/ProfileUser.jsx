@@ -32,6 +32,10 @@ function ProfileUser(props) {
         dispatch({ type: 'getProfile', sdt: profileUserNumberPhone })
         dispatch({ type: 'getUserPost', sdt: profileUserNumberPhone })
     }, [profileUserNumberPhone])
+
+    useEffect(() => {
+        document.title = userProfile.ten
+    }, [userProfile.ten])
     console.log(userProfile)
     return (
         <div className='grid wide'>

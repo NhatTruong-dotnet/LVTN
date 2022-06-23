@@ -1,9 +1,9 @@
 import styles from './loading.module.css'
 import { AiOutlineLoading } from 'react-icons/ai'
 
-function Loading(props) {
+function Loading({ height }) {
     return (
-        <div className={styles.loaderContainer}>
+        <div className={styles.loaderContainer} style={{ height }}>
             <AiOutlineLoading className={styles.icon} />
         </div>
     )
