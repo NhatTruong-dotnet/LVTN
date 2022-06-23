@@ -33,9 +33,9 @@ function Camera({ formData, handleFormDataChange }) {
                 <FormInput
                     require
                     label='Dòng'
-                    value={formData.mayAnhDong}
+                    value={formData.thietBiDongMay}
                     onChange={e =>
-                        handleFormDataChange('mayAnhDong', e.target.value)
+                        handleFormDataChange('thietBiDongMay', e.target.value)
                     }
                 />
 

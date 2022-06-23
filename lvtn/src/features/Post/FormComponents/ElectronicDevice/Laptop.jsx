@@ -43,9 +43,12 @@ function Laptop({ formData, handleFormDataChange }) {
                     <FormInput
                         require
                         label='Dòng máy'
-                        value={formData.laptopDong}
+                        value={formData.laptopDongMay}
                         onChange={e =>
-                            handleFormDataChange('laptopDong', e.target.value)
+                            handleFormDataChange(
+                                'laptopDongMay',
+                                e.target.value
+                            )
                         }
                     />
                 </div>

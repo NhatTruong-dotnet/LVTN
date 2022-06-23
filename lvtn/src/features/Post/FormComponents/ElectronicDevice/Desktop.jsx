@@ -183,10 +183,10 @@ function Desktop({ formData, handleFormDataChange }) {
                         <input
                             type='checkbox'
                             id='isFree'
-                            checked={formData.mienPhi}
+                            checked={formData.mayTinhDeBanMienPhi}
                             onChange={e =>
                                 handleFormDataChange(
-                                    'mienPhi',
+                                    'mayTinhDeBanMienPhi',
                                     e.target.checked
                                 )
                             }

@@ -43,10 +43,10 @@ function MobilePhone({ formData, handleFormDataChange }) {
                     <FormInput
                         require
                         label='Dòng máy'
-                        value={formData.dienThoaiDong}
+                        value={formData.dienThoaiDongMay}
                         onChange={e =>
                             handleFormDataChange(
-                                'dienThoaiDong',
+                                'dienThoaiDongMay',
                                 e.target.value
                             )
                         }

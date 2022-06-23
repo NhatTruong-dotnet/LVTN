@@ -71,9 +71,12 @@ function Motel({ formData, handleFormDataChange }) {
                     <FormInput
                         label={'Số tiền cọc'}
                         require
-                        value={formData.soTienCoc}
+                        value={formData.phongTroSoTienCoc}
                         onChange={e =>
-                            handleFormDataChange('soTienCoc', e.target.value)
+                            handleFormDataChange(
+                                'phongTroSoTienCoc',
+                                e.target.value
+                            )
                         }
                     />
                 </div>

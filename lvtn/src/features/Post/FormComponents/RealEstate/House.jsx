@@ -53,9 +53,9 @@ function House({ formData, handleFormDataChange }) {
                     <FormInput
                         label='Loại hình nhà ở'
                         require
-                        value={formData.loaiHinh}
+                        value={formData.nhaOLoaiHinh}
                         onChange={e =>
-                            handleFormDataChange('loaiHinh', e.target.value)
+                            handleFormDataChange('nhaOLoaiHinh', e.target.value)
                         }
                         requireData={[
                             { value: 'Nhà mặt phố, mặt tiền' },
@@ -71,10 +71,10 @@ function House({ formData, handleFormDataChange }) {
                             label='Số phòng ngủ'
                             require
                             halfContainer
-                            value={formData.soPhongNgu}
+                            value={formData.nhaOSoPhongNgu}
                             onChange={e =>
                                 handleFormDataChange(
-                                    'soPhongNgu',
+                                    'nhaOSoPhongNgu',
                                     e.target.value
                                 )
                             }
@@ -84,9 +84,12 @@ function House({ formData, handleFormDataChange }) {
                             label='Số phòng vệ sinh(Không bắt buộc)'
                             require
                             halfContainer
-                            value={formData.soToilet}
+                            value={formData.nhaOSoPhongVeSinh}
                             onChange={e =>
-                                handleFormDataChange('soToilet', e.target.value)
+                                handleFormDataChange(
+                                    'nhaOSoPhongVeSinh',
+                                    e.target.value
+                                )
                             }
                         />
                     </div>

@@ -40,11 +40,20 @@ function Motorcycle({ formData, handleFormDataChange }) {
                 <div className={styles.group}>
                     <FormInput
                         require
+                        label='Màu sắc'
+                        halfContainer
+                        value={formData.mauSac}
+                        onChange={e =>
+                            handleFormDataChange('mauSac', e.target.value)
+                        }
+                    />
+                    <FormInput
+                        require
                         label='Dòng xe'
                         halfContainer
-                        value={formData.dongXe}
+                        value={formData.xeMayDongXe}
                         onChange={e =>
-                            handleFormDataChange('dongXe', e.target.value)
+                            handleFormDataChange('xeMayDongXe', e.target.value)
                         }
                     />
 

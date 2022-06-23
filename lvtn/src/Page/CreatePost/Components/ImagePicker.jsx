@@ -3,14 +3,7 @@ import clsx from 'clsx'
 import { nanoid } from '@reduxjs/toolkit'
 import { FaTimesCircle } from 'react-icons/fa'
 
-function ImagePicker({
-    listPreviewImage,
-    deleteFile,
-    multiple,
-    bindingId,
-    style,
-    title,
-}) {
+function ImagePicker({ listPreviewImage, deleteFile, multiple, style, title }) {
     const renderPreviewImage = () => {
         return multiple ? (
             <div className={styles.previewImageContainer}>
@@ -124,7 +117,7 @@ function ImagePicker({
                         </g>
                     </svg>
                     <div className={styles.text}>
-                        {title || 'Đăng từ 1 đến 5 hình'}
+                        {title || 'Đăng từ 1 đến 4 hình'}
                     </div>
                 </label>
             )}

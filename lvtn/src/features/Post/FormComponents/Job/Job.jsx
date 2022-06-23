@@ -5,6 +5,7 @@ import clsx from 'clsx'
 import AddressPicker from '../../../../Page/CreatePost/Components/AddressPicker'
 
 function Job({ formData, handleFormDataChange }) {
+    console.log(formData)
     return (
         <>
             {/* Địa chỉ và hình ảnh */}

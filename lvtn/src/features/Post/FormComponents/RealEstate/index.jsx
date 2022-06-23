@@ -102,12 +102,12 @@ function RealEstate({ subCategoryId, formData, handleFormDataChange }) {
                         </div>
                         <div
                             onClick={() =>
-                                handleFormDataChange('banGiao', true)
+                                handleFormDataChange('chuaBanGiao', false)
                             }
                             className={clsx(styles.typeItem, {
                                 [styles.active]:
-                                    formData.banGiao &&
-                                    formData.banGiao !== null,
+                                    !formData.chuaBanGiao &&
+                                    formData.chuaBanGiao !== null,
                             })}
                         >
                             Đã bàn giao
@@ -115,11 +115,11 @@ function RealEstate({ subCategoryId, formData, handleFormDataChange }) {
                         <div
                             className={clsx(styles.typeItem, {
                                 [styles.active]:
-                                    !formData.banGiao &&
-                                    formData.banGiao !== null,
+                                    formData.chuaBanGiao &&
+                                    formData.chuaBanGiao !== null,
                             })}
                             onClick={() =>
-                                handleFormDataChange('banGiao', false)
+                                handleFormDataChange('chuaBanGiao', true)
                             }
                         >
                             Chưa bàn giao

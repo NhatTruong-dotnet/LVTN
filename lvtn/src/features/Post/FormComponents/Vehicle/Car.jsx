@@ -42,9 +42,9 @@ function Car({ formData, handleFormDataChange }) {
                         require
                         label='Dòng xe'
                         halfContainer
-                        value={formData.dongXe}
+                        value={formData.otoDongXe}
                         onChange={e =>
-                            handleFormDataChange('dongXe', e.target.value)
+                            handleFormDataChange('otoDongXe', e.target.value)
                         }
                     />
 

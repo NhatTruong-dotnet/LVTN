@@ -134,7 +134,7 @@ function CreatePost({ signalRConnection, invokeMethod }) {
             }
         }
 
-        if (listPreviewImage.length > 5) {
+        if (listPreviewImage.length > 4) {
             validForm = false
             emitMessage('error', 'Bạn chỉ có thể chọn tối đa 5 hình')
         } else if (listPreviewImage.length === 0) {
@@ -166,12 +166,6 @@ function CreatePost({ signalRConnection, invokeMethod }) {
             navigate('/')
         }
     }, [isLogin])
-
-    // useEffect(() => {
-    //     if (isSubmitForm && isValidForm) {
-    //         console.log('submit')
-    //     }
-    // }, [isSubmitForm])
 
     useEffect(() => {
         if (selectedCategory.category.id) {

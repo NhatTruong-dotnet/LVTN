@@ -3,7 +3,6 @@ import FormInput from '../../../features/Post/FormComponents/Components/FormInpu
 import { useSelector } from 'react-redux'
 import { selectLocation } from '../../../features/Post/PostSlice'
 import { useState } from 'react'
-import { useEffect } from 'react'
 
 const convertObjectIntoArray = obj => {
     const result = []
@@ -78,7 +77,7 @@ function AddressPicker({ formData, handleFormDataChange }) {
             <FormInput
                 label='Chọn thành phố'
                 require
-                value={formData.address.thanhPho}
+                value={formData.address?.thanhPho}
                 onChange={e =>
                     handleFormDataChange('address', {
                         ...formData.address,
@@ -92,7 +91,7 @@ function AddressPicker({ formData, handleFormDataChange }) {
             <FormInput
                 require
                 label='Chọn quận, huyện, thị xã'
-                value={formData.address.quanHuyen}
+                value={formData.address?.quanHuyen}
                 onChange={e =>
                     handleFormDataChange('address', {
                         ...formData.address,
@@ -102,14 +101,11 @@ function AddressPicker({ formData, handleFormDataChange }) {
                 requireData={district}
                 functionMapping={mappingDistrict}
             />
-            {/* <div className={styles.halfParent}>
-                
-            </div> */}
 
             <FormInput
                 require
                 label='Chọn xã, phường, thị trấn'
-                value={formData.address.phuongXa}
+                value={formData.address?.phuongXa}
                 onChange={e =>
                     handleFormDataChange('address', {
                         ...formData.address,
@@ -123,7 +119,7 @@ function AddressPicker({ formData, handleFormDataChange }) {
             <FormInput
                 require
                 label='Tên đường'
-                value={formData.address.tenDuong}
+                value={formData.address?.tenDuong}
                 onChange={e =>
                     handleFormDataChange('address', {
                         ...formData.address,
@@ -134,7 +130,7 @@ function AddressPicker({ formData, handleFormDataChange }) {
             <FormInput
                 require
                 label='Số nhà'
-                value={formData.address.soNha}
+                value={formData.address?.soNha}
                 onChange={e =>
                     handleFormDataChange('address', {
                         ...formData.address,

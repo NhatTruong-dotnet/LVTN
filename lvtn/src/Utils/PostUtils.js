@@ -6,7 +6,7 @@ const array = [
             {
                 subCategoryId: 13,
                 canBan: null,
-                banGiao: null,
+                chuaBanGiao: null,
                 tenDuAn: '',
                 address: {
                     thanhPho: '',
@@ -34,7 +34,7 @@ const array = [
             {
                 subCategoryId: 14,
                 canBan: null,
-                banGiao: null,
+                chuaBanGiao: null,
                 tenDuAn: '',
                 address: {
                     thanhPho: '',
@@ -45,10 +45,10 @@ const array = [
                 },
 
                 soTang: '',
-                loaiHinh: '',
-                soPhongNgu: '',
-                soToilet: '',
+                nhaOLoaiHinh: '',
+                nhaOSoPhongNgu: '',
                 nhaOHuongCuaChinh: '',
+                nhaOSoPhongVeSinh: '',
                 nhaOGiayToPhapLy: '',
                 nhaOTinhTrangNoiThat: '',
                 nhaOhemXeHoi: false,
@@ -124,7 +124,7 @@ const array = [
                 phongTroTinhTrangNoiThat: '',
                 dienTich: '',
                 gia: '',
-                soTienCoc: '',
+                phongTroSoTienCoc: '',
                 caNhan: null,
             },
         ],
@@ -135,7 +135,7 @@ const array = [
             {
                 subCategoryId: 18,
                 hangXe: '',
-                dongXe: '',
+                otoDongXe: '',
                 nam: '',
                 xuatxu: '',
                 bienSoXe: '',
@@ -179,8 +179,9 @@ const array = [
             {
                 subCategoryId: 19,
                 hangXe: '',
-                dongXe: '',
+                xeMayDongXe: '',
                 nam: '',
+                mauSac: '',
                 xuatxu: '',
                 bienSoXe: '',
                 soKmDaDi: '',
@@ -280,7 +281,7 @@ const array = [
                 subCategoryId: 25,
                 gia: '',
                 dienThoaiHang: '',
-                dienThoaiDong: '',
+                dienThoaiDongMay: '',
                 dienThoaiMauSac: '',
                 dienThoaiDungLuong: '',
                 tinhTrang: '',
@@ -300,7 +301,7 @@ const array = [
                 subCategoryId: 26,
                 gia: '',
                 mayTinhBangHang: '',
-                mayTinhBangDong: '',
+                mayTinhBangDongMay: '',
                 mayTinhBangDungLuong: '',
                 tinhTrang: '',
                 baoHanh: '',
@@ -321,7 +322,7 @@ const array = [
                 subCategoryId: 27,
                 gia: '',
                 laptopHang: '',
-                laptopDong: '',
+                laptopDongMay: '',
                 tinhTrang: '',
                 baoHanh: '',
                 mienPhi: false,
@@ -345,7 +346,7 @@ const array = [
                 gia: '',
                 tinhTrang: '',
                 baoHanh: '',
-                mienPhi: false,
+                mayTinhDeBanMienPhi: false,
                 mayTinhDeBanBoViXuly: '',
                 mayTinhDeBanRam: '',
                 mayTinhDeBanOcung: '',
@@ -368,7 +369,7 @@ const array = [
                 baoHanh: '',
                 mienPhi: false,
                 mayAnhThietBi: '',
-                mayAnhDong: '',
+                thietBiDongMay: '',
                 address: {
                     thanhPho: '',
                     quanHuyen: '',
@@ -1019,6 +1020,7 @@ export const generateDefaultValueFormData = (id, subCategoryId) => {
         description: '',
         medias: [],
     }
+    console.log(id)
     array.forEach(({ categoryId, subCategories }) => {
         if (id === categoryId) {
             defaultFormData.categoryId = id
@@ -1030,6 +1032,13 @@ export const generateDefaultValueFormData = (id, subCategoryId) => {
                     title: '',
                     description: '',
                     medias: [],
+                    address: {
+                        thanhPho: '',
+                        quanHuyen: '',
+                        phuongXa: '',
+                        tenDuong: '',
+                        soNha: '',
+                    },
                 }
             } else {
                 subCategories.forEach(subCategory => {

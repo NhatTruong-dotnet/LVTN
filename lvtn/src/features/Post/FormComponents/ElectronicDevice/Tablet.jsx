@@ -43,10 +43,10 @@ function Tablet({ formData, handleFormDataChange }) {
                     <FormInput
                         require
                         label='Dòng máy'
-                        value={formData.mayTinhBangDong}
+                        value={formData.mayTinhBangDongMay}
                         onChange={e =>
                             handleFormDataChange(
-                                'mayTinhBangDong',
+                                'mayTinhBangDongMay',
                                 e.target.value
                             )
                         }
