@@ -323,12 +323,6 @@ function CreatePost({ signalRConnection, invokeMethod }) {
                                                 e.target.value
                                             )
                                         }
-                                        placeholder={`                                        
-Ví dụ:- Căn hộ 2PN 68m2 Celadon City, Q.Tân Phú
-        Nên viết tiếng Việt có dấu
-        Không:
-        - Không ghi "Cần bán"
-        - Không chèn giá và số điện thoại ở tiêu đề`}
                                     />
                                     <label className={clsx(styles.label)}>
                                         Mô tả chi tiết
