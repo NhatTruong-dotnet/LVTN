@@ -1,8 +1,14 @@
-import { takeLatest, put, call } from 'redux-saga/effects'
-import { getPostWithCategoryId, searchWithValue } from './SearchApi'
+import { takeLatest, put, call, debounce } from 'redux-saga/effects'
+import {
+    getPostWithCategoryId,
+    getPostWithFilterParams,
+    searchWithValue,
+} from './SearchApi'
 import {
     getPostWithCategoryIdPending,
     getPostWithCategoryIdSuccess,
+    getPostWithFilterParamsPending,
+    getPostWithFilterParamsSuccess,
     searchPending,
     searchSuccess,
 } from './SearchSlice'
@@ -10,6 +16,7 @@ import {
 export default function* searchSaga() {
     yield takeLatest('getPostWithCategoryId', getPostWithCategoryIdSaga)
     yield takeLatest('searchWithValue', searchWithValueSaga)
+    yield debounce(1000, 'getPostWithFilterParams', filterPost)
 }
 
 function* getPostWithCategoryIdSaga({ categoryId }) {
@@ -18,6 +25,40 @@ function* getPostWithCategoryIdSaga({ categoryId }) {
     const { status, listPost } = yield call(getPostWithCategoryId, categoryId)
     if (status === 200) {
         yield put(getPostWithCategoryIdSuccess({ listPost }))
+    }
+}
+
+function* filterPost({ searchCategory, address, params }) {
+    yield put(getPostWithFilterParamsPending())
+    console.log(params)
+    let queryString = `${searchCategory.id}/${searchCategory.subCategoryId}`
+
+    const { thanhPho, quanHuyen, phuongXa } = address
+
+    queryString += `/${thanhPho ? thanhPho + ';' : ''}${
+        quanHuyen ? quanHuyen + ';' : ''
+    }${phuongXa ? phuongXa + ';' : ''}`
+
+    for (let key in params) {
+        if (
+            typeof params[key] === 'object' &&
+            !Array.isArray(params[key]) &&
+            params[key] !== null
+        ) {
+            for (let subKey in params[key]) {
+                queryString += `${params[key][subKey]};`
+            }
+        } else {
+            queryString += `${params[key]};`
+        }
+    }
+    console.log(queryString)
+    const { status, listPost } = yield call(
+        getPostWithFilterParams,
+        queryString
+    )
+    if (status === 200) {
+        yield put(getPostWithFilterParamsSuccess({ listPost }))
     }
 }
 

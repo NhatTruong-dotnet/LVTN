@@ -27,3 +27,15 @@ export const searchWithValue = async searchValue => {
         return { status: response.status, errorMessage: response.data }
     }
 }
+
+export const getPostWithFilterParams = async queryString => {
+    try {
+        const res = await axios.get(`${host}/api/Filter/${queryString}`)
+        return {
+            status: res.status,
+            listPost: res.data,
+        }
+    } catch ({ response }) {
+        return { status: response.status, errorMessage: response.data }
+    }
+}

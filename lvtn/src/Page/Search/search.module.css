@@ -1,6 +1,10 @@
 .filterContainer {
     display: flex;
+    flex-wrap: wrap;
 }
+/* .filterContainer::-webkit-scrollbar {
+    display: none;
+} */
 .filterItem {
     align-items: center;
     background-color: #f4f4f4;
@@ -14,6 +18,7 @@
     white-space: nowrap;
     background-color: #fff;
     border: 1px solid hsla(0, 0%, 61%, 0.7);
+    margin-bottom: 10px;
 }
 .filterValue {
     display: flex;

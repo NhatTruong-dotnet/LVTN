@@ -24,6 +24,14 @@ const searchSlice = createSlice({
             state.isLoading = false
             state.listPost = action.payload.listPost
         },
+        // -------------------------------
+        getPostWithFilterParamsPending: state => {
+            state.isLoading = true
+        },
+        getPostWithFilterParamsSuccess: (state, action) => {
+            state.isLoading = false
+            state.listPost = action.payload.listPost
+        },
     },
 })
 
@@ -35,6 +43,9 @@ export const {
     // ------------------------------
     getPostWithCategoryIdPending,
     getPostWithCategoryIdSuccess,
+    // -----------------------------
+    getPostWithFilterParamsPending,
+    getPostWithFilterParamsSuccess,
 } = actions
 
 export const selectSearchListPost = state => state.search.listPost

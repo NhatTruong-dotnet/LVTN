@@ -35,6 +35,7 @@ function SearchCategoryPicker({ closeCategoryPicker, setSearchCategory }) {
                             onClick={() => {
                                 setSearchCategory({
                                     id: 0,
+                                    subCategory: -1,
                                     name: 'Tất cả danh mục',
                                 })
                                 closeCategoryPicker()
@@ -61,14 +62,32 @@ function SearchCategoryPicker({ closeCategoryPicker, setSearchCategory }) {
                                             type: 'getPostWithCategoryId',
                                             categoryId: id,
                                         })
-                                        setSearchCategory({
-                                            id,
-                                            name,
-                                        })
-                                        if (!subCategory) {
+                                        // không có sub
+                                        if (subCategory === null) {
+                                            setSearchCategory({
+                                                id,
+                                                subCategory: -1,
+                                                name,
+                                            })
                                             closeCategoryPicker()
-                                        } else {
+                                        }
+                                        // có sub và là parent
+                                        else if (subCategory) {
+                                            setSearchCategory(prev => ({
+                                                ...prev,
+                                                id,
+                                                name,
+                                            }))
                                             setDisplayCategory(subCategory)
+                                        }
+                                        // sub
+                                        else {
+                                            setSearchCategory(prev => ({
+                                                ...prev,
+                                                subCategoryId: id,
+                                                name,
+                                            }))
+                                            closeCategoryPicker()
                                         }
                                     }}
                                 >
