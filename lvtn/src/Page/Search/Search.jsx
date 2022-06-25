@@ -79,6 +79,8 @@ function Search(props) {
                     <SearchAddressPicker
                         setAddress={setAddress}
                         address={address}
+                        searchCategory={searchCategory}
+                        selectedParams={selectedParams}
                     />
                     {filterParams.map(item => (
                         <Picker

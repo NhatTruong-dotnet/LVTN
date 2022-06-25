@@ -16,7 +16,12 @@ const convertObjectIntoArray = obj => {
     return result
 }
 
-function SearchAddressPicker({ address, setAddress }) {
+function SearchAddressPicker({
+    address,
+    setAddress,
+    searchCategory,
+    selectedParams,
+}) {
     const [showPicker, setShowPicker] = useState(false)
     const listLocation = useSelector(selectLocation)
     const [listAddress, setListAddress] = useState([])
@@ -46,6 +51,19 @@ function SearchAddressPicker({ address, setAddress }) {
             })
 
             setListAddress(convertObjectIntoArray(rest['quan-huyen']))
+            dispatch({
+                type: 'getPostWithFilterParams',
+                searchCategory,
+                address: {
+                    ...address,
+                    thanhPho: value,
+                    quanHuyen: '',
+                    phuongXa: '',
+                    displayText: value,
+                    keySet: 'quanHuyen',
+                },
+                params: selectedParams,
+            })
         } else if (address.keySet === 'quanHuyen') {
             setAddress({
                 ...address,
@@ -55,6 +73,17 @@ function SearchAddressPicker({ address, setAddress }) {
             })
 
             setListAddress(convertObjectIntoArray(rest['xa-phuong']))
+            dispatch({
+                type: 'getPostWithFilterParams',
+                searchCategory,
+                address: {
+                    ...address,
+                    quanHuyen: value,
+                    displayText: value,
+                    keySet: 'phuongXa',
+                },
+                params: selectedParams,
+            })
         } else {
             setAddress({
                 ...address,
@@ -65,6 +94,18 @@ function SearchAddressPicker({ address, setAddress }) {
             })
             setListAddress(listLocation)
             setShowPicker(false)
+            dispatch({
+                type: 'getPostWithFilterParams',
+                searchCategory,
+                address: {
+                    ...address,
+                    phuongXa: value,
+                    displayText: value,
+
+                    keySet: 'thanhPho',
+                },
+                params: selectedParams,
+            })
         }
     }
     useEffect(() => {
