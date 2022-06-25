@@ -26,6 +26,8 @@
         public string? VanPhongMaCan { get; set; }
         public string? VanPhongBlock { get; set; }
         public string? VanPhongTangSo { get; set; }
+        public string? VanPhongGiayToPhapLy { get; set; }
+        public string? VanPhongHuongCuaChinh { get; set; }
         public string? VanPhongLoaiHinhVanPhong { get; set; }
         public bool? isReviewed { get; set; } = false;
         public List<HinhAnh_BaiDangDTO> hinhAnh_BaiDangs { get; set; }

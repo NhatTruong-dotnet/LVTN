@@ -9,11 +9,6 @@ namespace STU.LVTN.SERVER.Model
         public string? TenDuAn { get; set; }
         public double? DienTich { get; set; }
         public string? CcMaCan { get; set; }
-        public string? CcHuongCuaChinh { get; set; }
-        public string? CcBanCong { get; set; }
-        public string? CcGiayToPhapLy { get; set; }
-        public string? CcTinhTrangNoiThat { get; set; }
-        public float? SoTienCoc { get; set; }
         public string? CcBlock { get; set; }
         public string? CcTangSo { get; set; }
         public bool? CcChuaBanGiao { get; set; }
@@ -41,5 +36,15 @@ namespace STU.LVTN.SERVER.Model
         public string? PhongTroTinhTrangNoiThat { get; set; }
         public double? PhongTroSoTienCoc { get; set; }
         public bool? CanBan { get; set; }
+        public string? CcBanCong { get; set; }
+        public string? CcGiayToPhapLy { get; set; }
+        public string? CcHuongCuaChinh { get; set; }
+        public string? CcTinhTrangNoiThat { get; set; }
+        public float? SoTienCoc { get; set; }
+        public int? soToilet { get; set; }
+        public string? NhaOGiayToPhapLy { get; set; }
+        public string? DatGiayToPhapLy { get; set; }
+        public string? VanPhongGiayToPhapLy { get; set; }
+        public string? VanPhongHuongCuaChinh { get; set; }
     }
 }

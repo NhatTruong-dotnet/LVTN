@@ -18,5 +18,9 @@ namespace STU.LVTN.SERVER.Provider.Handler
         {
             return searchHelper.SearchLogic(searchParams);
         }
+        public async Task<List<BaiDangHomePageDTO>> Filter(int idDanhMucCha, int idDanhMucCon, string? queryString )
+        {
+            return searchHelper.Filter(idDanhMucCha, idDanhMucCon, queryString);
+        }
     }
 }

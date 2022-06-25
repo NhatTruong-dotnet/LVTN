@@ -33,6 +33,9 @@ namespace STU.LVTN.SERVER.Provider.BusinessLogic
             post.Add("Tình trạng bất động sản: ", entity.CcChuaBanGiao == true ? "Chưa bàn giao" : "Đã bàn giao");
             post.Add("Loại hình chung cư: ", entity.CcLoaiHinh);
             post.Add("Số phòng ngủ: ", entity.CcSoPhongNgu.ToString());
+            post.Add("Tình trạng chung cư: ", entity.CcChuaBanGiao == false ? "Chưa bàn giao" : "Đã bàn giao");
+            if (entity.soToilet != null)
+                post.Add("Số toilet: ", entity.soToilet.ToString());
             return post;
         }
 
@@ -42,7 +45,8 @@ namespace STU.LVTN.SERVER.Provider.BusinessLogic
             BaiDangBatDongSanEntities entity = _context.BaiDangBatDongSans.Where(item => item.IdBaiDang == idPostDetail).FirstOrDefault();
             post.Add("Diện tích đất : ", entity.NhaOSoPhongNgu.ToString());
             post.Add("Số phòng ngủ: ", entity.DienTich.ToString());
-            post.Add("Giấy tờ pháp lí: ", entity.NhaOLoaiHinh);
+            if (entity.NhaOGiayToPhapLy != null)
+                post.Add("Giấy tờ pháp lí: ", entity.NhaOGiayToPhapLy);
             post.Add("Loại hình nhà ở: ", entity.NhaOLoaiHinh);
             post.Add("Chiều dài: ", entity.NhaOChieuDai.ToString());
             post.Add("Tổng số tầng: ", entity.NhaOTongSoTang.ToString());
@@ -71,6 +75,8 @@ namespace STU.LVTN.SERVER.Provider.BusinessLogic
             post.Add("Hướng đất: ", entity.DatHuongDat.ToString());
             post.Add("Chiều ngang: ", entity.DatChieuNgang.ToString());
             post.Add("Chiều dài: ", entity.DatChieuDai.ToString());
+            if (entity.DatGiayToPhapLy != null)
+                post.Add("Giấy tờ pháp lý: ", entity.DatGiayToPhapLy);
             return post;
         }
         public Dictionary<string, string> getPost_VanPhong_ByID(int? idPostDetail)
@@ -78,7 +84,11 @@ namespace STU.LVTN.SERVER.Provider.BusinessLogic
             Dictionary<string, string> post = new Dictionary<string, string>();
             BaiDangBatDongSanEntities entity = _context.BaiDangBatDongSans.Where(item => item.IdBaiDang == idPostDetail).FirstOrDefault();
             post.Add("Diện tích: ", entity.DienTich.ToString());
-            post.Add("Loại hình văn phòng: ", entity.VanPhongLoaiHinhVanPhong.ToString());
+            post.Add("Diện tích: ", entity.DienTich.ToString());
+            if (entity.VanPhongGiayToPhapLy != null)
+                post.Add("Giấy tờ pháp lý: ", entity.VanPhongGiayToPhapLy);
+            if (entity.VanPhongHuongCuaChinh != null)
+                post.Add("Hướng cửa chính: ", entity.VanPhongHuongCuaChinh);
             
             return post;
         }

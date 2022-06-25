@@ -35,6 +35,7 @@
         public string? CcTinhTrangNoiThat { get; set; }
         public float? SoTienCoc { get; set; }
         public bool? isReviewed { get; set; } = false;
+        public int soToilet { get; set; }
         public List<HinhAnh_BaiDangDTO> hinhAnh_BaiDangs { get; set; }
          
     }

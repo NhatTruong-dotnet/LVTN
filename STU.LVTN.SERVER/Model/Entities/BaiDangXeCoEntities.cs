@@ -29,6 +29,8 @@ namespace STU.LVTN.SERVER.Model
         public string? XeDienDongCo { get; set; }
         public bool? XeDienDaSuDung { get; set; }
         public bool? XeDienMienPhi { get; set; }
+        public string? XeDienBaoHanh { get; set; }
+
         public string? XeDapKichThuocKhung { get; set; }
         public string? XeDapChatLuongKhung { get; set; }
         public bool? XeDapDaSuDung { get; set; }

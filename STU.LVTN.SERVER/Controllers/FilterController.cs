@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using STU.LVTN.SERVER.Model;
 using STU.LVTN.SERVER.Model.DTO;
 using STU.LVTN.SERVER.Provider.Handler;
 
@@ -8,20 +8,14 @@ namespace STU.LVTN.SERVER.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class SearchController
+    public class FilterController : ControllerBase
     {
         private readonly IMapper _mapper;
-        private LVTNContext _context = new LVTNContext();
-        SearchHandler searchHandler ;
-        public SearchController(IMapper mapper)
+        SearchHandler searchHandler;
+        public FilterController(IMapper mapper)
         {
             _mapper = mapper;
             searchHandler = new SearchHandler(_mapper);
-        }
-        [HttpGet("{searchParams}")]
-        public async Task<ActionResult<List<BaiDangHomePageDTO>>> SearchPost(string searchParams = "")
-        {
-            return await searchHandler.Search(searchParams);
         }
         [HttpGet("{idDanhMucCha}/{idDanhMucCon?}/{queryString?}")]
         public async Task<ActionResult<List<BaiDangHomePageDTO>>> Filter(int idDanhMucCha, int idDanhMucCon = -1, string? queryString = "null")

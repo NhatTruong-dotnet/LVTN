@@ -28,6 +28,7 @@
         public bool? DatMatTien { get; set; }
         public bool? DatHemXeHoi { get; set; }
         public bool? DatNoHau { get; set; }
+        public string? DatGiayToPhapLy { get; set; }
         public double? DatChieuNgang { get; set; }
         public double? DatChieuDai { get; set; }
         public bool? isReviewed { get; set; } = false;

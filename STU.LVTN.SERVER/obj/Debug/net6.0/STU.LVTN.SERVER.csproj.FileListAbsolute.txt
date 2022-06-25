@@ -60,12 +60,12 @@ C:\DEVELOPMENT\STU.LVTN.SERVER\obj\Debug\net6.0\staticwebassets.development.json
 C:\DEVELOPMENT\STU.LVTN.SERVER\obj\Debug\net6.0\scopedcss\bundle\STU.LVTN.SERVER.styles.css
 C:\DEVELOPMENT\STU.LVTN.SERVER\obj\Debug\net6.0\STU.LVTN.SERVER.csproj.CopyComplete
 C:\DEVELOPMENT\STU.LVTN.SERVER\obj\Debug\net6.0\STU.LVTN.SERVER.genruntimeconfig.cache
+C:\DEVELOPMENT\LVTN\STU.LVTN.SERVER\bin\Debug\net6.0\STU.LVTN.SERVER.dll
 C:\DEVELOPMENT\LVTN\STU.LVTN.SERVER\bin\Debug\net6.0\appsettings.Development.json
 C:\DEVELOPMENT\LVTN\STU.LVTN.SERVER\bin\Debug\net6.0\appsettings.json
 C:\DEVELOPMENT\LVTN\STU.LVTN.SERVER\bin\Debug\net6.0\STU.LVTN.SERVER.exe
 C:\DEVELOPMENT\LVTN\STU.LVTN.SERVER\bin\Debug\net6.0\STU.LVTN.SERVER.deps.json
 C:\DEVELOPMENT\LVTN\STU.LVTN.SERVER\bin\Debug\net6.0\STU.LVTN.SERVER.runtimeconfig.json
-C:\DEVELOPMENT\LVTN\STU.LVTN.SERVER\bin\Debug\net6.0\STU.LVTN.SERVER.dll
 C:\DEVELOPMENT\LVTN\STU.LVTN.SERVER\bin\Debug\net6.0\STU.LVTN.SERVER.pdb
 C:\DEVELOPMENT\LVTN\STU.LVTN.SERVER\bin\Debug\net6.0\AutoMapper.dll
 C:\DEVELOPMENT\LVTN\STU.LVTN.SERVER\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll

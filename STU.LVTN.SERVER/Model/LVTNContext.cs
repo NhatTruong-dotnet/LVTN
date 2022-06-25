@@ -55,10 +55,6 @@ namespace STU.LVTN.SERVER.Model
 
                 entity.ToTable("BaiDang");
 
-                entity.HasIndex(e => e.SdtNguoiBan, "IX_BaiDang_Sdt_NguoiBan");
-
-                entity.HasIndex(e => e.IdDanhMucCon, "IX_BaiDang_id_DanhMucCon");
-
                 entity.Property(e => e.IdBaiDang).HasColumnName("id_BaiDang");
 
                 entity.Property(e => e.DiaChiCuThe).HasMaxLength(150);
@@ -137,6 +133,10 @@ namespace STU.LVTN.SERVER.Model
 
                 entity.Property(e => e.DatChieuNgang).HasColumnName("Dat_ChieuNgang");
 
+                entity.Property(e => e.DatGiayToPhapLy)
+                    .HasMaxLength(150)
+                    .HasColumnName("Dat_GiayToPhapLy");
+
                 entity.Property(e => e.DatHemXeHoi).HasColumnName("Dat_HemXeHoi");
 
                 entity.Property(e => e.DatHuongDat)
@@ -152,6 +152,10 @@ namespace STU.LVTN.SERVER.Model
                 entity.Property(e => e.NhaOChieuDai).HasColumnName("NhaO_ChieuDai");
 
                 entity.Property(e => e.NhaOChieuNgang).HasColumnName("NhaO_ChieuNgang");
+
+                entity.Property(e => e.NhaOGiayToPhapLy)
+                    .HasMaxLength(150)
+                    .HasColumnName("NhaO_GiayToPhapLy");
 
                 entity.Property(e => e.NhaOHemXeHoi).HasColumnName("NhaO_HemXeHoi");
 
@@ -171,10 +175,20 @@ namespace STU.LVTN.SERVER.Model
                     .HasMaxLength(60)
                     .HasColumnName("PhongTro_TinhTrangNoiThat");
 
+                entity.Property(e => e.soToilet).HasColumnName("soToilet");
+
                 entity.Property(e => e.VanPhongBlock)
                     .HasMaxLength(10)
                     .HasColumnName("VanPhong_Block")
                     .IsFixedLength();
+
+                entity.Property(e => e.VanPhongGiayToPhapLy)
+                    .HasMaxLength(150)
+                    .HasColumnName("VanPhong_GiayToPhapLy");
+
+                entity.Property(e => e.VanPhongHuongCuaChinh)
+                    .HasMaxLength(150)
+                    .HasColumnName("VanPhong_HuongCuaChinh");
 
                 entity.Property(e => e.VanPhongLoaiHinhVanPhong)
                     .HasMaxLength(60)
@@ -544,6 +558,10 @@ namespace STU.LVTN.SERVER.Model
 
                 entity.Property(e => e.XeDapMienPhi).HasColumnName("XeDap_MienPhi");
 
+                entity.Property(e => e.XeDienBaoHanh)
+                    .HasMaxLength(150)
+                    .HasColumnName("XeDien_BaoHanh");
+
                 entity.Property(e => e.XeDienDaSuDung).HasColumnName("XeDien_DaSuDung");
 
                 entity.Property(e => e.XeDienDongCo)
@@ -591,8 +609,6 @@ namespace STU.LVTN.SERVER.Model
 
                 entity.ToTable("DanhMuc");
 
-                entity.HasIndex(e => e.IdDanhMucCha, "IX_DanhMuc_id_DanhMucCha");
-
                 entity.Property(e => e.IdDanhMuc).HasColumnName("id_DanhMuc");
 
                 entity.Property(e => e.IdDanhMucCha).HasColumnName("id_DanhMucCha");
@@ -610,10 +626,6 @@ namespace STU.LVTN.SERVER.Model
                 entity.HasKey(e => e.IdDatCoc);
 
                 entity.ToTable("GiaoDich_DatCoc");
-
-                entity.HasIndex(e => e.SdtBan, "IX_GiaoDich_DatCoc_sdtBan");
-
-                entity.HasIndex(e => e.SdtMua, "IX_GiaoDich_DatCoc_sdtMua");
 
                 entity.Property(e => e.IdDatCoc).HasColumnName("idDatCoc");
 
@@ -645,8 +657,6 @@ namespace STU.LVTN.SERVER.Model
                 entity.HasKey(e => e.IdHinhAnh);
 
                 entity.ToTable("HinhAnh_BaiDang");
-
-                entity.HasIndex(e => e.IdSanPham, "IX_HinhAnh_BaiDang_id_SanPham");
 
                 entity.Property(e => e.IdHinhAnh).HasColumnName("id_HinhAnh");
 

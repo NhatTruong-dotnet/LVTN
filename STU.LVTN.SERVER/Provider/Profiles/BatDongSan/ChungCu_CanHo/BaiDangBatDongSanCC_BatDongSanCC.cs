@@ -15,7 +15,8 @@ namespace STU.LVTN.SERVER.Provider.Profiles
                 .ForMember(destinationMember => destinationMember.CcChuaBanGiao, opt => opt.MapFrom(sourceMember => sourceMember.ChuaBanGiao))
                 .ForMember(destinationMember => destinationMember.CcLoaiHinh, opt => opt.MapFrom(sourceMember => sourceMember.LoaiHinh))
                 .ForMember(destinationMember => destinationMember.CcSoPhongNgu, opt => opt.MapFrom(sourceMember => sourceMember.SoPhongNgu))
-                .ForMember(destinationMember => destinationMember.CanBan, opt => opt.MapFrom(sourceMember => sourceMember.CanBan));
+                .ForMember(destinationMember => destinationMember.CanBan, opt => opt.MapFrom(sourceMember => sourceMember.CanBan))
+                .ForMember(destinationMember => destinationMember.soToilet, opt => opt.MapFrom(sourceMember => sourceMember.soToilet));
 
         }
     }
