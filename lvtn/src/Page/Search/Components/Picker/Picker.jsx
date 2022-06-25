@@ -60,7 +60,7 @@ function SelectPicker({ filterItem, closeModal, handleClickItem }) {
             </div>
             <div className={styles.listCategory}>
                 <div className={styles.box}>
-                    {filterItem.data.map(value => (
+                    {filterItem.data.map(({ value, text }) => (
                         <div
                             className={styles.categoryItem}
                             key={value}
@@ -70,7 +70,7 @@ function SelectPicker({ filterItem, closeModal, handleClickItem }) {
                             }}
                         >
                             <div className={styles.nameWrap}>
-                                <span className={styles.name}>{value}</span>
+                                <span className={styles.name}>{text}</span>
                             </div>
                             <MdOutlineKeyboardArrowRight
                                 className={styles.pickerIcon}
