@@ -866,6 +866,553 @@ namespace STU.LVTN.SERVER.Provider.BusinessLogic
 
                             }
                             break;
+                        case 4:
+                            foreach (var item in queryParams)
+                            {
+                                foreach (var baiDangEntities in source)
+                                {
+                                    BaiDangViecLamEntities baiDangDoDienTuDetail = _context.BaiDangViecLams.Where(baiDangDetail =>
+                                        baiDangDetail.IdBaiDang == baiDangEntities.IdBaiDangChiTiet).First();
+                                        int number = 0;
+                                        Int32.TryParse(item, out number);
+                                        if (
+                                            baiDangDoDienTuDetail.SoLuongTuyenDung == number
+                                            || baiDangDoDienTuDetail.TenHoKinhDoanh.Contains(item)
+                                            || (baiDangDoDienTuDetail.NganhNghe != null && baiDangDoDienTuDetail.NganhNghe.Contains(item))
+                                            || (baiDangDoDienTuDetail.LoaiCongViec != null && baiDangDoDienTuDetail.LoaiCongViec.Contains(item))
+                                            || (baiDangDoDienTuDetail.HinhThucTraLuong != null && baiDangDoDienTuDetail.HinhThucTraLuong.Contains(item))
+                                            || (baiDangDoDienTuDetail.LuongToiDa != null && baiDangDoDienTuDetail.LuongToiDa == number)
+                                            || (baiDangDoDienTuDetail.LuongToiThieu != null && baiDangDoDienTuDetail.LuongToiThieu == number)
+                                            || (baiDangDoDienTuDetail.KinhNghiem != null && baiDangDoDienTuDetail.KinhNghiem == item)
+                                            || (baiDangDoDienTuDetail.QuyenLoi != null && baiDangDoDienTuDetail.QuyenLoi == item)
+                                            || (baiDangDoDienTuDetail.HocVanToiThieu != null && baiDangDoDienTuDetail.HocVanToiThieu == item)
+                                          )
+                                        { 
+                                            if (!filter.Contains(baiDangEntities))
+                                                filter.Add(baiDangEntities);
+                                        }
+                                }
+
+                            }
+                            break;
+                        case 6:
+                            foreach (var item in queryParams)
+                            {
+                                foreach (var baiDangEntities in source)
+                                {
+                                    BaiDangDoAnThucPhamEntities baiDangDoDienTuDetail = _context.BaiDangDoAnThucPhams.Where(baiDangDetail =>
+                                        baiDangDetail.IdBaiDang == baiDangEntities.IdBaiDangChiTiet).First();
+                                    int number = 0;
+                                    Int32.TryParse(item, out number);
+                                    if (baiDangDoDienTuDetail.LoaiThucPham == item)
+                                        if (!filter.Contains(baiDangEntities))
+                                            filter.Add(baiDangEntities);
+                                }
+
+                            }
+                            break;
+                        case 34:
+                        case 37:
+                        case 38:
+                        case 39:
+                            foreach (var item in queryParams)
+                            {
+                                foreach (var baiDangEntities in source)
+                                {
+                                    BaiDangThuCungEntities baiDangThuCungDetail = _context.BaiDangThuCungs.Where(baiDangDetail =>
+                                        baiDangDetail.IdBaiDang == baiDangEntities.IdBaiDangChiTiet).First();
+                                        int number = 0;
+                                        Int32.TryParse(item, out number);
+                                        if (
+                                            baiDangThuCungDetail.GiongThuCung == item
+                                           || baiDangThuCungDetail.DoTuoi == item
+                                          )
+                                        {
+                                            if (!filter.Contains(baiDangEntities))
+                                                filter.Add(baiDangEntities);
+                                        }
+
+                                }
+
+                            }
+                            break;
+                        case 35:
+                            foreach (var item in queryParams)
+                            {
+                                foreach (var baiDangEntities in source)
+                                {
+                                    BaiDangThuCungEntities baiDangThuCungDetail = _context.BaiDangThuCungs.Where(baiDangDetail =>
+                                        baiDangDetail.IdBaiDang == baiDangEntities.IdBaiDangChiTiet).First();
+                                    int number = 0;
+                                    Int32.TryParse(item, out number);
+                                    if (
+                                        baiDangThuCungDetail.GiongThuCung == item
+                                       || baiDangThuCungDetail.DoTuoi == item
+                                       || baiDangThuCungDetail.ChoKichCo == item
+                                      )
+                                    {
+                                        if (!filter.Contains(baiDangEntities))
+                                            filter.Add(baiDangEntities);
+                                    }
+
+                                }
+
+                            }
+                            break;
+                        case 36:
+                            foreach (var item in queryParams)
+                            {
+                                foreach (var baiDangEntities in source)
+                                {
+                                    BaiDangThuCungEntities baiDangThuCungDetail = _context.BaiDangThuCungs.Where(baiDangDetail =>
+                                        baiDangDetail.IdBaiDang == baiDangEntities.IdBaiDangChiTiet).First();
+                                    int number = 0;
+                                    Int32.TryParse(item, out number);
+                                    if (
+                                        baiDangThuCungDetail.GiongThuCung == item
+                                       || baiDangThuCungDetail.DoTuoi == item
+                                       || baiDangThuCungDetail.ChimGioiTinh == item
+                                      )
+                                    {
+                                        if (!filter.Contains(baiDangEntities))
+                                            filter.Add(baiDangEntities);
+                                    }
+
+                                }
+
+                            }
+                            break;
+                        case 40:
+                            foreach (var item in queryParams)
+                            {
+                                foreach (var baiDangEntities in source)
+                                {
+                                    BaiDangTuLanhEntities baiDangTuLanhDetail = _context.BaiDangTuLanhs.Where(baiDangDetail =>
+                                        baiDangDetail.IdBaiDang == baiDangEntities.IdBaiDangChiTiet).First();
+                                    int number = 0;
+                                    Int32.TryParse(item, out number);
+                                    if(item =="Đã sử dụng")
+                                    {
+                                        if (baiDangTuLanhDetail.DaSuDung == (item == "Đã sử dụng" ? true:false))
+                                            if (!filter.Contains(baiDangEntities))
+                                                filter.Add(baiDangEntities);
+                                    }
+                                    else if (
+                                        baiDangTuLanhDetail.Hang == item
+                                       || baiDangTuLanhDetail.TuLanhTheTich == item
+                                      )
+                                    {
+                                        if (!filter.Contains(baiDangEntities))
+                                            filter.Add(baiDangEntities);
+                                    }
+
+                                }
+
+                            }
+                            break;
+                        case 41:
+                            foreach (var item in queryParams)
+                            {
+                                foreach (var baiDangEntities in source)
+                                {
+                                    BaiDangTuLanhEntities baiDangTuLanhDetail = _context.BaiDangTuLanhs.Where(baiDangDetail =>
+                                        baiDangDetail.IdBaiDang == baiDangEntities.IdBaiDangChiTiet).First();
+                                    int number = 0;
+                                    Int32.TryParse(item, out number);
+                                    if (item == "Đã sử dụng")
+                                    {
+                                        if (baiDangTuLanhDetail.DaSuDung == (item == "Đã sử dụng" ? true : false))
+                                            if (!filter.Contains(baiDangEntities))
+                                                filter.Add(baiDangEntities);
+                                    }
+                                    else if (
+                                        baiDangTuLanhDetail.Hang == item
+                                       || baiDangTuLanhDetail.MayLanhCongSuat == item
+                                      )
+                                    {
+                                        if (!filter.Contains(baiDangEntities))
+                                            filter.Add(baiDangEntities);
+                                    }
+
+                                }
+
+                            }
+                            break;
+                        case 42:
+                            foreach (var item in queryParams)
+                            {
+                                foreach (var baiDangEntities in source)
+                                {
+                                    BaiDangTuLanhEntities baiDangTuLanhDetail = _context.BaiDangTuLanhs.Where(baiDangDetail =>
+                                        baiDangDetail.IdBaiDang == baiDangEntities.IdBaiDangChiTiet).First();
+                                    int number = 0;
+                                    Int32.TryParse(item, out number);
+                                    if (item == "Đã sử dụng")
+                                    {
+                                        if (baiDangTuLanhDetail.DaSuDung == (item == "Đã sử dụng" ? true : false))
+                                            if (!filter.Contains(baiDangEntities))
+                                                filter.Add(baiDangEntities);
+                                    }
+                                    else if (
+                                        baiDangTuLanhDetail.Hang == item
+                                       || baiDangTuLanhDetail.MayGiatCuaMayGiat == item
+                                       || baiDangTuLanhDetail.MayGiatKhoiLuongGiat == item
+                                      )
+                                    {
+                                        if (!filter.Contains(baiDangEntities))
+                                            filter.Add(baiDangEntities);
+                                    }
+
+                                }
+
+                            }
+                            break;
+                        case 43:
+                            foreach (var item in queryParams)
+                            {
+                                foreach (var baiDangEntities in source)
+                                {
+                                    BaiDangDoGiaDungEntities baiDangTuLanhDetail = _context.BaiDangDoGiaDungs.Where(baiDangDetail =>
+                                        baiDangDetail.IdBaiDang == baiDangEntities.IdBaiDangChiTiet).First();
+                                    int number = 0;
+                                    Int32.TryParse(item, out number);
+                                    if (item == "Đã sử dụng")
+                                    {
+                                        if (baiDangTuLanhDetail.DaSuDung == (item == "Đã sử dụng" ? true : false))
+                                            if (!filter.Contains(baiDangEntities))
+                                                filter.Add(baiDangEntities);
+                                    }
+                                    else if (
+                                        baiDangTuLanhDetail.LoaiSanPham == item
+                                       || baiDangTuLanhDetail.BanGheChatLieu == item
+                                      )
+                                    {
+                                        if (!filter.Contains(baiDangEntities))
+                                            filter.Add(baiDangEntities);
+                                    }
+
+                                }
+
+                            }
+                            break;
+                        case 44:
+                            foreach (var item in queryParams)
+                            {
+                                foreach (var baiDangEntities in source)
+                                {
+                                    BaiDangDoGiaDungEntities baiDangTuLanhDetail = _context.BaiDangDoGiaDungs.Where(baiDangDetail =>
+                                        baiDangDetail.IdBaiDang == baiDangEntities.IdBaiDangChiTiet).First();
+                                    int number = 0;
+                                    Int32.TryParse(item, out number);
+                                    if (item == "Đã sử dụng")
+                                    {
+                                        if (baiDangTuLanhDetail.DaSuDung == (item == "Đã sử dụng" ? true : false))
+                                            if (!filter.Contains(baiDangEntities))
+                                                filter.Add(baiDangEntities);
+                                    }
+                                    else if (
+                                        baiDangTuLanhDetail.LoaiSanPham == item
+                                       || baiDangTuLanhDetail.TuKeChatLieu == item
+                                      )
+                                    {
+                                        if (!filter.Contains(baiDangEntities))
+                                            filter.Add(baiDangEntities);
+                                    }
+
+                                }
+
+                            }
+                            break;
+                        case 45:
+                            foreach (var item in queryParams)
+                            {
+                                foreach (var baiDangEntities in source)
+                                {
+                                    BaiDangDoGiaDungEntities baiDangTuLanhDetail = _context.BaiDangDoGiaDungs.Where(baiDangDetail =>
+                                        baiDangDetail.IdBaiDang == baiDangEntities.IdBaiDangChiTiet).First();
+                                    int number = 0;
+                                    Int32.TryParse(item, out number);
+                                    if (item == "Đã sử dụng")
+                                    {
+                                        if (baiDangTuLanhDetail.DaSuDung == (item == "Đã sử dụng" ? true : false))
+                                            if (!filter.Contains(baiDangEntities))
+                                                filter.Add(baiDangEntities);
+                                    }
+                                    else if (
+                                        baiDangTuLanhDetail.LoaiSanPham == item
+                                       || baiDangTuLanhDetail.GiuongChatLieu == item
+                                      )
+                                    {
+                                        if (!filter.Contains(baiDangEntities))
+                                            filter.Add(baiDangEntities);
+                                    }
+
+                                }
+
+                            }
+                            break;
+                        case 46:
+                            foreach (var item in queryParams)
+                            {
+                                foreach (var baiDangEntities in source)
+                                {
+                                    BaiDangDoGiaDungEntities baiDangTuLanhDetail = _context.BaiDangDoGiaDungs.Where(baiDangDetail =>
+                                        baiDangDetail.IdBaiDang == baiDangEntities.IdBaiDangChiTiet).First();
+                                    int number = 0;
+                                    Int32.TryParse(item, out number);
+                                    if (item == "Đã sử dụng")
+                                    {
+                                        if (baiDangTuLanhDetail.DaSuDung == (item == "Đã sử dụng" ? true : false))
+                                            if (!filter.Contains(baiDangEntities))
+                                                filter.Add(baiDangEntities);
+                                    }
+                                    else if (
+                                        baiDangTuLanhDetail.LoaiSanPham == item
+                                       || baiDangTuLanhDetail.BepThuongHieu == item
+                                      )
+                                    {
+                                        if (!filter.Contains(baiDangEntities))
+                                            filter.Add(baiDangEntities);
+                                    }
+
+                                }
+
+                            }
+                            break;
+                        case 47:
+                            foreach (var item in queryParams)
+                            {
+                                foreach (var baiDangEntities in source)
+                                {
+                                    BaiDangDoGiaDungEntities baiDangTuLanhDetail = _context.BaiDangDoGiaDungs.Where(baiDangDetail =>
+                                        baiDangDetail.IdBaiDang == baiDangEntities.IdBaiDangChiTiet).First();
+                                    int number = 0;
+                                    Int32.TryParse(item, out number);
+                                    if (item == "Đã sử dụng")
+                                    {
+                                        if (baiDangTuLanhDetail.DaSuDung == (item == "Đã sử dụng" ? true : false))
+                                            if (!filter.Contains(baiDangEntities))
+                                                filter.Add(baiDangEntities);
+                                    }
+                                    else if (
+                                        baiDangTuLanhDetail.LoaiSanPham == item
+                                      )
+                                    {
+                                        if (!filter.Contains(baiDangEntities))
+                                            filter.Add(baiDangEntities);
+                                    }
+
+                                }
+
+                            }
+                            break;
+                        case 48:
+                        case 50:
+                        case 52:
+                            foreach (var item in queryParams)
+                            {
+                                foreach (var baiDangEntities in source)
+                                {
+                                    BaiDangDoGiaDungEntities baiDangTuLanhDetail = _context.BaiDangDoGiaDungs.Where(baiDangDetail =>
+                                        baiDangDetail.IdBaiDang == baiDangEntities.IdBaiDangChiTiet).First();
+                                    int number = 0;
+                                    Int32.TryParse(item, out number);
+                                    if (item == "Đã sử dụng")
+                                    {
+                                        if (baiDangTuLanhDetail.DaSuDung == (item == "Đã sử dụng" ? true : false))
+                                            if (!filter.Contains(baiDangEntities))
+                                                filter.Add(baiDangEntities);
+                                    }
+                                    else if (
+                                        baiDangTuLanhDetail.LoaiSanPham == item
+                                        || baiDangTuLanhDetail.QuatThuongHieu == item
+
+                                      )
+                                    {
+                                        if (!filter.Contains(baiDangEntities))
+                                            filter.Add(baiDangEntities);
+                                    }
+
+                                }
+
+                            }
+                            break;
+                        case 51:
+                            foreach (var item in queryParams)
+                            {
+                                foreach (var baiDangEntities in source)
+                                {
+                                    BaiDangDoGiaDungEntities baiDangTuLanhDetail = _context.BaiDangDoGiaDungs.Where(baiDangDetail =>
+                                        baiDangDetail.IdBaiDang == baiDangEntities.IdBaiDangChiTiet).First();
+                                    int number = 0;
+                                    Int32.TryParse(item, out number);
+                                    if (item == "Đã sử dụng")
+                                    {
+                                        if (baiDangTuLanhDetail.DaSuDung == (item == "Đã sử dụng" ? true : false))
+                                            if (!filter.Contains(baiDangEntities))
+                                                filter.Add(baiDangEntities);
+                                    }
+                                    else if (
+                                        baiDangTuLanhDetail.LoaiSanPham == item
+                                        || baiDangTuLanhDetail.ThietBiVeSinhThuongHieu == item
+
+                                      )
+                                    {
+                                        if (!filter.Contains(baiDangEntities))
+                                            filter.Add(baiDangEntities);
+                                    }
+
+                                }
+
+                            }
+                            break;
+                        case 9:
+                            foreach (var item in queryParams)
+                            {
+                                foreach (var baiDangEntities in source)
+                                {
+                                    BaiDangMeVaBeEntities baiDangMeVaBe = _context.BaiDangMeVaBes.Where(baiDangDetail =>
+                                        baiDangDetail.IdBaiDang == baiDangEntities.IdBaiDangChiTiet).First();
+                                    int number = 0;
+                                    Int32.TryParse(item, out number);
+                                    if (item == "Đã sử dụng")
+                                    {
+                                        if (baiDangMeVaBe.DaSuDung == (item == "Đã sử dụng" ? true : false))
+                                            if (!filter.Contains(baiDangEntities))
+                                                filter.Add(baiDangEntities);
+                                    }
+                                    else if (baiDangMeVaBe.LoaiSanPham == item)
+                                    {
+                                        if (!filter.Contains(baiDangEntities))
+                                            filter.Add(baiDangEntities);
+                                    }
+
+                                }
+
+                            }
+                            break;
+                        case 53:
+                        case 54:
+                        case 55:
+                        case 56:
+                        case 57:
+                        case 58:
+                            foreach (var item in queryParams)
+                            {
+                                foreach (var baiDangEntities in source)
+                                {
+                                    BaiDangThoiTrangEntities baiDangThoiTrangDetail = _context.BaiDangThoiTrangs.Where(baiDangDetail =>
+                                        baiDangDetail.IdBaiDang == baiDangEntities.IdBaiDangChiTiet).First();
+                                    int number = 0;
+                                    Int32.TryParse(item, out number);
+                                    if (item == "Đã sử dụng")
+                                    {
+                                        if (baiDangThoiTrangDetail.DaSuDung == (item == "Đã sử dụng" ? true : false))
+                                            if (!filter.Contains(baiDangEntities))
+                                                filter.Add(baiDangEntities);
+                                    }
+                                    else if (baiDangThoiTrangDetail.LoaiSanPham == item)
+                                    {
+                                        if (!filter.Contains(baiDangEntities))
+                                            filter.Add(baiDangEntities);
+                                    }
+
+                                }
+
+                            }
+                            break;
+                        case 59:
+                            foreach (var item in queryParams)
+                            {
+                                foreach (var baiDangEntities in source)
+                                {
+                                    BaiDangGiaiTriEntities baiDangThoiTrangDetail = _context.BaiDangGiaiTris.Where(baiDangDetail =>
+                                        baiDangDetail.IdBaiDang == baiDangEntities.IdBaiDangChiTiet).First();
+                                    int number = 0;
+                                    Int32.TryParse(item, out number);
+                                    if (item == "Đã sử dụng")
+                                    {
+                                        if (baiDangThoiTrangDetail.DaSuDung == (item == "Đã sử dụng" ? true : false))
+                                            if (!filter.Contains(baiDangEntities))
+                                                filter.Add(baiDangEntities);
+                                    }
+                                    else if (baiDangThoiTrangDetail.NhacCuLoaiNhacCu == item)
+                                    {
+                                        if (!filter.Contains(baiDangEntities))
+                                            filter.Add(baiDangEntities);
+                                    }
+
+                                }
+
+                            }
+                            break;
+                        case 62:
+                            foreach (var item in queryParams)
+                            {
+                                foreach (var baiDangEntities in source)
+                                {
+                                    BaiDangGiaiTriEntities baiDangThoiTrangDetail = _context.BaiDangGiaiTris.Where(baiDangDetail =>
+                                        baiDangDetail.IdBaiDang == baiDangEntities.IdBaiDangChiTiet).First();
+                                    int number = 0;
+                                    Int32.TryParse(item, out number);
+                                    if (item == "Đã sử dụng")
+                                    {
+                                        if (baiDangThoiTrangDetail.DaSuDung == (item == "Đã sử dụng" ? true : false))
+                                            if (!filter.Contains(baiDangEntities))
+                                                filter.Add(baiDangEntities);
+                                    }
+                                    else if (baiDangThoiTrangDetail.DoSuuTamLoaiSanPham == item)
+                                    {
+                                        if (!filter.Contains(baiDangEntities))
+                                            filter.Add(baiDangEntities);
+                                    }
+
+                                }
+
+                            }
+                            break;
+                        case 60:
+                        case 61:
+                        case 63:
+                        case 64:
+                            foreach (var item in queryParams)
+                            {
+                                foreach (var baiDangEntities in source)
+                                {
+                                    BaiDangGiaiTriEntities baiDangThoiTrangDetail = _context.BaiDangGiaiTris.Where(baiDangDetail =>
+                                        baiDangDetail.IdBaiDang == baiDangEntities.IdBaiDangChiTiet).First();
+                                    int number = 0;
+                                    Int32.TryParse(item, out number);
+                                    if (item == "Đã sử dụng")
+                                    {
+                                        if (baiDangThoiTrangDetail.DaSuDung == (item == "Đã sử dụng" ? true : false))
+                                            if (!filter.Contains(baiDangEntities))
+                                                filter.Add(baiDangEntities);
+                                    }
+                                }
+
+                            }
+                            break;
+                        case 65:
+                        case 66:
+                            foreach (var item in queryParams)
+                            {
+                                foreach (var baiDangEntities in source)
+                                {
+                                    BaiDangDoDungVanPhongEntities baiDangDoDungVanPhong = _context.BaiDangDoGiaDungs.Where(baiDangDetail =>
+                                        baiDangDetail.IdBaiDang == baiDangEntities.IdBaiDangChiTiet).First();
+                                    int number = 0;
+                                    Int32.TryParse(item, out number);
+                                    if (item == "Đã sử dụng")
+                                    {
+                                        if (baiDangDoDungVanPhong.DaSuDung == (item == "Đã sử dụng" ? true : false))
+                                            if (!filter.Contains(baiDangEntities))
+                                                filter.Add(baiDangEntities);
+                                    }
+                                }
+
+                            }
+                            break;
                     }
                 }
                 else
