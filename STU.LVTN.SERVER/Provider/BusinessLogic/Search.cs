@@ -1399,7 +1399,7 @@ namespace STU.LVTN.SERVER.Provider.BusinessLogic
                             {
                                 foreach (var baiDangEntities in source)
                                 {
-                                    BaiDangDoDungVanPhongEntities baiDangDoDungVanPhong = _context.BaiDangDoGiaDungs.Where(baiDangDetail =>
+                                    BaiDangDoDungVanPhongEntities baiDangDoDungVanPhong = _context.BaiDangDoDungVanPhongs.Where(baiDangDetail =>
                                         baiDangDetail.IdBaiDang == baiDangEntities.IdBaiDangChiTiet).First();
                                     int number = 0;
                                     Int32.TryParse(item, out number);
