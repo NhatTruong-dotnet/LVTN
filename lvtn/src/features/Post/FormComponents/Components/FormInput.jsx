@@ -20,7 +20,7 @@ function FormInput({
     const [message, setMessage] = useState('')
     const [displayAutoComplete, setDisplayAutoComplete] = useState(false)
 
-    const validateFormInput = () => {
+    const validateFormInput = value => {
         if (!value && require) {
             setMessage('Vui lòng điền vào trường này')
         } else {
@@ -67,10 +67,13 @@ function FormInput({
         onChange({ target: { value } })
     }
 
-    const closeListDataWhenBlur = () => {
-        setTimeout(() => {
-            setDisplayAutoComplete(false)
-        }, 100)
+    const closeListData = () => {
+        setDisplayAutoComplete(false)
+    }
+
+    const handleBackground = () => {
+        setMessage('')
+        closeListData()
     }
 
     // useEffect(() => {
@@ -94,8 +97,7 @@ function FormInput({
                     onChange={handleChangeFormInput}
                     name={name}
                     onBlur={() => {
-                        validateFormInput()
-                        closeListDataWhenBlur()
+                        validateFormInput(value)
                     }}
                     onFocus={() => {
                         setDisplayAutoComplete(true)
@@ -108,6 +110,7 @@ function FormInput({
                         items={requireData}
                         onClickItem={handleSelectAutoCompleteItem}
                         functionMapping={functionMapping}
+                        handleBackground={handleBackground}
                     />
                 )}
 

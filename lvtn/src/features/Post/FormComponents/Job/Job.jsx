@@ -197,7 +197,6 @@ function Job({ formData, handleFormDataChange }) {
                 </div>
 
                 <FormInput
-                    require
                     label='Học vấn tối thiểu (Không bắt buộc)'
                     value={formData.hocVanToiThieu}
                     onChange={e =>
@@ -215,7 +214,6 @@ function Job({ formData, handleFormDataChange }) {
                     ]}
                 />
                 <FormInput
-                    require
                     label='Năm kinh nghiệm (Không bắt buộc)'
                     value={formData.kinhNghiem}
                     onChange={e =>

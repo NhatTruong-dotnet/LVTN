@@ -73,7 +73,6 @@ function App() {
         }
         dispatch({ type: 'ReceiveMessage', message })
     }
-    console.log(pathname)
     // init wish list
     useEffect(() => {
         const wishList = JSON.parse(localStorage.getItem('wishList'))

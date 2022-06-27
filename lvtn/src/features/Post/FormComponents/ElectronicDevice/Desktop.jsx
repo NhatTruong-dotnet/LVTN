@@ -17,7 +17,6 @@ function Desktop({ formData, handleFormDataChange }) {
             {/* Thông tin chi tiết */}
             <FormGroup title='Thông tin chi tiết'>
                 <FormInput
-                    require
                     label='Bộ vi xử lý (Không bắt buộc)'
                     value={formData.mayTinhDeBanBoViXuly}
                     onChange={e =>
@@ -49,7 +48,6 @@ function Desktop({ formData, handleFormDataChange }) {
                 />
 
                 <FormInput
-                    require
                     label='Ram (Không bắt buộc)'
                     value={formData.mayTinhDeBanRam}
                     onChange={e =>
@@ -68,7 +66,6 @@ function Desktop({ formData, handleFormDataChange }) {
                     ]}
                 />
                 <FormInput
-                    require
                     label='Ổ cứng (Không bắt buộc)'
                     value={formData.mayTinhDeBanOcung}
                     onChange={e =>
@@ -95,7 +92,6 @@ function Desktop({ formData, handleFormDataChange }) {
                 />
 
                 <FormInput
-                    require
                     label='Loại ổ cứng (Không bắt buộc)'
                     value={formData.mayTinhDeBanHdd}
                     onChange={e =>
@@ -105,7 +101,6 @@ function Desktop({ formData, handleFormDataChange }) {
                 />
 
                 <FormInput
-                    require
                     label='Card màn hình (Không bắt buộc)'
                     value={formData.mayTinhDeBanCardManHinh}
                     onChange={e =>
@@ -123,7 +118,6 @@ function Desktop({ formData, handleFormDataChange }) {
                 />
 
                 <FormInput
-                    require
                     label='Kích cỡ màn hình (Không bắt buộc)'
                     value={formData.mayTinhDeBanKichCoManHinh}
                     onChange={e =>

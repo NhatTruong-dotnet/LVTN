@@ -18,7 +18,13 @@ function AddressPicker({ formData, handleFormDataChange }) {
     const [ward, setWard] = useState([])
     console.log(district)
 
-    const mappingCity = ({ code, name, name_with_type, ...rest }) => {
+    const mappingCity = ({
+        code,
+        name,
+        name_with_type,
+        handleBackground,
+        ...rest
+    }) => {
         return (
             <div
                 key={code}
@@ -30,6 +36,7 @@ function AddressPicker({ formData, handleFormDataChange }) {
                     })
 
                     setDistrict(convertObjectIntoArray(rest['quan-huyen']))
+                    handleBackground()
                 }}
             >
                 {name}
@@ -37,7 +44,12 @@ function AddressPicker({ formData, handleFormDataChange }) {
         )
     }
 
-    const mappingDistrict = ({ code, name_with_type, ...rest }) => {
+    const mappingDistrict = ({
+        code,
+        name_with_type,
+        handleBackground,
+        ...rest
+    }) => {
         return (
             <div
                 key={code}
@@ -48,6 +60,7 @@ function AddressPicker({ formData, handleFormDataChange }) {
                         quanHuyen: name_with_type,
                     })
                     setWard(convertObjectIntoArray(rest['xa-phuong']))
+                    handleBackground()
                 }}
             >
                 {name_with_type}
@@ -55,7 +68,7 @@ function AddressPicker({ formData, handleFormDataChange }) {
         )
     }
 
-    const mappingWard = ({ code, name_with_type }) => {
+    const mappingWard = ({ code, name_with_type, handleBackground }) => {
         return (
             <div
                 key={code}
@@ -65,6 +78,7 @@ function AddressPicker({ formData, handleFormDataChange }) {
                         ...formData.address,
                         phuongXa: name_with_type,
                     })
+                    handleBackground()
                 }}
             >
                 {name_with_type}

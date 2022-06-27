@@ -46,7 +46,6 @@ const postSlice = createSlice({
         getPostDetailSuccess(state, action) {
             state.isLoading = false
             state.selectedPostDetail = action.payload.postDetail
-            console.log(action.payload.postDetail)
         },
         getPostDetailFail(state, action) {
             state.isLoading = false
@@ -59,7 +58,6 @@ const postSlice = createSlice({
         // --------------------------------------
         getWishList(state) {
             const wishList = JSON.parse(localStorage.getItem('wishList'))
-            console.log(wishList)
             if (Array.isArray(wishList)) {
                 state.wishList = wishList
             }

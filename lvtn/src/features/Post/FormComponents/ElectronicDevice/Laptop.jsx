@@ -53,7 +53,6 @@ function Laptop({ formData, handleFormDataChange }) {
                     />
                 </div>
                 <FormInput
-                    require
                     label='Bộ vi xử lý (Không bắt buộc)'
                     value={formData.laptopBoViXuly}
                     onChange={e =>
@@ -82,7 +81,6 @@ function Laptop({ formData, handleFormDataChange }) {
                 />
 
                 <FormInput
-                    require
                     label='Ram (Không bắt buộc)'
                     value={formData.laptopRam}
                     onChange={e =>
@@ -101,7 +99,6 @@ function Laptop({ formData, handleFormDataChange }) {
                     ]}
                 />
                 <FormInput
-                    require
                     label='Ổ cứng (Không bắt buộc)'
                     value={formData.laptopOcung}
                     onChange={e =>
@@ -125,7 +122,6 @@ function Laptop({ formData, handleFormDataChange }) {
                 />
 
                 <FormInput
-                    require
                     label='Loại ổ cứng (Không bắt buộc)'
                     value={formData.laptopHdd}
                     onChange={e =>
@@ -135,7 +131,6 @@ function Laptop({ formData, handleFormDataChange }) {
                 />
 
                 <FormInput
-                    require
                     label='Card màn hình (Không bắt buộc)'
                     value={formData.laptopCardManHinh}
                     onChange={e =>
@@ -153,7 +148,6 @@ function Laptop({ formData, handleFormDataChange }) {
                 />
 
                 <FormInput
-                    require
                     label='Kích cỡ màn hình (Không bắt buộc)'
                     value={formData.laptopKichCoManHinh}
                     onChange={e =>

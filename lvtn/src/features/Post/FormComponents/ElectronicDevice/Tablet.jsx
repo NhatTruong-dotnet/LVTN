@@ -112,7 +112,6 @@ function Tablet({ formData, handleFormDataChange }) {
                         ]}
                     />
                     <FormInput
-                        require
                         label='Sử dụng simcard 3G/4G (Không bắt buộc)'
                         halfContainer
                         value={formData.mayTinhBang4g}

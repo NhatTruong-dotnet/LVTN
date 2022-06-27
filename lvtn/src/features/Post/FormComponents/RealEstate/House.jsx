@@ -82,7 +82,6 @@ function House({ formData, handleFormDataChange }) {
 
                         <FormInput
                             label='Số phòng vệ sinh(Không bắt buộc)'
-                            require
                             halfContainer
                             value={formData.nhaOSoPhongVeSinh}
                             onChange={e =>

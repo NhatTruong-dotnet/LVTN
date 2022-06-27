@@ -6,16 +6,18 @@ function AutoComplete({
     onClickItem = () => {},
     forSearch,
     functionMapping,
+    handleBackground,
 }) {
     const mapFunction =
         typeof functionMapping === 'function'
-            ? functionMapping
+            ? mapItem => functionMapping({ ...mapItem, handleBackground })
             : ({ value }) => (
                   <div
                       key={value}
                       className={styles.item}
                       onClick={() => {
                           onClickItem(value)
+                          handleBackground()
                       }}
                   >
                       {value}

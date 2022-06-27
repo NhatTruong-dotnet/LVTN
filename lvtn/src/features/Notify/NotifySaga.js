@@ -11,7 +11,6 @@ function* getAllNotifySaga() {
     const sdt = yield select(selectNumberPhone)
 
     const { listNotify, status, errorMessage } = yield call(getAllNotify, sdt)
-    console.log(listNotify)
     if (status === 200) {
         yield put(getAllNotifySuccess({ listNotify }))
     } else {

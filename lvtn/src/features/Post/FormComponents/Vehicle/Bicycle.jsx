@@ -156,7 +156,6 @@ function Bicycle({ formData, handleFormDataChange }) {
                         <div className={styles.formMessage}></div>
                     </div>
                     <FormInput
-                        require
                         label='Bảo hành(Không bắt buộc)'
                         value={formData.xeDapBaoHang}
                         onChange={e =>

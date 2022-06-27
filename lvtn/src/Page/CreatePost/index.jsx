@@ -59,7 +59,6 @@ function CreatePost({ signalRConnection, invokeMethod }) {
     }
 
     const handleSelectMediaFile = e => {
-        console.log(e.target.files[0])
         if (!e.target.files[0]) {
             return
         }
@@ -146,7 +145,6 @@ function CreatePost({ signalRConnection, invokeMethod }) {
         }
 
         if (validForm) {
-            console.log('submit')
             // dispatch(createPostPending())
             // const fileIdArray = await uploadImage(listFileDataMedia)
             // const formRequestData = { ...formData, medias: fileIdArray }
@@ -167,7 +165,6 @@ function CreatePost({ signalRConnection, invokeMethod }) {
 
     useEffect(() => {
         if (selectedCategory.category.id) {
-            console.log('set form')
             setFormData(
                 generateDefaultValueFormData(
                     selectedCategory.category.id,
@@ -180,9 +177,6 @@ function CreatePost({ signalRConnection, invokeMethod }) {
     useEffect(() => {
         dispatch({ type: 'loadLocationData' })
     }, [])
-    console.log(listLocation)
-
-    console.log(document.querySelectorAll('[class*="formMessage"]'))
 
     return (
         <div className='grid wide'>
