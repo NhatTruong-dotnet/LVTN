@@ -15,6 +15,7 @@ import Loading from '../../Common/Loading/Loading'
 import Picker from './Components/Picker/Picker'
 import { getFilterParams } from './data'
 import SearchAddressPicker from './Components/SearchAddressPicker/SearchAddressPicker'
+import { RiFilterOffLine } from 'react-icons/ri'
 
 function Search(props) {
     const [showCategoryPicker, setShowCategoryPicker] = useState(false)
@@ -38,17 +39,30 @@ function Search(props) {
     const dispatch = useDispatch()
     const isLoading = useSelector(selectSearchPendingState)
 
-    const handleSelectFilterItem = (key, value) => {
-        setSelectedParams(prev => ({
-            ...prev,
-            [key]: value,
-        }))
+    const handleSelectFilterItem = (key, value, type) => {
+        const resultObject = {
+            ...selectedParams,
+        }
+
+        if (type === 'multiChoice' && resultObject[key]) {
+            resultObject[key] = selectedParams[key].includes(value)
+                ? selectedParams[key].replace(value, '')
+                : (selectedParams[key] += value)
+        } else {
+            resultObject[key] = value
+        }
+        setSelectedParams(resultObject)
+
         dispatch({
             type: 'getPostWithFilterParams',
             searchCategory,
             address,
-            params: { ...selectedParams, [key]: value },
+            params: resultObject,
         })
+    }
+
+    const resetFilter = () => {
+        setSelectedParams({})
     }
 
     useEffect(() => {
@@ -70,6 +84,19 @@ function Search(props) {
                     <div className={styles.filterItem}>
                         <span
                             className={styles.filterValue}
+                            onClick={resetFilter}
+                        >
+                            <RiFilterOffLine
+                                style={{
+                                    position: 'relative',
+                                    right: 2,
+                                }}
+                            />
+                        </span>
+                    </div>
+                    <div className={styles.filterItem}>
+                        <span
+                            className={styles.filterValue}
                             onClick={() => setShowCategoryPicker(true)}
                         >
                             {searchCategory.name}
@@ -88,6 +115,7 @@ function Search(props) {
                             filterItem={item}
                             handleClickItem={handleSelectFilterItem}
                             selectedValue={selectedParams[item.key]}
+                            selectedParams={selectedParams}
                         />
                     ))}
                 </div>

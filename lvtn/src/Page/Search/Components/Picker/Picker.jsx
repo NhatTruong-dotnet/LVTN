@@ -1,14 +1,20 @@
 import React from 'react'
 import styles from './picker.module.css'
 import { MdOutlineKeyboardArrowRight } from 'react-icons/md'
-import { FaTimes } from 'react-icons/fa'
+import { FiCheck } from 'react-icons/fi'
+import { FaTimes, FaArrowLeft } from 'react-icons/fa'
 import { useState } from 'react'
 import DynamicModal from '../../../../Common/DynamicModal/DynamicModal'
 import clsx from 'clsx'
 import MultiRangeSlider from '../../../../Common/MultiRangeSlider/MultiRangeSlider'
 import { formatCurrency } from '../../../../Utils/formatCurrency'
 
-function Picker({ handleClickItem, filterItem, selectedValue }) {
+function Picker({
+    handleClickItem,
+    filterItem,
+    selectedValue,
+    selectedParams,
+}) {
     const [showPicker, setShowPicker] = useState(false)
     const openModal = () => setShowPicker(true)
     const closeModal = () => setShowPicker(false)
@@ -20,7 +26,9 @@ function Picker({ handleClickItem, filterItem, selectedValue }) {
         <>
             <div className={styles.filterItem} onClick={openModal}>
                 <span className={styles.filterValue}>
-                    {displayText}{' '}
+                    <span style={{ maxWidth: 200, overflow: 'hidden' }}>
+                        {displayText}{' '}
+                    </span>
                     {displayText !== filterItem.label && filterItem.unit}
                     <span className={styles.filterIcon}></span>
                 </span>
@@ -39,6 +47,7 @@ function Picker({ handleClickItem, filterItem, selectedValue }) {
                             filterItem={filterItem}
                             closeModal={closeModal}
                             handleClickItem={handleClickItem}
+                            selectedParams={selectedParams}
                         />
                     )}
                 </DynamicModal>
@@ -47,14 +56,26 @@ function Picker({ handleClickItem, filterItem, selectedValue }) {
     )
 }
 
-function SelectPicker({ filterItem, closeModal, handleClickItem }) {
+function SelectPicker({
+    filterItem,
+    closeModal,
+    handleClickItem,
+    selectedParams,
+}) {
     return (
         <div className={styles.cateModalContainer}>
             <div className={styles.header}>
                 <div className={styles.headerText}>{filterItem.label}</div>
-
+                <div
+                    className={clsx(styles.icon, styles.right, styles.text)}
+                    onClick={() => {
+                        handleClickItem(filterItem.key, '')
+                    }}
+                >
+                    Bỏ lọc
+                </div>
                 <FaTimes
-                    className={clsx(styles.icon, styles.right)}
+                    className={clsx(styles.icon, styles.left)}
                     onClick={closeModal}
                 />
             </div>
@@ -65,16 +86,45 @@ function SelectPicker({ filterItem, closeModal, handleClickItem }) {
                             className={styles.categoryItem}
                             key={value}
                             onClick={() => {
-                                handleClickItem(filterItem.key, value)
-                                closeModal()
+                                handleClickItem(
+                                    filterItem.key,
+                                    value,
+                                    filterItem.type
+                                )
+                                // if (filterItem.type !== 'multiChoice') {
+                                //     closeModal()
+                                // }
                             }}
                         >
                             <div className={styles.nameWrap}>
                                 <span className={styles.name}>{text}</span>
                             </div>
-                            <MdOutlineKeyboardArrowRight
-                                className={styles.pickerIcon}
-                            />
+
+                            <div
+                                className={clsx(styles.checkbox, {
+                                    [styles.checked]:
+                                        selectedParams[
+                                            filterItem.key
+                                        ]?.includes(value),
+                                    [styles.multiChoice]:
+                                        filterItem.type === 'multiChoice',
+                                })}
+                            >
+                                {selectedParams[filterItem.key]?.includes(
+                                    value
+                                ) ? (
+                                    <FiCheck className={styles.checkItem} />
+                                ) : (
+                                    ''
+                                )}
+                            </div>
+                            {/* {filterItem.type === 'multiChoice' ? (
+                                
+                            ) : (
+                                <MdOutlineKeyboardArrowRight
+                                    className={styles.pickerIcon}
+                                />
+                            )} */}
                         </div>
                     ))}
                 </div>

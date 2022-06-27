@@ -35,9 +35,11 @@ function* filterPost({ searchCategory, address, params }) {
 
     const { thanhPho, quanHuyen, phuongXa } = address
 
-    queryString += `/${thanhPho ? thanhPho + ';' : ''}${
+    queryString += `${thanhPho ? '/' + thanhPho + ';' : ''}${
         quanHuyen ? quanHuyen + ';' : ''
     }${phuongXa ? phuongXa + ';' : ''}`
+
+    const queryStringBeforeAddParams = queryString
 
     for (let key in params) {
         if (
@@ -46,11 +48,16 @@ function* filterPost({ searchCategory, address, params }) {
             params[key] !== null
         ) {
             for (let subKey in params[key]) {
-                queryString += `${params[key][subKey]};`
+                queryString += `${
+                    params[key][subKey] ? '/' + params[key][subKey] + ';' : ''
+                }`
             }
         } else {
-            queryString += `${params[key]};`
+            queryString += `${params[key] ? '/' + params[key] + ';' : ''}`
         }
+    }
+    if (queryStringBeforeAddParams === queryString) {
+        queryString += '/null'
     }
     console.log(queryString)
     const { status, listPost } = yield call(

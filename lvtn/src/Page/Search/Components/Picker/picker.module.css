@@ -48,6 +48,9 @@
     font-size: 16px;
     cursor: pointer;
 }
+.icon.text {
+    top: 8px;
+}
 .icon.left {
     left: 15px;
 }
@@ -104,4 +107,27 @@
     border-radius: 5px;
     max-height: 540px;
     overflow: auto;
+}
+.checkbox {
+    width: 20px;
+    height: 20px;
+    background-color: #f4f4f4;
+    border: 1px solid #d9d9d9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+}
+.singleChoice {
+    border-radius: 50%;
+}
+.multiChoice {
+    border-radius: 5px;
+}
+.checked {
+    background-color: #fd9827;
+}
+.checkItem {
+    font-size: 18px;
+    color: #fff;
 }
