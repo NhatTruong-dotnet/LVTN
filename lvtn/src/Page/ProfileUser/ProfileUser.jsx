@@ -15,6 +15,7 @@ import {
 } from '../../features/User/UserSlice'
 import clsx from 'clsx'
 import DynamicModal from '../../Common/DynamicModal/DynamicModal'
+import CustomTabs from '../../Common/CustomTabs/CustomTabs'
 
 const imgSrc = process.env.REACT_APP_BASE_IMG_URL
 
@@ -164,7 +165,8 @@ function ProfileUser(props) {
                 </div>
             </Frame>
             <Frame title={'Tin đang đăng'}>
-                {userPost.map(
+                <CustomTabs />
+                {/* {userPost.map(
                     ({
                         tieuDe,
                         idHinhAnh,
@@ -186,7 +188,7 @@ function ProfileUser(props) {
                             }
                         />
                     )
-                )}
+                )} */}
             </Frame>
         </div>
     )
