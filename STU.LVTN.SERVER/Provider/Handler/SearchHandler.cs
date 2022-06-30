@@ -34,15 +34,12 @@ namespace STU.LVTN.SERVER.Provider.Handler
                     return searchHelper.GetBaiDangApprove(sdt);
                     break;
                 case 2:
-                    return searchHelper.GetBaiDangApprove(sdt);
-                    break;
-                case 3:
                     return searchHelper.GetBaiDangNotReviewed(sdt);
                     break;
-                case 4:
+                case 3:
                     return searchHelper.GetBaiDangReject(sdt);
                     break;
-                case 5:
+                case 4:
                     return searchHelper.GetBaiDangDeactive(sdt);
                     break;
                 default:
