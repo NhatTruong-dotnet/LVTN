@@ -3,6 +3,7 @@ import { emitMessage } from '../../Common/ToastMessage/ToastMessage'
 
 const initialState = {
     isLoading: false,
+    isLoadingUserPost: false,
     userInfo: {
         soDienThoai: '',
         ten: '',
@@ -33,11 +34,23 @@ const userSlice = createSlice({
         },
         // --------------------------------------
         getUserPostPending: (state, action) => {
-            state.isLoading = true
+            state.isLoadingUserPost = true
         },
         getUserPostSuccess: (state, action) => {
-            state.isLoading = false
+            state.isLoadingUserPost = false
             state.userPost = action.payload.userPost
+        },
+        // --------------------------------------
+        getUserPostWithStatusPending: (state, action) => {
+            state.isLoadingUserPost = true
+        },
+        getUserPostWithStatusSuccess: (state, action) => {
+            state.isLoadingUserPost = false
+            state.userPost = action.payload.userPost
+        },
+        getUserPostWithStatusFail: (state, action) => {
+            state.isLoadingUserPost = false
+            state.userPost = []
         },
         // --------------------------------------
         updateProfileUserPending: (state, action) => {
@@ -64,6 +77,10 @@ export const {
     getUserPostPending,
     getUserPostSuccess,
     // -------------------
+    getUserPostWithStatusPending,
+    getUserPostWithStatusSuccess,
+    getUserPostWithStatusFail,
+    // -------------------
     updateProfileUserPending,
     upDateProfileUserSuccess,
     upDateProfileUserFail,
@@ -72,5 +89,6 @@ export const {
 export const selectUserInfo = state => state.user.userInfo
 export const selectUserPost = state => state.user.userPost
 export const selectPendingState = state => state.user.isLoading
+export const selectPendingStateUserPost = state => state.user.isLoadingUserPost
 
 export default reducer

@@ -4,16 +4,16 @@ import 'react-tabs/style/react-tabs.css'
 import TabContent from './Components/TabContent'
 
 const listTabId = [
-    { id: '1' },
-    { id: '2' },
-    { id: '3' },
-    { id: '4' },
-    { id: '5' },
+    { status: '0' },
+    { status: '1' },
+    { status: '2' },
+    { status: '3' },
+    { status: '4' },
 ]
 
-function CustomTabs(props) {
+function CustomTabs({ loginUserNumberPhone, profileUserNumberPhone }) {
     return (
-        <>
+        <div style={{ padding: 10 }}>
             <Tabs>
                 <TabList>
                     <Tab>Tất cả</Tab>
@@ -22,13 +22,17 @@ function CustomTabs(props) {
                     <Tab>Tin bị từ chối</Tab>
                     <Tab>Tin ẩn</Tab>
                 </TabList>
-                {listTabId.map(({ id }) => (
-                    <TabPanel key={id}>
-                        <TabContent id={id} />
+                {listTabId.map(({ status }) => (
+                    <TabPanel key={status}>
+                        <TabContent
+                            status={status}
+                            loginUserNumberPhone={loginUserNumberPhone}
+                            profileUserNumberPhone={profileUserNumberPhone}
+                        />
                     </TabPanel>
                 ))}
             </Tabs>
-        </>
+        </div>
     )
 }
 

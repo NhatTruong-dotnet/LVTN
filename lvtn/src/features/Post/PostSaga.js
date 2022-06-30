@@ -1,6 +1,7 @@
 import { put, takeLeading, takeLatest, call, select } from 'redux-saga/effects'
 import {
     createNewPost,
+    editPost,
     getPostDetailWithId,
     getPostWithSubCategoryId,
     loadLocationData,
@@ -9,6 +10,8 @@ import {
     createPostFail,
     createPostPending,
     createPostSuccess,
+    editPostFail,
+    editPostSuccess,
     getPostDetailFail,
     getPostDetailPending,
     getPostDetailSuccess,
@@ -26,6 +29,35 @@ export default function* postSaga() {
     yield takeLatest('getPostDetail', getPostDetail)
     yield takeLatest('getRelatedPost', getRelatedPost)
     yield takeLatest('loadLocationData', loadLocationDataSaga)
+    yield takeLatest('editPost', editPostSaga)
+}
+
+function* editPostSaga({ formData }) {
+    const sdt = yield select(selectNumberPhone)
+    const token = yield select(selectToken)
+
+    const requestFormData = mappingFormData(formData, sdt)
+
+    const { status, errorMessage } = yield call(
+        editPost,
+        requestFormData,
+        token
+    )
+    if (status === 200) {
+        window.invokeMethod('NotifyAdmin', sdt)
+        yield put(editPostSuccess())
+    } else if (status === 401) {
+        yield put(
+            editPostFail({
+                errorMessage:
+                    'Phiên làm việc hết hạn, vui lòng đăng nhập và thử lại',
+            })
+        )
+    } else {
+        yield put(createPostFail({ errorMessage }))
+    }
+
+    window.invokeMethod('NotifyAdmin', sdt)
 }
 
 function* getPost({ lastSubCategories }) {
@@ -54,7 +86,6 @@ function* getRelatedPost({ categoryId }) {
 }
 
 function* getPostDetail({ idPost }) {
-    console.log(idPost)
     yield put(getPostDetailPending())
     const { status, postDetail, errorMessage } = yield call(
         getPostDetailWithId,
@@ -82,7 +113,6 @@ function* createPost({ formData }) {
     const token = yield select(selectToken)
 
     const requestFormData = mappingFormData(formData, sdt)
-    console.log(requestFormData)
 
     const { status, errorMessage } = yield call(
         createNewPost,
@@ -90,7 +120,6 @@ function* createPost({ formData }) {
         token
     )
     if (status === 200) {
-        console.log(sdt)
         window.invokeMethod('NotifyAdmin', sdt)
         yield put(createPostSuccess())
     } else if (status === 401) {
@@ -104,7 +133,6 @@ function* createPost({ formData }) {
         yield put(createPostFail({ errorMessage }))
     }
 
-    console.log(sdt)
     window.invokeMethod('NotifyAdmin', sdt)
 }
 

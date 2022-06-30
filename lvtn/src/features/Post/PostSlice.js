@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 import { emitMessage } from '../../Common/ToastMessage/ToastMessage'
 
 const initialState = {
+    formMode: 'add',
     isLoading: false,
     listPost: [],
     selectedPostDetail: {},
@@ -14,6 +15,10 @@ const postSlice = createSlice({
     name: 'post',
     initialState,
     reducers: {
+        setFormMode: (state, action) => {
+            state.formMode = action.payload.formMode
+        },
+        // -------------------------------------
         createPostPending(state) {
             state.isLoading = true
         },
@@ -25,6 +30,9 @@ const postSlice = createSlice({
             state.isLoading = false
             emitMessage('error', action.payload.errorMessage)
         },
+        // -------------------------------------
+        editPostSuccess: state => {},
+        editPostFail: state => {},
         // -------------------------------------
         getPostPending(state) {
             state.isLoading = true
@@ -99,9 +107,14 @@ const postSlice = createSlice({
 const { reducer, actions } = postSlice
 
 export const {
+    setFormMode,
+    // ------------
     createPostPending,
     createPostSuccess,
     createPostFail,
+    // ------------
+    editPostSuccess,
+    editPostFail,
     // ------------
     getPostPending,
     getPostSuccess,
@@ -128,5 +141,6 @@ export const selectWishList = state => state.post.wishList
 export const selectRelatedPost = state => state.post.relatedPost
 export const selectPendingStatusPost = state => state.post.isLoading
 export const selectLocation = state => state.post.locationData
+export const selectFormMode = state => state.post.formMode
 
 export default reducer

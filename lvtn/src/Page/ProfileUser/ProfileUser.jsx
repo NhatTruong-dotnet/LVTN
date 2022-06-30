@@ -16,6 +16,7 @@ import {
 import clsx from 'clsx'
 import DynamicModal from '../../Common/DynamicModal/DynamicModal'
 import CustomTabs from '../../Common/CustomTabs/CustomTabs'
+import ListUserPost from './Components/ListUserPost'
 
 const imgSrc = process.env.REACT_APP_BASE_IMG_URL
 
@@ -27,17 +28,20 @@ function ProfileUser(props) {
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const isLoading = useSelector(selectPendingState)
-    console.log(userPost)
+
+    useEffect(() => {
+        if (loginUserNumberPhone === profileUserNumberPhone) {
+            dispatch({ type: 'getUserPost', sdt: profileUserNumberPhone })
+        }
+    }, [profileUserNumberPhone, loginUserNumberPhone])
 
     useEffect(() => {
         dispatch({ type: 'getProfile', sdt: profileUserNumberPhone })
-        dispatch({ type: 'getUserPost', sdt: profileUserNumberPhone })
     }, [profileUserNumberPhone])
 
     useEffect(() => {
         document.title = userProfile.ten
     }, [userProfile.ten])
-    console.log(userProfile)
     return (
         <div className='grid wide'>
             <DynamicModal showModal={isLoading} loading />
@@ -165,30 +169,17 @@ function ProfileUser(props) {
                 </div>
             </Frame>
             <Frame title={'Tin đang đăng'}>
-                <CustomTabs />
-                {/* {userPost.map(
-                    ({
-                        tieuDe,
-                        idHinhAnh,
-                        gia,
-                        ngayTao,
-                        thanhPho,
-                        idBaiDang,
-                    }) => (
-                        <HorizontalPost
-                            key={idBaiDang}
-                            idPost={idBaiDang}
-                            title={tieuDe}
-                            price={gia}
-                            imgId={idHinhAnh}
-                            location={thanhPho}
-                            createdDate={ngayTao}
-                            isMyPost={
-                                loginUserNumberPhone === profileUserNumberPhone
-                            }
-                        />
-                    )
-                )} */}
+                {profileUserNumberPhone === loginUserNumberPhone ? (
+                    <CustomTabs
+                        profileUserNumberPhone={profileUserNumberPhone}
+                        loginUserNumberPhone={loginUserNumberPhone}
+                    />
+                ) : (
+                    <ListUserPost
+                        profileUserNumberPhone={profileUserNumberPhone}
+                        loginUserNumberPhone={loginUserNumberPhone}
+                    />
+                )}
             </Frame>
         </div>
     )

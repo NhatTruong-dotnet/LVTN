@@ -15,7 +15,7 @@ import ImagePicker from './Components/ImagePicker'
 import VideoPicker from './Components/VideoPicker'
 import { useNavigate } from 'react-router-dom'
 import {
-    selectLocation,
+    selectFormMode,
     selectPendingStatusPost,
 } from '../../features/Post/PostSlice'
 import DynamicModal from '../../Common/DynamicModal/DynamicModal'
@@ -46,7 +46,7 @@ function CreatePost({ signalRConnection, invokeMethod }) {
     const isLogin = useSelector(selectLoginStatus)
     const dispatch = useDispatch()
     const isLoading = useSelector(selectPendingStatusPost)
-    const listLocation = useSelector(selectLocation)
+    const formMode = useSelector(selectFormMode)
 
     const openCategoryPicker = () => setIsShowCategoryPicker(true)
     const closeCategoryPicker = () => setIsShowCategoryPicker(false)
@@ -148,10 +148,17 @@ function CreatePost({ signalRConnection, invokeMethod }) {
             // dispatch(createPostPending())
             // const fileIdArray = await uploadImage(listFileDataMedia)
             // const formRequestData = { ...formData, medias: fileIdArray }
-            // dispatch({
-            //     type: 'createPost',
-            //     formData: formRequestData,
-            // })
+            if (formMode === 'add') {
+                // dispatch({
+                //     type: 'createPost',
+                //     formData: formRequestData,
+                // })
+            } else {
+                // dispatch({
+                //     type: 'editPost',
+                //     formData: formRequestData,
+                // })
+            }
         } else {
             emitMessage('error', 'Bạn chưa điền đầy đủ thông tin hợp lệ')
         }

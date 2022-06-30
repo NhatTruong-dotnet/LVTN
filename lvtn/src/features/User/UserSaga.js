@@ -1,6 +1,11 @@
 import { takeLatest, call, put, select } from 'redux-saga/effects'
 import { selectToken } from '../Auth/Login/loginSlice'
-import { getUserPost, getUserProfile, updateProfileUser } from './UserApi'
+import {
+    getUserPost,
+    getUserPostWithStatus,
+    getUserProfile,
+    updateProfileUser,
+} from './UserApi'
 import {
     getUserProfileFail,
     getUserProfileSuccess,
@@ -10,12 +15,16 @@ import {
     updateProfileUserPending,
     getUserProfilePending,
     getUserPostPending,
+    getUserPostWithStatusPending,
+    getUserPostWithStatusSuccess,
+    getUserPostWithStatusFail,
 } from './UserSlice'
 
 export default function* userSaga() {
     yield takeLatest('getProfile', getProfileSaga)
     yield takeLatest('getUserPost', getUserPostSaga)
     yield takeLatest('updateProfileUser', updateProfileSaga)
+    yield takeLatest('getUserPostWithStatus', getUserPostWithStatusSaga)
 }
 
 function* updateProfileSaga({ payload }) {
@@ -65,5 +74,27 @@ function* getUserPostSaga({ sdt }) {
         yield put(getUserPostSuccess({ userPost }))
     } else {
         yield put(getUserProfileFail({ errorMessage }))
+    }
+}
+
+function* getUserPostWithStatusSaga({ postStatus }) {
+    const token = yield select(selectToken)
+    yield put(getUserPostWithStatusPending())
+    const { userPost, status, errorMessage } = yield call(
+        getUserPostWithStatus,
+        token,
+        postStatus
+    )
+    if (status === 200) {
+        yield put(getUserPostWithStatusSuccess({ userPost }))
+    } else if (status === 401) {
+        yield put(
+            getUserPostWithStatusSuccess({
+                errorMessage:
+                    'Phiên đăng nhập hết hạn, vui lòng đăng nhập và thử lại sau',
+            })
+        )
+    } else {
+        yield put(getUserPostWithStatusFail({ errorMessage }))
     }
 }

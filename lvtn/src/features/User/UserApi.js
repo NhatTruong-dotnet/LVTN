@@ -20,6 +20,25 @@ export const getUserPost = async sdt => {
     } catch (error) {}
 }
 
+export const getUserPostWithStatus = async (token, postStatus) => {
+    try {
+        const res = await axios.get(
+            `${host}/api/Filter/BaiDang/status/${postStatus}`,
+            {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            }
+        )
+        const { data, status } = res
+        return { userPost: data, status }
+    } catch ({ response }) {
+        return {
+            status: response.status,
+        }
+    }
+}
+
 export const updateProfileUser = async (sdt, formData, token) => {
     try {
         const res = await axios.post(
