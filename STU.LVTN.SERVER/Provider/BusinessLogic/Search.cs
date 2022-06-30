@@ -1436,5 +1436,109 @@ namespace STU.LVTN.SERVER.Provider.BusinessLogic
             }
             return result;
         }
+
+        public List<BaiDangHomePageDTO> GetAllBaiDang(string sdt)
+        {
+            List<BaiDangHomePageDTO> result = new List<BaiDangHomePageDTO>();
+            foreach (BaiDangEntities entity in _context.BaiDangs.Where(item => item.SdtNguoiBan == sdt).ToList())
+            {
+                BaiDangHomePageDTO post = new BaiDangHomePageDTO();
+                post.Gia = entity.Gia;
+                post.TieuDe = entity.TieuDe;
+                post.NgayTao = entity.CreatedDate.ToString();
+                post.ThanhPho = entity.ThanhPho;
+                post.TieuDe = entity.TieuDe;
+                post.IDBaiDang = entity.IdBaiDang;
+                string idHinhAnh = _context.HinhAnhBaiDangs.Where(item => item.IdSanPham == entity.IdBaiDang && item.VideoType == false).First().IdMediaCloud;
+                post.IDHinhAnh = idHinhAnh;
+                result.Add(post);
+            }
+            return result;
+        }
+        public List<BaiDangHomePageDTO> GetBaiDangApprove(string sdt)
+        {
+            List<BaiDangHomePageDTO> result = new List<BaiDangHomePageDTO>();
+            List<BaiDangEntities> source = _context.BaiDangs.Where(item => item.SdtNguoiBan == sdt 
+                                            && item.AnTin == false 
+                                            && item.TrangThai == true 
+                                            && item.isReviewed == true).ToList();
+            foreach (BaiDangEntities entity in source)
+            {
+                BaiDangHomePageDTO post = new BaiDangHomePageDTO();
+                post.Gia = entity.Gia;
+                post.TieuDe = entity.TieuDe;
+                post.NgayTao = entity.CreatedDate.ToString();
+                post.ThanhPho = entity.ThanhPho;
+                post.TieuDe = entity.TieuDe;
+                post.IDBaiDang = entity.IdBaiDang;
+                string idHinhAnh = _context.HinhAnhBaiDangs.Where(item => item.IdSanPham == entity.IdBaiDang && item.VideoType == false).First().IdMediaCloud;
+                post.IDHinhAnh = idHinhAnh;
+                result.Add(post);
+            }
+            return result;
+        }
+        public List<BaiDangHomePageDTO> GetBaiDangNotReviewed(string sdt)
+        {
+            List<BaiDangHomePageDTO> result = new List<BaiDangHomePageDTO>();
+            List<BaiDangEntities> source = _context.BaiDangs.Where(item => item.SdtNguoiBan == sdt
+                                            && item.isReviewed == false).ToList();
+            foreach (BaiDangEntities entity in source)
+            {
+                BaiDangHomePageDTO post = new BaiDangHomePageDTO();
+                post.Gia = entity.Gia;
+                post.TieuDe = entity.TieuDe;
+                post.NgayTao = entity.CreatedDate.ToString();
+                post.ThanhPho = entity.ThanhPho;
+                post.TieuDe = entity.TieuDe;
+                post.IDBaiDang = entity.IdBaiDang;
+                string idHinhAnh = _context.HinhAnhBaiDangs.Where(item => item.IdSanPham == entity.IdBaiDang && item.VideoType == false).First().IdMediaCloud;
+                post.IDHinhAnh = idHinhAnh;
+                result.Add(post);
+            }
+            return result;
+        }
+        public List<BaiDangHomePageDTO> GetBaiDangReject(string sdt)
+        {
+            List<BaiDangHomePageDTO> result = new List<BaiDangHomePageDTO>();
+            List<BaiDangEntities> source = _context.BaiDangs.Where(item => item.SdtNguoiBan == sdt
+                                            && item.AnTin == false
+                                            && item.TrangThai == false
+                                            && item.isReviewed == true).ToList();
+            foreach (BaiDangEntities entity in source)
+            {
+                BaiDangHomePageDTO post = new BaiDangHomePageDTO();
+                post.Gia = entity.Gia;
+                post.TieuDe = entity.TieuDe;
+                post.NgayTao = entity.CreatedDate.ToString();
+                post.ThanhPho = entity.ThanhPho;
+                post.TieuDe = entity.TieuDe;
+                post.IDBaiDang = entity.IdBaiDang;
+                string idHinhAnh = _context.HinhAnhBaiDangs.Where(item => item.IdSanPham == entity.IdBaiDang && item.VideoType == false).First().IdMediaCloud;
+                post.IDHinhAnh = idHinhAnh;
+                result.Add(post);
+            }
+            return result;
+        }
+        public List<BaiDangHomePageDTO> GetBaiDangDeactive(string sdt)
+        {
+            List<BaiDangHomePageDTO> result = new List<BaiDangHomePageDTO>();
+            List<BaiDangEntities> source = _context.BaiDangs.Where(item => item.SdtNguoiBan == sdt
+                                            && item.AnTin == true
+                                            && item.isReviewed == true).ToList();
+            foreach (BaiDangEntities entity in source)
+            {
+                BaiDangHomePageDTO post = new BaiDangHomePageDTO();
+                post.Gia = entity.Gia;
+                post.TieuDe = entity.TieuDe;
+                post.NgayTao = entity.CreatedDate.ToString();
+                post.ThanhPho = entity.ThanhPho;
+                post.TieuDe = entity.TieuDe;
+                post.IDBaiDang = entity.IdBaiDang;
+                string idHinhAnh = _context.HinhAnhBaiDangs.Where(item => item.IdSanPham == entity.IdBaiDang && item.VideoType == false).First().IdMediaCloud;
+                post.IDHinhAnh = idHinhAnh;
+                result.Add(post);
+            }
+            return result;
+        }
     }
 }

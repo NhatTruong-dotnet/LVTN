@@ -22,5 +22,33 @@ namespace STU.LVTN.SERVER.Provider.Handler
         {
             return searchHelper.Filter(idDanhMucCha, idDanhMucCon, queryString);
         }
+
+        public  List<BaiDangHomePageDTO> FilterStatus(int statusFilter, string sdt)
+        {
+            switch (statusFilter)
+            {
+                case 0:
+                     return  searchHelper.GetAllBaiDang(sdt);
+                    break;
+                case 1:
+                    return searchHelper.GetBaiDangApprove(sdt);
+                    break;
+                case 2:
+                    return searchHelper.GetBaiDangApprove(sdt);
+                    break;
+                case 3:
+                    return searchHelper.GetBaiDangNotReviewed(sdt);
+                    break;
+                case 4:
+                    return searchHelper.GetBaiDangReject(sdt);
+                    break;
+                case 5:
+                    return searchHelper.GetBaiDangDeactive(sdt);
+                    break;
+                default:
+                    return new List<BaiDangHomePageDTO>();
+                    break;
+            }
+        }
     }
 }

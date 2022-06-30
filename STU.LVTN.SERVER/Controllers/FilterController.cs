@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using STU.LVTN.SERVER.Model.DTO;
@@ -21,6 +22,13 @@ namespace STU.LVTN.SERVER.Controllers
         public async Task<ActionResult<List<BaiDangHomePageDTO>>> Filter(int idDanhMucCha, int idDanhMucCon = -1, string? queryString = "null")
         {
             return await searchHandler.Filter(idDanhMucCha, idDanhMucCon, queryString);
+        }
+
+        [HttpGet("BaiDang/status/{idStatus?}"),Authorize]
+        public async Task<ActionResult<List<BaiDangHomePageDTO>>> FilterStatusBaiDang(int idStatus)
+        {
+
+            return  searchHandler.FilterStatus(idStatus, HttpContext.User.Claims.Where(item => item.Type == "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname").First().Value);
         }
     }
 }
