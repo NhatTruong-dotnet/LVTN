@@ -30,7 +30,7 @@ function ProfileUser(props) {
     const isLoading = useSelector(selectPendingState)
 
     useEffect(() => {
-        if (loginUserNumberPhone === profileUserNumberPhone) {
+        if (loginUserNumberPhone !== profileUserNumberPhone) {
             dispatch({ type: 'getUserPost', sdt: profileUserNumberPhone })
         }
     }, [profileUserNumberPhone, loginUserNumberPhone])
@@ -168,7 +168,13 @@ function ProfileUser(props) {
                     </div>
                 </div>
             </Frame>
-            <Frame title={'Tin đang đăng'}>
+            <Frame
+                title={
+                    profileUserNumberPhone === loginUserNumberPhone
+                        ? ''
+                        : 'Tin đang đăng'
+                }
+            >
                 {profileUserNumberPhone === loginUserNumberPhone ? (
                     <CustomTabs
                         profileUserNumberPhone={profileUserNumberPhone}

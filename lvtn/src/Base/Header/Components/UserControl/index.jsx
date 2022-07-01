@@ -75,10 +75,10 @@ function UserControl({ username, sdt }) {
                                     className={styles.icon}
                                 />
                                 <span className={styles.controlLabel}>
-                                    Đơn bán
+                                    Bài đăng
                                 </span>
                             </div>
-                            <div className={styles.controlItem}>
+                            {/* <div className={styles.controlItem}>
                                 <img
                                     src='https://static.chotot.com/storage/chotot-icons/svg/escrow_buy_orders.svg'
                                     alt='icon'
@@ -87,7 +87,7 @@ function UserControl({ username, sdt }) {
                                 <span className={styles.controlLabel}>
                                     Đơn mua
                                 </span>
-                            </div>
+                            </div> */}
                             <div
                                 className={styles.controlItem}
                                 onClick={() => handleNavigate(`/wish-list`)}

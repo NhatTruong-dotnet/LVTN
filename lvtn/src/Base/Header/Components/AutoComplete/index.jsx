@@ -5,8 +5,8 @@ function AutoComplete({
     items = [],
     onClickItem = () => {},
     forSearch,
-    functionMapping,
-    handleBackground,
+    functionMapping = () => {},
+    handleBackground = () => {},
 }) {
     const mapFunction =
         typeof functionMapping === 'function'

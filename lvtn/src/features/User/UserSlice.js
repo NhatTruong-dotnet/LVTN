@@ -51,6 +51,7 @@ const userSlice = createSlice({
         getUserPostWithStatusFail: (state, action) => {
             state.isLoadingUserPost = false
             state.userPost = []
+            emitMessage('error', action.payload.errorMessage)
         },
         // --------------------------------------
         updateProfileUserPending: (state, action) => {

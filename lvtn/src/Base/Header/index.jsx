@@ -91,6 +91,7 @@ function Header(props) {
                                 <AutoComplete
                                     searchValue={searchValue}
                                     isShow={isShowAutoComplete}
+                                    // forSearch
                                 />
                             )}
                         </div>
