@@ -20,6 +20,20 @@ namespace STU.LVTN.SERVER.Provider.BusinessLogic
             }
         }
 
+        public int UpdateBaiDang(BaiDangBatDongSanEntities baiDangRequest)
+        {
+            try
+            {
+                _context.BaiDangBatDongSans.Update(baiDangRequest);
+                _context.SaveChanges();
+                return baiDangRequest.IdBaiDang;
+            }
+            catch (Exception)
+            {
+                return -1;
+            }
+        }
+
         public Dictionary<string, string> getPost_CC_ByID(int? idPostDetail)
         {
             Dictionary<string, string> post = new Dictionary<string, string>();
@@ -38,7 +52,6 @@ namespace STU.LVTN.SERVER.Provider.BusinessLogic
                 post.Add("Số toilet: ", entity.soToilet.ToString());
             return post;
         }
-
         public Dictionary<string, string> getPost_NhaO_ByID(int? idPostDetail)
         {
             Dictionary<string, string> post = new Dictionary<string, string>();

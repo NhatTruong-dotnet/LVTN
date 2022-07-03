@@ -3,6 +3,7 @@
     public class BaiDangBatDongSanDat_DTO
     {
         public int IdDanhMucCha { get; set; }
+        public int? IdBaiDang { get; set; }
         public string? SdtNguoiBan { get; set; }
         public string? SdtNguoiMua { get; set; }
         public bool AnTin { get; set; } = false;

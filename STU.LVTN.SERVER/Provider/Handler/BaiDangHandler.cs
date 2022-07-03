@@ -31,6 +31,7 @@ namespace STU.LVTN.SERVER.Provider.Handler
     {
         BaiDang baiDangHelper;
         private readonly IMapper _mapper;
+        private readonly LVTNContext ctx;
         BaiDangBatDongSan baiDangBatDongSanHelper;
         BaiDangXeCo baiDangXeCoHelper;
         BaiDangDoDienTu baiDangDoDienTuHelper;
@@ -48,7 +49,7 @@ namespace STU.LVTN.SERVER.Provider.Handler
         public BaiDangHandler(IMapper mapper)
         {
             _mapper = mapper;
-            baiDangHelper = new BaiDang(_mapper);
+            baiDangHelper = new BaiDang(_mapper, ctx);
             baiDangBatDongSanHelper = new BaiDangBatDongSan();
             baiDangXeCoHelper = new BaiDangXeCo();
             baiDangDoDienTuHelper = new BaiDangDoDienTu();
@@ -648,7 +649,6 @@ namespace STU.LVTN.SERVER.Provider.Handler
                         hinhAnhRequest.VideoType = false;
                     hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
                 }
-                #endregion
                 BaiDangEntities baiDangGlobal = _mapper.Map<BaiDangEntities>(baiDangRequest);
                 baiDangGlobal.IdBaiDangChiTiet = lastIDPost;
                 return await baiDangHelper.AddBaiDang(baiDangGlobal);
@@ -756,6 +756,7 @@ namespace STU.LVTN.SERVER.Provider.Handler
                 }
             }
         }
+        #endregion
 
         #region BaiDangDoDienTu
         public async Task<bool> AddBaiDangDoDienTuDienThoai(BaiDangDoDienTuDienThoai_DTO baiDangRequest)
@@ -1825,6 +1826,1118 @@ namespace STU.LVTN.SERVER.Provider.Handler
                 }
             }
         }
+        #endregion
+        #endregion
+
+        #region Update
+        #region BaiDangBatDongSan
+        public async Task<bool> UpdateBaiDangBatDongSanCC(BaiDangBatDongSanCC_DTO baiDangRequest)
+        {
+            BaiDangBatDongSanEntities baiDangBatDongSanCC = _mapper.Map<BaiDangBatDongSanEntities>(baiDangRequest);
+            baiDangBatDongSanCC.IdBaiDang = baiDangHelper.GetPostDetailID((int)baiDangRequest.IdBaiDang);
+            int lastIDPost = baiDangBatDongSanHelper.UpdateBaiDang(baiDangBatDongSanCC);
+            if (lastIDPost == -1)
+            {
+                return false;
+            }
+            else
+            {
+                try
+                {
+                    BaiDangEntities baiDangGlobal = _mapper.Map<BaiDangEntities>(baiDangRequest);
+                    baiDangGlobal.IdBaiDangChiTiet = lastIDPost;
+                    await baiDangHelper.UpdateBaiDang(baiDangGlobal);
+                    List<HinhAnhBaiDangEntities> hinhAnhExist = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(lastIDPost);
+                    foreach (var item in baiDangRequest.hinhAnh_BaiDangs)
+                    {
+                        HinhAnhBaiDangEntities hinhAnhRequest = new HinhAnhBaiDangEntities();
+                        hinhAnhRequest.IdSanPham = (int)baiDangRequest.IdBaiDang;
+                        hinhAnhRequest.IdMediaCloud = item.id;
+                        if (item.type.Contains("video"))
+                            hinhAnhRequest.VideoType = true;
+                        else
+                            hinhAnhRequest.VideoType = false;
+
+                        if(hinhAnhExist.Contains(hinhAnhRequest))
+                        {
+                            int idxHinhAnh = hinhAnhExist.IndexOf(hinhAnhRequest);
+                            hinhAnhExist.RemoveAt(idxHinhAnh);
+                        }
+                        else
+                        {
+                            hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
+                        }    
+                    }
+                    if (hinhAnhExist.Count > 0)
+                    {
+                        foreach (var item in hinhAnhExist)
+                        {
+                            item.IdSanPham = -1;
+                        }
+                    }
+                    return true;
+                }
+                catch (Exception)
+                {
+                    return false;
+                }
+            }
+        }
+        public async Task<bool> UpdateBaiDangBatDongSanNhaO(BaiDangBatDongSanNhaO_DTO baiDangRequest)
+        {
+            BaiDangBatDongSanEntities baiDangBatDongSanCC = _mapper.Map<BaiDangBatDongSanEntities>(baiDangRequest);
+            baiDangBatDongSanCC.IdBaiDang = baiDangHelper.GetPostDetailID((int)baiDangRequest.IdBaiDang);
+            int lastIDPost = baiDangBatDongSanHelper.UpdateBaiDang(baiDangBatDongSanCC);
+            if (lastIDPost == -1)
+            {
+                return false;
+            }
+            else
+            {
+                try
+                {
+                    BaiDangEntities baiDangGlobal = _mapper.Map<BaiDangEntities>(baiDangRequest);
+                    baiDangGlobal.IdBaiDangChiTiet = lastIDPost;
+                    await baiDangHelper.UpdateBaiDang(baiDangGlobal);
+                    List<HinhAnhBaiDangEntities> hinhAnhExist = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(lastIDPost);
+                    foreach (var item in baiDangRequest.hinhAnh_BaiDangs)
+                    {
+                        HinhAnhBaiDangEntities hinhAnhRequest = new HinhAnhBaiDangEntities();
+                        hinhAnhRequest.IdSanPham = (int)baiDangRequest.IdBaiDang;
+                        hinhAnhRequest.IdMediaCloud = item.id;
+                        if (item.type.Contains("video"))
+                            hinhAnhRequest.VideoType = true;
+                        else
+                            hinhAnhRequest.VideoType = false;
+
+                        if (hinhAnhExist.Contains(hinhAnhRequest))
+                        {
+                            int idxHinhAnh = hinhAnhExist.IndexOf(hinhAnhRequest);
+                            hinhAnhExist.RemoveAt(idxHinhAnh);
+                        }
+                        else
+                        {
+                            hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
+                        }
+                    }
+                    if (hinhAnhExist.Count > 0)
+                    {
+                        foreach (var item in hinhAnhExist)
+                        {
+                            item.IdSanPham = -1;
+                        }
+                    }
+                    return true;
+                }
+                catch (Exception)
+                {
+                    return false;
+                }
+            }
+        }
+        public async Task<bool> UpdateBaiDangBatDongSanDat(BaiDangBatDongSanDat_DTO baiDangRequest)
+        {
+            BaiDangBatDongSanEntities baiDangBatDongSanCC = _mapper.Map<BaiDangBatDongSanEntities>(baiDangRequest);
+            baiDangBatDongSanCC.IdBaiDang = baiDangHelper.GetPostDetailID((int)baiDangRequest.IdBaiDang);
+            int lastIDPost = baiDangBatDongSanHelper.UpdateBaiDang(baiDangBatDongSanCC);
+            if (lastIDPost == -1)
+            {
+                return false;
+            }
+            else
+            {
+                try
+                {
+                    BaiDangEntities baiDangGlobal = _mapper.Map<BaiDangEntities>(baiDangRequest);
+                    baiDangGlobal.IdBaiDangChiTiet = lastIDPost;
+                    await baiDangHelper.UpdateBaiDang(baiDangGlobal);
+                    List<HinhAnhBaiDangEntities> hinhAnhExist = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(lastIDPost);
+                    foreach (var item in baiDangRequest.hinhAnh_BaiDangs)
+                    {
+                        HinhAnhBaiDangEntities hinhAnhRequest = new HinhAnhBaiDangEntities();
+                        hinhAnhRequest.IdSanPham = (int)baiDangRequest.IdBaiDang;
+                        hinhAnhRequest.IdMediaCloud = item.id;
+                        if (item.type.Contains("video"))
+                            hinhAnhRequest.VideoType = true;
+                        else
+                            hinhAnhRequest.VideoType = false;
+
+                        if (hinhAnhExist.Contains(hinhAnhRequest))
+                        {
+                            int idxHinhAnh = hinhAnhExist.IndexOf(hinhAnhRequest);
+                            hinhAnhExist.RemoveAt(idxHinhAnh);
+                        }
+                        else
+                        {
+                            hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
+                        }
+                    }
+                    if (hinhAnhExist.Count > 0)
+                    {
+                        foreach (var item in hinhAnhExist)
+                        {
+                            item.IdSanPham = -1;
+                        }
+                    }
+                    return true;
+                }
+                catch (Exception)
+                {
+                    return false;
+                }
+            }
+        }
+        public async Task<bool> UpdateBaiDangBatDongSanVanPhong(BaiDangBatDongSanVanPhong_DTO baiDangRequest)
+        {
+            BaiDangBatDongSanEntities baiDangBatDongSanCC = _mapper.Map<BaiDangBatDongSanEntities>(baiDangRequest);
+            baiDangBatDongSanCC.IdBaiDang = baiDangHelper.GetPostDetailID((int)baiDangRequest.IdBaiDang);
+            int lastIDPost = baiDangBatDongSanHelper.UpdateBaiDang(baiDangBatDongSanCC);
+            if (lastIDPost == -1)
+            {
+                return false;
+            }
+            else
+            {
+                try
+                {
+                    BaiDangEntities baiDangGlobal = _mapper.Map<BaiDangEntities>(baiDangRequest);
+                    baiDangGlobal.IdBaiDangChiTiet = lastIDPost;
+                    await baiDangHelper.UpdateBaiDang(baiDangGlobal);
+                    List<HinhAnhBaiDangEntities> hinhAnhExist = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(lastIDPost);
+                    foreach (var item in baiDangRequest.hinhAnh_BaiDangs)
+                    {
+                        HinhAnhBaiDangEntities hinhAnhRequest = new HinhAnhBaiDangEntities();
+                        hinhAnhRequest.IdSanPham = (int)baiDangRequest.IdBaiDang;
+                        hinhAnhRequest.IdMediaCloud = item.id;
+                        if (item.type.Contains("video"))
+                            hinhAnhRequest.VideoType = true;
+                        else
+                            hinhAnhRequest.VideoType = false;
+
+                        if (hinhAnhExist.Contains(hinhAnhRequest))
+                        {
+                            int idxHinhAnh = hinhAnhExist.IndexOf(hinhAnhRequest);
+                            hinhAnhExist.RemoveAt(idxHinhAnh);
+                        }
+                        else
+                        {
+                            hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
+                        }
+                    }
+                    if (hinhAnhExist.Count > 0)
+                    {
+                        foreach (var item in hinhAnhExist)
+                        {
+                            item.IdSanPham = -1;
+                        }
+                    }
+                    return true;
+                }
+                catch (Exception)
+                {
+                    return false;
+                }
+            }
+        }
+        public async Task<bool> UpdateBaiDangBatDongSanPhongTro(BaiDangBatDongSanPhongTro_DTO baiDangRequest)
+        {
+            BaiDangBatDongSanEntities baiDangBatDongSanCC = _mapper.Map<BaiDangBatDongSanEntities>(baiDangRequest);
+            baiDangBatDongSanCC.IdBaiDang = baiDangHelper.GetPostDetailID((int)baiDangRequest.IdBaiDang);
+            int lastIDPost = baiDangBatDongSanHelper.UpdateBaiDang(baiDangBatDongSanCC);
+            if (lastIDPost == -1)
+            {
+                return false;
+            }
+            else
+            {
+                try
+                {
+                    BaiDangEntities baiDangGlobal = _mapper.Map<BaiDangEntities>(baiDangRequest);
+                    baiDangGlobal.IdBaiDangChiTiet = lastIDPost;
+                    await baiDangHelper.UpdateBaiDang(baiDangGlobal);
+                    List<HinhAnhBaiDangEntities> hinhAnhExist = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(lastIDPost);
+                    foreach (var item in baiDangRequest.hinhAnh_BaiDangs)
+                    {
+                        HinhAnhBaiDangEntities hinhAnhRequest = new HinhAnhBaiDangEntities();
+                        hinhAnhRequest.IdSanPham = (int)baiDangRequest.IdBaiDang;
+                        hinhAnhRequest.IdMediaCloud = item.id;
+                        if (item.type.Contains("video"))
+                            hinhAnhRequest.VideoType = true;
+                        else
+                            hinhAnhRequest.VideoType = false;
+
+                        if (hinhAnhExist.Contains(hinhAnhRequest))
+                        {
+                            int idxHinhAnh = hinhAnhExist.IndexOf(hinhAnhRequest);
+                            hinhAnhExist.RemoveAt(idxHinhAnh);
+                        }
+                        else
+                        {
+                            hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
+                        }
+                    }
+                    if (hinhAnhExist.Count > 0)
+                    {
+                        foreach (var item in hinhAnhExist)
+                        {
+                            item.IdSanPham = -1;
+                        }
+                    }
+                    return true;
+                }
+                catch (Exception)
+                {
+                    return false;
+                }
+            }
+        }
+        #endregion
+
+        #region BaiDangXeCo
+        public async Task<bool> UpdateBaiDangXeCoOTo(BaiDangXeCoOto_DTO baiDangRequest)
+        {
+            BaiDangXeCoEntities baiDangXeCoOto = _mapper.Map<BaiDangXeCoEntities>(baiDangRequest);
+            baiDangXeCoOto.IdBaiDang = baiDangHelper.GetPostDetailID((int)baiDangRequest.IdBaiDang);
+            int lastIDPost = baiDangXeCoHelper.UpdateBaiDang(baiDangXeCoOto);
+            if (lastIDPost == -1)
+            {
+                return false;
+            }
+            else
+            {
+                try
+                {
+                    BaiDangEntities baiDangGlobal = _mapper.Map<BaiDangEntities>(baiDangRequest);
+                    baiDangGlobal.IdBaiDangChiTiet = lastIDPost;
+                    await baiDangHelper.UpdateBaiDang(baiDangGlobal);
+                    List<HinhAnhBaiDangEntities> hinhAnhExist = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(lastIDPost);
+                    foreach (var item in baiDangRequest.hinhAnh_BaiDangs)
+                    {
+                        HinhAnhBaiDangEntities hinhAnhRequest = new HinhAnhBaiDangEntities();
+                        hinhAnhRequest.IdSanPham = (int)baiDangRequest.IdBaiDang;
+                        hinhAnhRequest.IdMediaCloud = item.id;
+                        if (item.type.Contains("video"))
+                            hinhAnhRequest.VideoType = true;
+                        else
+                            hinhAnhRequest.VideoType = false;
+
+                        if (hinhAnhExist.Contains(hinhAnhRequest))
+                        {
+                            int idxHinhAnh = hinhAnhExist.IndexOf(hinhAnhRequest);
+                            hinhAnhExist.RemoveAt(idxHinhAnh);
+                        }
+                        else
+                        {
+                            hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
+                        }
+                    }
+                    if (hinhAnhExist.Count > 0)
+                    {
+                        foreach (var item in hinhAnhExist)
+                        {
+                            item.IdSanPham = -1;
+                        }
+                    }
+                    return true;
+                }
+                catch (Exception)
+                {
+                    return false;
+                }
+            }
+        }
+        public async Task<bool> UpdateBaiDangXeCoXeMay(BaiDangXeCoXeMay_DTO baiDangRequest)
+        {
+            BaiDangXeCoEntities baiDangXeCoOto = _mapper.Map<BaiDangXeCoEntities>(baiDangRequest);
+            baiDangXeCoOto.IdBaiDang = baiDangHelper.GetPostDetailID((int)baiDangRequest.IdBaiDang);
+            int lastIDPost = baiDangXeCoHelper.UpdateBaiDang(baiDangXeCoOto);
+            if (lastIDPost == -1)
+            {
+                return false;
+            }
+            else
+            {
+                try
+                {
+                    BaiDangEntities baiDangGlobal = _mapper.Map<BaiDangEntities>(baiDangRequest);
+                    baiDangGlobal.IdBaiDangChiTiet = lastIDPost;
+                    await baiDangHelper.UpdateBaiDang(baiDangGlobal);
+                    List<HinhAnhBaiDangEntities> hinhAnhExist = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(lastIDPost);
+                    foreach (var item in baiDangRequest.hinhAnh_BaiDangs)
+                    {
+                        HinhAnhBaiDangEntities hinhAnhRequest = new HinhAnhBaiDangEntities();
+                        hinhAnhRequest.IdSanPham = (int)baiDangRequest.IdBaiDang;
+                        hinhAnhRequest.IdMediaCloud = item.id;
+                        if (item.type.Contains("video"))
+                            hinhAnhRequest.VideoType = true;
+                        else
+                            hinhAnhRequest.VideoType = false;
+
+                        if (hinhAnhExist.Contains(hinhAnhRequest))
+                        {
+                            int idxHinhAnh = hinhAnhExist.IndexOf(hinhAnhRequest);
+                            hinhAnhExist.RemoveAt(idxHinhAnh);
+                        }
+                        else
+                        {
+                            hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
+                        }
+                    }
+                    if (hinhAnhExist.Count > 0)
+                    {
+                        foreach (var item in hinhAnhExist)
+                        {
+                            item.IdSanPham = -1;
+                        }
+                    }
+                    return true;
+                }
+                catch (Exception)
+                {
+                    return false;
+                }
+            }
+        }
+        public async Task<bool> UpdateBaiDangXeCoXeTai(BaiDangXeCoXeTai_DTO baiDangRequest)
+        {
+            BaiDangXeCoEntities baiDangXeCoOto = _mapper.Map<BaiDangXeCoEntities>(baiDangRequest);
+            baiDangXeCoOto.IdBaiDang = baiDangHelper.GetPostDetailID((int)baiDangRequest.IdBaiDang);
+            int lastIDPost = baiDangXeCoHelper.UpdateBaiDang(baiDangXeCoOto);
+            if (lastIDPost == -1)
+            {
+                return false;
+            }
+            else
+            {
+                try
+                {
+                    BaiDangEntities baiDangGlobal = _mapper.Map<BaiDangEntities>(baiDangRequest);
+                    baiDangGlobal.IdBaiDangChiTiet = lastIDPost;
+                    await baiDangHelper.UpdateBaiDang(baiDangGlobal);
+                    List<HinhAnhBaiDangEntities> hinhAnhExist = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(lastIDPost);
+                    foreach (var item in baiDangRequest.hinhAnh_BaiDangs)
+                    {
+                        HinhAnhBaiDangEntities hinhAnhRequest = new HinhAnhBaiDangEntities();
+                        hinhAnhRequest.IdSanPham = (int)baiDangRequest.IdBaiDang;
+                        hinhAnhRequest.IdMediaCloud = item.id;
+                        if (item.type.Contains("video"))
+                            hinhAnhRequest.VideoType = true;
+                        else
+                            hinhAnhRequest.VideoType = false;
+
+                        if (hinhAnhExist.Contains(hinhAnhRequest))
+                        {
+                            int idxHinhAnh = hinhAnhExist.IndexOf(hinhAnhRequest);
+                            hinhAnhExist.RemoveAt(idxHinhAnh);
+                        }
+                        else
+                        {
+                            hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
+                        }
+                    }
+                    if (hinhAnhExist.Count > 0)
+                    {
+                        foreach (var item in hinhAnhExist)
+                        {
+                            item.IdSanPham = -1;
+                        }
+                    }
+                    return true;
+                }
+                catch (Exception)
+                {
+                    return false;
+                }
+            }
+        }
+        public async Task<bool> UpdateBaiDangXeCoXeDien(BaiDangXeCoXeDien_DTO baiDangRequest)
+        {
+            BaiDangXeCoEntities baiDangXeCoOto = _mapper.Map<BaiDangXeCoEntities>(baiDangRequest);
+            baiDangXeCoOto.IdBaiDang = baiDangHelper.GetPostDetailID((int)baiDangRequest.IdBaiDang);
+            int lastIDPost = baiDangXeCoHelper.UpdateBaiDang(baiDangXeCoOto);
+            if (lastIDPost == -1)
+            {
+                return false;
+            }
+            else
+            {
+                try
+                {
+                    BaiDangEntities baiDangGlobal = _mapper.Map<BaiDangEntities>(baiDangRequest);
+                    baiDangGlobal.IdBaiDangChiTiet = lastIDPost;
+                    await baiDangHelper.UpdateBaiDang(baiDangGlobal);
+                    List<HinhAnhBaiDangEntities> hinhAnhExist = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(lastIDPost);
+                    foreach (var item in baiDangRequest.hinhAnh_BaiDangs)
+                    {
+                        HinhAnhBaiDangEntities hinhAnhRequest = new HinhAnhBaiDangEntities();
+                        hinhAnhRequest.IdSanPham = (int)baiDangRequest.IdBaiDang;
+                        hinhAnhRequest.IdMediaCloud = item.id;
+                        if (item.type.Contains("video"))
+                            hinhAnhRequest.VideoType = true;
+                        else
+                            hinhAnhRequest.VideoType = false;
+
+                        if (hinhAnhExist.Contains(hinhAnhRequest))
+                        {
+                            int idxHinhAnh = hinhAnhExist.IndexOf(hinhAnhRequest);
+                            hinhAnhExist.RemoveAt(idxHinhAnh);
+                        }
+                        else
+                        {
+                            hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
+                        }
+                    }
+                    if (hinhAnhExist.Count > 0)
+                    {
+                        foreach (var item in hinhAnhExist)
+                        {
+                            item.IdSanPham = -1;
+                        }
+                    }
+                    return true;
+                }
+                catch (Exception)
+                {
+                    return false;
+                }
+            }
+        }
+        public async Task<bool> UpdateBaiDangXeCoXeDap(BaiDangXeCoXeDap_DTO baiDangRequest)
+        {
+            BaiDangXeCoEntities baiDangXeCoOto = _mapper.Map<BaiDangXeCoEntities>(baiDangRequest);
+            baiDangXeCoOto.IdBaiDang = baiDangHelper.GetPostDetailID((int)baiDangRequest.IdBaiDang);
+            int lastIDPost = baiDangXeCoHelper.UpdateBaiDang(baiDangXeCoOto);
+            if (lastIDPost == -1)
+            {
+                return false;
+            }
+            else
+            {
+                try
+                {
+                    BaiDangEntities baiDangGlobal = _mapper.Map<BaiDangEntities>(baiDangRequest);
+                    baiDangGlobal.IdBaiDangChiTiet = lastIDPost;
+                    await baiDangHelper.UpdateBaiDang(baiDangGlobal);
+                    List<HinhAnhBaiDangEntities> hinhAnhExist = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(lastIDPost);
+                    foreach (var item in baiDangRequest.hinhAnh_BaiDangs)
+                    {
+                        HinhAnhBaiDangEntities hinhAnhRequest = new HinhAnhBaiDangEntities();
+                        hinhAnhRequest.IdSanPham = (int)baiDangRequest.IdBaiDang;
+                        hinhAnhRequest.IdMediaCloud = item.id;
+                        if (item.type.Contains("video"))
+                            hinhAnhRequest.VideoType = true;
+                        else
+                            hinhAnhRequest.VideoType = false;
+
+                        if (hinhAnhExist.Contains(hinhAnhRequest))
+                        {
+                            int idxHinhAnh = hinhAnhExist.IndexOf(hinhAnhRequest);
+                            hinhAnhExist.RemoveAt(idxHinhAnh);
+                        }
+                        else
+                        {
+                            hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
+                        }
+                    }
+                    if (hinhAnhExist.Count > 0)
+                    {
+                        foreach (var item in hinhAnhExist)
+                        {
+                            item.IdSanPham = -1;
+                        }
+                    }
+                    return true;
+                }
+                catch (Exception)
+                {
+                    return false;
+                }
+            }
+        }
+        public async Task<bool> UpdateBaiDangXeCoPhuongTienKhac(BaiDangXeCoPhuongTienKhac_DTO baiDangRequest)
+        {
+            BaiDangXeCoEntities baiDangXeCoOto = _mapper.Map<BaiDangXeCoEntities>(baiDangRequest);
+            baiDangXeCoOto.IdBaiDang = baiDangHelper.GetPostDetailID((int)baiDangRequest.IdBaiDang);
+            int lastIDPost = baiDangXeCoHelper.UpdateBaiDang(baiDangXeCoOto);
+            if (lastIDPost == -1)
+            {
+                return false;
+            }
+            else
+            {
+                try
+                {
+                    BaiDangEntities baiDangGlobal = _mapper.Map<BaiDangEntities>(baiDangRequest);
+                    baiDangGlobal.IdBaiDangChiTiet = lastIDPost;
+                    await baiDangHelper.UpdateBaiDang(baiDangGlobal);
+                    List<HinhAnhBaiDangEntities> hinhAnhExist = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(lastIDPost);
+                    foreach (var item in baiDangRequest.hinhAnh_BaiDangs)
+                    {
+                        HinhAnhBaiDangEntities hinhAnhRequest = new HinhAnhBaiDangEntities();
+                        hinhAnhRequest.IdSanPham = (int)baiDangRequest.IdBaiDang;
+                        hinhAnhRequest.IdMediaCloud = item.id;
+                        if (item.type.Contains("video"))
+                            hinhAnhRequest.VideoType = true;
+                        else
+                            hinhAnhRequest.VideoType = false;
+
+                        if (hinhAnhExist.Contains(hinhAnhRequest))
+                        {
+                            int idxHinhAnh = hinhAnhExist.IndexOf(hinhAnhRequest);
+                            hinhAnhExist.RemoveAt(idxHinhAnh);
+                        }
+                        else
+                        {
+                            hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
+                        }
+                    }
+                    if (hinhAnhExist.Count > 0)
+                    {
+                        foreach (var item in hinhAnhExist)
+                        {
+                            item.IdSanPham = -1;
+                        }
+                    }
+                    return true;
+                }
+                catch (Exception)
+                {
+                    return false;
+                }
+            }
+        }
+        public async Task<bool> UpdateBaiDangXeCoPhuTungKhac(BaiDangXeCoPhuTungXe_DTO baiDangRequest)
+        {
+            BaiDangXeCoEntities baiDangXeCoOto = _mapper.Map<BaiDangXeCoEntities>(baiDangRequest);
+            baiDangXeCoOto.IdBaiDang = baiDangHelper.GetPostDetailID((int)baiDangRequest.IdBaiDang);
+            int lastIDPost = baiDangXeCoHelper.UpdateBaiDang(baiDangXeCoOto);
+            if (lastIDPost == -1)
+            {
+                return false;
+            }
+            else
+            {
+                try
+                {
+                    BaiDangEntities baiDangGlobal = _mapper.Map<BaiDangEntities>(baiDangRequest);
+                    baiDangGlobal.IdBaiDangChiTiet = lastIDPost;
+                    await baiDangHelper.UpdateBaiDang(baiDangGlobal);
+                    List<HinhAnhBaiDangEntities> hinhAnhExist = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(lastIDPost);
+                    foreach (var item in baiDangRequest.hinhAnh_BaiDangs)
+                    {
+                        HinhAnhBaiDangEntities hinhAnhRequest = new HinhAnhBaiDangEntities();
+                        hinhAnhRequest.IdSanPham = (int)baiDangRequest.IdBaiDang;
+                        hinhAnhRequest.IdMediaCloud = item.id;
+                        if (item.type.Contains("video"))
+                            hinhAnhRequest.VideoType = true;
+                        else
+                            hinhAnhRequest.VideoType = false;
+
+                        if (hinhAnhExist.Contains(hinhAnhRequest))
+                        {
+                            int idxHinhAnh = hinhAnhExist.IndexOf(hinhAnhRequest);
+                            hinhAnhExist.RemoveAt(idxHinhAnh);
+                        }
+                        else
+                        {
+                            hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
+                        }
+                    }
+                    if (hinhAnhExist.Count > 0)
+                    {
+                        foreach (var item in hinhAnhExist)
+                        {
+                            item.IdSanPham = -1;
+                        }
+                    }
+                    return true;
+                }
+                catch (Exception)
+                {
+                    return false;
+                }
+            }
+        }
+        #endregion
+
+        #region BaiDangDoDienTu
+        public async Task<bool> UpdateBaiDangDoDienTuDienThoai(BaiDangDoDienTuDienThoai_DTO baiDangRequest)
+        {
+            BaiDangDoDienTuEntities baiDangDoDienTuDienThoai = _mapper.Map<BaiDangDoDienTuEntities>(baiDangRequest);
+            baiDangDoDienTuDienThoai.IdBaiDang = baiDangHelper.GetPostDetailID((int)baiDangRequest.IdBaiDang);
+            int lastIDPost = baiDangDoDienTuHelper.UpdateBaiDang(baiDangDoDienTuDienThoai);
+            if (lastIDPost == -1)
+            {
+                return false;
+            }
+            else
+            {
+                try
+                {
+                    BaiDangEntities baiDangGlobal = _mapper.Map<BaiDangEntities>(baiDangRequest);
+                    baiDangGlobal.IdBaiDangChiTiet = lastIDPost;
+                    await baiDangHelper.UpdateBaiDang(baiDangGlobal);
+                    List<HinhAnhBaiDangEntities> hinhAnhExist = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(lastIDPost);
+                    foreach (var item in baiDangRequest.hinhAnh_BaiDangs)
+                    {
+                        HinhAnhBaiDangEntities hinhAnhRequest = new HinhAnhBaiDangEntities();
+                        hinhAnhRequest.IdSanPham = (int)baiDangRequest.IdBaiDang;
+                        hinhAnhRequest.IdMediaCloud = item.id;
+                        if (item.type.Contains("video"))
+                            hinhAnhRequest.VideoType = true;
+                        else
+                            hinhAnhRequest.VideoType = false;
+
+                        if (hinhAnhExist.Contains(hinhAnhRequest))
+                        {
+                            int idxHinhAnh = hinhAnhExist.IndexOf(hinhAnhRequest);
+                            hinhAnhExist.RemoveAt(idxHinhAnh);
+                        }
+                        else
+                        {
+                            hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
+                        }
+                    }
+                    if (hinhAnhExist.Count > 0)
+                    {
+                        foreach (var item in hinhAnhExist)
+                        {
+                            item.IdSanPham = -1;
+                        }
+                    }
+                    return true;
+                }
+                catch (Exception)
+                {
+                    return false;
+                }
+            }
+        }
+
+        public async Task<bool> UpdateBaiDangDoDienTuLaptop(BaiDangDoDienTuLaptop_DTO baiDangRequest)
+        {
+            BaiDangDoDienTuEntities baiDangDoDienTuDienThoai = _mapper.Map<BaiDangDoDienTuEntities>(baiDangRequest);
+            baiDangDoDienTuDienThoai.IdBaiDang = baiDangHelper.GetPostDetailID((int)baiDangRequest.IdBaiDang);
+            int lastIDPost = baiDangDoDienTuHelper.UpdateBaiDang(baiDangDoDienTuDienThoai);
+            if (lastIDPost == -1)
+            {
+                return false;
+            }
+            else
+            {
+                try
+                {
+                    BaiDangEntities baiDangGlobal = _mapper.Map<BaiDangEntities>(baiDangRequest);
+                    baiDangGlobal.IdBaiDangChiTiet = lastIDPost;
+                    await baiDangHelper.UpdateBaiDang(baiDangGlobal);
+                    List<HinhAnhBaiDangEntities> hinhAnhExist = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(lastIDPost);
+                    foreach (var item in baiDangRequest.hinhAnh_BaiDangs)
+                    {
+                        HinhAnhBaiDangEntities hinhAnhRequest = new HinhAnhBaiDangEntities();
+                        hinhAnhRequest.IdSanPham = (int)baiDangRequest.IdBaiDang;
+                        hinhAnhRequest.IdMediaCloud = item.id;
+                        if (item.type.Contains("video"))
+                            hinhAnhRequest.VideoType = true;
+                        else
+                            hinhAnhRequest.VideoType = false;
+
+                        if (hinhAnhExist.Contains(hinhAnhRequest))
+                        {
+                            int idxHinhAnh = hinhAnhExist.IndexOf(hinhAnhRequest);
+                            hinhAnhExist.RemoveAt(idxHinhAnh);
+                        }
+                        else
+                        {
+                            hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
+                        }
+                    }
+                    if (hinhAnhExist.Count > 0)
+                    {
+                        foreach (var item in hinhAnhExist)
+                        {
+                            item.IdSanPham = -1;
+                        }
+                    }
+                    return true;
+                }
+                catch (Exception)
+                {
+                    return false;
+                }
+            }
+        }
+
+        public async Task<bool> UpdateBaiDangDoDienTuLinhKien(BaiDangDoDienTuLinhKien_DTO baiDangRequest)
+        {
+            BaiDangDoDienTuEntities baiDangDoDienTuDienThoai = _mapper.Map<BaiDangDoDienTuEntities>(baiDangRequest);
+            baiDangDoDienTuDienThoai.IdBaiDang = baiDangHelper.GetPostDetailID((int)baiDangRequest.IdBaiDang);
+            int lastIDPost = baiDangDoDienTuHelper.UpdateBaiDang(baiDangDoDienTuDienThoai);
+            if (lastIDPost == -1)
+            {
+                return false;
+            }
+            else
+            {
+                try
+                {
+                    BaiDangEntities baiDangGlobal = _mapper.Map<BaiDangEntities>(baiDangRequest);
+                    baiDangGlobal.IdBaiDangChiTiet = lastIDPost;
+                    await baiDangHelper.UpdateBaiDang(baiDangGlobal);
+                    List<HinhAnhBaiDangEntities> hinhAnhExist = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(lastIDPost);
+                    foreach (var item in baiDangRequest.hinhAnh_BaiDangs)
+                    {
+                        HinhAnhBaiDangEntities hinhAnhRequest = new HinhAnhBaiDangEntities();
+                        hinhAnhRequest.IdSanPham = (int)baiDangRequest.IdBaiDang;
+                        hinhAnhRequest.IdMediaCloud = item.id;
+                        if (item.type.Contains("video"))
+                            hinhAnhRequest.VideoType = true;
+                        else
+                            hinhAnhRequest.VideoType = false;
+
+                        if (hinhAnhExist.Contains(hinhAnhRequest))
+                        {
+                            int idxHinhAnh = hinhAnhExist.IndexOf(hinhAnhRequest);
+                            hinhAnhExist.RemoveAt(idxHinhAnh);
+                        }
+                        else
+                        {
+                            hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
+                        }
+                    }
+                    if (hinhAnhExist.Count > 0)
+                    {
+                        foreach (var item in hinhAnhExist)
+                        {
+                            item.IdSanPham = -1;
+                        }
+                    }
+                    return true;
+                }
+                catch (Exception)
+                {
+                    return false;
+                }
+            }
+        }
+
+        public async Task<bool> UpdateBaiDangDoDienTuMayAnh(BaiDangDoDienTuMayAnh_DTO baiDangRequest)
+        {
+            BaiDangDoDienTuEntities baiDangDoDienTuDienThoai = _mapper.Map<BaiDangDoDienTuEntities>(baiDangRequest);
+            baiDangDoDienTuDienThoai.IdBaiDang = baiDangHelper.GetPostDetailID((int)baiDangRequest.IdBaiDang);
+            int lastIDPost = baiDangDoDienTuHelper.UpdateBaiDang(baiDangDoDienTuDienThoai);
+            if (lastIDPost == -1)
+            {
+                return false;
+            }
+            else
+            {
+                try
+                {
+                    BaiDangEntities baiDangGlobal = _mapper.Map<BaiDangEntities>(baiDangRequest);
+                    baiDangGlobal.IdBaiDangChiTiet = lastIDPost;
+                    await baiDangHelper.UpdateBaiDang(baiDangGlobal);
+                    List<HinhAnhBaiDangEntities> hinhAnhExist = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(lastIDPost);
+                    foreach (var item in baiDangRequest.hinhAnh_BaiDangs)
+                    {
+                        HinhAnhBaiDangEntities hinhAnhRequest = new HinhAnhBaiDangEntities();
+                        hinhAnhRequest.IdSanPham = (int)baiDangRequest.IdBaiDang;
+                        hinhAnhRequest.IdMediaCloud = item.id;
+                        if (item.type.Contains("video"))
+                            hinhAnhRequest.VideoType = true;
+                        else
+                            hinhAnhRequest.VideoType = false;
+
+                        if (hinhAnhExist.Contains(hinhAnhRequest))
+                        {
+                            int idxHinhAnh = hinhAnhExist.IndexOf(hinhAnhRequest);
+                            hinhAnhExist.RemoveAt(idxHinhAnh);
+                        }
+                        else
+                        {
+                            hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
+                        }
+                    }
+                    if (hinhAnhExist.Count > 0)
+                    {
+                        foreach (var item in hinhAnhExist)
+                        {
+                            item.IdSanPham = -1;
+                        }
+                    }
+                    return true;
+                }
+                catch (Exception)
+                {
+                    return false;
+                }
+            }
+        }
+
+        public async Task<bool> UpdateBaiDangDoDienTuMayTinhBang(BaiDangDoDienTuMayTinhBang_DTO baiDangRequest)
+        {
+            BaiDangDoDienTuEntities baiDangDoDienTuDienThoai = _mapper.Map<BaiDangDoDienTuEntities>(baiDangRequest);
+            baiDangDoDienTuDienThoai.IdBaiDang = baiDangHelper.GetPostDetailID((int)baiDangRequest.IdBaiDang);
+            int lastIDPost = baiDangDoDienTuHelper.UpdateBaiDang(baiDangDoDienTuDienThoai);
+            if (lastIDPost == -1)
+            {
+                return false;
+            }
+            else
+            {
+                try
+                {
+                    BaiDangEntities baiDangGlobal = _mapper.Map<BaiDangEntities>(baiDangRequest);
+                    baiDangGlobal.IdBaiDangChiTiet = lastIDPost;
+                    await baiDangHelper.UpdateBaiDang(baiDangGlobal);
+                    List<HinhAnhBaiDangEntities> hinhAnhExist = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(lastIDPost);
+                    foreach (var item in baiDangRequest.hinhAnh_BaiDangs)
+                    {
+                        HinhAnhBaiDangEntities hinhAnhRequest = new HinhAnhBaiDangEntities();
+                        hinhAnhRequest.IdSanPham = (int)baiDangRequest.IdBaiDang;
+                        hinhAnhRequest.IdMediaCloud = item.id;
+                        if (item.type.Contains("video"))
+                            hinhAnhRequest.VideoType = true;
+                        else
+                            hinhAnhRequest.VideoType = false;
+
+                        if (hinhAnhExist.Contains(hinhAnhRequest))
+                        {
+                            int idxHinhAnh = hinhAnhExist.IndexOf(hinhAnhRequest);
+                            hinhAnhExist.RemoveAt(idxHinhAnh);
+                        }
+                        else
+                        {
+                            hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
+                        }
+                    }
+                    if (hinhAnhExist.Count > 0)
+                    {
+                        foreach (var item in hinhAnhExist)
+                        {
+                            item.IdSanPham = -1;
+                        }
+                    }
+                    return true;
+                }
+                catch (Exception)
+                {
+                    return false;
+                }
+            }
+        }
+
+        public async Task<bool> UpdateBaiDangDoDienTuMayTinhDeBan(BaiDangDoDienTuMayTinhDeBan_DTO baiDangRequest)
+        {
+            BaiDangDoDienTuEntities baiDangDoDienTuDienThoai = _mapper.Map<BaiDangDoDienTuEntities>(baiDangRequest);
+            baiDangDoDienTuDienThoai.IdBaiDang = baiDangHelper.GetPostDetailID((int)baiDangRequest.IdBaiDang);
+            int lastIDPost = baiDangDoDienTuHelper.UpdateBaiDang(baiDangDoDienTuDienThoai);
+            if (lastIDPost == -1)
+            {
+                return false;
+            }
+            else
+            {
+                try
+                {
+                    BaiDangEntities baiDangGlobal = _mapper.Map<BaiDangEntities>(baiDangRequest);
+                    baiDangGlobal.IdBaiDangChiTiet = lastIDPost;
+                    await baiDangHelper.UpdateBaiDang(baiDangGlobal);
+                    List<HinhAnhBaiDangEntities> hinhAnhExist = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(lastIDPost);
+                    foreach (var item in baiDangRequest.hinhAnh_BaiDangs)
+                    {
+                        HinhAnhBaiDangEntities hinhAnhRequest = new HinhAnhBaiDangEntities();
+                        hinhAnhRequest.IdSanPham = (int)baiDangRequest.IdBaiDang;
+                        hinhAnhRequest.IdMediaCloud = item.id;
+                        if (item.type.Contains("video"))
+                            hinhAnhRequest.VideoType = true;
+                        else
+                            hinhAnhRequest.VideoType = false;
+
+                        if (hinhAnhExist.Contains(hinhAnhRequest))
+                        {
+                            int idxHinhAnh = hinhAnhExist.IndexOf(hinhAnhRequest);
+                            hinhAnhExist.RemoveAt(idxHinhAnh);
+                        }
+                        else
+                        {
+                            hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
+                        }
+                    }
+                    if (hinhAnhExist.Count > 0)
+                    {
+                        foreach (var item in hinhAnhExist)
+                        {
+                            item.IdSanPham = -1;
+                        }
+                    }
+                    return true;
+                }
+                catch (Exception)
+                {
+                    return false;
+                }
+            }
+        }
+
+        public async Task<bool> UpdateBaiDangDoDienTuPhuKien(BaiDangDoDienTuPhuKien_DTO baiDangRequest)
+        {
+            BaiDangDoDienTuEntities baiDangDoDienTuDienThoai = _mapper.Map<BaiDangDoDienTuEntities>(baiDangRequest);
+            baiDangDoDienTuDienThoai.IdBaiDang = baiDangHelper.GetPostDetailID((int)baiDangRequest.IdBaiDang);
+            int lastIDPost = baiDangDoDienTuHelper.UpdateBaiDang(baiDangDoDienTuDienThoai);
+            if (lastIDPost == -1)
+            {
+                return false;
+            }
+            else
+            {
+                try
+                {
+                    BaiDangEntities baiDangGlobal = _mapper.Map<BaiDangEntities>(baiDangRequest);
+                    baiDangGlobal.IdBaiDangChiTiet = lastIDPost;
+                    await baiDangHelper.UpdateBaiDang(baiDangGlobal);
+                    List<HinhAnhBaiDangEntities> hinhAnhExist = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(lastIDPost);
+                    foreach (var item in baiDangRequest.hinhAnh_BaiDangs)
+                    {
+                        HinhAnhBaiDangEntities hinhAnhRequest = new HinhAnhBaiDangEntities();
+                        hinhAnhRequest.IdSanPham = (int)baiDangRequest.IdBaiDang;
+                        hinhAnhRequest.IdMediaCloud = item.id;
+                        if (item.type.Contains("video"))
+                            hinhAnhRequest.VideoType = true;
+                        else
+                            hinhAnhRequest.VideoType = false;
+
+                        if (hinhAnhExist.Contains(hinhAnhRequest))
+                        {
+                            int idxHinhAnh = hinhAnhExist.IndexOf(hinhAnhRequest);
+                            hinhAnhExist.RemoveAt(idxHinhAnh);
+                        }
+                        else
+                        {
+                            hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
+                        }
+                    }
+                    if (hinhAnhExist.Count > 0)
+                    {
+                        foreach (var item in hinhAnhExist)
+                        {
+                            item.IdSanPham = -1;
+                        }
+                    }
+                    return true;
+                }
+                catch (Exception)
+                {
+                    return false;
+                }
+            }
+        }
+
+        public async Task<bool> UpdateBaiDangDoDienTuThietBiDeoThongMinh(BaiDangDoDienTuThietBiDeoThongMinh_DTO baiDangRequest)
+        {
+            BaiDangDoDienTuEntities baiDangDoDienTuDienThoai = _mapper.Map<BaiDangDoDienTuEntities>(baiDangRequest);
+            baiDangDoDienTuDienThoai.IdBaiDang = baiDangHelper.GetPostDetailID((int)baiDangRequest.IdBaiDang);
+            int lastIDPost = baiDangDoDienTuHelper.UpdateBaiDang(baiDangDoDienTuDienThoai);
+            if (lastIDPost == -1)
+            {
+                return false;
+            }
+            else
+            {
+                try
+                {
+                    BaiDangEntities baiDangGlobal = _mapper.Map<BaiDangEntities>(baiDangRequest);
+                    baiDangGlobal.IdBaiDangChiTiet = lastIDPost;
+                    await baiDangHelper.UpdateBaiDang(baiDangGlobal);
+                    List<HinhAnhBaiDangEntities> hinhAnhExist = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(lastIDPost);
+                    foreach (var item in baiDangRequest.hinhAnh_BaiDangs)
+                    {
+                        HinhAnhBaiDangEntities hinhAnhRequest = new HinhAnhBaiDangEntities();
+                        hinhAnhRequest.IdSanPham = (int)baiDangRequest.IdBaiDang;
+                        hinhAnhRequest.IdMediaCloud = item.id;
+                        if (item.type.Contains("video"))
+                            hinhAnhRequest.VideoType = true;
+                        else
+                            hinhAnhRequest.VideoType = false;
+
+                        if (hinhAnhExist.Contains(hinhAnhRequest))
+                        {
+                            int idxHinhAnh = hinhAnhExist.IndexOf(hinhAnhRequest);
+                            hinhAnhExist.RemoveAt(idxHinhAnh);
+                        }
+                        else
+                        {
+                            hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
+                        }
+                    }
+                    if (hinhAnhExist.Count > 0)
+                    {
+                        foreach (var item in hinhAnhExist)
+                        {
+                            item.IdSanPham = -1;
+                        }
+                    }
+                    return true;
+                }
+                catch (Exception)
+                {
+                    return false;
+                }
+            }
+        }
+
+        public async Task<bool> UpdateBaiDangDoDienTuTivi(BaiDangDoDienTuTivi_DTO baiDangRequest)
+        {
+            BaiDangDoDienTuEntities baiDangDoDienTuDienThoai = _mapper.Map<BaiDangDoDienTuEntities>(baiDangRequest);
+            baiDangDoDienTuDienThoai.IdBaiDang = baiDangHelper.GetPostDetailID((int)baiDangRequest.IdBaiDang);
+            int lastIDPost = baiDangDoDienTuHelper.UpdateBaiDang(baiDangDoDienTuDienThoai);
+            if (lastIDPost == -1)
+            {
+                return false;
+            }
+            else
+            {
+                try
+                {
+                    BaiDangEntities baiDangGlobal = _mapper.Map<BaiDangEntities>(baiDangRequest);
+                    baiDangGlobal.IdBaiDangChiTiet = lastIDPost;
+                    await baiDangHelper.UpdateBaiDang(baiDangGlobal);
+                    List<HinhAnhBaiDangEntities> hinhAnhExist = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(lastIDPost);
+                    foreach (var item in baiDangRequest.hinhAnh_BaiDangs)
+                    {
+                        HinhAnhBaiDangEntities hinhAnhRequest = new HinhAnhBaiDangEntities();
+                        hinhAnhRequest.IdSanPham = (int)baiDangRequest.IdBaiDang;
+                        hinhAnhRequest.IdMediaCloud = item.id;
+                        if (item.type.Contains("video"))
+                            hinhAnhRequest.VideoType = true;
+                        else
+                            hinhAnhRequest.VideoType = false;
+
+                        if (hinhAnhExist.Contains(hinhAnhRequest))
+                        {
+                            int idxHinhAnh = hinhAnhExist.IndexOf(hinhAnhRequest);
+                            hinhAnhExist.RemoveAt(idxHinhAnh);
+                        }
+                        else
+                        {
+                            hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
+                        }
+                    }
+                    if (hinhAnhExist.Count > 0)
+                    {
+                        foreach (var item in hinhAnhExist)
+                        {
+                            item.IdSanPham = -1;
+                        }
+                    }
+                    return true;
+                }
+                catch (Exception)
+                {
+                    return false;
+                }
+            }
+        }
+
         #endregion
         #endregion
     }

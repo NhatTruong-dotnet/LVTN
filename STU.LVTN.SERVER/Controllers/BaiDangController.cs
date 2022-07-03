@@ -803,6 +803,371 @@ namespace STU.LVTN.SERVER.Controllers
 
         #endregion
 
+        #region Update Hanlder
+        #region BatDongSan Handler
+        [HttpPut("batDongSanCC/updatePost"), Authorize]
+        public async Task<ActionResult<bool>> updatePostBatDongSanCC(BaiDangBatDongSanCC_DTO baiDangCC_Request)
+        {
+            baiDangCC_Request.SdtNguoiBan = baiDangCC_Request.SdtNguoiBan;
+            if (await baiDangHandler.UpdateBaiDangBatDongSanCC(baiDangCC_Request))
+            {
+                ThongBaoDTO thongBao = new ThongBaoDTO();
+                thongBao.Checked = false;
+                thongBao.IDPost = baiDangHandler.NumberOfPost();
+                thongBao.TieuDeThongBao = "Bạn có một bài đăng cần được phê duyệt";
+                thongBao.SdtNguoiDung = baiDangCC_Request.SdtNguoiBan;
+                await thongBaoHandler.AddThongBao(thongBao);
+                return Ok();
+            }
+            return BadRequest();
+        }
+
+        [HttpPut("batDongSanNhaO/updatePost"), Authorize]
+        public async Task<ActionResult<bool>> updatePostBatDongSanNhaO(BaiDangBatDongSanNhaO_DTO baiDangCC_Request)
+        {
+            baiDangCC_Request.SdtNguoiBan = baiDangCC_Request.SdtNguoiBan;
+            if (await baiDangHandler.UpdateBaiDangBatDongSanNhaO(baiDangCC_Request))
+            {
+                ThongBaoDTO thongBao = new ThongBaoDTO();
+                thongBao.Checked = false;
+                thongBao.IDPost = baiDangHandler.NumberOfPost();
+                thongBao.TieuDeThongBao = "Bạn có một bài đăng cần được phê duyệt";
+                thongBao.SdtNguoiDung = baiDangCC_Request.SdtNguoiBan;
+                await thongBaoHandler.AddThongBao(thongBao);
+                return Ok();
+            }
+            return BadRequest();
+        }
+
+        [HttpPut("batDongSanDat/updatePost"), Authorize]
+        public async Task<ActionResult<bool>> updatePostBatDongSanDat(BaiDangBatDongSanDat_DTO baiDangCC_Request)
+        {
+            baiDangCC_Request.SdtNguoiBan = baiDangCC_Request.SdtNguoiBan;
+            if (await baiDangHandler.UpdateBaiDangBatDongSanDat(baiDangCC_Request))
+            {
+                ThongBaoDTO thongBao = new ThongBaoDTO();
+                thongBao.Checked = false;
+                thongBao.IDPost = baiDangHandler.NumberOfPost();
+                thongBao.TieuDeThongBao = "Bạn có một bài đăng cần được phê duyệt";
+                thongBao.SdtNguoiDung = baiDangCC_Request.SdtNguoiBan;
+                await thongBaoHandler.AddThongBao(thongBao);
+                return Ok();
+            }
+            return BadRequest();
+        }
+
+        [HttpPut("batDongSanVanPhong/updatePost"), Authorize]
+        public async Task<ActionResult<bool>> updatePostBatDongSanVanPhong(BaiDangBatDongSanVanPhong_DTO baiDangCC_Request)
+        {
+            baiDangCC_Request.SdtNguoiBan = baiDangCC_Request.SdtNguoiBan;
+            if (await baiDangHandler.UpdateBaiDangBatDongSanVanPhong(baiDangCC_Request))
+            {
+                ThongBaoDTO thongBao = new ThongBaoDTO();
+                thongBao.Checked = false;
+                thongBao.IDPost = baiDangHandler.NumberOfPost();
+                thongBao.TieuDeThongBao = "Bạn có một bài đăng cần được phê duyệt";
+                thongBao.SdtNguoiDung = baiDangCC_Request.SdtNguoiBan;
+                await thongBaoHandler.AddThongBao(thongBao);
+                return Ok();
+            }
+            return BadRequest();
+        }
+
+        [HttpPut("batDongSanPhongTro/updatePost"), Authorize]
+        public async Task<ActionResult<bool>> updatePostBatDongSanPhongTro(BaiDangBatDongSanPhongTro_DTO baiDangCC_Request)
+        {
+            baiDangCC_Request.SdtNguoiBan = baiDangCC_Request.SdtNguoiBan;
+            if (await baiDangHandler.UpdateBaiDangBatDongSanPhongTro(baiDangCC_Request))
+            {
+                ThongBaoDTO thongBao = new ThongBaoDTO();
+                thongBao.Checked = false;
+                thongBao.IDPost = baiDangHandler.NumberOfPost();
+                thongBao.TieuDeThongBao = "Bạn có một bài đăng cần được phê duyệt";
+                thongBao.SdtNguoiDung = baiDangCC_Request.SdtNguoiBan;
+                await thongBaoHandler.AddThongBao(thongBao);
+                return Ok();
+            }
+            return BadRequest();
+        }
+
+        #endregion
+
+        #region XeCo Handler
+        [HttpPut("xeCoOto/updatePost"), Authorize]
+        public async Task<ActionResult<bool>> updatePostXeCoOto(BaiDangXeCoOto_DTO baiDangOTo_Request)
+        {
+            baiDangOTo_Request.SdtNguoiBan = baiDangOTo_Request.SdtNguoiBan;
+            if (await baiDangHandler.UpdateBaiDangXeCoOTo(baiDangOTo_Request))
+            {
+                ThongBaoDTO thongBao = new ThongBaoDTO();
+                thongBao.Checked = false;
+                thongBao.IDPost = baiDangHandler.NumberOfPost();
+                thongBao.TieuDeThongBao = "Bạn có một bài đăng cần được phê duyệt";
+                thongBao.SdtNguoiDung = baiDangOTo_Request.SdtNguoiBan;
+                await thongBaoHandler.AddThongBao(thongBao);
+                return Ok();
+            }
+            return BadRequest();
+        }
+
+        [HttpPut("xeCoXeMay/updatePost"), Authorize]
+        public async Task<ActionResult<bool>> updatePostXeCoXeMay(BaiDangXeCoXeMay_DTO baiDangXeMay_Request)
+        {
+            baiDangXeMay_Request.SdtNguoiBan = baiDangXeMay_Request.SdtNguoiBan;
+            if (await baiDangHandler.UpdateBaiDangXeCoXeMay(baiDangXeMay_Request))
+            {
+                ThongBaoDTO thongBao = new ThongBaoDTO();
+                thongBao.Checked = false;
+                thongBao.IDPost = baiDangHandler.NumberOfPost();
+                thongBao.TieuDeThongBao = "Bạn có một bài đăng cần được phê duyệt";
+                thongBao.SdtNguoiDung = User.Identity.Name;
+                await thongBaoHandler.AddThongBao(thongBao);
+                return Ok();
+            }
+            return BadRequest();
+        }
+
+        [HttpPut("xeCoXeTai/updatePost"), Authorize]
+        public async Task<ActionResult<bool>> updatePostXeCoXeTai(BaiDangXeCoXeTai_DTO baiDangXeTai_Request)
+        {
+            baiDangXeTai_Request.SdtNguoiBan = baiDangXeTai_Request.SdtNguoiBan;
+            if (await baiDangHandler.UpdateBaiDangXeCoXeTai(baiDangXeTai_Request))
+            {
+                ThongBaoDTO thongBao = new ThongBaoDTO();
+                thongBao.Checked = false;
+                thongBao.IDPost = baiDangHandler.NumberOfPost();
+                thongBao.TieuDeThongBao = "Bạn có một bài đăng cần được phê duyệt";
+                thongBao.SdtNguoiDung = baiDangXeTai_Request.SdtNguoiBan;
+                await thongBaoHandler.AddThongBao(thongBao);
+                return Ok();
+            }
+            return BadRequest();
+        }
+
+        [HttpPut("xeCoXeDien/updatePost"), Authorize]
+        public async Task<ActionResult<bool>> updatePostXeCoXeDien(BaiDangXeCoXeDien_DTO baiDangXeDien_Request)
+        {
+            baiDangXeDien_Request.SdtNguoiBan = baiDangXeDien_Request.SdtNguoiBan;
+            if (await baiDangHandler.UpdateBaiDangXeCoXeDien(baiDangXeDien_Request))
+            {
+                ThongBaoDTO thongBao = new ThongBaoDTO();
+                thongBao.Checked = false;
+                thongBao.IDPost = baiDangHandler.NumberOfPost();
+                thongBao.TieuDeThongBao = "Bạn có một bài đăng cần được phê duyệt";
+                thongBao.SdtNguoiDung = baiDangXeDien_Request.SdtNguoiBan;
+                await thongBaoHandler.AddThongBao(thongBao);
+                return Ok();
+            }
+            return BadRequest();
+        }
+
+        [HttpPut("xeCoXeDap/updatePost"), Authorize]
+        public async Task<ActionResult<bool>> updatePostXeCoXeDap(BaiDangXeCoXeDap_DTO baiDangXeDap_Request)
+        {
+            baiDangXeDap_Request.SdtNguoiBan = baiDangXeDap_Request.SdtNguoiBan;
+            if (await baiDangHandler.UpdateBaiDangXeCoXeDap(baiDangXeDap_Request))
+            {
+                ThongBaoDTO thongBao = new ThongBaoDTO();
+                thongBao.Checked = false;
+                thongBao.IDPost = baiDangHandler.NumberOfPost();
+                thongBao.TieuDeThongBao = "Bạn có một bài đăng cần được phê duyệt";
+                thongBao.SdtNguoiDung = baiDangXeDap_Request.SdtNguoiBan;
+                await thongBaoHandler.AddThongBao(thongBao);
+                return Ok();
+            }
+            return BadRequest();
+        }
+
+        [HttpPut("xeCoPhuongTienKhac/updatePost"), Authorize]
+        public async Task<ActionResult<bool>> updatePostXeCoPhuongTienKhac(BaiDangXeCoPhuongTienKhac_DTO baiDangPhuongTienKhac_Request)
+        {
+            baiDangPhuongTienKhac_Request.SdtNguoiBan = baiDangPhuongTienKhac_Request.SdtNguoiBan;
+            if (await baiDangHandler.UpdateBaiDangXeCoPhuongTienKhac(baiDangPhuongTienKhac_Request))
+            {
+                ThongBaoDTO thongBao = new ThongBaoDTO();
+                thongBao.Checked = false;
+                thongBao.IDPost = baiDangHandler.NumberOfPost();
+                thongBao.TieuDeThongBao = "Bạn có một bài đăng cần được phê duyệt";
+                thongBao.SdtNguoiDung = baiDangPhuongTienKhac_Request.SdtNguoiBan;
+                await thongBaoHandler.AddThongBao(thongBao);
+                return Ok();
+            }
+            return BadRequest();
+        }
+
+        [HttpPut("xeCoPhuTungXe/updatePost"), Authorize]
+        public async Task<ActionResult<bool>> updatePostXeCoPhuTungXe(BaiDangXeCoPhuTungXe_DTO baiDangPhuTungXe_Request)
+        {
+            baiDangPhuTungXe_Request.SdtNguoiBan = baiDangPhuTungXe_Request.SdtNguoiBan;
+            if (await baiDangHandler.UpdateBaiDangXeCoPhuTungKhac(baiDangPhuTungXe_Request))
+            {
+                ThongBaoDTO thongBao = new ThongBaoDTO();
+                thongBao.Checked = false;
+                thongBao.IDPost = baiDangHandler.NumberOfPost();
+                thongBao.TieuDeThongBao = "Bạn có một bài đăng cần được phê duyệt";
+                thongBao.SdtNguoiDung = baiDangPhuTungXe_Request.SdtNguoiBan;
+                await thongBaoHandler.AddThongBao(thongBao);
+                return Ok();
+            }
+            return BadRequest();
+        }
+        #endregion
+
+        #region DoDienTu Handler
+        [HttpPut("doDienTuDienThoai/updatePost"), Authorize]
+        public async Task<ActionResult<bool>> updatePostDoDienTuDienThoai(BaiDangDoDienTuDienThoai_DTO baiDangDienThoai_Request)
+        {
+            baiDangDienThoai_Request.SdtNguoiBan = baiDangDienThoai_Request.SdtNguoiBan;
+            if (await baiDangHandler.UpdateBaiDangDoDienTuDienThoai(baiDangDienThoai_Request))
+            {
+                ThongBaoDTO thongBao = new ThongBaoDTO();
+                thongBao.Checked = false;
+                thongBao.IDPost = baiDangHandler.NumberOfPost();
+                thongBao.TieuDeThongBao = "Bạn có một bài đăng cần được phê duyệt";
+                thongBao.SdtNguoiDung = baiDangDienThoai_Request.SdtNguoiBan;
+                await thongBaoHandler.AddThongBao(thongBao);
+                return Ok();
+            }
+            return BadRequest();
+        }
+
+        [HttpPut("doDienTuLaptop/updatePost"), Authorize]
+        public async Task<ActionResult<bool>> updatePostDoDienTuLaptop(BaiDangDoDienTuLaptop_DTO baiDangLaptop_Request)
+        {
+            baiDangLaptop_Request.SdtNguoiBan = baiDangLaptop_Request.SdtNguoiBan;
+            if (await baiDangHandler.UpdateBaiDangDoDienTuLaptop(baiDangLaptop_Request))
+            {
+                ThongBaoDTO thongBao = new ThongBaoDTO();
+                thongBao.Checked = false;
+                thongBao.IDPost = baiDangHandler.NumberOfPost();
+                thongBao.TieuDeThongBao = "Bạn có một bài đăng cần được phê duyệt";
+                thongBao.SdtNguoiDung = baiDangLaptop_Request.SdtNguoiBan;
+                await thongBaoHandler.AddThongBao(thongBao);
+                return Ok();
+            }
+            return BadRequest();
+        }
+
+        [HttpPost("doDienTuLinhKien/updatePost"), Authorize]
+        public async Task<ActionResult<bool>> updatePostDoDienTuLinhKien(BaiDangDoDienTuLinhKien_DTO baiDangLinhKien_Request)
+        {
+            baiDangLinhKien_Request.SdtNguoiBan = baiDangLinhKien_Request.SdtNguoiBan;
+            if (await baiDangHandler.UpdateBaiDangDoDienTuLinhKien(baiDangLinhKien_Request))
+            {
+                ThongBaoDTO thongBao = new ThongBaoDTO();
+                thongBao.Checked = false;
+                thongBao.IDPost = baiDangHandler.NumberOfPost();
+                thongBao.TieuDeThongBao = "Bạn có một bài đăng cần được phê duyệt";
+                thongBao.SdtNguoiDung = baiDangLinhKien_Request.SdtNguoiBan;
+                await thongBaoHandler.AddThongBao(thongBao);
+                return Ok();
+            }
+            return BadRequest();
+        }
+
+        [HttpPost("doDienTuMayAnh/updatePost"), Authorize]
+        public async Task<ActionResult<bool>> updatePostDoDienTuMayAnh(BaiDangDoDienTuMayAnh_DTO baiDangMayAnh_Request)
+        {
+            baiDangMayAnh_Request.SdtNguoiBan = baiDangMayAnh_Request.SdtNguoiBan;
+            if (await baiDangHandler.UpdateBaiDangDoDienTuMayAnh(baiDangMayAnh_Request))
+            {
+                ThongBaoDTO thongBao = new ThongBaoDTO();
+                thongBao.Checked = false;
+                thongBao.IDPost = baiDangHandler.NumberOfPost();
+                thongBao.TieuDeThongBao = "Bạn có một bài đăng cần được phê duyệt";
+                thongBao.SdtNguoiDung = baiDangMayAnh_Request.SdtNguoiBan;
+                await thongBaoHandler.AddThongBao(thongBao);
+                return Ok();
+            }
+            return BadRequest();
+        }
+
+        [HttpPut("doDienTuMayTinhBang/updatePost"), Authorize]
+        public async Task<ActionResult<bool>> updatePostDoDienTuMayTinhBang(BaiDangDoDienTuMayTinhBang_DTO baiDangMayTinhBang_Request)
+        {
+            baiDangMayTinhBang_Request.SdtNguoiBan = baiDangMayTinhBang_Request.SdtNguoiBan;
+            if (await baiDangHandler.UpdateBaiDangDoDienTuMayTinhBang(baiDangMayTinhBang_Request))
+            {
+                ThongBaoDTO thongBao = new ThongBaoDTO();
+                thongBao.Checked = false;
+                thongBao.IDPost = baiDangHandler.NumberOfPost();
+                thongBao.TieuDeThongBao = "Bạn có một bài đăng cần được phê duyệt";
+                thongBao.SdtNguoiDung = baiDangMayTinhBang_Request.SdtNguoiBan;
+                await thongBaoHandler.AddThongBao(thongBao);
+                return Ok();
+            }
+            return BadRequest();
+        }
+
+        [HttpPut("doDienTuMayTinhDeBan/updatePost"), Authorize]
+        public async Task<ActionResult<bool>> updatePostDoDienTuMayTinhDeBan(BaiDangDoDienTuMayTinhDeBan_DTO baiDangMayTinhDeBan_Request)
+        {
+            baiDangMayTinhDeBan_Request.SdtNguoiBan = baiDangMayTinhDeBan_Request.SdtNguoiBan;
+            if (await baiDangHandler.UpdateBaiDangDoDienTuMayTinhDeBan(baiDangMayTinhDeBan_Request))
+            {
+                ThongBaoDTO thongBao = new ThongBaoDTO();
+                thongBao.Checked = false;
+                thongBao.IDPost = baiDangHandler.NumberOfPost();
+                thongBao.TieuDeThongBao = "Bạn có một bài đăng cần được phê duyệt";
+                thongBao.SdtNguoiDung = baiDangMayTinhDeBan_Request.SdtNguoiBan;
+                await thongBaoHandler.AddThongBao(thongBao);
+                return Ok();
+            }
+            return BadRequest();
+        }
+
+        [HttpPut("doDienTuPhuKien/updatePost"), Authorize]
+        public async Task<ActionResult<bool>> updatePostDoDienTuPhuKien(BaiDangDoDienTuPhuKien_DTO baiDangPhuKien_Request)
+        {
+            baiDangPhuKien_Request.SdtNguoiBan = baiDangPhuKien_Request.SdtNguoiBan;
+            if (await baiDangHandler.UpdateBaiDangDoDienTuPhuKien(baiDangPhuKien_Request))
+            {
+                ThongBaoDTO thongBao = new ThongBaoDTO();
+                thongBao.Checked = false;
+                thongBao.IDPost = baiDangHandler.NumberOfPost();
+                thongBao.TieuDeThongBao = "Bạn có một bài đăng cần được phê duyệt";
+                thongBao.SdtNguoiDung = baiDangPhuKien_Request.SdtNguoiBan;
+                await thongBaoHandler.AddThongBao(thongBao);
+                return Ok();
+            }
+            return BadRequest();
+        }
+
+        [HttpPut("doDienTuThietBiDeoThongMinh/updatePost"), Authorize]
+        public async Task<ActionResult<bool>> updatePostDoDienTuThietBiDeoThongMinh(BaiDangDoDienTuThietBiDeoThongMinh_DTO baiDangThietBiDeoThongMinh_Request)
+        {
+            baiDangThietBiDeoThongMinh_Request.SdtNguoiBan = baiDangThietBiDeoThongMinh_Request.SdtNguoiBan;
+            if (await baiDangHandler.UpdateBaiDangDoDienTuThietBiDeoThongMinh(baiDangThietBiDeoThongMinh_Request))
+            {
+                ThongBaoDTO thongBao = new ThongBaoDTO();
+                thongBao.Checked = false;
+                thongBao.IDPost = baiDangHandler.NumberOfPost();
+                thongBao.TieuDeThongBao = "Bạn có một bài đăng cần được phê duyệt";
+                thongBao.SdtNguoiDung = baiDangThietBiDeoThongMinh_Request.SdtNguoiBan;
+                await thongBaoHandler.AddThongBao(thongBao);
+                return Ok();
+            }
+            return BadRequest();
+        }
+
+        [HttpPut("doDienTuTivi/updatePost"), Authorize]
+        public async Task<ActionResult<bool>> updatePostDoDienTuTivi(BaiDangDoDienTuTivi_DTO baiDangTivi_Request)
+        {
+            baiDangTivi_Request.SdtNguoiBan = baiDangTivi_Request.SdtNguoiBan;
+            if (await baiDangHandler.UpdateBaiDangDoDienTuTivi(baiDangTivi_Request))
+            {
+                ThongBaoDTO thongBao = new ThongBaoDTO();
+                thongBao.Checked = false;
+                thongBao.IDPost = baiDangHandler.NumberOfPost();
+                thongBao.TieuDeThongBao = "Bạn có một bài đăng cần được phê duyệt";
+                thongBao.SdtNguoiDung = baiDangTivi_Request.SdtNguoiBan;
+                await thongBaoHandler.AddThongBao(thongBao);
+                return Ok();
+            }
+            return BadRequest();
+        }
+        #endregion
+        #endregion
         [HttpPost("checkedNotifications/{idPost?}")]
         public async Task<ActionResult> CheckedNotifycations(int idPost = 1)
         {

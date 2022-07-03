@@ -8,11 +8,12 @@ namespace STU.LVTN.SERVER.Provider.BusinessLogic
 {
     public class BaiDang
     {
-        private LVTNContext _context = new LVTNContext();
+        private LVTNContext _context;
         private readonly IMapper _mapper;
-        public BaiDang(IMapper mapper)
+        public BaiDang(IMapper mapper, LVTNContext context)
         {
             _mapper = mapper;
+            _context = new LVTNContext();
         }
         public async Task<bool> SendApproveResult(ApproveResultDTO approveResult)
         { 
@@ -215,6 +216,22 @@ namespace STU.LVTN.SERVER.Provider.BusinessLogic
             }
         }
 
+        public async Task<bool> UpdateBaiDang(BaiDangEntities baiDangRequest)
+        {
+            try
+            {
+                _context = new LVTNContext();
+                _context.BaiDangs.Remove(baiDangRequest);
+                _context.BaiDangs.Update(baiDangRequest);
+                _context.SaveChanges();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
         public async Task<BaiDangEntities> GetPostByID(int IDPost)
         {
             try
@@ -229,6 +246,10 @@ namespace STU.LVTN.SERVER.Provider.BusinessLogic
         public int NumberOfPost()
         {
             return _context.BaiDangs.OrderByDescending(item => item.IdBaiDang).FirstOrDefault().IdBaiDang;
+        }
+        public int GetPostDetailID(int idBaiDang)
+        {
+            return (int)_context.BaiDangs.Where(item => item.IdBaiDang == idBaiDang).FirstOrDefault().IdBaiDangChiTiet;
         }
         public List<Admin_PostDTO> GetAllPost()
         {

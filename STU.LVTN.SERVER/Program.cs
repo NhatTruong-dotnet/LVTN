@@ -46,6 +46,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             ValidateAudience = false
         };
     });
+builder.Services.AddScoped<LVTNContext,LVTNContext>() ;
 builder.Services.AddDbContext<LVTNContext>();
 var app = builder.Build();
 // Configure the HTTP request pipeline.
