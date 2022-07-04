@@ -19,6 +19,19 @@ namespace STU.LVTN.SERVER.Provider.BusinessLogic
                 return -1;
             }
         }
+        public int UpdateBaiDang(BaiDangDoDungVanPhongEntities baiDangRequest)
+        {
+            try
+            {
+                _context.BaiDangDoDungVanPhongs.Update(baiDangRequest);
+                _context.SaveChanges();
+                return baiDangRequest.IdBaiDang;
+            }
+            catch (Exception)
+            {
+                return -1;
+            }
+        }
         public Dictionary<string, string> getPost_ThoiTrang_ByID(int? idPostDetail)
         {
             Dictionary<string, string> post = new Dictionary<string, string>();
