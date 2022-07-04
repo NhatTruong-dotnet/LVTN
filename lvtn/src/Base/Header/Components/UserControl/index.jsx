@@ -22,6 +22,7 @@ function UserControl({ username, sdt }) {
 
     const handleLogout = () => {
         dispatch(logout())
+        navigate('/')
     }
 
     const handleNavigate = to => {

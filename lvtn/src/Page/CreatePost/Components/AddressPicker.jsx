@@ -30,10 +30,7 @@ function AddressPicker({ formData, handleFormDataChange }) {
                 key={code}
                 className={styles.item}
                 onClick={() => {
-                    handleFormDataChange('address', {
-                        ...formData.address,
-                        thanhPho: name_with_type,
-                    })
+                    handleFormDataChange('thanhPho', name_with_type)
 
                     setDistrict(convertObjectIntoArray(rest['quan-huyen']))
                     handleBackground()
@@ -55,10 +52,7 @@ function AddressPicker({ formData, handleFormDataChange }) {
                 key={code}
                 className={styles.item}
                 onClick={() => {
-                    handleFormDataChange('address', {
-                        ...formData.address,
-                        quanHuyen: name_with_type,
-                    })
+                    handleFormDataChange('quanHuyen', name_with_type)
                     setWard(convertObjectIntoArray(rest['xa-phuong']))
                     handleBackground()
                 }}
@@ -74,10 +68,7 @@ function AddressPicker({ formData, handleFormDataChange }) {
                 key={code}
                 className={styles.item}
                 onClick={() => {
-                    handleFormDataChange('address', {
-                        ...formData.address,
-                        phuongXa: name_with_type,
-                    })
+                    handleFormDataChange('phuongXa', name_with_type)
                     handleBackground()
                 }}
             >
@@ -91,13 +82,13 @@ function AddressPicker({ formData, handleFormDataChange }) {
             <FormInput
                 label='Chọn thành phố'
                 require
-                value={formData.address?.thanhPho}
-                onChange={e =>
-                    handleFormDataChange('address', {
-                        ...formData.address,
-                        thanhPho: e.target.value,
-                    })
-                }
+                value={formData.thanhPho}
+                // onChange={e =>
+                //     handleFormDataChange('address', {
+                //         ...formData.address,
+                //         thanhPho: e.target.value,
+                //     })
+                // }
                 requireData={listLocation}
                 functionMapping={mappingCity}
             />
@@ -105,13 +96,13 @@ function AddressPicker({ formData, handleFormDataChange }) {
             <FormInput
                 require
                 label='Chọn quận, huyện, thị xã'
-                value={formData.address?.quanHuyen}
-                onChange={e =>
-                    handleFormDataChange('address', {
-                        ...formData.address,
-                        quanHuyen: e.target.value,
-                    })
-                }
+                value={formData.quanHuyen}
+                // onChange={e =>
+                //     handleFormDataChange('address', {
+                //         ...formData.address,
+                //         quanHuyen: e.target.value,
+                //     })
+                // }
                 requireData={district}
                 functionMapping={mappingDistrict}
             />
@@ -119,13 +110,13 @@ function AddressPicker({ formData, handleFormDataChange }) {
             <FormInput
                 require
                 label='Chọn xã, phường, thị trấn'
-                value={formData.address?.phuongXa}
-                onChange={e =>
-                    handleFormDataChange('address', {
-                        ...formData.address,
-                        phuongXa: e.target.value,
-                    })
-                }
+                value={formData.phuongXa}
+                // onChange={e =>
+                //     handleFormDataChange('address', {
+                //         ...formData.address,
+                //         phuongXa: e.target.value,
+                //     })
+                // }
                 requireData={ward}
                 functionMapping={mappingWard}
             />
@@ -133,24 +124,13 @@ function AddressPicker({ formData, handleFormDataChange }) {
             <FormInput
                 require
                 label='Tên đường'
-                value={formData.address?.tenDuong}
-                onChange={e =>
-                    handleFormDataChange('address', {
-                        ...formData.address,
-                        tenDuong: e.target.value,
-                    })
-                }
+                value={formData.tenDuong}
+                onChange={e => handleFormDataChange('tenDuong', e.target.value)}
             />
             <FormInput
-                require
                 label='Số nhà'
-                value={formData.address?.soNha}
-                onChange={e =>
-                    handleFormDataChange('address', {
-                        ...formData.address,
-                        soNha: e.target.value,
-                    })
-                }
+                value={formData.soNha}
+                onChange={e => handleFormDataChange('soNha', e.target.value)}
             />
         </div>
     )

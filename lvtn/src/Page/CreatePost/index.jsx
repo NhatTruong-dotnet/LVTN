@@ -166,7 +166,9 @@ function CreatePost({ signalRConnection, invokeMethod }) {
 
     useEffect(() => {
         if (!isLogin) {
-            navigate('/')
+            if (typeof window.showLoginForm === 'function') {
+                window.showLoginForm()
+            }
         }
     }, [isLogin])
 

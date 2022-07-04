@@ -4,6 +4,7 @@ import { emitMessage } from '../../Common/ToastMessage/ToastMessage'
 const initialState = {
     formMode: 'add',
     isLoading: false,
+    updatePost: {},
     listPost: [],
     selectedPostDetail: {},
     wishList: [],
@@ -17,6 +18,9 @@ const postSlice = createSlice({
     reducers: {
         setFormMode: (state, action) => {
             state.formMode = action.payload.formMode
+            if (action.payload.formMode === 'add') {
+                state.updatePost = {}
+            }
         },
         // -------------------------------------
         createPostPending(state) {
@@ -31,8 +35,19 @@ const postSlice = createSlice({
             emitMessage('error', action.payload.errorMessage)
         },
         // -------------------------------------
-        editPostSuccess: state => {},
-        editPostFail: state => {},
+        editPostPending: state => {
+            state.isLoading = true
+        },
+        editPostSuccess: state => {
+            state.isLoading = false
+            state.formMode = 'add'
+            state.updatePost = {}
+        },
+        editPostFail: state => {
+            state.isLoading = false
+            state.formMode = 'add'
+            state.updatePost = {}
+        },
         // -------------------------------------
         getPostPending(state) {
             state.isLoading = true

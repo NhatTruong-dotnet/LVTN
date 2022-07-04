@@ -200,18 +200,16 @@ const params = {
     66: 'baiDangDoDungVanPhong',
 }
 
-function mappingFormData({ address, ...formData }, numberPhone) {
+function mappingFormData({ ...formData }, numberPhone) {
     const { subCategoryId, categoryId } = formData
 
     return {
-        ...address,
         ...formData,
         paramUrl: params[subCategoryId || categoryId],
         anTin: true,
         trangThai: false,
         idBaiDangChiTiet: 0,
         tablesDetail: 'string',
-
         idDanhMucCha: formData.categoryId,
         sdtNguoiBan: numberPhone,
         sdtNguoiMua: '',
@@ -219,6 +217,6 @@ function mappingFormData({ address, ...formData }, numberPhone) {
         mota: formData.description,
         idDanhMucCon: subCategoryId,
         hinhAnh_BaiDangs: formData.medias,
-        diaChiCuThe: address.soNha + address.tenDuong,
+        diaChiCuThe: formData.soNha + formData.tenDuong,
     }
 }
