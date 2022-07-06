@@ -60,3 +60,28 @@ export const updateProfileUser = async (sdt, formData, token) => {
         }
     }
 }
+export const setActivePost = async (token, idPost, active) => {
+    try {
+        const res = await axios.post(
+            `${host}/api/BaiDang/admin/posts/active?status=${active}&IdPost=${idPost}`,
+            {
+                status: active,
+                IdPost: idPost,
+            },
+            {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            }
+        )
+
+        return {
+            status: res.status,
+        }
+    } catch ({ response }) {
+        return {
+            status: response.status,
+            errorMessage: response.data,
+        }
+    }
+}

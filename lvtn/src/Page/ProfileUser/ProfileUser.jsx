@@ -41,6 +41,9 @@ function ProfileUser(props) {
 
     useEffect(() => {
         document.title = userProfile.ten
+        return () => {
+            document.title = 'STU'
+        }
     }, [userProfile.ten])
     return (
         <div className='grid wide'>

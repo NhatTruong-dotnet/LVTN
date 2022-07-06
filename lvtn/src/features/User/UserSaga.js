@@ -1,10 +1,11 @@
-import { takeLatest, call, put, select } from 'redux-saga/effects'
+import { takeLatest, call, put, select, takeLeading } from 'redux-saga/effects'
 import { selectToken } from '../Auth/Login/loginSlice'
 import {
     getUserPost,
     getUserPostWithStatus,
     getUserProfile,
     updateProfileUser,
+    setActivePost,
 } from './UserApi'
 import {
     getUserProfileFail,
@@ -18,6 +19,9 @@ import {
     getUserPostWithStatusPending,
     getUserPostWithStatusSuccess,
     getUserPostWithStatusFail,
+    setActivePostFail,
+    setActivePostPending,
+    setActivePostSuccess,
 } from './UserSlice'
 
 export default function* userSaga() {
@@ -25,6 +29,43 @@ export default function* userSaga() {
     yield takeLatest('getUserPost', getUserPostSaga)
     yield takeLatest('updateProfileUser', updateProfileSaga)
     yield takeLatest('getUserPostWithStatus', getUserPostWithStatusSaga)
+    yield takeLeading('setActivePost', setActivePostSaga)
+}
+
+function* setActivePostSaga({ active, idPost, statusTab }) {
+    console.log(statusTab)
+    const token = yield select(selectToken)
+    if (!token) {
+        yield put(
+            setActivePostFail({
+                errorMessage:
+                    'Phiên đăng nhập hết hạn, vui lòng đăng nhập thử lại',
+            })
+        )
+        return
+    }
+    yield put(setActivePostPending())
+    const { status, errorMessage } = yield call(
+        setActivePost,
+        token,
+        idPost,
+        active
+    )
+    if (status === 200) {
+        yield put(
+            setActivePostSuccess({
+                message: `${active ? 'Ẩn' : 'Hiện'} tin thành công`,
+            })
+        )
+        yield put({ type: 'getUserPostWithStatus', postStatus: statusTab })
+    } else {
+        yield put(
+            setActivePostFail({
+                message:
+                    errorMessage || 'Đã có lỗi xảy ra, vui lòng thử lại sau',
+            })
+        )
+    }
 }
 
 function* updateProfileSaga({ payload }) {

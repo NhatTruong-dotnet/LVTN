@@ -12,6 +12,7 @@ import {
 import { useParams } from 'react-router-dom'
 import { useEffect } from 'react'
 import Loading from '../../Common/Loading/Loading'
+import EmptyPost from '../../Common/EmptyPost/EmptyPost'
 import Picker from './Components/Picker/Picker'
 import { getFilterParams } from './data'
 import SearchAddressPicker from './Components/SearchAddressPicker/SearchAddressPicker'
@@ -130,6 +131,8 @@ function Search(props) {
             <Frame>
                 {isLoading ? (
                     <Loading height={400} />
+                ) : searchPosts.length === 0 ? (
+                    <EmptyPost height={400} />
                 ) : (
                     <ListPost listPost={searchPosts} />
                 )}

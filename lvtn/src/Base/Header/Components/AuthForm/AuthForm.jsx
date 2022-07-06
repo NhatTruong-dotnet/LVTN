@@ -1,7 +1,7 @@
 import styles from './authform.module.css'
 import { useEffect, useState } from 'react'
 import clsx from 'clsx'
-
+import { useLocation } from 'react-router-dom'
 import { FcGoogle } from 'react-icons/fc'
 import { FaFacebook, FaTimes } from 'react-icons/fa'
 import { useDispatch, useSelector } from 'react-redux'
@@ -20,6 +20,7 @@ function AuthForm({ setIsShowForm }) {
     const registerState = useSelector(selectRegisterState)
     const dispatch = useDispatch()
     const isLogin = useSelector(selectLoginStatus)
+    const { pathname } = useLocation()
 
     const handleFormDataChange = e => {
         setFormData({
@@ -56,7 +57,6 @@ function AuthForm({ setIsShowForm }) {
             password: '',
         })
     }
-
     return (
         <div className={styles.loginFormContainer}>
             <h1 className={styles.title}>
@@ -64,7 +64,11 @@ function AuthForm({ setIsShowForm }) {
             </h1>
             <FaTimes
                 className={styles.closeModalIcon}
-                onClick={() => setIsShowForm(false)}
+                onClick={() => {
+                    if (pathname !== '/create-post') {
+                        setIsShowForm(false)
+                    }
+                }}
             />
             <form className={styles.form} onSubmit={handleSubmitForm}>
                 <div className={styles.formGroup}>
@@ -76,6 +80,7 @@ function AuthForm({ setIsShowForm }) {
                         value={formData.numberPhone}
                         name='numberPhone'
                         onChange={handleFormDataChange}
+                        autoFocus
                     />
                 </div>
                 <div className={styles.formGroup}>

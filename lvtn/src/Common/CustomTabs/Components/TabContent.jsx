@@ -40,6 +40,7 @@ function TabContent({ status, profileUserNumberPhone, loginUserNumberPhone }) {
                         isMyPost={
                             loginUserNumberPhone === profileUserNumberPhone
                         }
+                        status={status}
                     />
                 )
             )}

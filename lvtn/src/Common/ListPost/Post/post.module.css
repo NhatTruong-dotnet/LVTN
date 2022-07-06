@@ -153,3 +153,18 @@
 .saved .icon {
     color: #fff;
 }
+
+.control {
+    position: absolute;
+    right: 30px;
+    padding: 10px 0;
+    box-shadow: 0 1px 8px 0 rgb(0 0 0 / 30%);
+    border-radius: 5px;
+}
+.controlItem {
+    padding: 8px 20px;
+    font-size: 14px;
+}
+.controlItem:hover {
+    background-color: #ccc;
+}

@@ -24,6 +24,10 @@ const searchSlice = createSlice({
             state.isLoading = false
             state.listPost = action.payload.listPost
         },
+        getPostWithCategoryIdFail: (state, action) => {
+            state.isLoading = false
+            state.listPost = []
+        },
         // -------------------------------
         getPostWithFilterParamsPending: state => {
             state.isLoading = true
@@ -31,6 +35,10 @@ const searchSlice = createSlice({
         getPostWithFilterParamsSuccess: (state, action) => {
             state.isLoading = false
             state.listPost = action.payload.listPost
+        },
+        getPostWithFilterParamsFail: state => {
+            state.isLoading = false
+            state.listPost = []
         },
     },
 })
@@ -43,9 +51,11 @@ export const {
     // ------------------------------
     getPostWithCategoryIdPending,
     getPostWithCategoryIdSuccess,
+    getPostWithCategoryIdFail,
     // -----------------------------
     getPostWithFilterParamsPending,
     getPostWithFilterParamsSuccess,
+    getPostWithFilterParamsFail,
 } = actions
 
 export const selectSearchListPost = state => state.search.listPost

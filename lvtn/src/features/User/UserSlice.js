@@ -65,6 +65,18 @@ const userSlice = createSlice({
             state.isLoading = false
             emitMessage('error', action.payload.message)
         },
+        // --------------------------------------------------------
+        setActivePostPending: state => {
+            state.isLoading = true
+        },
+        setActivePostSuccess: (state, action) => {
+            state.isLoading = false
+            emitMessage('success', action.payload.message)
+        },
+        setActivePostFail: (state, action) => {
+            state.isLoading = false
+            emitMessage('error', action.payload.errorMessage)
+        },
     },
 })
 
@@ -85,6 +97,10 @@ export const {
     updateProfileUserPending,
     upDateProfileUserSuccess,
     upDateProfileUserFail,
+    // ------------
+    setActivePostPending,
+    setActivePostSuccess,
+    setActivePostFail,
 } = actions
 
 export const selectUserInfo = state => state.user.userInfo

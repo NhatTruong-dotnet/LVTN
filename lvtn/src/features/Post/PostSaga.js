@@ -8,7 +8,6 @@ import {
 } from './PostApi'
 import {
     createPostFail,
-    createPostPending,
     createPostSuccess,
     editPostFail,
     editPostSuccess,

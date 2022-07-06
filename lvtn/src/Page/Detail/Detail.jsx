@@ -194,9 +194,7 @@ function Detail(props) {
                         <div className={styles.vendorInfo}>
                             {postDetail?.userProfile.anhDaiDienSource ? (
                                 <img
-                                    src={
-                                        postDetail?.userProfile.anhDaiDienSource
-                                    }
+                                    src={`${imgURL}${postDetail?.userProfile.anhDaiDienSource}`}
                                     alt='avatar'
                                     width={60}
                                     height={60}
@@ -247,7 +245,7 @@ function Detail(props) {
                                 </div>
                             </div>
                         </div>
-                        {postDetail.userProfile === loginUserSdt ? (
+                        {postDetail.userProfile.soDienThoai === loginUserSdt ? (
                             ''
                         ) : (
                             <Button

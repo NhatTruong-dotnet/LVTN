@@ -5,8 +5,10 @@ import {
     searchWithValue,
 } from './SearchApi'
 import {
+    getPostWithCategoryIdFail,
     getPostWithCategoryIdPending,
     getPostWithCategoryIdSuccess,
+    getPostWithFilterParamsFail,
     getPostWithFilterParamsPending,
     getPostWithFilterParamsSuccess,
     searchPending,
@@ -25,6 +27,8 @@ function* getPostWithCategoryIdSaga({ categoryId }) {
     const { status, listPost } = yield call(getPostWithCategoryId, categoryId)
     if (status === 200) {
         yield put(getPostWithCategoryIdSuccess({ listPost }))
+    } else {
+        yield put(getPostWithCategoryIdFail())
     }
 }
 
@@ -66,6 +70,8 @@ function* filterPost({ searchCategory, address, params }) {
     )
     if (status === 200) {
         yield put(getPostWithFilterParamsSuccess({ listPost }))
+    } else {
+        yield put(getPostWithFilterParamsFail())
     }
 }
 

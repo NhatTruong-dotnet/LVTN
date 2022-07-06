@@ -1,8 +1,9 @@
 import React from 'react'
 import styles from './post.module.css'
 import { ImUserTie } from 'react-icons/im'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { FaRegHeart } from 'react-icons/fa'
+import { HiDotsVertical } from 'react-icons/hi'
 import { useDispatch, useSelector } from 'react-redux'
 import {
     removeItemWishList,
@@ -11,6 +12,9 @@ import {
 } from '../../../features/Post/PostSlice'
 import clsx from 'clsx'
 import { formatCurrency } from '../../../Utils/formatCurrency'
+import { useState } from 'react'
+import TabContainer from '../../../Common/TabContainer'
+import { selectNumberPhone } from '../../../features/Auth/Login/loginSlice'
 
 const imgURL = process.env.REACT_APP_BASE_IMG_URL
 
@@ -24,10 +28,13 @@ function HorizontalPost({
     authorName,
     isMyPost,
     empty,
+    status,
 }) {
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const wishList = useSelector(selectWishList)
+    const { profileUserNumberPhone } = useParams()
+    const loginUserNumberPhone = useSelector(selectNumberPhone)
 
     const redirectToDetailPage = () => {
         navigate(`/detail/${idPost}`)
@@ -102,7 +109,63 @@ function HorizontalPost({
                     <div className={styles.location}>{location}</div>
                 </div>
             </div>
+            {loginUserNumberPhone === profileUserNumberPhone ? (
+                <PostControl status={status} idPost={idPost} />
+            ) : (
+                ''
+            )}
         </div>
+    )
+}
+
+function PostControl({ status, idPost }) {
+    const [showControl, setShowControl] = useState(false)
+    const dispatch = useDispatch()
+
+    const handleSetActivePost = active => {
+        dispatch({ type: 'setActivePost', active, idPost, statusTab: status })
+    }
+
+    return (
+        <>
+            <HiDotsVertical
+                style={{ position: 'absolute', right: 10, fontSize: 20 }}
+                onClick={e => {
+                    e.stopPropagation()
+                    setShowControl(true)
+                }}
+            />
+            {showControl && (
+                <TabContainer onClickOutside={() => setShowControl(false)}>
+                    <div className={styles.control}>
+                        {status === '4' ? (
+                            <div
+                                className={styles.controlItem}
+                                onClick={e => {
+                                    e.stopPropagation()
+                                    setShowControl(false)
+                                    handleSetActivePost(false)
+                                }}
+                            >
+                                Hiện tin
+                            </div>
+                        ) : (
+                            <div
+                                className={styles.controlItem}
+                                onClick={e => {
+                                    e.stopPropagation()
+                                    setShowControl(false)
+                                    handleSetActivePost(true)
+                                }}
+                            >
+                                Ẩn tin
+                            </div>
+                        )}
+                        <div className={styles.controlItem}>Chỉnh sửa tin</div>
+                    </div>
+                </TabContainer>
+            )}
+        </>
     )
 }
 
