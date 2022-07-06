@@ -263,9 +263,40 @@ namespace STU.LVTN.SERVER.Provider.BusinessLogic
                 temp.TieuDe = item.TieuDe;
                 temp.IsReviewed = (bool)item.isReviewed;
                 temp.TenDanhMuc = _context.DanhMucs.Where(danhMuc => danhMuc.IdDanhMuc == item.IdDanhMucCon).First().TenDanhMuc;
+                temp.CreatedAt = $"{item.CreatedDate:dd-MM-yyyy}";
                 result.Add(temp);
             }
             return result;
+        }
+
+        public bool ActivePost(int IDPost)
+        {
+            try
+            {
+               BaiDangEntities post = _context.BaiDangs.Where(item => item.IdBaiDang == IDPost).FirstOrDefault();
+                post.AnTin = true;
+                _context.SaveChanges();
+                return true; ;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        public bool DeActivePost(int IDPost)
+        {
+            try
+            {
+                BaiDangEntities post = _context.BaiDangs.Where(item => item.IdBaiDang == IDPost).FirstOrDefault();
+                post.AnTin = false;
+                _context.SaveChanges();
+                return true; ;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
     }
 }

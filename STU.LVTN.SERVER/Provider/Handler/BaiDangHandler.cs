@@ -345,6 +345,18 @@ namespace STU.LVTN.SERVER.Provider.Handler
         {
             return baiDangHelper.GetAllPost();
         }
+        public async Task<bool> SetActiveStatus(bool status, int IdPost)
+        {
+            if (status)
+            {
+                return baiDangHelper.ActivePost(IdPost);
+            }
+            else
+            {
+                return baiDangHelper.DeActivePost(IdPost);
+            }
+
+        }
         public int NumberOfPost()
         {
             return baiDangHelper.NumberOfPost();
@@ -4069,6 +4081,27 @@ namespace STU.LVTN.SERVER.Provider.Handler
             }
         }
         #endregion
+        #endregion
+
+        #region PrefightForUpdate
+        public async Task<BaiDangBatDongSanCC_DTO> PreflightBaiDangBatDongSanCC(int ID)
+        {
+            BaiDangBatDongSanCC_DTO result = new BaiDangBatDongSanCC_DTO();
+            result.hinhAnh_BaiDangs = new List<HinhAnh_BaiDangDTO>();
+            BaiDangEntities baiDang = await baiDangHelper.GetPostByID(ID);
+            BaiDangBatDongSanEntities detailBaiDang =  baiDangBatDongSanHelper.getPostByID((int)baiDang.IdBaiDangChiTiet);
+            List<HinhAnhBaiDangEntities> hinhAnhBaiDang = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(ID);
+            foreach (var item in hinhAnhBaiDang)
+            {
+                HinhAnh_BaiDangDTO temp = new HinhAnh_BaiDangDTO();
+                temp.type = (item.VideoType == true ? "video" : "png");
+                temp.id = item.IdMediaCloud;
+                result.hinhAnh_BaiDangs.Add(temp);
+            }
+            result = _mapper.Map<BaiDangBatDongSanCC_DTO>(baiDang);
+            result = _mapper.Map<BaiDangBatDongSanCC_DTO>(detailBaiDang);
+            return result;
+        }
         #endregion
     }
 

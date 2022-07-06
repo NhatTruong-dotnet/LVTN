@@ -33,7 +33,10 @@ namespace STU.LVTN.SERVER.Provider.BusinessLogic
                 return -1;
             }
         }
-
+        public BaiDangBatDongSanEntities getPostByID(int IdPost)
+        {
+            return _context.BaiDangBatDongSans.Where(item => item.IdBaiDang == IdPost).FirstOrDefault();
+        }
         public Dictionary<string, string> getPost_CC_ByID(int? idPostDetail)
         {
             Dictionary<string, string> post = new Dictionary<string, string>();

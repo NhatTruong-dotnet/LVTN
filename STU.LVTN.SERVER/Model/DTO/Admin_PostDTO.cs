@@ -7,5 +7,6 @@
         public string TieuDe { get; set; }
         public bool IsReviewed { get; set; }
         public string SDTNguoiBan { get; set; }
+        public string CreatedAt { get; set; }
     }
 }

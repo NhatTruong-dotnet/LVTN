@@ -1543,6 +1543,17 @@ namespace STU.LVTN.SERVER.Controllers
         }
         #endregion
         #endregion
+
+        #region GetDetailForUpdate
+        #region BatDongSan Handler
+        [HttpGet("batDongSanCC/preflight"), Authorize]
+        public async Task<ActionResult<BaiDangBatDongSanCC_DTO>> preflightPostBatDongSanCC(int IDPost)
+        {
+            return await baiDangHandler.PreflightBaiDangBatDongSanCC(IDPost);
+        }
+
+        #endregion
+        #endregion
         [HttpPost("checkedNotifications/{idPost?}")]
         public async Task<ActionResult> CheckedNotifycations(int idPost = 1)
         {
@@ -1576,7 +1587,18 @@ namespace STU.LVTN.SERVER.Controllers
                 return BadRequest();
             }
         }
+        [HttpPost("admin/posts/active"), Authorize]
+        public async Task<ActionResult<bool>> SetActiveStatus(bool status, int IdPost)
+        {
+            try
+            {
+                return Ok(baiDangHandler.SetActiveStatus(status,IdPost));
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
+        }
 
-        
     }
 }
