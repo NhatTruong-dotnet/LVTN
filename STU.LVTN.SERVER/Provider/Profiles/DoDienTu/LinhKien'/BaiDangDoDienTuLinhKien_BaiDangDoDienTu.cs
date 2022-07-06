@@ -9,7 +9,6 @@ namespace STU.LVTN.SERVER.Provider.Profiles.DoDienTu.LinhKien_
         public BaiDangDoDienTuLinhKien_BaiDangDoDienTu()
         {
             CreateMap<BaiDangDoDienTuLinhKien_DTO, BaiDangDoDienTuEntities>();
-
         }
     }
 }

@@ -9,7 +9,6 @@ namespace STU.LVTN.SERVER.Provider.Profiles.BatDongSan.PhongTro
         public BaiDangBatDongSanPhongTro_BatDongSanEntities()
         {
             CreateMap<BaiDangBatDongSanPhongTro_DTO, BaiDangEntities>(MemberList.Source);
-
         }
     }
 }

@@ -51,6 +51,7 @@ namespace STU.LVTN.SERVER.Provider.BusinessLogic
             post.Add("Loại hình chung cư: ", entity.CcLoaiHinh);
             post.Add("Số phòng ngủ: ", entity.CcSoPhongNgu.ToString());
             post.Add("Tình trạng chung cư: ", entity.CcChuaBanGiao == false ? "Chưa bàn giao" : "Đã bàn giao");
+            post.Add("preflight: ", "batDongSanCC");
             if (entity.soToilet != null)
                 post.Add("Số toilet: ", entity.soToilet.ToString());
             return post;

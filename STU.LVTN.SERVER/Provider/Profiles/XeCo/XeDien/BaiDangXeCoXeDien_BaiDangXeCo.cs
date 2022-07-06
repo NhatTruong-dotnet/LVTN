@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using STU.LVTN.SERVER.Model;
+using STU.LVTN.SERVER.Model.DTO.BaiDangXeCo;
 
 namespace STU.LVTN.SERVER.Provider.Profiles.XeCo.XeDien
 {
@@ -7,7 +8,7 @@ namespace STU.LVTN.SERVER.Provider.Profiles.XeCo.XeDien
     {
         public BaiDangXeCoXeDien_BaiDangXeCo()
         {
-            CreateMap<BaidangXeCoXeDien_DTO, BaiDangXeCoEntities>();
+            CreateMap<BaiDangXeCoXeDien_DTO, BaiDangXeCoEntities>();
         }
     }
 }

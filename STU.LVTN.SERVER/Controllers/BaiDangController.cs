@@ -1547,11 +1547,134 @@ namespace STU.LVTN.SERVER.Controllers
         #region GetDetailForUpdate
         #region BatDongSan Handler
         [HttpGet("batDongSanCC/preflight"), Authorize]
-        public async Task<ActionResult<BaiDangBatDongSanCC_DTO>> preflightPostBatDongSanCC(int IDPost)
+        public async Task<ActionResult<BaiDangBatDongSanCC_DTO>> preflightPostBatDongSanCC(int IdPost)
         {
-            return await baiDangHandler.PreflightBaiDangBatDongSanCC(IDPost);
+            return await baiDangHandler.PreflightBaiDangBatDongSanCC(IdPost);
         }
 
+        [HttpGet("batDongSanDat/preflight"), Authorize]
+        public async Task<ActionResult<BaiDangBatDongSanDat_DTO>> preflightPostBatDongSanDat(int IdPost)
+        {
+            return await baiDangHandler.PreflightBaiDangBatDongSanDat(IdPost);
+        }
+
+        [HttpGet("batDongSanNhaO/preflight"), Authorize]
+        public async Task<ActionResult<BaiDangBatDongSanNhaO_DTO>> preflightPostBatDongSanNhaO(int IdPost)
+        {
+            return await baiDangHandler.PreflightBaiDangBatDongSanNhaO(IdPost);
+        }
+
+        [HttpGet("batDongSanPhongTro/preflight"), Authorize]
+        public async Task<ActionResult<BaiDangBatDongSanPhongTro_DTO>> preflightPostBatDongSanPhongTro(int IdPost)
+        {
+            return await baiDangHandler.PreflightBaiDangBatDongSanPhongTro(IdPost);
+        }
+
+        [HttpGet("batDongSanVanPhong/preflight"), Authorize]
+        public async Task<ActionResult<BaiDangBatDongSanVanPhong_DTO>> preflightPostBatDongSanVanPhong(int IdPost)
+        {
+            return await baiDangHandler.PreflightBaiDangBatDongSanVanPhong(IdPost);
+        }
+        #endregion
+
+        #region XeCo Handler
+        [HttpGet("xeCoOto/preflight"), Authorize]
+        public async Task<ActionResult<BaiDangXeCoOto_DTO>> preflightPostXeCoOto(int IdPost)
+        {
+            return await baiDangHandler.PreflightBaiDangXeCoOTo(IdPost);
+        }
+
+        [HttpGet("xeCoXeMay/preflight"), Authorize]
+        public async Task<ActionResult<BaiDangXeCoXeMay_DTO>> preflightPostXeCoXeMay(int IdPost)
+        {
+            return await baiDangHandler.PreflightBaiDangXeCoXeMay(IdPost);
+        }
+
+        [HttpGet("xeCoXeTai/preflight"), Authorize]
+        public async Task<ActionResult<BaiDangXeCoXeTai_DTO>> preflightPostXeCoXeTai(int IdPost)
+        {
+            return await baiDangHandler.PreflightBaiDangXeCoXeTai(IdPost);
+        }
+
+        [HttpGet("xeCoXeDien/preflight"), Authorize]
+        public async Task<ActionResult<BaiDangXeCoXeDien_DTO>> preflightPostXeCoXeDien(int IdPost)
+        {
+            return await baiDangHandler.PreflightBaiDangXeCoXeDien(IdPost);
+        }
+
+        [HttpGet("xeCoXeDap/preflight"), Authorize]
+        public async Task<ActionResult<BaiDangXeCoXeDap_DTO>> preflightPostXeCoXeDap(int IdPost)
+        {
+            return await baiDangHandler.PreflightBaiDangXeCoXeDap(IdPost);
+        }
+
+        [HttpGet("xeCoPhuongTienKhac/preflight"), Authorize]
+        public async Task<ActionResult<BaiDangXeCoPhuongTienKhac_DTO>> preflightPostXeCoPhuongTienKhac(int IdPost)
+        {
+            return await baiDangHandler.PreflightBaiDangXeCoPhuongTienKhac(IdPost);
+        }
+
+        [HttpGet("xeCoPhuTungXe/preflight"), Authorize]
+        public async Task<ActionResult<BaiDangXeCoPhuTungXe_DTO>> preflightPostXeCoPhuTungXe(int IdPost)
+        {
+            return await baiDangHandler.PreflightBaiDangXeCoPhuTungKhac(IdPost);
+        }
+        #endregion
+
+        #region DoDienTu Handler
+        [HttpGet("doDienTuDienThoai/preflight"), Authorize]
+        public async Task<ActionResult<BaiDangDoDienTuDienThoai_DTO>> preflightPostDoDienTuDienThoai(int IdPost)
+        {
+            return await baiDangHandler.PreflightBaiDangDoDienTuDienThoai(IdPost);
+        }
+
+        [HttpGet("doDienTuLaptop/preflight"), Authorize]
+        public async Task<ActionResult<BaiDangDoDienTuLaptop_DTO>> preflightPostDoDienTuLaptop(int IdPost)
+        {
+            return await baiDangHandler.PreflightBaiDangDoDienTuLaptop(IdPost);
+        }
+
+        [HttpGet("doDienTuLinhKien/preflight"), Authorize]
+        public async Task<ActionResult<BaiDangDoDienTuLinhKien_DTO>> preflightPostDoDienTuLinhKien(int IdPost)
+        {
+            return await baiDangHandler.PreflightBaiDangDoDienTuLinhKien(IdPost);
+        }
+
+        [HttpGet("doDienTuMayAnh/preflight"), Authorize]
+        public async Task<ActionResult<BaiDangDoDienTuMayAnh_DTO>> preflightPostDoDienTuMayAnh(int IdPost)
+        {
+            return await baiDangHandler.PreflightBaiDangDoDienTuMayAnh(IdPost);
+        }
+
+        [HttpGet("doDienTuMayTinhBang/preflight"), Authorize]
+        public async Task<ActionResult<BaiDangDoDienTuMayTinhBang_DTO>> preflightPostDoDienTuMayTinhBang(int IdPost)
+        {
+            return await baiDangHandler.PreflightBaiDangDoDienTuMayTinhBang(IdPost);
+        }
+
+        [HttpGet("doDienTuMayTinhDeBan/preflight"), Authorize]
+        public async Task<ActionResult<BaiDangDoDienTuMayTinhDeBan_DTO>> preflightPostDoDienTuMayTinhDeBan(int IdPost)
+        {
+            return await baiDangHandler.PreflightBaiDangDoDienTuMayTinhDeBan(IdPost);
+        }
+
+        [HttpGet("doDienTuPhuKien/preflight"), Authorize]
+        public async Task<ActionResult<BaiDangDoDienTuPhuKien_DTO>> preflightPostDoDienTuPhuKien(int IdPost)
+        {
+            return await baiDangHandler.PreflightBaiDangDoDienTuPhuKien(IdPost);
+        }
+
+        [HttpGet("doDienTuThietBiDeoThongMinh/preflight"), Authorize]
+        public async Task<ActionResult<BaiDangDoDienTuThietBiDeoThongMinh_DTO>> preflightPostDoDienTuThietBiDeoThongMinh(int IdPost)
+        {
+            return await baiDangHandler.PreflightBaiDangDoDienTuThietBiDeoThongMinh(IdPost);
+        }
+
+        [HttpGet("doDienTuTivi/preflight"), Authorize]
+        public async Task<ActionResult<BaiDangDoDienTuTivi_DTO>> preflightPostDoDienTuTivi(int IdPost)
+        {
+            return await baiDangHandler.PreflightBaiDangDoDienTuTivi(IdPost);
+        }
         #endregion
         #endregion
         [HttpPost("checkedNotifications/{idPost?}")]
@@ -1587,6 +1710,7 @@ namespace STU.LVTN.SERVER.Controllers
                 return BadRequest();
             }
         }
+       
         [HttpPost("admin/posts/active"), Authorize]
         public async Task<ActionResult<bool>> SetActiveStatus(bool status, int IdPost)
         {
