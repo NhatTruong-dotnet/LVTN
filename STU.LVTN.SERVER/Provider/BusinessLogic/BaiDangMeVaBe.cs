@@ -41,6 +41,7 @@ namespace STU.LVTN.SERVER.Provider.BusinessLogic
             BaiDangMeVaBeEntities entity = _context.BaiDangMeVaBes.Where(item => item.IdBaiDang == idPostDetail).FirstOrDefault();
             post.Add("Tình trạng: ", entity.DaSuDung == true?"Đã sử dụng":"Mới");
             post.Add("Loại sản phẩm: ", entity.LoaiSanPham);
+            post.Add("preflightKey: ", "baiDangMeVaBe");
             return post;
         }
     }

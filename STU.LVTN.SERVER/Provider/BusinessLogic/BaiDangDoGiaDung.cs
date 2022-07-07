@@ -44,6 +44,7 @@ namespace STU.LVTN.SERVER.Provider.BusinessLogic
             post.Add("Loại sản phẩm: ", entity.LoaiSanPham);
             if (entity.BanGheChatLieu != null)
                 post.Add("Chất liệu: ", entity.BanGheChatLieu);
+            post.Add("preflightKey: ", "baiDangDoGiaDungBanGhe");
 
             return post;
         }
@@ -55,7 +56,7 @@ namespace STU.LVTN.SERVER.Provider.BusinessLogic
             post.Add("Loại sản phẩm: ", entity.LoaiSanPham);
             if (entity.BanGheChatLieu != null)
                 post.Add("Chất liệu: ", entity.BanGheChatLieu);
-
+            post.Add("preflightKey: ", "baiDangDoGiaDungTuKe");
             return post;
         }
         public Dictionary<string, string> getPost_Giuong_ByID(int? idPostDetail)
@@ -66,7 +67,7 @@ namespace STU.LVTN.SERVER.Provider.BusinessLogic
             post.Add("Loại sản phẩm: ", entity.LoaiSanPham);
             if (entity.GiuongChatLieu != null)
                 post.Add("Kích cỡ: ", entity.GiuongChatLieu);
-
+            post.Add("preflightKey: ", "baiDangDoGiaDungGiuong");
             return post;
         }
         public Dictionary<string, string> getPost_Bep_ByID(int? idPostDetail)
@@ -75,6 +76,7 @@ namespace STU.LVTN.SERVER.Provider.BusinessLogic
             BaiDangDoGiaDungEntities entity = _context.BaiDangDoGiaDungs.Where(item => item.IdBaiDang == idPostDetail).FirstOrDefault();
             post.Add("Tình trạng: ", entity.DaSuDung == true ? "Đã sử dụng" : "Mới");
             post.Add("Loại sản phẩm: ", entity.LoaiSanPham);
+            post.Add("preflightKey: ", "baiDangDoGiaDungBep");
             return post;
         }
         public Dictionary<string, string> getPost_DenCayCanhNoiThat_ByID(int? idPostDetail)
@@ -83,6 +85,8 @@ namespace STU.LVTN.SERVER.Provider.BusinessLogic
             BaiDangDoGiaDungEntities entity = _context.BaiDangDoGiaDungs.Where(item => item.IdBaiDang == idPostDetail).FirstOrDefault();
             post.Add("Tình trạng: ", entity.DaSuDung == true ? "Đã sử dụng" : "Mới");
             post.Add("Loại sản phẩm: ", entity.LoaiSanPham);
+            post.Add("preflightKey: ", "baiDangDoGiaDungDenCayCanhNoiThat");
+
             return post;
         }
         public Dictionary<string, string> getPost_Quat_ByID(int? idPostDetail)
@@ -92,6 +96,8 @@ namespace STU.LVTN.SERVER.Provider.BusinessLogic
             post.Add("Tình trạng: ", entity.DaSuDung == true ? "Đã sử dụng" : "Mới");
             post.Add("Loại sản phẩm: ", entity.LoaiSanPham);
             post.Add("Thương hiệu: ", entity.QuatThuongHieu);
+            post.Add("preflightKey: ", "baiDangDoGiaDungQuat");
+
             return post;
         }
         public Dictionary<string, string> getPost_ThietBiVeSinh_ByID(int? idPostDetail)
@@ -101,6 +107,7 @@ namespace STU.LVTN.SERVER.Provider.BusinessLogic
             post.Add("Tình trạng: ", entity.DaSuDung == true ? "Đã sử dụng" : "Mới");
             post.Add("Loại sản phẩm: ", entity.LoaiSanPham);
             post.Add("Thương hiệu: ", entity.ThietBiVeSinhThuongHieu);
+            post.Add("preflightKey: ", "baiDangDoGiaDungThietBiVeSinh");
             return post;
         }
     }

@@ -47,6 +47,7 @@ namespace STU.LVTN.SERVER.Provider.BusinessLogic
                 post.Add("Dung lượng: ", entity.DienThoaiDungLuong);
             if ((bool)entity.BaoHanh)
                 post.Add("Bảo hành: ", entity.BaoHanh == true ? "Còn bảo hành" : "Hết bảo hành");
+            post.Add("preflightKey: ", "doDienTuDienThoai");
             return post;
         }
         public Dictionary<string, string> getPost_MayTinhBang_ByID(int? idPostDetail)
@@ -66,6 +67,7 @@ namespace STU.LVTN.SERVER.Provider.BusinessLogic
                 post.Add("Phiên bản: ", entity.MayTinhBangQuocTe == true?"Quốc tế":"Khóa mạng (lock)");
             if ((bool)entity.BaoHanh)
                 post.Add("Bảo hành: ", entity.BaoHanh == true ? "Còn bảo hành" : "Hết bảo hành");
+            post.Add("preflightKey: ", "doDienTuMayTinhBang");
             return post;
         }
         public Dictionary<string, string> getPost_Laptop_ByID(int? idPostDetail)
@@ -89,6 +91,8 @@ namespace STU.LVTN.SERVER.Provider.BusinessLogic
                 post.Add("Kích cỡ: ", entity.LaptopKichCoManHinh);
             if ((bool)entity.BaoHanh)
                 post.Add("Bảo hành: ", entity.BaoHanh == true ?"Còn bảo hành":"Hết bảo hành");
+            post.Add("preflightKey: ", "doDienTuLaptop");
+
             return post;
         }
         public Dictionary<string, string> getPost_MayTinhDeBan_ByID(int? idPostDetail)
@@ -110,7 +114,8 @@ namespace STU.LVTN.SERVER.Provider.BusinessLogic
                 post.Add("Kích cỡ màn hình: ", entity.MayTinhDeBanKichCoManHinh);
             if ((bool)entity.MayTinhDeBanMienPhi)
                 post.Add("Cho tặng miễn phí","");
-            
+            post.Add("preflightKey: ", "doDienTuMayTinhDeBan");
+
             return post;
         }
         public Dictionary<string, string> getPost_MayAnhMayQuayOngKinh_ByID(int? idPostDetail)
@@ -126,6 +131,7 @@ namespace STU.LVTN.SERVER.Provider.BusinessLogic
                 post.Add("Bảo hành: ", entity.BaoHanh == true ? "Còn bảo hành": "Hết bảo hành");
             if ((bool)entity.MayTinhDeBanHdd)
                 post.Add("Loại ổ cứng: ", entity.MayTinhDeBanHdd == true ? "HDD" : "SSD");
+            post.Add("preflightKey: ", "doDienTuMayTinhMayAnh");
             return post;
         }
         public Dictionary<string, string> getPost_TiviAmThanh_ByID(int? idPostDetail)
@@ -139,7 +145,8 @@ namespace STU.LVTN.SERVER.Provider.BusinessLogic
                 post.Add("Tình trạng: ", entity.TinhTrang);
             if (entity.BaoHanh != null)
                 post.Add("Bảo hành: ", entity.BaoHanh == true ? "Còn bảo hành" : "Hết bảo hành");
-            
+            post.Add("preflightKey: ", "doDienTuTivi");
+
             return post;
         }
         public Dictionary<string, string> getPost_ThietBiDeoThongMinh_ByID(int? idPostDetail)
@@ -151,6 +158,7 @@ namespace STU.LVTN.SERVER.Provider.BusinessLogic
                 post.Add("Tình trạng: ", entity.TinhTrang);
             if (entity.BaoHanh != null)
                 post.Add("Bảo hành: ", entity.BaoHanh == true ? "Còn bảo hành" : "Hết bảo hành");
+            post.Add("preflightKey: ", "doDienTuThietBiDeoThongMinh");
 
             return post;
         }
@@ -163,6 +171,7 @@ namespace STU.LVTN.SERVER.Provider.BusinessLogic
             post.Add("Tình trạng: ", entity.PhuKienTinhTrang);
             if (entity.BaoHanh != null)
                 post.Add("Bảo hành: ", entity.BaoHanh == true ? "Còn bảo hành" : "Hết bảo hành");
+            post.Add("preflightKey: ", "doDienTuPhuKien");
 
             return post;
         }
@@ -175,7 +184,7 @@ namespace STU.LVTN.SERVER.Provider.BusinessLogic
             post.Add("Tình trạng: ", entity.LinhKienTinhTrang);
             if (entity.BaoHanh != null)
                 post.Add("Bảo hành: ", entity.BaoHanh == true ? "Còn bảo hành" : "Hết bảo hành");
-
+            post.Add("preflightKey: ", "doDienTuLinhKien");
             return post;
         }
     }

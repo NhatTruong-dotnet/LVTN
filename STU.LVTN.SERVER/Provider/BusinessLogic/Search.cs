@@ -1436,7 +1436,116 @@ namespace STU.LVTN.SERVER.Provider.BusinessLogic
             }
             return result;
         }
+        public string GetPreflightKey(int idDanhMucCon)
+        {
+            switch (idDanhMucCon)
+            {
+                case 13:
+                    return "batDongSanCC";
+                case 14:
+                    return "batDongSanNhaO";
+                case 15:
+                    return "batDongSanDat";
+                case 16:
+                    return "batDongSanVanPhong";
+                case 17:
+                    return "batDongSanPhongTro";
+                case 18:
+                    return "xeCoOto";
+                case 19:
+                    return "xeCoXeMay";
+                case 20:
+                    return "xeCoXeMay";
+                case 21:
+                    return "xeCoXeTai";
+                case 22:
+                    return "xeCoXeDap";
+                case 23:
+                    return "xeCoPhuongTienKhac";
+                case 24:
+                    return "xeCoPhuTungXe";
+                case 25:
+                    return "doDienTuDienThoai";
+                case 26:
+                    return "doDienTuMayTinhBang";
+                case 27:
+                    return "doDienTuLaptop";
+                case 28:
+                    return "doDienTuMayTinhDeBan";
+                case 29:
+                    return "doDienTuMayAnh";
+                case 30:
+                    return "doDienTuTivi";
+                case 31:
+                    return "doDienTuThietBiDeoThongMinh";
+                case 32:
+                    return "doDienTuPhuKien";
+                case 33:
+                    return "doDienTuLinhKien";
+                case 4:
+                    return "viecLam";
+                case 34:
+                case 37:
+                case 38:
+                case 39:
+                    return "thuCungGaMeoThuCungKhac";
+                case 35:
+                    return "thuCungCho";
+                case 36:
+                    return "thuCungChim";
+                case 40:
+                    return "baiDangTuLanh";
+                case 41:
+                    return "baiDangMayLanh";
+                case 42:
+                    return "baiDangMayGiat";
+                case 6:
+                    return "doAnThucPham";
+                case 43:
+                    return "baiDangDoGiaDungBanGhe";
+                case 44:
+                    return "baiDangDoGiaDungTuKe";
+                case 45:
+                    return "baiDangDoGiaDungGiuong";
+                case 46:
+                    return "baiDangDoGiaDungBep";
+                case 47:
+                    return "baiDangDoGiaDungBep";
+                case 48:
+                    return "baiDangDoGiaDungQuat";
+                case 49:
+                case 50:
+                case 52:
+                    return "baiDangDoGiaDungDenCayCanhNoiThat";
+                case 51:
+                    return "baiDangDoGiaDungThietBiVeSinh";
+                case 9:
+                    return "baiDangMeVaBe";
+                case 53:
+                case 54:
+                case 55:
+                case 56:
+                case 57:
+                case 58:
+                    return "baiDangThoiTrang";
+                case 60:
+                case 61:
+                case 63:
+                case 64:
+                    return "baiDangGiaiTri";
+                case 59:
+                    return "baiDangGiaiTriNhacCu";
+                case 62:
+                    return "baiDangGiaiTriDoSuuTam";
+                case 65:
+                case 66:
+                    return "baiDangDoDungVanPhong";
+                default:
+                    return "";
+                    break;
+            }
 
+        }
         public List<BaiDangHomePageDTO> GetAllBaiDang(string sdt)
         {
             List<BaiDangHomePageDTO> result = new List<BaiDangHomePageDTO>();
@@ -1451,6 +1560,8 @@ namespace STU.LVTN.SERVER.Provider.BusinessLogic
                 post.IDBaiDang = entity.IdBaiDang;
                 string idHinhAnh = _context.HinhAnhBaiDangs.Where(item => item.IdSanPham == entity.IdBaiDang && item.VideoType == false).First().IdMediaCloud;
                 post.IDHinhAnh = idHinhAnh;
+                post.PreflightKey = GetPreflightKey((int)entity.IdDanhMucCon);
+
                 result.Add(post);
             }
             return result;
@@ -1472,6 +1583,7 @@ namespace STU.LVTN.SERVER.Provider.BusinessLogic
                 post.TieuDe = entity.TieuDe;
                 post.IDBaiDang = entity.IdBaiDang;
                 string idHinhAnh = _context.HinhAnhBaiDangs.Where(item => item.IdSanPham == entity.IdBaiDang && item.VideoType == false).First().IdMediaCloud;
+                post.PreflightKey = GetPreflightKey((int)entity.IdDanhMucCon);
                 post.IDHinhAnh = idHinhAnh;
                 result.Add(post);
             }
@@ -1492,6 +1604,7 @@ namespace STU.LVTN.SERVER.Provider.BusinessLogic
                 post.TieuDe = entity.TieuDe;
                 post.IDBaiDang = entity.IdBaiDang;
                 string idHinhAnh = _context.HinhAnhBaiDangs.Where(item => item.IdSanPham == entity.IdBaiDang && item.VideoType == false).First().IdMediaCloud;
+                post.PreflightKey = GetPreflightKey((int)entity.IdDanhMucCon);
                 post.IDHinhAnh = idHinhAnh;
                 result.Add(post);
             }
@@ -1515,6 +1628,7 @@ namespace STU.LVTN.SERVER.Provider.BusinessLogic
                 post.IDBaiDang = entity.IdBaiDang;
                 string idHinhAnh = _context.HinhAnhBaiDangs.Where(item => item.IdSanPham == entity.IdBaiDang && item.VideoType == false).First().IdMediaCloud;
                 post.IDHinhAnh = idHinhAnh;
+                post.PreflightKey = GetPreflightKey((int)entity.IdDanhMucCon);
                 result.Add(post);
             }
             return result;
@@ -1535,6 +1649,7 @@ namespace STU.LVTN.SERVER.Provider.BusinessLogic
                 post.TieuDe = entity.TieuDe;
                 post.IDBaiDang = entity.IdBaiDang;
                 string idHinhAnh = _context.HinhAnhBaiDangs.Where(item => item.IdSanPham == entity.IdBaiDang && item.VideoType == false).First().IdMediaCloud;
+                post.PreflightKey = GetPreflightKey((int)entity.IdDanhMucCon);
                 post.IDHinhAnh = idHinhAnh;
                 result.Add(post);
             }

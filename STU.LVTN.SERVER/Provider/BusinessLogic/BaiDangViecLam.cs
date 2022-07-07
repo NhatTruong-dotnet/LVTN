@@ -57,6 +57,7 @@ namespace STU.LVTN.SERVER.Provider.BusinessLogic
                 post.Add("Yêu cầu kinh nghiệm: ", entity.KinhNghiem);
             if (entity.ChungChi != null)
                 post.Add("Yêu cầu chứng chỉ: ", entity.ChungChi);
+            post.Add("preflightKey: ", "viecLam");
             return post;
         }
     }
