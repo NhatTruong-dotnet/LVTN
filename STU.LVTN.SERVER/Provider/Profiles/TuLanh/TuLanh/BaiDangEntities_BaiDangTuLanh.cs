@@ -4,11 +4,11 @@ using STU.LVTN.SERVER.Model.DTO.TuLanh.TuLanh;
 
 namespace STU.LVTN.SERVER.Provider.Profiles.TuLanh.TuLanh
 {
-    public class BaiDangGiaiTri_BaiDangGiaiTri:Profile
+    public class BaiDangEntities_BaiDangTuLanh:Profile
     {
-        public BaiDangGiaiTri_BaiDangGiaiTri()
+        public BaiDangEntities_BaiDangTuLanh()
         {
-            CreateMap<BaiDangTuLanhTL_DTO, BaiDangTuLanhEntities>();
+            CreateMap< BaiDangEntities,BaiDangTuLanhTL_DTO>();
         }
     }
 }

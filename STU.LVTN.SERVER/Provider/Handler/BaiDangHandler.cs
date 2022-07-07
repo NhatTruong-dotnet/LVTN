@@ -4489,6 +4489,437 @@ namespace STU.LVTN.SERVER.Provider.Handler
         }
 
         #endregion
+
+        #region BaiDangViecLam
+        public async Task<BaiDangViecLamDTO> PreflightBaiDangViecLam(int ID)
+        {
+            BaiDangViecLamDTO result = new BaiDangViecLamDTO();
+            BaiDangEntities baiDang = await baiDangHelper.GetPostByID(ID);
+            BaiDangViecLamEntities detailBaiDang = baiDangViecLamHelper.GetPostByID((int)baiDang.IdBaiDangChiTiet);
+            List<HinhAnhBaiDangEntities> hinhAnhBaiDang = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(ID);
+            result = _mapper.Map<BaiDangViecLamDTO>(baiDang);
+            result = _mapper.Map<BaiDangViecLamDTO>(detailBaiDang);
+            result.hinhAnh_BaiDangs = new List<HinhAnh_BaiDangDTO>();
+            foreach (var item in hinhAnhBaiDang)
+            {
+                HinhAnh_BaiDangDTO temp = new HinhAnh_BaiDangDTO();
+                temp.type = (item.VideoType == true ? "video" : "png");
+                temp.id = item.IdMediaCloud;
+                result.hinhAnh_BaiDangs.Add(temp);
+            }
+            return result;
+        }
+        #endregion
+
+        #region BaiDangThuCung
+        public async Task<BaiDangThuCungChim_DTO> PreflightBaiDangThuCungChim( int ID)
+        {
+            BaiDangThuCungChim_DTO result = new BaiDangThuCungChim_DTO();
+            BaiDangEntities baiDang = await baiDangHelper.GetPostByID(ID);
+            BaiDangThuCungEntities detailBaiDang = baiDangThuCungHelper.GetPostByID((int)baiDang.IdBaiDangChiTiet);
+            List<HinhAnhBaiDangEntities> hinhAnhBaiDang = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(ID);
+            result = _mapper.Map<BaiDangThuCungChim_DTO>(baiDang);
+            result = _mapper.Map<BaiDangThuCungChim_DTO>(detailBaiDang);
+            result.hinhAnh_BaiDangs = new List<HinhAnh_BaiDangDTO>();
+            foreach (var item in hinhAnhBaiDang)
+            {
+                HinhAnh_BaiDangDTO temp = new HinhAnh_BaiDangDTO();
+                temp.type = (item.VideoType == true ? "video" : "png");
+                temp.id = item.IdMediaCloud;
+                result.hinhAnh_BaiDangs.Add(temp);
+            }
+            return result;
+        }
+
+        public async Task<BaiDangThuCungCho_DTO> PreflightBaiDangThuCungCho(int ID)
+        {
+            BaiDangThuCungCho_DTO result = new BaiDangThuCungCho_DTO();
+            BaiDangEntities baiDang = await baiDangHelper.GetPostByID(ID);
+            BaiDangThuCungEntities detailBaiDang = baiDangThuCungHelper.GetPostByID((int)baiDang.IdBaiDangChiTiet);
+            List<HinhAnhBaiDangEntities> hinhAnhBaiDang = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(ID);
+            result = _mapper.Map<BaiDangThuCungCho_DTO>(baiDang);
+            result = _mapper.Map<BaiDangThuCungCho_DTO>(detailBaiDang);
+            result.hinhAnh_BaiDangs = new List<HinhAnh_BaiDangDTO>();
+
+            foreach (var item in hinhAnhBaiDang)
+            {
+                HinhAnh_BaiDangDTO temp = new HinhAnh_BaiDangDTO();
+                temp.type = (item.VideoType == true ? "video" : "png");
+                temp.id = item.IdMediaCloud;
+                result.hinhAnh_BaiDangs.Add(temp);
+            }
+            return result;
+        }
+
+        public async Task<BaiDangThuCungGaMeoThuCungKhac_DTO> PreflightBaiDangThuCungGaMeoThuCungKhac(int ID)
+        {
+            BaiDangThuCungGaMeoThuCungKhac_DTO result = new BaiDangThuCungGaMeoThuCungKhac_DTO();
+            BaiDangEntities baiDang = await baiDangHelper.GetPostByID(ID);
+            BaiDangThuCungEntities detailBaiDang = baiDangThuCungHelper.GetPostByID((int)baiDang.IdBaiDangChiTiet);
+            List<HinhAnhBaiDangEntities> hinhAnhBaiDang = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(ID);
+            result = _mapper.Map<BaiDangThuCungGaMeoThuCungKhac_DTO>(baiDang);
+            result = _mapper.Map<BaiDangThuCungGaMeoThuCungKhac_DTO>(detailBaiDang);
+            result.hinhAnh_BaiDangs = new List<HinhAnh_BaiDangDTO>();
+
+            foreach (var item in hinhAnhBaiDang)
+            {
+                HinhAnh_BaiDangDTO temp = new HinhAnh_BaiDangDTO();
+                temp.type = (item.VideoType == true ? "video" : "png");
+                temp.id = item.IdMediaCloud;
+                result.hinhAnh_BaiDangs.Add(temp);
+            }
+            return result;
+        }
+
+        #endregion
+
+        #region BaiDangDoAnThucPham
+        public async Task<BaiDangDoAnThucPham_DTO> PreflightBaiDangDoAnThucPham(int ID)
+        {
+            BaiDangDoAnThucPham_DTO result = new BaiDangDoAnThucPham_DTO();
+            BaiDangEntities baiDang = await baiDangHelper.GetPostByID(ID);
+            BaiDangDoAnThucPhamEntities detailBaiDang = baiDangDoAnThucPhamHelper.GetPostByID((int)baiDang.IdBaiDangChiTiet);
+            List<HinhAnhBaiDangEntities> hinhAnhBaiDang = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(ID);
+            result = _mapper.Map<BaiDangDoAnThucPham_DTO>(baiDang);
+            result = _mapper.Map<BaiDangDoAnThucPham_DTO>(detailBaiDang);
+            result.hinhAnh_BaiDangs = new List<HinhAnh_BaiDangDTO>();
+
+            foreach (var item in hinhAnhBaiDang)
+            {
+                HinhAnh_BaiDangDTO temp = new HinhAnh_BaiDangDTO();
+                temp.type = (item.VideoType == true ? "video" : "png");
+                temp.id = item.IdMediaCloud;
+                result.hinhAnh_BaiDangs.Add(temp);
+            }
+            return result;
+        }
+        #endregion
+
+        #region BaiDangTuLanh
+        public async Task<BaiDangTuLanhTL_DTO> PreflightBaiDangTuLanh(int ID)
+        {
+            BaiDangTuLanhTL_DTO result = new BaiDangTuLanhTL_DTO();
+            BaiDangEntities baiDang = await baiDangHelper.GetPostByID(ID);
+            BaiDangTuLanhEntities detailBaiDang = baiDangTuLanhHelper.GetPostByID((int)baiDang.IdBaiDangChiTiet);
+            List<HinhAnhBaiDangEntities> hinhAnhBaiDang = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(ID);
+            result = _mapper.Map<BaiDangTuLanhTL_DTO>(baiDang);
+            result = _mapper.Map<BaiDangTuLanhTL_DTO>(detailBaiDang);
+            result.hinhAnh_BaiDangs = new List<HinhAnh_BaiDangDTO>();
+
+            foreach (var item in hinhAnhBaiDang)
+            {
+                HinhAnh_BaiDangDTO temp = new HinhAnh_BaiDangDTO();
+                temp.type = (item.VideoType == true ? "video" : "png");
+                temp.id = item.IdMediaCloud;
+                result.hinhAnh_BaiDangs.Add(temp);
+            }
+            return result;
+        }
+
+        public async Task<BaiDangTuLanhMayGiat_DTO> PreflightBaiDangMayGiat(int ID)
+        {
+            BaiDangTuLanhMayGiat_DTO result = new BaiDangTuLanhMayGiat_DTO();
+            BaiDangEntities baiDang = await baiDangHelper.GetPostByID(ID);
+            BaiDangTuLanhEntities detailBaiDang = baiDangTuLanhHelper.GetPostByID((int)baiDang.IdBaiDangChiTiet);
+            List<HinhAnhBaiDangEntities> hinhAnhBaiDang = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(ID);
+            result = _mapper.Map<BaiDangTuLanhMayGiat_DTO>(baiDang);
+            result = _mapper.Map<BaiDangTuLanhMayGiat_DTO>(detailBaiDang);
+            result.hinhAnh_BaiDangs = new List<HinhAnh_BaiDangDTO>();
+
+            foreach (var item in hinhAnhBaiDang)
+            {
+                HinhAnh_BaiDangDTO temp = new HinhAnh_BaiDangDTO();
+                temp.type = (item.VideoType == true ? "video" : "png");
+                temp.id = item.IdMediaCloud;
+                result.hinhAnh_BaiDangs.Add(temp);
+            }
+            return result;
+
+        }
+
+        public async Task<BaiDangTuLanhMayLanh_DTO> PreflightBaiDangMayLanh(int ID)
+        {
+            BaiDangTuLanhMayLanh_DTO result = new BaiDangTuLanhMayLanh_DTO();
+            BaiDangEntities baiDang = await baiDangHelper.GetPostByID(ID);
+            BaiDangTuLanhEntities detailBaiDang = baiDangTuLanhHelper.GetPostByID((int)baiDang.IdBaiDangChiTiet);
+            List<HinhAnhBaiDangEntities> hinhAnhBaiDang = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(ID);
+            result = _mapper.Map<BaiDangTuLanhMayLanh_DTO>(baiDang);
+            result = _mapper.Map<BaiDangTuLanhMayLanh_DTO>(detailBaiDang);
+            result.hinhAnh_BaiDangs = new List<HinhAnh_BaiDangDTO>();
+
+            foreach (var item in hinhAnhBaiDang)
+            {
+                HinhAnh_BaiDangDTO temp = new HinhAnh_BaiDangDTO();
+                temp.type = (item.VideoType == true ? "video" : "png");
+                temp.id = item.IdMediaCloud;
+                result.hinhAnh_BaiDangs.Add(temp);
+            }
+            return result;
+        }
+        #endregion
+
+        #region BaiDang DoGiaDung
+        public async Task<BaiDangDoGiaDungBanGhe_DTO> PreflightBaiDangDoGiaDungBanGhe(int ID)
+        {
+            BaiDangDoGiaDungBanGhe_DTO result = new BaiDangDoGiaDungBanGhe_DTO();
+            BaiDangEntities baiDang = await baiDangHelper.GetPostByID(ID);
+            BaiDangDoGiaDungEntities detailBaiDang = baiDangDoGiaDungHelper.GetPostByID((int)baiDang.IdBaiDangChiTiet);
+            List<HinhAnhBaiDangEntities> hinhAnhBaiDang = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(ID);
+            result = _mapper.Map<BaiDangDoGiaDungBanGhe_DTO>(baiDang);
+            result = _mapper.Map<BaiDangDoGiaDungBanGhe_DTO>(detailBaiDang);
+            result.hinhAnh_BaiDangs = new List<HinhAnh_BaiDangDTO>();
+
+            foreach (var item in hinhAnhBaiDang)
+            {
+                HinhAnh_BaiDangDTO temp = new HinhAnh_BaiDangDTO();
+                temp.type = (item.VideoType == true ? "video" : "png");
+                temp.id = item.IdMediaCloud;
+                result.hinhAnh_BaiDangs.Add(temp);
+            }
+            return result;
+        }
+        public async Task<BaiDangDoGiaDungBep_DTO> PreflightBaiDangDoGiaDungBep(int ID)
+        {
+            BaiDangDoGiaDungBep_DTO result = new BaiDangDoGiaDungBep_DTO();
+            BaiDangEntities baiDang = await baiDangHelper.GetPostByID(ID);
+            BaiDangDoGiaDungEntities detailBaiDang = baiDangDoGiaDungHelper.GetPostByID((int)baiDang.IdBaiDangChiTiet);
+            List<HinhAnhBaiDangEntities> hinhAnhBaiDang = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(ID);
+            result = _mapper.Map<BaiDangDoGiaDungBep_DTO>(baiDang);
+            result = _mapper.Map<BaiDangDoGiaDungBep_DTO>(detailBaiDang);
+            result.hinhAnh_BaiDangs = new List<HinhAnh_BaiDangDTO>();
+
+            foreach (var item in hinhAnhBaiDang)
+            {
+                HinhAnh_BaiDangDTO temp = new HinhAnh_BaiDangDTO();
+                temp.type = (item.VideoType == true ? "video" : "png");
+                temp.id = item.IdMediaCloud;
+                result.hinhAnh_BaiDangs.Add(temp);
+            }
+            return result;
+        }
+        public async Task<BaiDangDoGiaDungDenCayCanhNoiThat_DTO> PreflightBaiDangDoGiaDungDenCayCanhNoiThat(int ID)
+        {
+            BaiDangDoGiaDungDenCayCanhNoiThat_DTO result = new BaiDangDoGiaDungDenCayCanhNoiThat_DTO();
+            BaiDangEntities baiDang = await baiDangHelper.GetPostByID(ID);
+            BaiDangDoGiaDungEntities detailBaiDang = baiDangDoGiaDungHelper.GetPostByID((int)baiDang.IdBaiDangChiTiet);
+            List<HinhAnhBaiDangEntities> hinhAnhBaiDang = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(ID);
+            result = _mapper.Map<BaiDangDoGiaDungDenCayCanhNoiThat_DTO>(baiDang);
+            result = _mapper.Map<BaiDangDoGiaDungDenCayCanhNoiThat_DTO>(detailBaiDang);
+            result.hinhAnh_BaiDangs = new List<HinhAnh_BaiDangDTO>();
+
+            foreach (var item in hinhAnhBaiDang)
+            {
+                HinhAnh_BaiDangDTO temp = new HinhAnh_BaiDangDTO();
+                temp.type = (item.VideoType == true ? "video" : "png");
+                temp.id = item.IdMediaCloud;
+                result.hinhAnh_BaiDangs.Add(temp);
+            }
+            return result;
+
+        }
+        public async Task<BaiDangDoGiaDungGiuong_DTO> PreflightBaiDangDoGiaDungGiuong(int ID)
+        {
+            BaiDangDoGiaDungGiuong_DTO result = new BaiDangDoGiaDungGiuong_DTO();
+            BaiDangEntities baiDang = await baiDangHelper.GetPostByID(ID);
+            BaiDangDoGiaDungEntities detailBaiDang = baiDangDoGiaDungHelper.GetPostByID((int)baiDang.IdBaiDangChiTiet);
+            List<HinhAnhBaiDangEntities> hinhAnhBaiDang = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(ID);
+            result = _mapper.Map<BaiDangDoGiaDungGiuong_DTO>(baiDang);
+            result = _mapper.Map<BaiDangDoGiaDungGiuong_DTO>(detailBaiDang);
+            result.hinhAnh_BaiDangs = new List<HinhAnh_BaiDangDTO>();
+
+            foreach (var item in hinhAnhBaiDang)
+            {
+                HinhAnh_BaiDangDTO temp = new HinhAnh_BaiDangDTO();
+                temp.type = (item.VideoType == true ? "video" : "png");
+                temp.id = item.IdMediaCloud;
+                result.hinhAnh_BaiDangs.Add(temp);
+            }
+            return result;
+        }
+        public async Task<BaiDangDoGiaDungQuat_DTO> PreflightBaiDangDoGiaDungQuat(int ID)
+        {
+            BaiDangDoGiaDungQuat_DTO result = new BaiDangDoGiaDungQuat_DTO();
+            BaiDangEntities baiDang = await baiDangHelper.GetPostByID(ID);
+            BaiDangDoGiaDungEntities detailBaiDang = baiDangDoGiaDungHelper.GetPostByID((int)baiDang.IdBaiDangChiTiet);
+            List<HinhAnhBaiDangEntities> hinhAnhBaiDang = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(ID);
+            result = _mapper.Map<BaiDangDoGiaDungQuat_DTO>(baiDang);
+            result = _mapper.Map<BaiDangDoGiaDungQuat_DTO>(detailBaiDang);
+            result.hinhAnh_BaiDangs = new List<HinhAnh_BaiDangDTO>();
+
+            foreach (var item in hinhAnhBaiDang)
+            {
+                HinhAnh_BaiDangDTO temp = new HinhAnh_BaiDangDTO();
+                temp.type = (item.VideoType == true ? "video" : "png");
+                temp.id = item.IdMediaCloud;
+                result.hinhAnh_BaiDangs.Add(temp);
+            }
+            return result;
+        }
+        public async Task<BaiDangDoGiaDungThietBiVeSinh_DTO> PreflightBaiDangDoGiaDungThietBiVeSinh(int ID)
+        {
+            BaiDangDoGiaDungThietBiVeSinh_DTO result = new BaiDangDoGiaDungThietBiVeSinh_DTO();
+            BaiDangEntities baiDang = await baiDangHelper.GetPostByID(ID);
+            BaiDangDoGiaDungEntities detailBaiDang = baiDangDoGiaDungHelper.GetPostByID((int)baiDang.IdBaiDangChiTiet);
+            List<HinhAnhBaiDangEntities> hinhAnhBaiDang = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(ID);
+            result = _mapper.Map<BaiDangDoGiaDungThietBiVeSinh_DTO>(baiDang);
+            result = _mapper.Map<BaiDangDoGiaDungThietBiVeSinh_DTO>(detailBaiDang);
+            result.hinhAnh_BaiDangs = new List<HinhAnh_BaiDangDTO>();
+
+            foreach (var item in hinhAnhBaiDang)
+            {
+                HinhAnh_BaiDangDTO temp = new HinhAnh_BaiDangDTO();
+                temp.type = (item.VideoType == true ? "video" : "png");
+                temp.id = item.IdMediaCloud;
+                result.hinhAnh_BaiDangs.Add(temp);
+            }
+            return result;
+        }
+        public async Task<BaiDangDoGiaDungTuKe_DTO> PreflightBaiDangDoGiaDungTuKe(int ID)
+        {
+            BaiDangDoGiaDungTuKe_DTO result = new BaiDangDoGiaDungTuKe_DTO();
+            BaiDangEntities baiDang = await baiDangHelper.GetPostByID(ID);
+            BaiDangDoGiaDungEntities detailBaiDang = baiDangDoGiaDungHelper.GetPostByID((int)baiDang.IdBaiDangChiTiet);
+            List<HinhAnhBaiDangEntities> hinhAnhBaiDang = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(ID);
+            result = _mapper.Map<BaiDangDoGiaDungTuKe_DTO>(baiDang);
+            result = _mapper.Map<BaiDangDoGiaDungTuKe_DTO>(detailBaiDang);
+            result.hinhAnh_BaiDangs = new List<HinhAnh_BaiDangDTO>();
+
+            foreach (var item in hinhAnhBaiDang)
+            {
+                HinhAnh_BaiDangDTO temp = new HinhAnh_BaiDangDTO();
+                temp.type = (item.VideoType == true ? "video" : "png");
+                temp.id = item.IdMediaCloud;
+                result.hinhAnh_BaiDangs.Add(temp);
+            }
+            return result;
+        }
+        #endregion
+
+        #region BaiDang MeVaBe
+        public async Task<BaiDangMeVaBe_DTO> PreflightBaiDangMeVaBe( int ID)
+        {
+            BaiDangMeVaBe_DTO result = new BaiDangMeVaBe_DTO();
+            BaiDangEntities baiDang = await baiDangHelper.GetPostByID(ID);
+            BaiDangMeVaBeEntities detailBaiDang = baiDangMeVaBeHelper.GetPostByID((int)baiDang.IdBaiDangChiTiet);
+            List<HinhAnhBaiDangEntities> hinhAnhBaiDang = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(ID);
+            result = _mapper.Map<BaiDangMeVaBe_DTO>(baiDang);
+            result = _mapper.Map<BaiDangMeVaBe_DTO>(detailBaiDang);
+            result.hinhAnh_BaiDangs = new List<HinhAnh_BaiDangDTO>();
+
+            foreach (var item in hinhAnhBaiDang)
+            {
+                HinhAnh_BaiDangDTO temp = new HinhAnh_BaiDangDTO();
+                temp.type = (item.VideoType == true ? "video" : "png");
+                temp.id = item.IdMediaCloud;
+                result.hinhAnh_BaiDangs.Add(temp);
+            }
+            return result;
+        }
+        #endregion
+
+        #region BaiDang ThoiTrang
+        public async Task<BaiDangThoiTrang_DTO> PreflightBaiDangThoiTrang(int ID)
+        {
+            BaiDangThoiTrang_DTO result = new BaiDangThoiTrang_DTO();
+            BaiDangEntities baiDang = await baiDangHelper.GetPostByID(ID);
+            BaiDangThoiTrangEntities detailBaiDang = baiDangThoiTrangHelper.GetPostByID((int)baiDang.IdBaiDangChiTiet);
+            List<HinhAnhBaiDangEntities> hinhAnhBaiDang = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(ID);
+            result = _mapper.Map<BaiDangThoiTrang_DTO>(baiDang);
+            result = _mapper.Map<BaiDangThoiTrang_DTO>(detailBaiDang);
+            result.hinhAnh_BaiDangs = new List<HinhAnh_BaiDangDTO>();
+
+            foreach (var item in hinhAnhBaiDang)
+            {
+                HinhAnh_BaiDangDTO temp = new HinhAnh_BaiDangDTO();
+                temp.type = (item.VideoType == true ? "video" : "png");
+                temp.id = item.IdMediaCloud;
+                result.hinhAnh_BaiDangs.Add(temp);
+            }
+            return result;
+        }
+        #endregion
+
+        #region BaiDang GiaiTri
+        public async Task<BaiDangGiaiTri_DTO> PreflightBaiDangGiaiTri(int ID)
+        {
+            BaiDangGiaiTri_DTO result = new BaiDangGiaiTri_DTO();
+            BaiDangEntities baiDang = await baiDangHelper.GetPostByID(ID);
+            BaiDangGiaiTriEntities detailBaiDang = baiDangGiaiTriHelper.GetPostByID((int)baiDang.IdBaiDangChiTiet);
+            List<HinhAnhBaiDangEntities> hinhAnhBaiDang = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(ID);
+            result = _mapper.Map<BaiDangGiaiTri_DTO>(baiDang);
+            result = _mapper.Map<BaiDangGiaiTri_DTO>(detailBaiDang);
+            result.hinhAnh_BaiDangs = new List<HinhAnh_BaiDangDTO>();
+
+            foreach (var item in hinhAnhBaiDang)
+            {
+                HinhAnh_BaiDangDTO temp = new HinhAnh_BaiDangDTO();
+                temp.type = (item.VideoType == true ? "video" : "png");
+                temp.id = item.IdMediaCloud;
+                result.hinhAnh_BaiDangs.Add(temp);
+            }
+            return result;
+        }
+        public async Task<BaiDangGiaiTriDoNhacCu_DTO> PreflightBaiDangGiaiTriNhacCu(int ID)
+        {
+            BaiDangGiaiTriDoNhacCu_DTO result = new BaiDangGiaiTriDoNhacCu_DTO();
+            BaiDangEntities baiDang = await baiDangHelper.GetPostByID(ID);
+            BaiDangGiaiTriEntities detailBaiDang = baiDangGiaiTriHelper.GetPostByID((int)baiDang.IdBaiDangChiTiet);
+            List<HinhAnhBaiDangEntities> hinhAnhBaiDang = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(ID);
+            result = _mapper.Map<BaiDangGiaiTriDoNhacCu_DTO>(baiDang);
+            result = _mapper.Map<BaiDangGiaiTriDoNhacCu_DTO>(detailBaiDang);
+            result.hinhAnh_BaiDangs = new List<HinhAnh_BaiDangDTO>();
+
+            foreach (var item in hinhAnhBaiDang)
+            {
+                HinhAnh_BaiDangDTO temp = new HinhAnh_BaiDangDTO();
+                temp.type = (item.VideoType == true ? "video" : "png");
+                temp.id = item.IdMediaCloud;
+                result.hinhAnh_BaiDangs.Add(temp);
+            }
+            return result;
+        }
+        public async Task<BaiDangGiaiTriDoSuuTam_DTO> PreflightBaiDangGiaiTriDoSuuTam(int ID)
+        {
+            BaiDangGiaiTriDoSuuTam_DTO result = new BaiDangGiaiTriDoSuuTam_DTO();
+            BaiDangEntities baiDang = await baiDangHelper.GetPostByID(ID);
+            BaiDangGiaiTriEntities detailBaiDang = baiDangGiaiTriHelper.GetPostByID((int)baiDang.IdBaiDangChiTiet);
+            List<HinhAnhBaiDangEntities> hinhAnhBaiDang = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(ID);
+            result = _mapper.Map<BaiDangGiaiTriDoSuuTam_DTO>(baiDang);
+            result = _mapper.Map<BaiDangGiaiTriDoSuuTam_DTO>(detailBaiDang);
+            result.hinhAnh_BaiDangs = new List<HinhAnh_BaiDangDTO>();
+
+            foreach (var item in hinhAnhBaiDang)
+            {
+                HinhAnh_BaiDangDTO temp = new HinhAnh_BaiDangDTO();
+                temp.type = (item.VideoType == true ? "video" : "png");
+                temp.id = item.IdMediaCloud;
+                result.hinhAnh_BaiDangs.Add(temp);
+            }
+            return result;
+        }
+        #endregion
+
+        #region BaiDang DoDungVanPhong
+        public async Task<BaiDangDoDungVanPhong_DTO> PreflightBaiDangDoDungVanPhong(int ID)
+        {
+            BaiDangDoDungVanPhong_DTO result = new BaiDangDoDungVanPhong_DTO();
+            BaiDangEntities baiDang = await baiDangHelper.GetPostByID(ID);
+            BaiDangDoDungVanPhongEntities detailBaiDang = baiDangDoDungVanPhongHelper.GetPostByID((int)baiDang.IdBaiDangChiTiet);
+            List<HinhAnhBaiDangEntities> hinhAnhBaiDang = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(ID);
+            result = _mapper.Map<BaiDangDoDungVanPhong_DTO>(baiDang);
+            result = _mapper.Map<BaiDangDoDungVanPhong_DTO>(detailBaiDang);
+            result.hinhAnh_BaiDangs = new List<HinhAnh_BaiDangDTO>();
+
+            foreach (var item in hinhAnhBaiDang)
+            {
+                HinhAnh_BaiDangDTO temp = new HinhAnh_BaiDangDTO();
+                temp.type = (item.VideoType == true ? "video" : "png");
+                temp.id = item.IdMediaCloud;
+                result.hinhAnh_BaiDangs.Add(temp);
+            }
+            return result;
+        }
+        #endregion
         #endregion
     }
 

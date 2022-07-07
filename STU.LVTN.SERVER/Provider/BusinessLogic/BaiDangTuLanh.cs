@@ -31,6 +31,10 @@ namespace STU.LVTN.SERVER.Provider.BusinessLogic
                 return -1;
             }
         }
+        public BaiDangTuLanhEntities GetPostByID(int ID)
+        {
+            return _context.BaiDangTuLanhs.Where(item => item.IdBaiDang == ID).FirstOrDefault();
+        }
         public Dictionary<string, string> getPost_TuLanh_ByID(int? idPostDetail)
         {
             Dictionary<string, string> post = new Dictionary<string, string>();

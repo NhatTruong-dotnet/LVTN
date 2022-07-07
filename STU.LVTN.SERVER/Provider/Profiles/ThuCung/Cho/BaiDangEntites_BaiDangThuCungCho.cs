@@ -4,11 +4,11 @@ using STU.LVTN.SERVER.Model.DTO.ThuCung;
 
 namespace STU.LVTN.SERVER.Provider.Profiles.ThuCung.Cho
 {
-    public class BaiDangThuCungCho_BaiDangThuCung:Profile
+    public class BaiDangEntites_BaiDangThuCungCho:Profile
     {
-        public BaiDangThuCungCho_BaiDangThuCung()
+        public BaiDangEntites_BaiDangThuCungCho()
         {
-            CreateMap<BaiDangThuCungCho_DTO, BaiDangThuCungEntities>();
+            CreateMap< BaiDangEntities,BaiDangThuCungCho_DTO>();
         }
     }
 }
