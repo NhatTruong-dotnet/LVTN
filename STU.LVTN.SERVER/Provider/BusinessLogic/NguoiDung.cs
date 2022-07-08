@@ -43,6 +43,22 @@ namespace STU.LVTN.SERVER.Provider.BusinessLogic
             }
         }
 
+        public async Task<bool> ActiveAccount(string sdt)
+        {
+            try
+            {
+                NguoiDungEntities accountLockPermanet = _context.NguoiDungs.Where(item => item.SoDienThoai == sdt).FirstOrDefault();
+                accountLockPermanet.Active = true;
+                accountLockPermanet.LockTime = null;
+                _context.NguoiDungs.Update(accountLockPermanet);
+                _context.SaveChanges();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
         public async Task<bool> LockTemporary(string sdt, int numberDaysLock)
         {
             try

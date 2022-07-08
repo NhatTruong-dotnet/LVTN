@@ -76,7 +76,16 @@ namespace STU.LVTN.SERVER.Provider.Handler
                     if (user.LockTime == null)
                         return "Your account have been permanent lock !";
                     else
+                    {
+                        if (user.LockTime <= DateTime.Now )
+                        {
+                            nguoiDungHelper.ActiveAccount(userRequest.SoDienThoai);
+                            string secretKey = _configuration.GetSection("AppSettings:Token").Value;
+                            string token = nguoiDungHelper.CreateToken(user.Ten == null ? "" : user.Ten, userRequest.SoDienThoai, user.Admin, secretKey);
+                            return token;
+                        }
                         return  " Temporay lock your account until "+$"{user.LockTime:dd-MM-yyyy}";
+                    }
                 }
             }
         }
