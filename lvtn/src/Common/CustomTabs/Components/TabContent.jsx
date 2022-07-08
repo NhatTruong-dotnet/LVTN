@@ -28,7 +28,15 @@ function TabContent({ status, profileUserNumberPhone, loginUserNumberPhone }) {
     return (
         <div>
             {userPosts.map(
-                ({ tieuDe, idHinhAnh, gia, ngayTao, thanhPho, idBaiDang }) => (
+                ({
+                    tieuDe,
+                    idHinhAnh,
+                    gia,
+                    ngayTao,
+                    thanhPho,
+                    idBaiDang,
+                    preflightKey,
+                }) => (
                     <HorizontalPost
                         key={idBaiDang}
                         idPost={idBaiDang}
@@ -41,6 +49,7 @@ function TabContent({ status, profileUserNumberPhone, loginUserNumberPhone }) {
                             loginUserNumberPhone === profileUserNumberPhone
                         }
                         status={status}
+                        preflightKey={preflightKey}
                     />
                 )
             )}

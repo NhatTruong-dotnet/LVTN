@@ -1,3 +1,4 @@
+import TabContainer from '../../../../Common/TabContainer'
 import styles from './autocomplete.module.css'
 
 function AutoComplete({
@@ -5,7 +6,7 @@ function AutoComplete({
     items = [],
     onClickItem = () => {},
     forSearch,
-    functionMapping = () => {},
+    functionMapping,
     handleBackground = () => {},
 }) {
     const mapFunction =
@@ -24,15 +25,17 @@ function AutoComplete({
                   </div>
               )
     return (
-        <div className={styles.autoComplete}>
-            {forSearch && (
-                <div className={styles.searchValue}>
-                    Tìm kiếm từ khóa: "{searchValue}"
-                </div>
-            )}
+        <>
+            <div className={styles.autoComplete}>
+                {forSearch && (
+                    <div className={styles.searchValue}>
+                        Tìm kiếm từ khóa: "{searchValue}"
+                    </div>
+                )}
 
-            {items.map(mapFunction)}
-        </div>
+                {items.map(mapFunction)}
+            </div>
+        </>
     )
 }
 

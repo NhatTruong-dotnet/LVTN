@@ -7,20 +7,28 @@ import { emitMessage } from '../../Common/ToastMessage/ToastMessage'
 import {
     generateDefaultValueFormData,
     convertFile,
+    getCategory,
+    getSubCategory,
 } from '../../Utils/PostUtils'
 
 import { useDispatch, useSelector } from 'react-redux'
 import { selectLoginStatus } from '../../features/Auth/Login/loginSlice'
 import ImagePicker from './Components/ImagePicker'
 import VideoPicker from './Components/VideoPicker'
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate, useParams } from 'react-router-dom'
 import {
     selectFormMode,
     selectPendingStatusPost,
+    selectUpdatePost,
+    setFormMode,
 } from '../../features/Post/PostSlice'
 import DynamicModal from '../../Common/DynamicModal/DynamicModal'
+import { uploadImage } from '../../Utils/PostUtils'
 
-function CreatePost({ signalRConnection, invokeMethod }) {
+const imgURL = process.env.REACT_APP_BASE_IMG_URL
+
+function CreatePost() {
+    const updatePost = useSelector(selectUpdatePost)
     const [isShowCategoryPicker, setIsShowCategoryPicker] = useState(true)
     const [listFileDataMedia, setListFileDataMedia] = useState([])
     const [listPreviewImage, setListPreviewImage] = useState([])
@@ -47,6 +55,8 @@ function CreatePost({ signalRConnection, invokeMethod }) {
     const dispatch = useDispatch()
     const isLoading = useSelector(selectPendingStatusPost)
     const formMode = useSelector(selectFormMode)
+    const { pathname } = useLocation()
+    const { idPost, preflightKey } = useParams()
 
     const openCategoryPicker = () => setIsShowCategoryPicker(true)
     const closeCategoryPicker = () => setIsShowCategoryPicker(false)
@@ -123,9 +133,11 @@ function CreatePost({ signalRConnection, invokeMethod }) {
                 break
             }
         }
-
         for (let inputGroup of listInputGroup) {
-            if (!inputGroup.childNodes[0].value) {
+            if (
+                !inputGroup.childNodes[0].value &&
+                inputGroup.childNodes[0].getAttribute('isrequire') === 'true'
+            ) {
                 validForm = false
                 break
             }
@@ -146,7 +158,8 @@ function CreatePost({ signalRConnection, invokeMethod }) {
 
         if (validForm) {
             // dispatch(createPostPending())
-            // const fileIdArray = await uploadImage(listFileDataMedia)
+            const fileIdArray = await uploadImage(listFileDataMedia)
+            console.log(fileIdArray)
             // const formRequestData = { ...formData, medias: fileIdArray }
             if (formMode === 'add') {
                 // dispatch({
@@ -165,6 +178,68 @@ function CreatePost({ signalRConnection, invokeMethod }) {
     }
 
     useEffect(() => {
+        if (pathname.includes('edit-post')) {
+            setFormMode('edit')
+        }
+    }, [pathname])
+
+    useEffect(() => {
+        if (idPost && preflightKey) {
+            dispatch({ type: 'getEditPostData', idPost, preflightKey })
+        }
+    }, [idPost, preflightKey])
+
+    useEffect(() => {
+        if (
+            pathname.includes('edit-post') &&
+            Object.keys(updatePost).length !== 0 &&
+            isLogin
+        ) {
+            setFormData({
+                ...updatePost,
+                title: updatePost.tieuDe,
+                description: updatePost.mota,
+                medias: [],
+            })
+            const updateCategory = getCategory(updatePost.idDanhMucCha)
+            const updateSubcategory = getSubCategory(
+                updatePost.idDanhMucCha,
+                updatePost.idDanhMucCon
+            )
+            setSelectedCategory({
+                category: {
+                    id: updateCategory.id,
+                    name: updateCategory.name,
+                    Component: updateCategory.Component,
+                },
+                subCategory: updateSubcategory,
+            })
+
+            const { hinhAnh_BaiDangs } = updatePost
+            console.log(hinhAnh_BaiDangs)
+            const imageArray = []
+            const videoArray = []
+
+            hinhAnh_BaiDangs.forEach(({ type, id }, index) => {
+                if (type === 'png') {
+                    imageArray.push({
+                        indexInFileData: index,
+                        url: `${imgURL}${id}`,
+                    })
+                } else {
+                    videoArray.push({
+                        indexInFileData: index,
+                        url: `${imgURL}${id}`,
+                    })
+                }
+            })
+            setListPreviewImage(imageArray)
+            setListPreviewVideo(videoArray)
+            setListFileDataMedia(hinhAnh_BaiDangs)
+        }
+    }, [pathname, updatePost, isLogin])
+
+    useEffect(() => {
         if (!isLogin) {
             if (typeof window.showLoginForm === 'function') {
                 window.showLoginForm()
@@ -173,7 +248,7 @@ function CreatePost({ signalRConnection, invokeMethod }) {
     }, [isLogin])
 
     useEffect(() => {
-        if (selectedCategory.category.id) {
+        if (selectedCategory.category.id && !pathname.includes('edit-post')) {
             setFormData(
                 generateDefaultValueFormData(
                     selectedCategory.category.id,
@@ -186,7 +261,8 @@ function CreatePost({ signalRConnection, invokeMethod }) {
     useEffect(() => {
         dispatch({ type: 'loadLocationData' })
     }, [])
-
+    // console.log(formData)
+    console.log(selectedCategory)
     return (
         <div className='grid wide'>
             <DynamicModal showModal={isLoading} loading />
@@ -217,55 +293,57 @@ function CreatePost({ signalRConnection, invokeMethod }) {
                     </div>
                     <div className='col l-8'>
                         <div className={styles.formContainer}>
-                            <div className={styles.inputContainer}>
-                                {isShowCategoryPicker && (
-                                    <CategoryPicker
-                                        closeCategoryPicker={
-                                            closeCategoryPicker
-                                        }
-                                        selectedCategory={selectedCategory}
-                                        setSelectedCategory={
-                                            setSelectedCategory
-                                        }
-                                    />
-                                )}
-                                <div
-                                    className={styles.categoryPicker}
-                                    onClick={openCategoryPicker}
-                                >
-                                    {selectedCategory.category.name}
-                                    {selectedCategory.subCategory?.id
-                                        ? `${
-                                              ' - ' +
-                                              selectedCategory?.subCategory
-                                                  ?.name
-                                          }`
-                                        : ''}
+                            {!pathname.includes('edit-post') && (
+                                <div className={styles.inputContainer}>
+                                    {isShowCategoryPicker && (
+                                        <CategoryPicker
+                                            closeCategoryPicker={
+                                                closeCategoryPicker
+                                            }
+                                            selectedCategory={selectedCategory}
+                                            setSelectedCategory={
+                                                setSelectedCategory
+                                            }
+                                        />
+                                    )}
+                                    <div
+                                        className={styles.categoryPicker}
+                                        onClick={openCategoryPicker}
+                                    >
+                                        {selectedCategory.category.name}
+                                        {selectedCategory.subCategory?.id
+                                            ? `${
+                                                  ' - ' +
+                                                  selectedCategory?.subCategory
+                                                      ?.name
+                                              }`
+                                            : ''}
+                                    </div>
+                                    <label
+                                        className={clsx(styles.label, {
+                                            [styles.hasValue]: Boolean(
+                                                selectedCategory.category.id
+                                            ),
+                                        })}
+                                    >
+                                        Danh mục tin đăng
+                                    </label>
+                                    <svg
+                                        data-type='monochrome'
+                                        xmlns='http://www.w3.org/2000/svg'
+                                        viewBox='0 0 512 512'
+                                        width='1em'
+                                        height='1em'
+                                        fill='none'
+                                        className='arrow'
+                                    >
+                                        <path
+                                            d='M7.9 156.8l2.8 3.3 214.8 247.2c7.3 8.4 18.2 13.6 30.3 13.6 12.2 0 23.1-5.4 30.3-13.6l214.7-246.7 3.6-4.1c2.7-3.9 4.3-8.7 4.3-13.7 0-13.7-11.7-25-26.2-25h-453c-14.5 0-26.2 11.2-26.2 25 0 5.2 1.7 10.1 4.6 14z'
+                                            fill='currentColor'
+                                        ></path>
+                                    </svg>
                                 </div>
-                                <label
-                                    className={clsx(styles.label, {
-                                        [styles.hasValue]: Boolean(
-                                            selectedCategory.category.id
-                                        ),
-                                    })}
-                                >
-                                    Danh mục tin đăng
-                                </label>
-                                <svg
-                                    data-type='monochrome'
-                                    xmlns='http://www.w3.org/2000/svg'
-                                    viewBox='0 0 512 512'
-                                    width='1em'
-                                    height='1em'
-                                    fill='none'
-                                    className='arrow'
-                                >
-                                    <path
-                                        d='M7.9 156.8l2.8 3.3 214.8 247.2c7.3 8.4 18.2 13.6 30.3 13.6 12.2 0 23.1-5.4 30.3-13.6l214.7-246.7 3.6-4.1c2.7-3.9 4.3-8.7 4.3-13.7 0-13.7-11.7-25-26.2-25h-453c-14.5 0-26.2 11.2-26.2 25 0 5.2 1.7 10.1 4.6 14z'
-                                        fill='currentColor'
-                                    ></path>
-                                </svg>
-                            </div>
+                            )}
 
                             {selectedCategory.category.Component &&
                                 selectedCategory.category.Component(
@@ -306,7 +384,7 @@ function CreatePost({ signalRConnection, invokeMethod }) {
                                     </div>
                                     {/* <div className={styles.formMessage}></div> */}
                                     <div className={styles.hint}>
-                                        {formData.title.length}/50 ký tự
+                                        {formData.title?.length}/50 ký tự
                                     </div>
                                 </div>
 
@@ -325,7 +403,13 @@ function CreatePost({ signalRConnection, invokeMethod }) {
                                             )
                                         }
                                     />
-                                    <label className={clsx(styles.label)}>
+                                    <label
+                                        className={clsx(styles.label, {
+                                            [styles.hasValue]: Boolean(
+                                                formData.description
+                                            ),
+                                        })}
+                                    >
                                         Mô tả chi tiết
                                         <span className={styles.required}>
                                             *
@@ -334,20 +418,20 @@ function CreatePost({ signalRConnection, invokeMethod }) {
                                 </div>
                                 {/* <div className={styles.formMessage}></div> */}
                                 <div className={styles.hint}>
-                                    {formData.description.length}/1500 ký tự
+                                    {formData.description?.length}/1500 ký tự
                                     (Tối thiểu 10 ký tự)
                                 </div>
                             </div>
 
                             <div className={styles.buttonGroup}>
-                                <button
+                                {/* <button
                                     className={clsx(
                                         styles.button,
                                         styles.outline
                                     )}
                                 >
                                     Xem trước
-                                </button>
+                                </button> */}
                                 <button
                                     className={clsx(
                                         styles.button,
@@ -355,7 +439,9 @@ function CreatePost({ signalRConnection, invokeMethod }) {
                                     )}
                                     onClick={handleSubmitForm}
                                 >
-                                    Đăng tin
+                                    {pathname.includes('edit-post')
+                                        ? 'Chỉnh sửa tin'
+                                        : 'Đăng tin'}
                                 </button>
                             </div>
                         </div>

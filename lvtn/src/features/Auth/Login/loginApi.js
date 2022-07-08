@@ -9,11 +9,10 @@ export async function Login(formData) {
         })
         const data = await res.data
         return { status: res.status, token: data }
-    } catch ({ response, message }) {
-        console.log(response)
+    } catch ({ response }) {
         return {
             status: response.status,
-            errorMessage: response.data || message,
+            errorMessage: response.data,
         }
     }
 }

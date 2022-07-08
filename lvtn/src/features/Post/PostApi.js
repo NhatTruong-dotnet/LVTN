@@ -91,3 +91,26 @@ export const editPost = async ({ paramUrl, ...formData }, token) => {
         }
     }
 }
+
+export const getEditPost = async (token, idPost, preflightKey) => {
+    try {
+        const res = await axios.get(
+            `${host}/api/BaiDang/${preflightKey}/preflight?IdPost=${idPost}`,
+            {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            }
+        )
+
+        console.log(res.data)
+        return {
+            status: res.status,
+            updatePost: res.data,
+        }
+    } catch ({ response }) {
+        return {
+            status: response.status,
+        }
+    }
+}

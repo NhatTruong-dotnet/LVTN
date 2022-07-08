@@ -73,6 +73,10 @@ function App() {
         }
         dispatch({ type: 'ReceiveMessage', message })
     }
+
+    const receiveNotify = notifyObject => {
+        console.log(notifyObject)
+    }
     // init wish list
     useEffect(() => {
         const wishList = JSON.parse(localStorage.getItem('wishList'))
@@ -116,12 +120,13 @@ function App() {
 
     useEffect(() => {
         if (connection) {
-            console.log('listen')
             listen('ReceiveMessage', receiveMessage)
+            listen('ClientReceiveNotify', receiveNotify)
         }
         return () => {
             if (connection) {
                 connection.off('ReceiveMessage')
+                connection.off('ClientReceiveNotify')
             }
         }
     }, [connection])
@@ -133,14 +138,10 @@ function App() {
             <div style={{ marginTop: 90 }}></div>
             <Routes>
                 <Route path='/' element={<Home />} />
+                <Route path='/create-post' element={<CreatePost />} />
                 <Route
-                    path='/create-post'
-                    element={
-                        <CreatePost
-                            signalRConnection={connection}
-                            invokeMethod={invokeMethod}
-                        />
-                    }
+                    path={`/edit-post/:idPost&:preflightKey`}
+                    element={<CreatePost />}
                 />
                 <Route path='/detail/:idPost' element={<Detail />} />
                 <Route path='/wish-list' element={<WishList />} />

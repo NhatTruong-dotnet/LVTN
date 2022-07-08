@@ -76,11 +76,11 @@ function Notification(props) {
                                         <div className={styles.subTitle}>
                                             {mota}
                                         </div>
-                                        {checked ? (
+                                        {!checked ? (
                                             ''
                                         ) : (
                                             <div className={styles.isApprove}>
-                                                *Bài viết chưa được phê duyệt
+                                                *Bài viết đã được phê duyệt
                                             </div>
                                         )}
                                     </div>

@@ -22,7 +22,7 @@ function Category(props) {
             category => category.id === +categoryId
         )
 
-        return selectedCategory.subCategory
+        return selectedCategory.subCategory || []
     }
 
     function handleSelectSubCategory(subCategoryId) {

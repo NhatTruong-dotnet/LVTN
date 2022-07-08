@@ -1,7 +1,8 @@
 import styles from '../RealEstate/index.module.css'
 import AutoComplete from '../../../../Base/Header/Components/AutoComplete'
 import clsx from 'clsx'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
+import TabContainer from '../../../../Common/TabContainer'
 
 function FormInput({
     require,
@@ -14,6 +15,7 @@ function FormInput({
     unit,
     requireData = [],
     functionMapping,
+    ...props
     // formData,
 }) {
     const [autoCompleteItems, setAutoCompleteItems] = useState(requireData)
@@ -91,6 +93,7 @@ function FormInput({
         <>
             <div className={styles.inputGroup}>
                 <input
+                    isRequire={require + ''}
                     type={type}
                     className={styles.input}
                     value={value}
@@ -98,10 +101,14 @@ function FormInput({
                     name={name}
                     onBlur={() => {
                         validateFormInput(value)
+                        setTimeout(() => {
+                            setDisplayAutoComplete(false)
+                        }, 100)
                     }}
                     onFocus={() => {
                         setDisplayAutoComplete(true)
                     }}
+                    {...props}
                 />
 
                 {/* {displayAutoComplete && autoCompleteItems.length > 0 && ( */}
@@ -118,7 +125,7 @@ function FormInput({
 
                 <label
                     className={clsx(styles.label, {
-                        [styles.hasValue]: Boolean(value),
+                        [styles.hasValue]: value !== '',
                     })}
                 >
                     {label}{' '}

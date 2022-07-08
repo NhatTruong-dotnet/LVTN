@@ -5,6 +5,7 @@ import FormInput from '../Components/FormInput'
 import AddressPicker from '../../../../Page/CreatePost/Components/AddressPicker'
 
 function Land({ formData, handleFormDataChange }) {
+    console.log('run')
     return (
         <>
             {/* Địa chỉ BĐS và Hình ảnh */}

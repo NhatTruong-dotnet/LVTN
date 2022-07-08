@@ -116,6 +116,18 @@ const postSlice = createSlice({
             }
             state.locationData = locationArray
         },
+        // --------------------------------------------------------
+        getUpdatePostDataPending(state, action) {
+            state.isLoading = true
+        },
+        getUpdatePostDataSuccess(state, action) {
+            state.isLoading = false
+            state.updatePost = action.payload.updatePost
+        },
+        getUpdatePostDataFail(state, action) {
+            state.isLoading = false
+            emitMessage('error', action.payload.errorMessage)
+        },
     },
 })
 
@@ -148,6 +160,10 @@ export const {
     getRelatedPostSuccess,
     // ------------
     setLocation,
+    // ------------
+    getUpdatePostDataPending,
+    getUpdatePostDataSuccess,
+    getUpdatePostDataFail,
 } = actions
 
 export const selectListPost = state => state.post.listPost
@@ -157,5 +173,6 @@ export const selectRelatedPost = state => state.post.relatedPost
 export const selectPendingStatusPost = state => state.post.isLoading
 export const selectLocation = state => state.post.locationData
 export const selectFormMode = state => state.post.formMode
+export const selectUpdatePost = state => state.post.updatePost
 
 export default reducer

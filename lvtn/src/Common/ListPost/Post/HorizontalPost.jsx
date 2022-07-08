@@ -29,6 +29,7 @@ function HorizontalPost({
     isMyPost,
     empty,
     status,
+    preflightKey,
 }) {
     const navigate = useNavigate()
     const dispatch = useDispatch()
@@ -110,7 +111,11 @@ function HorizontalPost({
                 </div>
             </div>
             {loginUserNumberPhone === profileUserNumberPhone ? (
-                <PostControl status={status} idPost={idPost} />
+                <PostControl
+                    status={status}
+                    idPost={idPost}
+                    preflightKey={preflightKey}
+                />
             ) : (
                 ''
             )}
@@ -118,12 +123,17 @@ function HorizontalPost({
     )
 }
 
-function PostControl({ status, idPost }) {
+function PostControl({ status, idPost, preflightKey }) {
     const [showControl, setShowControl] = useState(false)
     const dispatch = useDispatch()
+    const navigate = useNavigate()
 
     const handleSetActivePost = active => {
         dispatch({ type: 'setActivePost', active, idPost, statusTab: status })
+    }
+
+    const handleNavigateEditPost = () => {
+        navigate(`/edit-post/${idPost}&${preflightKey}`)
     }
 
     return (
@@ -161,7 +171,16 @@ function PostControl({ status, idPost }) {
                                 Ẩn tin
                             </div>
                         )}
-                        <div className={styles.controlItem}>Chỉnh sửa tin</div>
+                        <div
+                            className={styles.controlItem}
+                            onClick={e => {
+                                e.stopPropagation()
+                                setShowControl(false)
+                                handleNavigateEditPost()
+                            }}
+                        >
+                            Chỉnh sửa tin
+                        </div>
                     </div>
                 </TabContainer>
             )}

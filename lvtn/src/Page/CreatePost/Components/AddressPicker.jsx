@@ -123,14 +123,11 @@ function AddressPicker({ formData, handleFormDataChange }) {
 
             <FormInput
                 require
-                label='Tên đường'
-                value={formData.tenDuong}
-                onChange={e => handleFormDataChange('tenDuong', e.target.value)}
-            />
-            <FormInput
-                label='Số nhà'
-                value={formData.soNha}
-                onChange={e => handleFormDataChange('soNha', e.target.value)}
+                label='Địa chỉ cụ thể'
+                value={formData.diaChiCuThe}
+                onChange={e =>
+                    handleFormDataChange('diaChiCuThe', e.target.value)
+                }
             />
         </div>
     )

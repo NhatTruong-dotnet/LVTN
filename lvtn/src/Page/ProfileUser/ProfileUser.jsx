@@ -1,9 +1,9 @@
 import Frame from '../../Common/Frame/Frame'
 import styles from './profileuser.module.css'
 import { FaUserCircle } from 'react-icons/fa'
+import { BsCalendar2Date } from 'react-icons/bs'
 import { AiOutlineStar, AiOutlinePhone } from 'react-icons/ai'
 import { IoLocationOutline } from 'react-icons/io5'
-import HorizontalPost from '../../Common/ListPost/Post/HorizontalPost'
 import { useNavigate, useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { selectNumberPhone } from '../../features/Auth/Login/loginSlice'
@@ -114,7 +114,7 @@ function ProfileUser(props) {
                         </div>
                         <div className={styles.infoItem}>
                             <span className={styles.label}>
-                                <AiOutlineStar
+                                <BsCalendar2Date
                                     style={{
                                         fontSize: 20,
                                         marginRight: 8,

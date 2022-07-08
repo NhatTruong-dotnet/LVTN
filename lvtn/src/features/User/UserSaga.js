@@ -33,7 +33,6 @@ export default function* userSaga() {
 }
 
 function* setActivePostSaga({ active, idPost, statusTab }) {
-    console.log(statusTab)
     const token = yield select(selectToken)
     if (!token) {
         yield put(

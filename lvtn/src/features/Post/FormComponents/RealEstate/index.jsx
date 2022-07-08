@@ -57,7 +57,7 @@ const subCategories = [
 
 function RealEstate({ subCategoryId, formData, handleFormDataChange }) {
     const [currentSubCategory, setCurrentSubCategory] = useState(null)
-    console.log(formData)
+    // console.log(formData)
 
     useEffect(() => {
         const element = subCategories.find(({ id }) => id === subCategoryId)

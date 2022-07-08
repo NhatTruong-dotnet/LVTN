@@ -1,3 +1,5 @@
+import categories from '../Page/CreatePost/categoryData'
+
 const array = [
     {
         categoryId: 1,
@@ -11,8 +13,7 @@ const array = [
                 thanhPho: '',
                 quanHuyen: '',
                 phuongXa: '',
-                tenDuong: '',
-                soNha: '',
+                diaChiCuThe: '',
 
                 maCan: '',
                 block: '',
@@ -38,8 +39,7 @@ const array = [
                 thanhPho: '',
                 quanHuyen: '',
                 phuongXa: '',
-                tenDuong: '',
-                soNha: '',
+                diaChiCuThe: '',
 
                 soTang: '',
                 nhaOLoaiHinh: '',
@@ -66,8 +66,7 @@ const array = [
                 thanhPho: '',
                 quanHuyen: '',
                 phuongXa: '',
-                tenDuong: '',
-                soNha: '',
+                diaChiCuThe: '',
 
                 datMatTien: false,
                 datLoaiHinhDat: '',
@@ -90,8 +89,7 @@ const array = [
                 thanhPho: '',
                 quanHuyen: '',
                 phuongXa: '',
-                tenDuong: '',
-                soNha: '',
+                diaChiCuThe: '',
 
                 vanPhongTangSo: '',
                 vanPhongLoaiHinhVanPhong: '',
@@ -110,8 +108,7 @@ const array = [
                 thanhPho: '',
                 quanHuyen: '',
                 phuongXa: '',
-                tenDuong: '',
-                soNha: '',
+                diaChiCuThe: '',
 
                 phongTroTinhTrangNoiThat: '',
                 dienTich: '',
@@ -142,8 +139,7 @@ const array = [
                 thanhPho: '',
                 quanHuyen: '',
                 phuongXa: '',
-                tenDuong: '',
-                soNha: '',
+                diaChiCuThe: '',
             },
             {
                 subCategoryId: 20,
@@ -161,8 +157,7 @@ const array = [
                 thanhPho: '',
                 quanHuyen: '',
                 phuongXa: '',
-                tenDuong: '',
-                soNha: '',
+                diaChiCuThe: '',
             },
             {
                 subCategoryId: 19,
@@ -180,8 +175,7 @@ const array = [
                 thanhPho: '',
                 quanHuyen: '',
                 phuongXa: '',
-                tenDuong: '',
-                soNha: '',
+                diaChiCuThe: '',
             },
             {
                 subCategoryId: 21,
@@ -197,8 +191,7 @@ const array = [
                 thanhPho: '',
                 quanHuyen: '',
                 phuongXa: '',
-                tenDuong: '',
-                soNha: '',
+                diaChiCuThe: '',
             },
             {
                 subCategoryId: 22,
@@ -215,8 +208,7 @@ const array = [
                 thanhPho: '',
                 quanHuyen: '',
                 phuongXa: '',
-                tenDuong: '',
-                soNha: '',
+                diaChiCuThe: '',
             },
             {
                 subCategoryId: 23,
@@ -236,8 +228,7 @@ const array = [
                 thanhPho: '',
                 quanHuyen: '',
                 phuongXa: '',
-                tenDuong: '',
-                soNha: '',
+                diaChiCuThe: '',
             },
             {
                 subCategoryId: 24,
@@ -247,8 +238,7 @@ const array = [
                 thanhPho: '',
                 quanHuyen: '',
                 phuongXa: '',
-                tenDuong: '',
-                soNha: '',
+                diaChiCuThe: '',
             },
         ],
     },
@@ -269,8 +259,7 @@ const array = [
                 thanhPho: '',
                 quanHuyen: '',
                 phuongXa: '',
-                tenDuong: '',
-                soNha: '',
+                diaChiCuThe: '',
             },
             // Tablet
             {
@@ -288,8 +277,7 @@ const array = [
                 thanhPho: '',
                 quanHuyen: '',
                 phuongXa: '',
-                tenDuong: '',
-                soNha: '',
+                diaChiCuThe: '',
             },
             // Laptop
             {
@@ -309,8 +297,7 @@ const array = [
                 thanhPho: '',
                 quanHuyen: '',
                 phuongXa: '',
-                tenDuong: '',
-                soNha: '',
+                diaChiCuThe: '',
             },
             // Desktop
             {
@@ -328,8 +315,7 @@ const array = [
                 thanhPho: '',
                 quanHuyen: '',
                 phuongXa: '',
-                tenDuong: '',
-                soNha: '',
+                diaChiCuThe: '',
             },
             // camera
             {
@@ -343,8 +329,7 @@ const array = [
                 thanhPho: '',
                 quanHuyen: '',
                 phuongXa: '',
-                tenDuong: '',
-                soNha: '',
+                diaChiCuThe: '',
             },
             // Smart device
             {
@@ -358,8 +343,7 @@ const array = [
                 thanhPho: '',
                 quanHuyen: '',
                 phuongXa: '',
-                tenDuong: '',
-                soNha: '',
+                diaChiCuThe: '',
             },
             // phu kien
             {
@@ -373,8 +357,7 @@ const array = [
                 thanhPho: '',
                 quanHuyen: '',
                 phuongXa: '',
-                tenDuong: '',
-                soNha: '',
+                diaChiCuThe: '',
             },
             // linh kiện
             {
@@ -388,8 +371,7 @@ const array = [
                 thanhPho: '',
                 quanHuyen: '',
                 phuongXa: '',
-                tenDuong: '',
-                soNha: '',
+                diaChiCuThe: '',
             },
         ],
     },
@@ -432,8 +414,7 @@ const array = [
                 thanhPho: '',
                 quanHuyen: '',
                 phuongXa: '',
-                tenDuong: '',
-                soNha: '',
+                diaChiCuThe: '',
             },
             {
                 subCategoryId: 35,
@@ -445,8 +426,7 @@ const array = [
                 thanhPho: '',
                 quanHuyen: '',
                 phuongXa: '',
-                tenDuong: '',
-                soNha: '',
+                diaChiCuThe: '',
             },
             {
                 subCategoryId: 36,
@@ -458,8 +438,7 @@ const array = [
                 thanhPho: '',
                 quanHuyen: '',
                 phuongXa: '',
-                tenDuong: '',
-                soNha: '',
+                diaChiCuThe: '',
             },
             {
                 subCategoryId: 37,
@@ -470,8 +449,7 @@ const array = [
                 thanhPho: '',
                 quanHuyen: '',
                 phuongXa: '',
-                tenDuong: '',
-                soNha: '',
+                diaChiCuThe: '',
             },
             {
                 subCategoryId: 38,
@@ -481,8 +459,7 @@ const array = [
                 thanhPho: '',
                 quanHuyen: '',
                 phuongXa: '',
-                tenDuong: '',
-                soNha: '',
+                diaChiCuThe: '',
             },
         ],
     },
@@ -512,8 +489,7 @@ const array = [
                 thanhPho: '',
                 quanHuyen: '',
                 phuongXa: '',
-                tenDuong: '',
-                soNha: '',
+                diaChiCuThe: '',
             },
             {
                 subCategoryId: 41,
@@ -525,8 +501,7 @@ const array = [
                 thanhPho: '',
                 quanHuyen: '',
                 phuongXa: '',
-                tenDuong: '',
-                soNha: '',
+                diaChiCuThe: '',
             },
             {
                 subCategoryId: 42,
@@ -539,8 +514,7 @@ const array = [
                 thanhPho: '',
                 quanHuyen: '',
                 phuongXa: '',
-                tenDuong: '',
-                soNha: '',
+                diaChiCuThe: '',
             },
         ],
     },
@@ -559,8 +533,7 @@ const array = [
                 thanhPho: '',
                 quanHuyen: '',
                 phuongXa: '',
-                tenDuong: '',
-                soNha: '',
+                diaChiCuThe: '',
             },
             // tủ kệ
             {
@@ -574,8 +547,7 @@ const array = [
                 thanhPho: '',
                 quanHuyen: '',
                 phuongXa: '',
-                tenDuong: '',
-                soNha: '',
+                diaChiCuThe: '',
             },
             // giường
             {
@@ -589,8 +561,7 @@ const array = [
                 thanhPho: '',
                 quanHuyen: '',
                 phuongXa: '',
-                tenDuong: '',
-                soNha: '',
+                diaChiCuThe: '',
             },
             // bếp
             {
@@ -604,8 +575,7 @@ const array = [
                 thanhPho: '',
                 quanHuyen: '',
                 phuongXa: '',
-                tenDuong: '',
-                soNha: '',
+                diaChiCuThe: '',
             },
             // dụng cụ bếp
             {
@@ -618,8 +588,7 @@ const array = [
                 thanhPho: '',
                 quanHuyen: '',
                 phuongXa: '',
-                tenDuong: '',
-                soNha: '',
+                diaChiCuThe: '',
             },
             // quạt
             {
@@ -633,8 +602,7 @@ const array = [
                 thanhPho: '',
                 quanHuyen: '',
                 phuongXa: '',
-                tenDuong: '',
-                soNha: '',
+                diaChiCuThe: '',
             },
             // Đèn
             {
@@ -647,8 +615,7 @@ const array = [
                 thanhPho: '',
                 quanHuyen: '',
                 phuongXa: '',
-                tenDuong: '',
-                soNha: '',
+                diaChiCuThe: '',
             },
             // cây
             {
@@ -661,8 +628,7 @@ const array = [
                 thanhPho: '',
                 quanHuyen: '',
                 phuongXa: '',
-                tenDuong: '',
-                soNha: '',
+                diaChiCuThe: '',
             },
             // vệ sinh
             {
@@ -676,8 +642,7 @@ const array = [
                 thanhPho: '',
                 quanHuyen: '',
                 phuongXa: '',
-                tenDuong: '',
-                soNha: '',
+                diaChiCuThe: '',
             },
             {
                 subCategoryId: 52,
@@ -688,8 +653,7 @@ const array = [
                 thanhPho: '',
                 quanHuyen: '',
                 phuongXa: '',
-                tenDuong: '',
-                soNha: '',
+                diaChiCuThe: '',
             },
         ],
     },
@@ -721,8 +685,7 @@ const array = [
                 thanhPho: '',
                 quanHuyen: '',
                 phuongXa: '',
-                tenDuong: '',
-                soNha: '',
+                diaChiCuThe: '',
             },
             // đồng hồ
             {
@@ -735,8 +698,7 @@ const array = [
                 thanhPho: '',
                 quanHuyen: '',
                 phuongXa: '',
-                tenDuong: '',
-                soNha: '',
+                diaChiCuThe: '',
             },
             // giày dép
             {
@@ -749,8 +711,7 @@ const array = [
                 thanhPho: '',
                 quanHuyen: '',
                 phuongXa: '',
-                tenDuong: '',
-                soNha: '',
+                diaChiCuThe: '',
             },
             // túi xách
             {
@@ -763,8 +724,7 @@ const array = [
                 thanhPho: '',
                 quanHuyen: '',
                 phuongXa: '',
-                tenDuong: '',
-                soNha: '',
+                diaChiCuThe: '',
             },
             // nước hoa
             {
@@ -777,8 +737,7 @@ const array = [
                 thanhPho: '',
                 quanHuyen: '',
                 phuongXa: '',
-                tenDuong: '',
-                soNha: '',
+                diaChiCuThe: '',
             },
             // phụ kiện
             {
@@ -791,8 +750,7 @@ const array = [
                 thanhPho: '',
                 quanHuyen: '',
                 phuongXa: '',
-                tenDuong: '',
-                soNha: '',
+                diaChiCuThe: '',
             },
         ],
     },
@@ -810,8 +768,7 @@ const array = [
                 thanhPho: '',
                 quanHuyen: '',
                 phuongXa: '',
-                tenDuong: '',
-                soNha: '',
+                diaChiCuThe: '',
             },
             // sách
             {
@@ -823,8 +780,7 @@ const array = [
                 thanhPho: '',
                 quanHuyen: '',
                 phuongXa: '',
-                tenDuong: '',
-                soNha: '',
+                diaChiCuThe: '',
             },
             // đồ thể thao
             {
@@ -836,8 +792,7 @@ const array = [
                 thanhPho: '',
                 quanHuyen: '',
                 phuongXa: '',
-                tenDuong: '',
-                soNha: '',
+                diaChiCuThe: '',
             },
             // đồ sưu tầm
             {
@@ -850,8 +805,7 @@ const array = [
                 thanhPho: '',
                 quanHuyen: '',
                 phuongXa: '',
-                tenDuong: '',
-                soNha: '',
+                diaChiCuThe: '',
             },
             // game
             {
@@ -863,8 +817,7 @@ const array = [
                 thanhPho: '',
                 quanHuyen: '',
                 phuongXa: '',
-                tenDuong: '',
-                soNha: '',
+                diaChiCuThe: '',
             },
             // khác
             {
@@ -876,8 +829,7 @@ const array = [
                 thanhPho: '',
                 quanHuyen: '',
                 phuongXa: '',
-                tenDuong: '',
-                soNha: '',
+                diaChiCuThe: '',
             },
         ],
     },
@@ -893,8 +845,7 @@ const array = [
                 thanhPho: '',
                 quanHuyen: '',
                 phuongXa: '',
-                tenDuong: '',
-                soNha: '',
+                diaChiCuThe: '',
             },
             {
                 subCategoryId: 66,
@@ -905,8 +856,7 @@ const array = [
                 thanhPho: '',
                 quanHuyen: '',
                 phuongXa: '',
-                tenDuong: '',
-                soNha: '',
+                diaChiCuThe: '',
             },
         ],
     },
@@ -971,14 +921,32 @@ export function convertFile(file, callback) {
 
 export const uploadImage = async files => {
     const fileIdArray = await Promise.all(
-        files.map(async ({ type, fileData }) => {
+        files.map(async ({ type, fileData, id }) => {
+            if (!fileData) {
+                return new Promise(resolve => {
+                    resolve({ type, id })
+                })
+            }
             const res = await fetch(
                 'https://script.google.com/macros/s/AKfycbwXhX4N82ic3vhrVOK493pjOfR9-pISPf7jsSmpiBcf_IHuQCc/exec',
                 { method: 'POST', body: JSON.stringify(fileData) }
             )
-            const { id } = await res.json()
-            return { type, id }
+            const data = await res.json()
+            return { type, id: data.id }
         })
     )
     return fileIdArray
+}
+
+export const getCategory = categoryId =>
+    categories.find(({ id }) => id === categoryId)
+
+export const getSubCategory = (categoryId, subCategoryId) => {
+    const category = getCategory(categoryId)
+    if (!category) {
+        return
+    } else if (category.subCategory === null) {
+        return null
+    }
+    return category.subCategory.find(({ id }) => subCategoryId === id)
 }

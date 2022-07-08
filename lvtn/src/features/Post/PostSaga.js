@@ -2,6 +2,7 @@ import { put, takeLeading, takeLatest, call, select } from 'redux-saga/effects'
 import {
     createNewPost,
     editPost,
+    getEditPost,
     getPostDetailWithId,
     getPostWithSubCategoryId,
     loadLocationData,
@@ -17,6 +18,9 @@ import {
     getPostPending,
     getPostSuccess,
     getRelatedPostSuccess,
+    getUpdatePostDataFail,
+    getUpdatePostDataPending,
+    getUpdatePostDataSuccess,
     setLocation,
 } from './PostSlice'
 import { selectNumberPhone, selectToken } from '../Auth/Login/loginSlice'
@@ -29,6 +33,40 @@ export default function* postSaga() {
     yield takeLatest('getRelatedPost', getRelatedPost)
     yield takeLatest('loadLocationData', loadLocationDataSaga)
     yield takeLatest('editPost', editPostSaga)
+    yield takeLatest('getEditPostData', getEditPostDataSaga)
+}
+
+function* getEditPostDataSaga({ idPost, preflightKey }) {
+    const token = yield select(selectToken)
+    if (!token) {
+        return
+    }
+    yield put(getUpdatePostDataPending())
+
+    const { status, updatePost } = yield call(
+        getEditPost,
+        token,
+        idPost,
+        preflightKey
+    )
+
+    if (status === 200) {
+        yield put(getUpdatePostDataSuccess({ updatePost }))
+    } else if (status === 401) {
+        yield put(
+            getUpdatePostDataFail({
+                errorMessage:
+                    'Phiên đăng nhập hết hạn, vui lòng thử123 đăng nhập và thử lại',
+            })
+        )
+    } else {
+        yield put(
+            getUpdatePostDataFail({
+                errorMessage:
+                    'Đã có lỗi xảy ra, vui lòng tải lại trang và thử lại sau',
+            })
+        )
+    }
 }
 
 function* editPostSaga({ formData }) {
@@ -216,6 +254,5 @@ function mappingFormData({ ...formData }, numberPhone) {
         mota: formData.description,
         idDanhMucCon: subCategoryId,
         hinhAnh_BaiDangs: formData.medias,
-        diaChiCuThe: formData.soNha + formData.tenDuong,
     }
 }
