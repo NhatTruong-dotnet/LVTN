@@ -693,6 +693,8 @@ namespace STU.LVTN.SERVER.Model
 
                 entity.Property(e => e.HinhCmnd).HasColumnName("Hinh_CMND");
 
+                entity.Property(e => e.Active).HasColumnName("Active");
+                entity.Property(e => e.LockTime).HasColumnName("LockTime");
                 entity.Property(e => e.LoaiDichVu).HasColumnName("Loai_DichVu");
 
                 entity.Property(e => e.MsdkDoanhNghiep)

@@ -26,6 +26,8 @@ namespace STU.LVTN.SERVER.Model
         public byte[]? PasswordSalt { get; set; }
         public DateTime? CreatedDate { get; set; }= DateTime.Now;
         public string? AnhDaiDienSource { get; set; }
+        public bool? Active { get; set; }
+        public DateTime? LockTime { get; set; }
         public virtual ICollection<BaiDangEntities> BaiDangs { get; set; }
         public virtual ICollection<GiaoDichDatCoc> GiaoDichDatCocSdtBanNavigations { get; set; }
         public virtual ICollection<GiaoDichDatCoc> GiaoDichDatCocSdtMuaNavigations { get; set; }

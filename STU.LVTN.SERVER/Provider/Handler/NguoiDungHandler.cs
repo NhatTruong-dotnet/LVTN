@@ -42,6 +42,18 @@ namespace STU.LVTN.SERVER.Provider.Handler
         {
             return await nguoiDungHelper.GetAll();
         }
+
+        public async Task<bool> LockAccount(string sdt, int numberDaysLock)
+        {
+            if (numberDaysLock == 0)
+            {
+                return await nguoiDungHelper.LockPermanent(sdt);
+            }
+            else
+            {
+                return await nguoiDungHelper.LockTemporary(sdt,numberDaysLock);
+            }
+        }
         public async Task<string> Login(Login_RegisterDTO userRequest)
         {
             //

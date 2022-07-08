@@ -85,5 +85,18 @@ namespace STU.LVTN.SERVER.Controllers
                 return BadRequest();
             }
         }
+
+        [HttpPost("admin/users/lockAccount"),Authorize]
+        public async Task<ActionResult<bool>> LockAccount(string sdtLock, int numberDaysLock)
+        {
+            try
+            {
+                return Ok(await nguoiDungHandler.LockAccount(sdtLock,numberDaysLock));
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
+        }
     }
 }

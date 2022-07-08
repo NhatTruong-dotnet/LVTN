@@ -26,6 +26,40 @@ namespace STU.LVTN.SERVER.Provider.BusinessLogic
             }
         }
 
+        public async Task<bool> LockPermanent(string sdt)
+        {
+            try
+            {
+                NguoiDungEntities accountLockPermanet = _context.NguoiDungs.Where(item => item.SoDienThoai == sdt).FirstOrDefault();
+                accountLockPermanet.Active = false;
+                accountLockPermanet.LockTime = null;
+                _context.NguoiDungs.Update(accountLockPermanet);
+                _context.SaveChanges();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        public async Task<bool> LockTemporary(string sdt, int numberDaysLock)
+        {
+            try
+            {
+                NguoiDungEntities accountLockPermanet = _context.NguoiDungs.Where(item => item.SoDienThoai == sdt).FirstOrDefault();
+                accountLockPermanet.Active = false;
+                accountLockPermanet.LockTime = DateTime.Now.AddDays(numberDaysLock);
+                _context.NguoiDungs.Update(accountLockPermanet);
+                _context.SaveChanges();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+        
         public  async Task<bool> UserExist(string soDienThoai)
         {
             var user = _context.NguoiDungs.Where(user => user.SoDienThoai == soDienThoai).FirstOrDefault();
@@ -123,6 +157,8 @@ namespace STU.LVTN.SERVER.Provider.BusinessLogic
                 user.Ten = nguoiDung.Ten;
                 user.DanhGiaHeThong = nguoiDung.DanhGiaHeThong;
                 user.Sdt = nguoiDung.SoDienThoai;
+                user.Active = nguoiDung.Active;
+                user.LockTime = nguoiDung.LockTime != null ?  $"{nguoiDung.LockTime:dd-MM-yyyy}": "";
                 result.Add(user);
             }
             return result;
