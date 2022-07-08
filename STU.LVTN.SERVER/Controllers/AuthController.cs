@@ -35,7 +35,7 @@ namespace STU.LVTN.SERVER.Controllers
         public async Task<ActionResult<string>> Login(Login_RegisterDTO userRequest)
         {
             string response = await nguoiDungHandler.Login(userRequest);
-            if (response == "User not found !" || response == "Wrong password !")
+            if (response == "User not found !" || response == "Wrong password !" || response.Contains("Temporay") || response.Contains("permanent"))
             {
                 return BadRequest(response);
             }
@@ -73,7 +73,7 @@ namespace STU.LVTN.SERVER.Controllers
                 return BadRequest("Some thing wrong here!");
         }
 
-        [HttpGet("admin/users"), Authorize]
+        [HttpGet("admin/users"), Authorize(Roles = "admin")]
         public async Task<ActionResult<List<Admin_NguoiDungDTO>>> GetAll()
         {
             try
@@ -86,7 +86,7 @@ namespace STU.LVTN.SERVER.Controllers
             }
         }
 
-        [HttpPost("admin/users/lockAccount"),Authorize]
+        [HttpPost("admin/users/lockAccount"),Authorize(Roles ="admin")]
         public async Task<ActionResult<bool>> LockAccount(string sdtLock, int numberDaysLock)
         {
             try

@@ -65,10 +65,19 @@ namespace STU.LVTN.SERVER.Provider.Handler
                 return "Wrong password !";
             else
             {
-                string secretKey = _configuration.GetSection("AppSettings:Token").Value;
-                
-                string token = nguoiDungHelper.CreateToken(user.Ten == null ? "":user.Ten,userRequest.SoDienThoai,user.Admin, secretKey);
-                return token;
+                if ((bool)user.Active)
+                {
+                    string secretKey = _configuration.GetSection("AppSettings:Token").Value;
+                    string token = nguoiDungHelper.CreateToken(user.Ten == null ? "":user.Ten,userRequest.SoDienThoai,user.Admin, secretKey);
+                    return token;
+                }
+                else
+                {
+                    if (user.LockTime == null)
+                        return "Your account have been permanent lock !";
+                    else
+                        return  " Temporay lock your account until "+$"{user.LockTime:dd-MM-yyyy}";
+                }
             }
         }
 

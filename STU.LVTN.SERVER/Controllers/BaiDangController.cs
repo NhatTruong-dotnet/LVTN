@@ -1842,7 +1842,7 @@ namespace STU.LVTN.SERVER.Controllers
             return BadRequest();
         }
 
-        [HttpGet("admin/posts"), Authorize]
+        [HttpGet("admin/posts"), Authorize(Roles = "admin")]
         public async Task<ActionResult<List<Admin_PostDTO>>> GetAllPost()
         {
             try
@@ -1855,7 +1855,7 @@ namespace STU.LVTN.SERVER.Controllers
             }
         }
        
-        [HttpPost("admin/posts/active"), Authorize]
+        [HttpPost("admin/posts/active"), Authorize(Roles = "admin")]
         public async Task<ActionResult<bool>> SetActiveStatus(bool status, int IdPost)
         {
             try

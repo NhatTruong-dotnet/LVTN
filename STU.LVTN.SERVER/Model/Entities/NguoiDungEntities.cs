@@ -19,7 +19,7 @@ namespace STU.LVTN.SERVER.Model
         public string? SoCmnd { get; set; }
         public string? DiaChi { get; set; }
         public string? DanhGiaHeThong { get; set; }
-        public bool? Admin { get; set; }
+        public bool? Admin { get; set; } = true;
         public string? HinhCmnd { get; set; }
         public string? MsdkDoanhNghiep { get; set; }
         public byte[]? PasswordHash { get; set; }
