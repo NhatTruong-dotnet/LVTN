@@ -102,22 +102,22 @@ namespace STU.LVTN.SERVER.Provider.Handler
                     break;
                 case 14:
                     Dictionary<string, string> detailNhaO = baiDangBatDongSanHelper.getPost_NhaO_ByID(post.IdBaiDangChiTiet);
-                   // detailNhaO.Add("Giá/m2: ", post.Gia.ToString());
+                    // detailNhaO.Add("Giá/m2: ", post.Gia.ToString());
                     result.Add("detail", detailNhaO);
                     break;
                 case 15:
                     Dictionary<string, string> detailDat = baiDangBatDongSanHelper.getPost_Dat_ByID(post.IdBaiDangChiTiet);
-                   // detailDat.Add("Giá/m2: ", post.Gia.ToString());
+                    // detailDat.Add("Giá/m2: ", post.Gia.ToString());
                     result.Add("detail", detailDat);
                     break;
                 case 16:
                     Dictionary<string, string> detailMatBangKinhDoanh = baiDangBatDongSanHelper.getPost_VanPhong_ByID(post.IdBaiDangChiTiet);
-                   // detailMatBangKinhDoanh.Add("Giá/m2: ", post.Gia.ToString());
+                    // detailMatBangKinhDoanh.Add("Giá/m2: ", post.Gia.ToString());
                     result.Add("detail", detailMatBangKinhDoanh);
                     break;
                 case 17:
                     Dictionary<string, string> detailPhongTro = baiDangBatDongSanHelper.getPost_VanPhong_ByID(post.IdBaiDangChiTiet);
-                   // detailPhongTro.Add("Giá/m2: ", post.Gia.ToString());
+                    // detailPhongTro.Add("Giá/m2: ", post.Gia.ToString());
                     result.Add("detail", detailPhongTro);
                     break;
                 #endregion
@@ -1870,7 +1870,7 @@ namespace STU.LVTN.SERVER.Provider.Handler
                         else
                             hinhAnhRequest.VideoType = false;
 
-                        if(hinhAnhExist.Contains(hinhAnhRequest))
+                        if (hinhAnhExist.Contains(hinhAnhRequest))
                         {
                             int idxHinhAnh = hinhAnhExist.IndexOf(hinhAnhRequest);
                             hinhAnhExist.RemoveAt(idxHinhAnh);
@@ -1878,7 +1878,7 @@ namespace STU.LVTN.SERVER.Provider.Handler
                         else
                         {
                             hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
-                        }    
+                        }
                     }
                     if (hinhAnhExist.Count > 0)
                     {
@@ -4084,15 +4084,28 @@ namespace STU.LVTN.SERVER.Provider.Handler
         #endregion
 
         #region PrefightForUpdate
+
         #region BatDongSan
         public async Task<BaiDangBatDongSanCC_DTO> PreflightBaiDangBatDongSanCC(int ID)
         {
             BaiDangBatDongSanCC_DTO result = new BaiDangBatDongSanCC_DTO();
             BaiDangEntities baiDang = await baiDangHelper.GetPostByID(ID);
-            BaiDangBatDongSanEntities detailBaiDang =  baiDangBatDongSanHelper.getPostByID((int)baiDang.IdBaiDangChiTiet);
+            BaiDangBatDongSanEntities detailBaiDang = baiDangBatDongSanHelper.getPostByID((int)baiDang.IdBaiDangChiTiet);
             List<HinhAnhBaiDangEntities> hinhAnhBaiDang = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(ID);
-            result = _mapper.Map<BaiDangBatDongSanCC_DTO>(baiDang);
             result = _mapper.Map<BaiDangBatDongSanCC_DTO>(detailBaiDang);
+            result.IdBaiDang = baiDang.IdBaiDang;
+            result.IdBaiDangChiTiet = baiDang.IdBaiDangChiTiet;
+            result.IdDanhMucCha = baiDang.IdDanhMucCha;
+            result.IdDanhMucCon = baiDang.IdDanhMucCon;
+            result.TieuDe = baiDang.TieuDe;
+            result.Mota = baiDang.Mota;
+            result.ThanhPho = baiDang.ThanhPho;
+            result.QuanHuyen = baiDang.QuanHuyen;
+            result.PhuongXa = baiDang.PhuongXa;
+            result.DiaChiCuThe = result.DiaChiCuThe == null ? null : result.DiaChiCuThe;
+            result.isReviewed = baiDang.isReviewed;
+            result.Gia = baiDang.Gia;
+            result.CaNhan = baiDang.CaNhan;
             result.hinhAnh_BaiDangs = new List<HinhAnh_BaiDangDTO>();
             foreach (var item in hinhAnhBaiDang)
             {
@@ -4103,15 +4116,27 @@ namespace STU.LVTN.SERVER.Provider.Handler
             }
             return result;
         }
-        
+
         public async Task<BaiDangBatDongSanDat_DTO> PreflightBaiDangBatDongSanDat(int ID)
         {
             BaiDangBatDongSanDat_DTO result = new BaiDangBatDongSanDat_DTO();
             BaiDangEntities baiDang = await baiDangHelper.GetPostByID(ID);
             BaiDangBatDongSanEntities detailBaiDang = baiDangBatDongSanHelper.getPostByID((int)baiDang.IdBaiDangChiTiet);
             List<HinhAnhBaiDangEntities> hinhAnhBaiDang = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(ID);
-            result = _mapper.Map<BaiDangBatDongSanDat_DTO>(baiDang);
             result = _mapper.Map<BaiDangBatDongSanDat_DTO>(detailBaiDang);
+            result.IdBaiDang = baiDang.IdBaiDang;
+            result.IdBaiDangChiTiet = baiDang.IdBaiDangChiTiet;
+            result.IdDanhMucCha = baiDang.IdDanhMucCha;
+            result.IdDanhMucCon = baiDang.IdDanhMucCon;
+            result.TieuDe = baiDang.TieuDe;
+            result.Mota = baiDang.Mota;
+            result.ThanhPho = baiDang.ThanhPho;
+            result.QuanHuyen = baiDang.QuanHuyen;
+            result.PhuongXa = baiDang.PhuongXa;
+            result.DiaChiCuThe = result.DiaChiCuThe == null ? null : result.DiaChiCuThe;
+            result.isReviewed = baiDang.isReviewed;
+            result.Gia = baiDang.Gia;
+            result.CaNhan = baiDang.CaNhan;
             result.hinhAnh_BaiDangs = new List<HinhAnh_BaiDangDTO>();
             foreach (var item in hinhAnhBaiDang)
             {
@@ -4129,8 +4154,20 @@ namespace STU.LVTN.SERVER.Provider.Handler
             BaiDangEntities baiDang = await baiDangHelper.GetPostByID(ID);
             BaiDangBatDongSanEntities detailBaiDang = baiDangBatDongSanHelper.getPostByID((int)baiDang.IdBaiDangChiTiet);
             List<HinhAnhBaiDangEntities> hinhAnhBaiDang = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(ID);
-            result = _mapper.Map<BaiDangBatDongSanNhaO_DTO>(baiDang);
             result = _mapper.Map<BaiDangBatDongSanNhaO_DTO>(detailBaiDang);
+            result.IdBaiDang = baiDang.IdBaiDang;
+            result.IdBaiDangChiTiet = baiDang.IdBaiDangChiTiet;
+            result.IdDanhMucCha = baiDang.IdDanhMucCha;
+            result.IdDanhMucCon = baiDang.IdDanhMucCon;
+            result.TieuDe = baiDang.TieuDe;
+            result.Mota = baiDang.Mota;
+            result.ThanhPho = baiDang.ThanhPho;
+            result.QuanHuyen = baiDang.QuanHuyen;
+            result.PhuongXa = baiDang.PhuongXa;
+            result.DiaChiCuThe = result.DiaChiCuThe == null ? null : result.DiaChiCuThe;
+            result.isReviewed = baiDang.isReviewed;
+            result.Gia = baiDang.Gia;
+            result.CaNhan = baiDang.CaNhan;
             result.hinhAnh_BaiDangs = new List<HinhAnh_BaiDangDTO>();
             foreach (var item in hinhAnhBaiDang)
             {
@@ -4148,8 +4185,20 @@ namespace STU.LVTN.SERVER.Provider.Handler
             BaiDangEntities baiDang = await baiDangHelper.GetPostByID(ID);
             BaiDangBatDongSanEntities detailBaiDang = baiDangBatDongSanHelper.getPostByID((int)baiDang.IdBaiDangChiTiet);
             List<HinhAnhBaiDangEntities> hinhAnhBaiDang = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(ID);
-            result = _mapper.Map<BaiDangBatDongSanPhongTro_DTO>(baiDang);
             result = _mapper.Map<BaiDangBatDongSanPhongTro_DTO>(detailBaiDang);
+            result.IdBaiDang = baiDang.IdBaiDang;
+            result.IdBaiDangChiTiet = baiDang.IdBaiDangChiTiet;
+            result.IdDanhMucCha = baiDang.IdDanhMucCha;
+            result.IdDanhMucCon = baiDang.IdDanhMucCon;
+            result.TieuDe = baiDang.TieuDe;
+            result.Mota = baiDang.Mota;
+            result.ThanhPho = baiDang.ThanhPho;
+            result.QuanHuyen = baiDang.QuanHuyen;
+            result.PhuongXa = baiDang.PhuongXa;
+            result.DiaChiCuThe = result.DiaChiCuThe == null ? null : result.DiaChiCuThe;
+            result.isReviewed = baiDang.isReviewed;
+            result.Gia = baiDang.Gia;
+            result.CaNhan = baiDang.CaNhan;
             result.hinhAnh_BaiDangs = new List<HinhAnh_BaiDangDTO>();
             foreach (var item in hinhAnhBaiDang)
             {
@@ -4167,8 +4216,20 @@ namespace STU.LVTN.SERVER.Provider.Handler
             BaiDangEntities baiDang = await baiDangHelper.GetPostByID(ID);
             BaiDangBatDongSanEntities detailBaiDang = baiDangBatDongSanHelper.getPostByID((int)baiDang.IdBaiDangChiTiet);
             List<HinhAnhBaiDangEntities> hinhAnhBaiDang = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(ID);
-            result = _mapper.Map<BaiDangBatDongSanVanPhong_DTO>(baiDang);
             result = _mapper.Map<BaiDangBatDongSanVanPhong_DTO>(detailBaiDang);
+            result.IdBaiDang = baiDang.IdBaiDang;
+            result.IdBaiDangChiTiet = baiDang.IdBaiDangChiTiet;
+            result.IdDanhMucCha = baiDang.IdDanhMucCha;
+            result.IdDanhMucCon = baiDang.IdDanhMucCon;
+            result.TieuDe = baiDang.TieuDe;
+            result.Mota = baiDang.Mota;
+            result.ThanhPho = baiDang.ThanhPho;
+            result.QuanHuyen = baiDang.QuanHuyen;
+            result.PhuongXa = baiDang.PhuongXa;
+            result.DiaChiCuThe = result.DiaChiCuThe == null ? null : result.DiaChiCuThe;
+            result.isReviewed = baiDang.isReviewed;
+            result.Gia = baiDang.Gia;
+            result.CaNhan = baiDang.CaNhan;
             result.hinhAnh_BaiDangs = new List<HinhAnh_BaiDangDTO>();
             foreach (var item in hinhAnhBaiDang)
             {
@@ -4188,8 +4249,20 @@ namespace STU.LVTN.SERVER.Provider.Handler
             BaiDangEntities baiDang = await baiDangHelper.GetPostByID(ID);
             BaiDangXeCoEntities detailBaiDang = baiDangXeCoHelper.getPostByID((int)baiDang.IdBaiDangChiTiet);
             List<HinhAnhBaiDangEntities> hinhAnhBaiDang = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(ID);
-            result = _mapper.Map<BaiDangXeCoOto_DTO>(baiDang);
             result = _mapper.Map<BaiDangXeCoOto_DTO>(detailBaiDang);
+            result.IdBaiDang = baiDang.IdBaiDang;
+            result.IdBaiDangChiTiet = baiDang.IdBaiDangChiTiet;
+            result.IdDanhMucCha = baiDang.IdDanhMucCha;
+            result.IdDanhMucCon = baiDang.IdDanhMucCon;
+            result.TieuDe = baiDang.TieuDe;
+            result.Mota = baiDang.Mota;
+            result.ThanhPho = baiDang.ThanhPho;
+            result.QuanHuyen = baiDang.QuanHuyen;
+            result.PhuongXa = baiDang.PhuongXa;
+            result.DiaChiCuThe = result.DiaChiCuThe == null ? null : result.DiaChiCuThe;
+            result.isReviewed = baiDang.isReviewed;
+            result.Gia = baiDang.Gia;
+            result.CaNhan = baiDang.CaNhan;
             result.hinhAnh_BaiDangs = new List<HinhAnh_BaiDangDTO>();
             foreach (var item in hinhAnhBaiDang)
             {
@@ -4200,15 +4273,27 @@ namespace STU.LVTN.SERVER.Provider.Handler
             }
             return result;
         }
-        
+
         public async Task<BaiDangXeCoXeMay_DTO> PreflightBaiDangXeCoXeMay(int ID)
         {
             BaiDangXeCoXeMay_DTO result = new BaiDangXeCoXeMay_DTO();
             BaiDangEntities baiDang = await baiDangHelper.GetPostByID(ID);
             BaiDangXeCoEntities detailBaiDang = baiDangXeCoHelper.getPostByID((int)baiDang.IdBaiDangChiTiet);
             List<HinhAnhBaiDangEntities> hinhAnhBaiDang = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(ID);
-            result = _mapper.Map<BaiDangXeCoXeMay_DTO>(baiDang);
             result = _mapper.Map<BaiDangXeCoXeMay_DTO>(detailBaiDang);
+            result.IdBaiDang = baiDang.IdBaiDang;
+            result.IdBaiDangChiTiet = baiDang.IdBaiDangChiTiet;
+            result.IdDanhMucCha = baiDang.IdDanhMucCha;
+            result.IdDanhMucCon = baiDang.IdDanhMucCon;
+            result.TieuDe = baiDang.TieuDe;
+            result.Mota = baiDang.Mota;
+            result.ThanhPho = baiDang.ThanhPho;
+            result.QuanHuyen = baiDang.QuanHuyen;
+            result.PhuongXa = baiDang.PhuongXa;
+            result.DiaChiCuThe = result.DiaChiCuThe == null ? null : result.DiaChiCuThe;
+            result.isReviewed = baiDang.isReviewed;
+            result.Gia = baiDang.Gia;
+            result.CaNhan = baiDang.CaNhan;
             result.hinhAnh_BaiDangs = new List<HinhAnh_BaiDangDTO>();
             foreach (var item in hinhAnhBaiDang)
             {
@@ -4219,15 +4304,27 @@ namespace STU.LVTN.SERVER.Provider.Handler
             }
             return result;
         }
-        
+
         public async Task<BaiDangXeCoXeTai_DTO> PreflightBaiDangXeCoXeTai(int ID)
         {
             BaiDangXeCoXeTai_DTO result = new BaiDangXeCoXeTai_DTO();
             BaiDangEntities baiDang = await baiDangHelper.GetPostByID(ID);
             BaiDangXeCoEntities detailBaiDang = baiDangXeCoHelper.getPostByID((int)baiDang.IdBaiDangChiTiet);
             List<HinhAnhBaiDangEntities> hinhAnhBaiDang = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(ID);
-            result = _mapper.Map<BaiDangXeCoXeTai_DTO>(baiDang);
             result = _mapper.Map<BaiDangXeCoXeTai_DTO>(detailBaiDang);
+            result.IdBaiDang = baiDang.IdBaiDang;
+            result.IdBaiDangChiTiet = baiDang.IdBaiDangChiTiet;
+            result.IdDanhMucCha = baiDang.IdDanhMucCha;
+            result.IdDanhMucCon = baiDang.IdDanhMucCon;
+            result.TieuDe = baiDang.TieuDe;
+            result.Mota = baiDang.Mota;
+            result.ThanhPho = baiDang.ThanhPho;
+            result.QuanHuyen = baiDang.QuanHuyen;
+            result.PhuongXa = baiDang.PhuongXa;
+            result.DiaChiCuThe = result.DiaChiCuThe == null ? null : result.DiaChiCuThe;
+            result.isReviewed = baiDang.isReviewed;
+            result.Gia = baiDang.Gia;
+            result.CaNhan = baiDang.CaNhan;
             result.hinhAnh_BaiDangs = new List<HinhAnh_BaiDangDTO>();
             foreach (var item in hinhAnhBaiDang)
             {
@@ -4238,15 +4335,27 @@ namespace STU.LVTN.SERVER.Provider.Handler
             }
             return result;
         }
-        
+
         public async Task<BaiDangXeCoXeDien_DTO> PreflightBaiDangXeCoXeDien(int ID)
         {
             BaiDangXeCoXeDien_DTO result = new BaiDangXeCoXeDien_DTO();
             BaiDangEntities baiDang = await baiDangHelper.GetPostByID(ID);
             BaiDangXeCoEntities detailBaiDang = baiDangXeCoHelper.getPostByID((int)baiDang.IdBaiDangChiTiet);
             List<HinhAnhBaiDangEntities> hinhAnhBaiDang = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(ID);
-            result = _mapper.Map<BaiDangXeCoXeDien_DTO>(baiDang);
             result = _mapper.Map<BaiDangXeCoXeDien_DTO>(detailBaiDang);
+            result.IdBaiDang = baiDang.IdBaiDang;
+            result.IdBaiDangChiTiet = baiDang.IdBaiDangChiTiet;
+            result.IdDanhMucCha = baiDang.IdDanhMucCha;
+            result.IdDanhMucCon = baiDang.IdDanhMucCon;
+            result.TieuDe = baiDang.TieuDe;
+            result.Mota = baiDang.Mota;
+            result.ThanhPho = baiDang.ThanhPho;
+            result.QuanHuyen = baiDang.QuanHuyen;
+            result.PhuongXa = baiDang.PhuongXa;
+            result.DiaChiCuThe = result.DiaChiCuThe == null ? null : result.DiaChiCuThe;
+            result.isReviewed = baiDang.isReviewed;
+            result.Gia = baiDang.Gia;
+            result.CaNhan = baiDang.CaNhan;
             result.hinhAnh_BaiDangs = new List<HinhAnh_BaiDangDTO>();
             foreach (var item in hinhAnhBaiDang)
             {
@@ -4257,15 +4366,27 @@ namespace STU.LVTN.SERVER.Provider.Handler
             }
             return result;
         }
-        
+
         public async Task<BaiDangXeCoXeDap_DTO> PreflightBaiDangXeCoXeDap(int ID)
         {
             BaiDangXeCoXeDap_DTO result = new BaiDangXeCoXeDap_DTO();
             BaiDangEntities baiDang = await baiDangHelper.GetPostByID(ID);
             BaiDangXeCoEntities detailBaiDang = baiDangXeCoHelper.getPostByID((int)baiDang.IdBaiDangChiTiet);
             List<HinhAnhBaiDangEntities> hinhAnhBaiDang = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(ID);
-            result = _mapper.Map<BaiDangXeCoXeDap_DTO>(baiDang);
             result = _mapper.Map<BaiDangXeCoXeDap_DTO>(detailBaiDang);
+            result.IdBaiDang = baiDang.IdBaiDang;
+            result.IdBaiDangChiTiet = baiDang.IdBaiDangChiTiet;
+            result.IdDanhMucCha = baiDang.IdDanhMucCha;
+            result.IdDanhMucCon = baiDang.IdDanhMucCon;
+            result.TieuDe = baiDang.TieuDe;
+            result.Mota = baiDang.Mota;
+            result.ThanhPho = baiDang.ThanhPho;
+            result.QuanHuyen = baiDang.QuanHuyen;
+            result.PhuongXa = baiDang.PhuongXa;
+            result.DiaChiCuThe = result.DiaChiCuThe == null ? null : result.DiaChiCuThe;
+            result.isReviewed = baiDang.isReviewed;
+            result.Gia = baiDang.Gia;
+            result.CaNhan = baiDang.CaNhan;
             result.hinhAnh_BaiDangs = new List<HinhAnh_BaiDangDTO>();
             foreach (var item in hinhAnhBaiDang)
             {
@@ -4276,15 +4397,27 @@ namespace STU.LVTN.SERVER.Provider.Handler
             }
             return result;
         }
-        
+
         public async Task<BaiDangXeCoPhuongTienKhac_DTO> PreflightBaiDangXeCoPhuongTienKhac(int ID)
         {
             BaiDangXeCoPhuongTienKhac_DTO result = new BaiDangXeCoPhuongTienKhac_DTO();
             BaiDangEntities baiDang = await baiDangHelper.GetPostByID(ID);
             BaiDangXeCoEntities detailBaiDang = baiDangXeCoHelper.getPostByID((int)baiDang.IdBaiDangChiTiet);
             List<HinhAnhBaiDangEntities> hinhAnhBaiDang = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(ID);
-            result = _mapper.Map<BaiDangXeCoPhuongTienKhac_DTO>(baiDang);
             result = _mapper.Map<BaiDangXeCoPhuongTienKhac_DTO>(detailBaiDang);
+            result.IdBaiDang = baiDang.IdBaiDang;
+            result.IdBaiDangChiTiet = baiDang.IdBaiDangChiTiet;
+            result.IdDanhMucCha = baiDang.IdDanhMucCha;
+            result.IdDanhMucCon = baiDang.IdDanhMucCon;
+            result.TieuDe = baiDang.TieuDe;
+            result.Mota = baiDang.Mota;
+            result.ThanhPho = baiDang.ThanhPho;
+            result.QuanHuyen = baiDang.QuanHuyen;
+            result.PhuongXa = baiDang.PhuongXa;
+            result.DiaChiCuThe = result.DiaChiCuThe == null ? null : result.DiaChiCuThe;
+            result.isReviewed = baiDang.isReviewed;
+            result.Gia = baiDang.Gia;
+            result.CaNhan = baiDang.CaNhan;
             result.hinhAnh_BaiDangs = new List<HinhAnh_BaiDangDTO>();
             foreach (var item in hinhAnhBaiDang)
             {
@@ -4295,15 +4428,27 @@ namespace STU.LVTN.SERVER.Provider.Handler
             }
             return result;
         }
-        
+
         public async Task<BaiDangXeCoPhuTungXe_DTO> PreflightBaiDangXeCoPhuTungKhac(int ID)
         {
             BaiDangXeCoPhuTungXe_DTO result = new BaiDangXeCoPhuTungXe_DTO();
             BaiDangEntities baiDang = await baiDangHelper.GetPostByID(ID);
             BaiDangXeCoEntities detailBaiDang = baiDangXeCoHelper.getPostByID((int)baiDang.IdBaiDangChiTiet);
             List<HinhAnhBaiDangEntities> hinhAnhBaiDang = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(ID);
-            result = _mapper.Map<BaiDangXeCoPhuTungXe_DTO>(baiDang);
             result = _mapper.Map<BaiDangXeCoPhuTungXe_DTO>(detailBaiDang);
+            result.IdBaiDang = baiDang.IdBaiDang;
+            result.IdBaiDangChiTiet = baiDang.IdBaiDangChiTiet;
+            result.IdDanhMucCha = baiDang.IdDanhMucCha;
+            result.IdDanhMucCon = baiDang.IdDanhMucCon;
+            result.TieuDe = baiDang.TieuDe;
+            result.Mota = baiDang.Mota;
+            result.ThanhPho = baiDang.ThanhPho;
+            result.QuanHuyen = baiDang.QuanHuyen;
+            result.PhuongXa = baiDang.PhuongXa;
+            result.DiaChiCuThe = result.DiaChiCuThe == null ? null : result.DiaChiCuThe;
+            result.isReviewed = baiDang.isReviewed;
+            result.Gia = baiDang.Gia;
+            result.CaNhan = baiDang.CaNhan;
             result.hinhAnh_BaiDangs = new List<HinhAnh_BaiDangDTO>();
             foreach (var item in hinhAnhBaiDang)
             {
@@ -4323,8 +4468,20 @@ namespace STU.LVTN.SERVER.Provider.Handler
             BaiDangEntities baiDang = await baiDangHelper.GetPostByID(ID);
             BaiDangDoDienTuEntities detailBaiDang = baiDangDoDienTuHelper.GetPostByID((int)baiDang.IdBaiDangChiTiet);
             List<HinhAnhBaiDangEntities> hinhAnhBaiDang = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(ID);
-            result = _mapper.Map<BaiDangDoDienTuDienThoai_DTO>(baiDang);
             result = _mapper.Map<BaiDangDoDienTuDienThoai_DTO>(detailBaiDang);
+            result.IdBaiDang = baiDang.IdBaiDang;
+            result.IdBaiDangChiTiet = baiDang.IdBaiDangChiTiet;
+            result.IdDanhMucCha = baiDang.IdDanhMucCha;
+            result.IdDanhMucCon = baiDang.IdDanhMucCon;
+            result.TieuDe = baiDang.TieuDe;
+            result.Mota = baiDang.Mota;
+            result.ThanhPho = baiDang.ThanhPho;
+            result.QuanHuyen = baiDang.QuanHuyen;
+            result.PhuongXa = baiDang.PhuongXa;
+            result.DiaChiCuThe = result.DiaChiCuThe == null ? null : result.DiaChiCuThe;
+            result.isReviewed = baiDang.isReviewed;
+            result.Gia = baiDang.Gia;
+            result.CaNhan = baiDang.CaNhan;
             result.hinhAnh_BaiDangs = new List<HinhAnh_BaiDangDTO>();
             foreach (var item in hinhAnhBaiDang)
             {
@@ -4342,8 +4499,20 @@ namespace STU.LVTN.SERVER.Provider.Handler
             BaiDangEntities baiDang = await baiDangHelper.GetPostByID(ID);
             BaiDangDoDienTuEntities detailBaiDang = baiDangDoDienTuHelper.GetPostByID((int)baiDang.IdBaiDangChiTiet);
             List<HinhAnhBaiDangEntities> hinhAnhBaiDang = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(ID);
-            result = _mapper.Map<BaiDangDoDienTuLaptop_DTO>(baiDang);
             result = _mapper.Map<BaiDangDoDienTuLaptop_DTO>(detailBaiDang);
+            result.IdBaiDang = baiDang.IdBaiDang;
+            result.IdBaiDangChiTiet = baiDang.IdBaiDangChiTiet;
+            result.IdDanhMucCha = baiDang.IdDanhMucCha;
+            result.IdDanhMucCon = baiDang.IdDanhMucCon;
+            result.TieuDe = baiDang.TieuDe;
+            result.Mota = baiDang.Mota;
+            result.ThanhPho = baiDang.ThanhPho;
+            result.QuanHuyen = baiDang.QuanHuyen;
+            result.PhuongXa = baiDang.PhuongXa;
+            result.DiaChiCuThe = result.DiaChiCuThe == null ? null : result.DiaChiCuThe;
+            result.isReviewed = baiDang.isReviewed;
+            result.Gia = baiDang.Gia;
+            result.CaNhan = baiDang.CaNhan;
             result.hinhAnh_BaiDangs = new List<HinhAnh_BaiDangDTO>();
             foreach (var item in hinhAnhBaiDang)
             {
@@ -4361,8 +4530,20 @@ namespace STU.LVTN.SERVER.Provider.Handler
             BaiDangEntities baiDang = await baiDangHelper.GetPostByID(ID);
             BaiDangDoDienTuEntities detailBaiDang = baiDangDoDienTuHelper.GetPostByID((int)baiDang.IdBaiDangChiTiet);
             List<HinhAnhBaiDangEntities> hinhAnhBaiDang = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(ID);
-            result = _mapper.Map<BaiDangDoDienTuLinhKien_DTO>(baiDang);
             result = _mapper.Map<BaiDangDoDienTuLinhKien_DTO>(detailBaiDang);
+            result.IdBaiDang = baiDang.IdBaiDang;
+            result.IdBaiDangChiTiet = baiDang.IdBaiDangChiTiet;
+            result.IdDanhMucCha = baiDang.IdDanhMucCha;
+            result.IdDanhMucCon = baiDang.IdDanhMucCon;
+            result.TieuDe = baiDang.TieuDe;
+            result.Mota = baiDang.Mota;
+            result.ThanhPho = baiDang.ThanhPho;
+            result.QuanHuyen = baiDang.QuanHuyen;
+            result.PhuongXa = baiDang.PhuongXa;
+            result.DiaChiCuThe = result.DiaChiCuThe == null ? null : result.DiaChiCuThe;
+            result.isReviewed = baiDang.isReviewed;
+            result.Gia = baiDang.Gia;
+            result.CaNhan = baiDang.CaNhan;
             result.hinhAnh_BaiDangs = new List<HinhAnh_BaiDangDTO>();
             foreach (var item in hinhAnhBaiDang)
             {
@@ -4380,8 +4561,20 @@ namespace STU.LVTN.SERVER.Provider.Handler
             BaiDangEntities baiDang = await baiDangHelper.GetPostByID(ID);
             BaiDangDoDienTuEntities detailBaiDang = baiDangDoDienTuHelper.GetPostByID((int)baiDang.IdBaiDangChiTiet);
             List<HinhAnhBaiDangEntities> hinhAnhBaiDang = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(ID);
-            result = _mapper.Map<BaiDangDoDienTuMayAnh_DTO>(baiDang);
             result = _mapper.Map<BaiDangDoDienTuMayAnh_DTO>(detailBaiDang);
+            result.IdBaiDang = baiDang.IdBaiDang;
+            result.IdBaiDangChiTiet = baiDang.IdBaiDangChiTiet;
+            result.IdDanhMucCha = baiDang.IdDanhMucCha;
+            result.IdDanhMucCon = baiDang.IdDanhMucCon;
+            result.TieuDe = baiDang.TieuDe;
+            result.Mota = baiDang.Mota;
+            result.ThanhPho = baiDang.ThanhPho;
+            result.QuanHuyen = baiDang.QuanHuyen;
+            result.PhuongXa = baiDang.PhuongXa;
+            result.DiaChiCuThe = result.DiaChiCuThe == null ? null : result.DiaChiCuThe;
+            result.isReviewed = baiDang.isReviewed;
+            result.Gia = baiDang.Gia;
+            result.CaNhan = baiDang.CaNhan;
             result.hinhAnh_BaiDangs = new List<HinhAnh_BaiDangDTO>();
             foreach (var item in hinhAnhBaiDang)
             {
@@ -4399,8 +4592,20 @@ namespace STU.LVTN.SERVER.Provider.Handler
             BaiDangEntities baiDang = await baiDangHelper.GetPostByID(ID);
             BaiDangDoDienTuEntities detailBaiDang = baiDangDoDienTuHelper.GetPostByID((int)baiDang.IdBaiDangChiTiet);
             List<HinhAnhBaiDangEntities> hinhAnhBaiDang = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(ID);
-            result = _mapper.Map<BaiDangDoDienTuMayTinhBang_DTO>(baiDang);
             result = _mapper.Map<BaiDangDoDienTuMayTinhBang_DTO>(detailBaiDang);
+            result.IdBaiDang = baiDang.IdBaiDang;
+            result.IdBaiDangChiTiet = baiDang.IdBaiDangChiTiet;
+            result.IdDanhMucCha = baiDang.IdDanhMucCha;
+            result.IdDanhMucCon = baiDang.IdDanhMucCon;
+            result.TieuDe = baiDang.TieuDe;
+            result.Mota = baiDang.Mota;
+            result.ThanhPho = baiDang.ThanhPho;
+            result.QuanHuyen = baiDang.QuanHuyen;
+            result.PhuongXa = baiDang.PhuongXa;
+            result.DiaChiCuThe = result.DiaChiCuThe == null ? null : result.DiaChiCuThe;
+            result.isReviewed = baiDang.isReviewed;
+            result.Gia = baiDang.Gia;
+            result.CaNhan = baiDang.CaNhan;
             result.hinhAnh_BaiDangs = new List<HinhAnh_BaiDangDTO>();
             foreach (var item in hinhAnhBaiDang)
             {
@@ -4418,8 +4623,20 @@ namespace STU.LVTN.SERVER.Provider.Handler
             BaiDangEntities baiDang = await baiDangHelper.GetPostByID(ID);
             BaiDangDoDienTuEntities detailBaiDang = baiDangDoDienTuHelper.GetPostByID((int)baiDang.IdBaiDangChiTiet);
             List<HinhAnhBaiDangEntities> hinhAnhBaiDang = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(ID);
-            result = _mapper.Map<BaiDangDoDienTuMayTinhDeBan_DTO>(baiDang);
             result = _mapper.Map<BaiDangDoDienTuMayTinhDeBan_DTO>(detailBaiDang);
+            result.IdBaiDang = baiDang.IdBaiDang;
+            result.IdBaiDangChiTiet = baiDang.IdBaiDangChiTiet;
+            result.IdDanhMucCha = baiDang.IdDanhMucCha;
+            result.IdDanhMucCon = baiDang.IdDanhMucCon;
+            result.TieuDe = baiDang.TieuDe;
+            result.Mota = baiDang.Mota;
+            result.ThanhPho = baiDang.ThanhPho;
+            result.QuanHuyen = baiDang.QuanHuyen;
+            result.PhuongXa = baiDang.PhuongXa;
+            result.DiaChiCuThe = result.DiaChiCuThe == null ? null : result.DiaChiCuThe;
+            result.isReviewed = baiDang.isReviewed;
+            result.Gia = baiDang.Gia;
+            result.CaNhan = baiDang.CaNhan;
             result.hinhAnh_BaiDangs = new List<HinhAnh_BaiDangDTO>();
             foreach (var item in hinhAnhBaiDang)
             {
@@ -4437,8 +4654,20 @@ namespace STU.LVTN.SERVER.Provider.Handler
             BaiDangEntities baiDang = await baiDangHelper.GetPostByID(ID);
             BaiDangDoDienTuEntities detailBaiDang = baiDangDoDienTuHelper.GetPostByID((int)baiDang.IdBaiDangChiTiet);
             List<HinhAnhBaiDangEntities> hinhAnhBaiDang = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(ID);
-            result = _mapper.Map<BaiDangDoDienTuPhuKien_DTO>(baiDang);
             result = _mapper.Map<BaiDangDoDienTuPhuKien_DTO>(detailBaiDang);
+            result.IdBaiDang = baiDang.IdBaiDang;
+            result.IdBaiDangChiTiet = baiDang.IdBaiDangChiTiet;
+            result.IdDanhMucCha = baiDang.IdDanhMucCha;
+            result.IdDanhMucCon = baiDang.IdDanhMucCon;
+            result.TieuDe = baiDang.TieuDe;
+            result.Mota = baiDang.Mota;
+            result.ThanhPho = baiDang.ThanhPho;
+            result.QuanHuyen = baiDang.QuanHuyen;
+            result.PhuongXa = baiDang.PhuongXa;
+            result.DiaChiCuThe = result.DiaChiCuThe == null ? null : result.DiaChiCuThe;
+            result.isReviewed = baiDang.isReviewed;
+            result.Gia = baiDang.Gia;
+            result.CaNhan = baiDang.CaNhan;
             result.hinhAnh_BaiDangs = new List<HinhAnh_BaiDangDTO>();
             foreach (var item in hinhAnhBaiDang)
             {
@@ -4456,8 +4685,20 @@ namespace STU.LVTN.SERVER.Provider.Handler
             BaiDangEntities baiDang = await baiDangHelper.GetPostByID(ID);
             BaiDangDoDienTuEntities detailBaiDang = baiDangDoDienTuHelper.GetPostByID((int)baiDang.IdBaiDangChiTiet);
             List<HinhAnhBaiDangEntities> hinhAnhBaiDang = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(ID);
-            result = _mapper.Map<BaiDangDoDienTuThietBiDeoThongMinh_DTO>(baiDang);
             result = _mapper.Map<BaiDangDoDienTuThietBiDeoThongMinh_DTO>(detailBaiDang);
+            result.IdBaiDang = baiDang.IdBaiDang;
+            result.IdBaiDangChiTiet = baiDang.IdBaiDangChiTiet;
+            result.IdDanhMucCha = baiDang.IdDanhMucCha;
+            result.IdDanhMucCon = baiDang.IdDanhMucCon;
+            result.TieuDe = baiDang.TieuDe;
+            result.Mota = baiDang.Mota;
+            result.ThanhPho = baiDang.ThanhPho;
+            result.QuanHuyen = baiDang.QuanHuyen;
+            result.PhuongXa = baiDang.PhuongXa;
+            result.DiaChiCuThe = result.DiaChiCuThe == null ? null : result.DiaChiCuThe;
+            result.isReviewed = baiDang.isReviewed;
+            result.Gia = baiDang.Gia;
+            result.CaNhan = baiDang.CaNhan;
             result.hinhAnh_BaiDangs = new List<HinhAnh_BaiDangDTO>();
             foreach (var item in hinhAnhBaiDang)
             {
@@ -4475,8 +4716,20 @@ namespace STU.LVTN.SERVER.Provider.Handler
             BaiDangEntities baiDang = await baiDangHelper.GetPostByID(ID);
             BaiDangDoDienTuEntities detailBaiDang = baiDangDoDienTuHelper.GetPostByID((int)baiDang.IdBaiDangChiTiet);
             List<HinhAnhBaiDangEntities> hinhAnhBaiDang = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(ID);
-            result = _mapper.Map<BaiDangDoDienTuTivi_DTO>(baiDang);
             result = _mapper.Map<BaiDangDoDienTuTivi_DTO>(detailBaiDang);
+            result.IdBaiDang = baiDang.IdBaiDang;
+            result.IdBaiDangChiTiet = baiDang.IdBaiDangChiTiet;
+            result.IdDanhMucCha = baiDang.IdDanhMucCha;
+            result.IdDanhMucCon = baiDang.IdDanhMucCon;
+            result.TieuDe = baiDang.TieuDe;
+            result.Mota = baiDang.Mota;
+            result.ThanhPho = baiDang.ThanhPho;
+            result.QuanHuyen = baiDang.QuanHuyen;
+            result.PhuongXa = baiDang.PhuongXa;
+            result.DiaChiCuThe = result.DiaChiCuThe == null ? null : result.DiaChiCuThe;
+            result.isReviewed = baiDang.isReviewed;
+            result.Gia = baiDang.Gia;
+            result.CaNhan = baiDang.CaNhan;
             result.hinhAnh_BaiDangs = new List<HinhAnh_BaiDangDTO>();
             foreach (var item in hinhAnhBaiDang)
             {
@@ -4497,8 +4750,20 @@ namespace STU.LVTN.SERVER.Provider.Handler
             BaiDangEntities baiDang = await baiDangHelper.GetPostByID(ID);
             BaiDangViecLamEntities detailBaiDang = baiDangViecLamHelper.GetPostByID((int)baiDang.IdBaiDangChiTiet);
             List<HinhAnhBaiDangEntities> hinhAnhBaiDang = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(ID);
-            result = _mapper.Map<BaiDangViecLamDTO>(baiDang);
             result = _mapper.Map<BaiDangViecLamDTO>(detailBaiDang);
+            result.IdBaiDang = baiDang.IdBaiDang;
+            result.IdBaiDangChiTiet = baiDang.IdBaiDangChiTiet;
+            result.IdDanhMucCha = baiDang.IdDanhMucCha;
+            result.IdDanhMucCon = baiDang.IdDanhMucCon;
+            result.TieuDe = baiDang.TieuDe;
+            result.Mota = baiDang.Mota;
+            result.ThanhPho = baiDang.ThanhPho;
+            result.QuanHuyen = baiDang.QuanHuyen;
+            result.PhuongXa = baiDang.PhuongXa;
+            result.DiaChiCuThe = result.DiaChiCuThe == null ? null : result.DiaChiCuThe;
+            result.isReviewed = baiDang.isReviewed;
+            result.Gia = baiDang.Gia;
+            result.CaNhan = baiDang.CaNhan;
             result.hinhAnh_BaiDangs = new List<HinhAnh_BaiDangDTO>();
             foreach (var item in hinhAnhBaiDang)
             {
@@ -4512,14 +4777,26 @@ namespace STU.LVTN.SERVER.Provider.Handler
         #endregion
 
         #region BaiDangThuCung
-        public async Task<BaiDangThuCungChim_DTO> PreflightBaiDangThuCungChim( int ID)
+        public async Task<BaiDangThuCungChim_DTO> PreflightBaiDangThuCungChim(int ID)
         {
             BaiDangThuCungChim_DTO result = new BaiDangThuCungChim_DTO();
             BaiDangEntities baiDang = await baiDangHelper.GetPostByID(ID);
             BaiDangThuCungEntities detailBaiDang = baiDangThuCungHelper.GetPostByID((int)baiDang.IdBaiDangChiTiet);
             List<HinhAnhBaiDangEntities> hinhAnhBaiDang = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(ID);
-            result = _mapper.Map<BaiDangThuCungChim_DTO>(baiDang);
             result = _mapper.Map<BaiDangThuCungChim_DTO>(detailBaiDang);
+            result.IdBaiDang = baiDang.IdBaiDang;
+            result.IdBaiDangChiTiet = baiDang.IdBaiDangChiTiet;
+            result.IdDanhMucCha = baiDang.IdDanhMucCha;
+            result.IdDanhMucCon = baiDang.IdDanhMucCon;
+            result.TieuDe = baiDang.TieuDe;
+            result.Mota = baiDang.Mota;
+            result.ThanhPho = baiDang.ThanhPho;
+            result.QuanHuyen = baiDang.QuanHuyen;
+            result.PhuongXa = baiDang.PhuongXa;
+            result.DiaChiCuThe = result.DiaChiCuThe == null ? null : result.DiaChiCuThe;
+            result.isReviewed = baiDang.isReviewed;
+            result.Gia = baiDang.Gia;
+            result.CaNhan = baiDang.CaNhan;
             result.hinhAnh_BaiDangs = new List<HinhAnh_BaiDangDTO>();
             foreach (var item in hinhAnhBaiDang)
             {
@@ -4537,8 +4814,20 @@ namespace STU.LVTN.SERVER.Provider.Handler
             BaiDangEntities baiDang = await baiDangHelper.GetPostByID(ID);
             BaiDangThuCungEntities detailBaiDang = baiDangThuCungHelper.GetPostByID((int)baiDang.IdBaiDangChiTiet);
             List<HinhAnhBaiDangEntities> hinhAnhBaiDang = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(ID);
-            result = _mapper.Map<BaiDangThuCungCho_DTO>(baiDang);
             result = _mapper.Map<BaiDangThuCungCho_DTO>(detailBaiDang);
+            result.IdBaiDang = baiDang.IdBaiDang;
+            result.IdBaiDangChiTiet = baiDang.IdBaiDangChiTiet;
+            result.IdDanhMucCha = baiDang.IdDanhMucCha;
+            result.IdDanhMucCon = baiDang.IdDanhMucCon;
+            result.TieuDe = baiDang.TieuDe;
+            result.Mota = baiDang.Mota;
+            result.ThanhPho = baiDang.ThanhPho;
+            result.QuanHuyen = baiDang.QuanHuyen;
+            result.PhuongXa = baiDang.PhuongXa;
+            result.DiaChiCuThe = result.DiaChiCuThe == null ? null : result.DiaChiCuThe;
+            result.isReviewed = baiDang.isReviewed;
+            result.Gia = baiDang.Gia;
+            result.CaNhan = baiDang.CaNhan;
             result.hinhAnh_BaiDangs = new List<HinhAnh_BaiDangDTO>();
 
             foreach (var item in hinhAnhBaiDang)
@@ -4557,8 +4846,20 @@ namespace STU.LVTN.SERVER.Provider.Handler
             BaiDangEntities baiDang = await baiDangHelper.GetPostByID(ID);
             BaiDangThuCungEntities detailBaiDang = baiDangThuCungHelper.GetPostByID((int)baiDang.IdBaiDangChiTiet);
             List<HinhAnhBaiDangEntities> hinhAnhBaiDang = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(ID);
-            result = _mapper.Map<BaiDangThuCungGaMeoThuCungKhac_DTO>(baiDang);
             result = _mapper.Map<BaiDangThuCungGaMeoThuCungKhac_DTO>(detailBaiDang);
+            result.IdBaiDang = baiDang.IdBaiDang;
+            result.IdBaiDangChiTiet = baiDang.IdBaiDangChiTiet;
+            result.IdDanhMucCha = baiDang.IdDanhMucCha;
+            result.IdDanhMucCon = baiDang.IdDanhMucCon;
+            result.TieuDe = baiDang.TieuDe;
+            result.Mota = baiDang.Mota;
+            result.ThanhPho = baiDang.ThanhPho;
+            result.QuanHuyen = baiDang.QuanHuyen;
+            result.PhuongXa = baiDang.PhuongXa;
+            result.DiaChiCuThe = result.DiaChiCuThe == null ? null : result.DiaChiCuThe;
+            result.isReviewed = baiDang.isReviewed;
+            result.Gia = baiDang.Gia;
+            result.CaNhan = baiDang.CaNhan;
             result.hinhAnh_BaiDangs = new List<HinhAnh_BaiDangDTO>();
 
             foreach (var item in hinhAnhBaiDang)
@@ -4580,8 +4881,20 @@ namespace STU.LVTN.SERVER.Provider.Handler
             BaiDangEntities baiDang = await baiDangHelper.GetPostByID(ID);
             BaiDangDoAnThucPhamEntities detailBaiDang = baiDangDoAnThucPhamHelper.GetPostByID((int)baiDang.IdBaiDangChiTiet);
             List<HinhAnhBaiDangEntities> hinhAnhBaiDang = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(ID);
-            result = _mapper.Map<BaiDangDoAnThucPham_DTO>(baiDang);
             result = _mapper.Map<BaiDangDoAnThucPham_DTO>(detailBaiDang);
+            result.IdBaiDang = baiDang.IdBaiDang;
+            result.IdBaiDangChiTiet = baiDang.IdBaiDangChiTiet;
+            result.IdDanhMucCha = baiDang.IdDanhMucCha;
+            result.IdDanhMucCon = baiDang.IdDanhMucCon;
+            result.TieuDe = baiDang.TieuDe;
+            result.Mota = baiDang.Mota;
+            result.ThanhPho = baiDang.ThanhPho;
+            result.QuanHuyen = baiDang.QuanHuyen;
+            result.PhuongXa = baiDang.PhuongXa;
+            result.DiaChiCuThe = result.DiaChiCuThe == null ? null : result.DiaChiCuThe;
+            result.isReviewed = baiDang.isReviewed;
+            result.Gia = baiDang.Gia;
+            result.CaNhan = baiDang.CaNhan;
             result.hinhAnh_BaiDangs = new List<HinhAnh_BaiDangDTO>();
 
             foreach (var item in hinhAnhBaiDang)
@@ -4602,8 +4915,20 @@ namespace STU.LVTN.SERVER.Provider.Handler
             BaiDangEntities baiDang = await baiDangHelper.GetPostByID(ID);
             BaiDangTuLanhEntities detailBaiDang = baiDangTuLanhHelper.GetPostByID((int)baiDang.IdBaiDangChiTiet);
             List<HinhAnhBaiDangEntities> hinhAnhBaiDang = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(ID);
-            result = _mapper.Map<BaiDangTuLanhTL_DTO>(baiDang);
             result = _mapper.Map<BaiDangTuLanhTL_DTO>(detailBaiDang);
+            result.IdBaiDang = baiDang.IdBaiDang;
+            result.IdBaiDangChiTiet = baiDang.IdBaiDangChiTiet;
+            result.IdDanhMucCha = baiDang.IdDanhMucCha;
+            result.IdDanhMucCon = baiDang.IdDanhMucCon;
+            result.TieuDe = baiDang.TieuDe;
+            result.Mota = baiDang.Mota;
+            result.ThanhPho = baiDang.ThanhPho;
+            result.QuanHuyen = baiDang.QuanHuyen;
+            result.PhuongXa = baiDang.PhuongXa;
+            result.DiaChiCuThe = result.DiaChiCuThe == null ? null : result.DiaChiCuThe;
+            result.isReviewed = baiDang.isReviewed;
+            result.Gia = baiDang.Gia;
+            result.CaNhan = baiDang.CaNhan;
             result.hinhAnh_BaiDangs = new List<HinhAnh_BaiDangDTO>();
 
             foreach (var item in hinhAnhBaiDang)
@@ -4622,8 +4947,20 @@ namespace STU.LVTN.SERVER.Provider.Handler
             BaiDangEntities baiDang = await baiDangHelper.GetPostByID(ID);
             BaiDangTuLanhEntities detailBaiDang = baiDangTuLanhHelper.GetPostByID((int)baiDang.IdBaiDangChiTiet);
             List<HinhAnhBaiDangEntities> hinhAnhBaiDang = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(ID);
-            result = _mapper.Map<BaiDangTuLanhMayGiat_DTO>(baiDang);
             result = _mapper.Map<BaiDangTuLanhMayGiat_DTO>(detailBaiDang);
+            result.IdBaiDang = baiDang.IdBaiDang;
+            result.IdBaiDangChiTiet = baiDang.IdBaiDangChiTiet;
+            result.IdDanhMucCha = baiDang.IdDanhMucCha;
+            result.IdDanhMucCon = baiDang.IdDanhMucCon;
+            result.TieuDe = baiDang.TieuDe;
+            result.Mota = baiDang.Mota;
+            result.ThanhPho = baiDang.ThanhPho;
+            result.QuanHuyen = baiDang.QuanHuyen;
+            result.PhuongXa = baiDang.PhuongXa;
+            result.DiaChiCuThe = result.DiaChiCuThe == null ? null : result.DiaChiCuThe;
+            result.isReviewed = baiDang.isReviewed;
+            result.Gia = baiDang.Gia;
+            result.CaNhan = baiDang.CaNhan;
             result.hinhAnh_BaiDangs = new List<HinhAnh_BaiDangDTO>();
 
             foreach (var item in hinhAnhBaiDang)
@@ -4643,8 +4980,20 @@ namespace STU.LVTN.SERVER.Provider.Handler
             BaiDangEntities baiDang = await baiDangHelper.GetPostByID(ID);
             BaiDangTuLanhEntities detailBaiDang = baiDangTuLanhHelper.GetPostByID((int)baiDang.IdBaiDangChiTiet);
             List<HinhAnhBaiDangEntities> hinhAnhBaiDang = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(ID);
-            result = _mapper.Map<BaiDangTuLanhMayLanh_DTO>(baiDang);
             result = _mapper.Map<BaiDangTuLanhMayLanh_DTO>(detailBaiDang);
+            result.IdBaiDang = baiDang.IdBaiDang;
+            result.IdBaiDangChiTiet = baiDang.IdBaiDangChiTiet;
+            result.IdDanhMucCha = baiDang.IdDanhMucCha;
+            result.IdDanhMucCon = baiDang.IdDanhMucCon;
+            result.TieuDe = baiDang.TieuDe;
+            result.Mota = baiDang.Mota;
+            result.ThanhPho = baiDang.ThanhPho;
+            result.QuanHuyen = baiDang.QuanHuyen;
+            result.PhuongXa = baiDang.PhuongXa;
+            result.DiaChiCuThe = result.DiaChiCuThe == null ? null : result.DiaChiCuThe;
+            result.isReviewed = baiDang.isReviewed;
+            result.Gia = baiDang.Gia;
+            result.CaNhan = baiDang.CaNhan;
             result.hinhAnh_BaiDangs = new List<HinhAnh_BaiDangDTO>();
 
             foreach (var item in hinhAnhBaiDang)
@@ -4665,8 +5014,20 @@ namespace STU.LVTN.SERVER.Provider.Handler
             BaiDangEntities baiDang = await baiDangHelper.GetPostByID(ID);
             BaiDangDoGiaDungEntities detailBaiDang = baiDangDoGiaDungHelper.GetPostByID((int)baiDang.IdBaiDangChiTiet);
             List<HinhAnhBaiDangEntities> hinhAnhBaiDang = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(ID);
-            result = _mapper.Map<BaiDangDoGiaDungBanGhe_DTO>(baiDang);
             result = _mapper.Map<BaiDangDoGiaDungBanGhe_DTO>(detailBaiDang);
+            result.IdBaiDang = baiDang.IdBaiDang;
+            result.IdBaiDangChiTiet = baiDang.IdBaiDangChiTiet;
+            result.IdDanhMucCha = baiDang.IdDanhMucCha;
+            result.IdDanhMucCon = baiDang.IdDanhMucCon;
+            result.TieuDe = baiDang.TieuDe;
+            result.Mota = baiDang.Mota;
+            result.ThanhPho = baiDang.ThanhPho;
+            result.QuanHuyen = baiDang.QuanHuyen;
+            result.PhuongXa = baiDang.PhuongXa;
+            result.DiaChiCuThe = result.DiaChiCuThe == null ? null : result.DiaChiCuThe;
+            result.isReviewed = baiDang.isReviewed;
+            result.Gia = baiDang.Gia;
+            result.CaNhan = baiDang.CaNhan;
             result.hinhAnh_BaiDangs = new List<HinhAnh_BaiDangDTO>();
 
             foreach (var item in hinhAnhBaiDang)
@@ -4684,8 +5045,20 @@ namespace STU.LVTN.SERVER.Provider.Handler
             BaiDangEntities baiDang = await baiDangHelper.GetPostByID(ID);
             BaiDangDoGiaDungEntities detailBaiDang = baiDangDoGiaDungHelper.GetPostByID((int)baiDang.IdBaiDangChiTiet);
             List<HinhAnhBaiDangEntities> hinhAnhBaiDang = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(ID);
-            result = _mapper.Map<BaiDangDoGiaDungBep_DTO>(baiDang);
             result = _mapper.Map<BaiDangDoGiaDungBep_DTO>(detailBaiDang);
+            result.IdBaiDang = baiDang.IdBaiDang;
+            result.IdBaiDangChiTiet = baiDang.IdBaiDangChiTiet;
+            result.IdDanhMucCha = baiDang.IdDanhMucCha;
+            result.IdDanhMucCon = baiDang.IdDanhMucCon;
+            result.TieuDe = baiDang.TieuDe;
+            result.Mota = baiDang.Mota;
+            result.ThanhPho = baiDang.ThanhPho;
+            result.QuanHuyen = baiDang.QuanHuyen;
+            result.PhuongXa = baiDang.PhuongXa;
+            result.DiaChiCuThe = result.DiaChiCuThe == null ? null : result.DiaChiCuThe;
+            result.isReviewed = baiDang.isReviewed;
+            result.Gia = baiDang.Gia;
+            result.CaNhan = baiDang.CaNhan;
             result.hinhAnh_BaiDangs = new List<HinhAnh_BaiDangDTO>();
 
             foreach (var item in hinhAnhBaiDang)
@@ -4703,8 +5076,20 @@ namespace STU.LVTN.SERVER.Provider.Handler
             BaiDangEntities baiDang = await baiDangHelper.GetPostByID(ID);
             BaiDangDoGiaDungEntities detailBaiDang = baiDangDoGiaDungHelper.GetPostByID((int)baiDang.IdBaiDangChiTiet);
             List<HinhAnhBaiDangEntities> hinhAnhBaiDang = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(ID);
-            result = _mapper.Map<BaiDangDoGiaDungDenCayCanhNoiThat_DTO>(baiDang);
             result = _mapper.Map<BaiDangDoGiaDungDenCayCanhNoiThat_DTO>(detailBaiDang);
+            result.IdBaiDang = baiDang.IdBaiDang;
+            result.IdBaiDangChiTiet = baiDang.IdBaiDangChiTiet;
+            result.IdDanhMucCha = baiDang.IdDanhMucCha;
+            result.IdDanhMucCon = baiDang.IdDanhMucCon;
+            result.TieuDe = baiDang.TieuDe;
+            result.Mota = baiDang.Mota;
+            result.ThanhPho = baiDang.ThanhPho;
+            result.QuanHuyen = baiDang.QuanHuyen;
+            result.PhuongXa = baiDang.PhuongXa;
+            result.DiaChiCuThe = result.DiaChiCuThe == null ? null : result.DiaChiCuThe;
+            result.isReviewed = baiDang.isReviewed;
+            result.Gia = baiDang.Gia;
+            result.CaNhan = baiDang.CaNhan;
             result.hinhAnh_BaiDangs = new List<HinhAnh_BaiDangDTO>();
 
             foreach (var item in hinhAnhBaiDang)
@@ -4723,8 +5108,20 @@ namespace STU.LVTN.SERVER.Provider.Handler
             BaiDangEntities baiDang = await baiDangHelper.GetPostByID(ID);
             BaiDangDoGiaDungEntities detailBaiDang = baiDangDoGiaDungHelper.GetPostByID((int)baiDang.IdBaiDangChiTiet);
             List<HinhAnhBaiDangEntities> hinhAnhBaiDang = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(ID);
-            result = _mapper.Map<BaiDangDoGiaDungGiuong_DTO>(baiDang);
             result = _mapper.Map<BaiDangDoGiaDungGiuong_DTO>(detailBaiDang);
+            result.IdBaiDang = baiDang.IdBaiDang;
+            result.IdBaiDangChiTiet = baiDang.IdBaiDangChiTiet;
+            result.IdDanhMucCha = baiDang.IdDanhMucCha;
+            result.IdDanhMucCon = baiDang.IdDanhMucCon;
+            result.TieuDe = baiDang.TieuDe;
+            result.Mota = baiDang.Mota;
+            result.ThanhPho = baiDang.ThanhPho;
+            result.QuanHuyen = baiDang.QuanHuyen;
+            result.PhuongXa = baiDang.PhuongXa;
+            result.DiaChiCuThe = result.DiaChiCuThe == null ? null : result.DiaChiCuThe;
+            result.isReviewed = baiDang.isReviewed;
+            result.Gia = baiDang.Gia;
+            result.CaNhan = baiDang.CaNhan;
             result.hinhAnh_BaiDangs = new List<HinhAnh_BaiDangDTO>();
 
             foreach (var item in hinhAnhBaiDang)
@@ -4742,8 +5139,20 @@ namespace STU.LVTN.SERVER.Provider.Handler
             BaiDangEntities baiDang = await baiDangHelper.GetPostByID(ID);
             BaiDangDoGiaDungEntities detailBaiDang = baiDangDoGiaDungHelper.GetPostByID((int)baiDang.IdBaiDangChiTiet);
             List<HinhAnhBaiDangEntities> hinhAnhBaiDang = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(ID);
-            result = _mapper.Map<BaiDangDoGiaDungQuat_DTO>(baiDang);
             result = _mapper.Map<BaiDangDoGiaDungQuat_DTO>(detailBaiDang);
+            result.IdBaiDang = baiDang.IdBaiDang;
+            result.IdBaiDangChiTiet = baiDang.IdBaiDangChiTiet;
+            result.IdDanhMucCha = baiDang.IdDanhMucCha;
+            result.IdDanhMucCon = baiDang.IdDanhMucCon;
+            result.TieuDe = baiDang.TieuDe;
+            result.Mota = baiDang.Mota;
+            result.ThanhPho = baiDang.ThanhPho;
+            result.QuanHuyen = baiDang.QuanHuyen;
+            result.PhuongXa = baiDang.PhuongXa;
+            result.DiaChiCuThe = result.DiaChiCuThe == null ? null : result.DiaChiCuThe;
+            result.isReviewed = baiDang.isReviewed;
+            result.Gia = baiDang.Gia;
+            result.CaNhan = baiDang.CaNhan;
             result.hinhAnh_BaiDangs = new List<HinhAnh_BaiDangDTO>();
 
             foreach (var item in hinhAnhBaiDang)
@@ -4761,8 +5170,20 @@ namespace STU.LVTN.SERVER.Provider.Handler
             BaiDangEntities baiDang = await baiDangHelper.GetPostByID(ID);
             BaiDangDoGiaDungEntities detailBaiDang = baiDangDoGiaDungHelper.GetPostByID((int)baiDang.IdBaiDangChiTiet);
             List<HinhAnhBaiDangEntities> hinhAnhBaiDang = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(ID);
-            result = _mapper.Map<BaiDangDoGiaDungThietBiVeSinh_DTO>(baiDang);
             result = _mapper.Map<BaiDangDoGiaDungThietBiVeSinh_DTO>(detailBaiDang);
+            result.IdBaiDang = baiDang.IdBaiDang;
+            result.IdBaiDangChiTiet = baiDang.IdBaiDangChiTiet;
+            result.IdDanhMucCha = baiDang.IdDanhMucCha;
+            result.IdDanhMucCon = baiDang.IdDanhMucCon;
+            result.TieuDe = baiDang.TieuDe;
+            result.Mota = baiDang.Mota;
+            result.ThanhPho = baiDang.ThanhPho;
+            result.QuanHuyen = baiDang.QuanHuyen;
+            result.PhuongXa = baiDang.PhuongXa;
+            result.DiaChiCuThe = result.DiaChiCuThe == null ? null : result.DiaChiCuThe;
+            result.isReviewed = baiDang.isReviewed;
+            result.Gia = baiDang.Gia;
+            result.CaNhan = baiDang.CaNhan;
             result.hinhAnh_BaiDangs = new List<HinhAnh_BaiDangDTO>();
 
             foreach (var item in hinhAnhBaiDang)
@@ -4780,8 +5201,20 @@ namespace STU.LVTN.SERVER.Provider.Handler
             BaiDangEntities baiDang = await baiDangHelper.GetPostByID(ID);
             BaiDangDoGiaDungEntities detailBaiDang = baiDangDoGiaDungHelper.GetPostByID((int)baiDang.IdBaiDangChiTiet);
             List<HinhAnhBaiDangEntities> hinhAnhBaiDang = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(ID);
-            result = _mapper.Map<BaiDangDoGiaDungTuKe_DTO>(baiDang);
             result = _mapper.Map<BaiDangDoGiaDungTuKe_DTO>(detailBaiDang);
+            result.IdBaiDang = baiDang.IdBaiDang;
+            result.IdBaiDangChiTiet = baiDang.IdBaiDangChiTiet;
+            result.IdDanhMucCha = baiDang.IdDanhMucCha;
+            result.IdDanhMucCon = baiDang.IdDanhMucCon;
+            result.TieuDe = baiDang.TieuDe;
+            result.Mota = baiDang.Mota;
+            result.ThanhPho = baiDang.ThanhPho;
+            result.QuanHuyen = baiDang.QuanHuyen;
+            result.PhuongXa = baiDang.PhuongXa;
+            result.DiaChiCuThe = result.DiaChiCuThe == null ? null : result.DiaChiCuThe;
+            result.isReviewed = baiDang.isReviewed;
+            result.Gia = baiDang.Gia;
+            result.CaNhan = baiDang.CaNhan;
             result.hinhAnh_BaiDangs = new List<HinhAnh_BaiDangDTO>();
 
             foreach (var item in hinhAnhBaiDang)
@@ -4796,14 +5229,26 @@ namespace STU.LVTN.SERVER.Provider.Handler
         #endregion
 
         #region BaiDang MeVaBe
-        public async Task<BaiDangMeVaBe_DTO> PreflightBaiDangMeVaBe( int ID)
+        public async Task<BaiDangMeVaBe_DTO> PreflightBaiDangMeVaBe(int ID)
         {
             BaiDangMeVaBe_DTO result = new BaiDangMeVaBe_DTO();
             BaiDangEntities baiDang = await baiDangHelper.GetPostByID(ID);
             BaiDangMeVaBeEntities detailBaiDang = baiDangMeVaBeHelper.GetPostByID((int)baiDang.IdBaiDangChiTiet);
             List<HinhAnhBaiDangEntities> hinhAnhBaiDang = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(ID);
-            result = _mapper.Map<BaiDangMeVaBe_DTO>(baiDang);
             result = _mapper.Map<BaiDangMeVaBe_DTO>(detailBaiDang);
+            result.IdBaiDang = baiDang.IdBaiDang;
+            result.IdBaiDangChiTiet = baiDang.IdBaiDangChiTiet;
+            result.IdDanhMucCha = baiDang.IdDanhMucCha;
+            result.IdDanhMucCon = baiDang.IdDanhMucCon;
+            result.TieuDe = baiDang.TieuDe;
+            result.Mota = baiDang.Mota;
+            result.ThanhPho = baiDang.ThanhPho;
+            result.QuanHuyen = baiDang.QuanHuyen;
+            result.PhuongXa = baiDang.PhuongXa;
+            result.DiaChiCuThe = result.DiaChiCuThe == null ? null : result.DiaChiCuThe;
+            result.isReviewed = baiDang.isReviewed;
+            result.Gia = baiDang.Gia;
+            result.CaNhan = baiDang.CaNhan;
             result.hinhAnh_BaiDangs = new List<HinhAnh_BaiDangDTO>();
 
             foreach (var item in hinhAnhBaiDang)
@@ -4824,8 +5269,20 @@ namespace STU.LVTN.SERVER.Provider.Handler
             BaiDangEntities baiDang = await baiDangHelper.GetPostByID(ID);
             BaiDangThoiTrangEntities detailBaiDang = baiDangThoiTrangHelper.GetPostByID((int)baiDang.IdBaiDangChiTiet);
             List<HinhAnhBaiDangEntities> hinhAnhBaiDang = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(ID);
-            result = _mapper.Map<BaiDangThoiTrang_DTO>(baiDang);
             result = _mapper.Map<BaiDangThoiTrang_DTO>(detailBaiDang);
+            result.IdBaiDang = baiDang.IdBaiDang;
+            result.IdBaiDangChiTiet = baiDang.IdBaiDangChiTiet;
+            result.IdDanhMucCha = baiDang.IdDanhMucCha;
+            result.IdDanhMucCon = baiDang.IdDanhMucCon;
+            result.TieuDe = baiDang.TieuDe;
+            result.Mota = baiDang.Mota;
+            result.ThanhPho = baiDang.ThanhPho;
+            result.QuanHuyen = baiDang.QuanHuyen;
+            result.PhuongXa = baiDang.PhuongXa;
+            result.DiaChiCuThe = result.DiaChiCuThe == null ? null : result.DiaChiCuThe;
+            result.isReviewed = baiDang.isReviewed;
+            result.Gia = baiDang.Gia;
+            result.CaNhan = baiDang.CaNhan;
             result.hinhAnh_BaiDangs = new List<HinhAnh_BaiDangDTO>();
 
             foreach (var item in hinhAnhBaiDang)
@@ -4846,8 +5303,20 @@ namespace STU.LVTN.SERVER.Provider.Handler
             BaiDangEntities baiDang = await baiDangHelper.GetPostByID(ID);
             BaiDangGiaiTriEntities detailBaiDang = baiDangGiaiTriHelper.GetPostByID((int)baiDang.IdBaiDangChiTiet);
             List<HinhAnhBaiDangEntities> hinhAnhBaiDang = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(ID);
-            result = _mapper.Map<BaiDangGiaiTri_DTO>(baiDang);
             result = _mapper.Map<BaiDangGiaiTri_DTO>(detailBaiDang);
+            result.IdBaiDang = baiDang.IdBaiDang;
+            result.IdBaiDangChiTiet = baiDang.IdBaiDangChiTiet;
+            result.IdDanhMucCha = baiDang.IdDanhMucCha;
+            result.IdDanhMucCon = baiDang.IdDanhMucCon;
+            result.TieuDe = baiDang.TieuDe;
+            result.Mota = baiDang.Mota;
+            result.ThanhPho = baiDang.ThanhPho;
+            result.QuanHuyen = baiDang.QuanHuyen;
+            result.PhuongXa = baiDang.PhuongXa;
+            result.DiaChiCuThe = result.DiaChiCuThe == null ? null : result.DiaChiCuThe;
+            result.isReviewed = baiDang.isReviewed;
+            result.Gia = baiDang.Gia;
+            result.CaNhan = baiDang.CaNhan;
             result.hinhAnh_BaiDangs = new List<HinhAnh_BaiDangDTO>();
 
             foreach (var item in hinhAnhBaiDang)
@@ -4865,8 +5334,20 @@ namespace STU.LVTN.SERVER.Provider.Handler
             BaiDangEntities baiDang = await baiDangHelper.GetPostByID(ID);
             BaiDangGiaiTriEntities detailBaiDang = baiDangGiaiTriHelper.GetPostByID((int)baiDang.IdBaiDangChiTiet);
             List<HinhAnhBaiDangEntities> hinhAnhBaiDang = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(ID);
-            result = _mapper.Map<BaiDangGiaiTriDoNhacCu_DTO>(baiDang);
             result = _mapper.Map<BaiDangGiaiTriDoNhacCu_DTO>(detailBaiDang);
+            result.IdBaiDang = baiDang.IdBaiDang;
+            result.IdBaiDangChiTiet = baiDang.IdBaiDangChiTiet;
+            result.IdDanhMucCha = baiDang.IdDanhMucCha;
+            result.IdDanhMucCon = baiDang.IdDanhMucCon;
+            result.TieuDe = baiDang.TieuDe;
+            result.Mota = baiDang.Mota;
+            result.ThanhPho = baiDang.ThanhPho;
+            result.QuanHuyen = baiDang.QuanHuyen;
+            result.PhuongXa = baiDang.PhuongXa;
+            result.DiaChiCuThe = result.DiaChiCuThe == null ? null : result.DiaChiCuThe;
+            result.isReviewed = baiDang.isReviewed;
+            result.Gia = baiDang.Gia;
+            result.CaNhan = baiDang.CaNhan;
             result.hinhAnh_BaiDangs = new List<HinhAnh_BaiDangDTO>();
 
             foreach (var item in hinhAnhBaiDang)
@@ -4884,8 +5365,20 @@ namespace STU.LVTN.SERVER.Provider.Handler
             BaiDangEntities baiDang = await baiDangHelper.GetPostByID(ID);
             BaiDangGiaiTriEntities detailBaiDang = baiDangGiaiTriHelper.GetPostByID((int)baiDang.IdBaiDangChiTiet);
             List<HinhAnhBaiDangEntities> hinhAnhBaiDang = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(ID);
-            result = _mapper.Map<BaiDangGiaiTriDoSuuTam_DTO>(baiDang);
             result = _mapper.Map<BaiDangGiaiTriDoSuuTam_DTO>(detailBaiDang);
+            result.IdBaiDang = baiDang.IdBaiDang;
+            result.IdBaiDangChiTiet = baiDang.IdBaiDangChiTiet;
+            result.IdDanhMucCha = baiDang.IdDanhMucCha;
+            result.IdDanhMucCon = baiDang.IdDanhMucCon;
+            result.TieuDe = baiDang.TieuDe;
+            result.Mota = baiDang.Mota;
+            result.ThanhPho = baiDang.ThanhPho;
+            result.QuanHuyen = baiDang.QuanHuyen;
+            result.PhuongXa = baiDang.PhuongXa;
+            result.DiaChiCuThe = result.DiaChiCuThe == null ? null : result.DiaChiCuThe;
+            result.isReviewed = baiDang.isReviewed;
+            result.Gia = baiDang.Gia;
+            result.CaNhan = baiDang.CaNhan;
             result.hinhAnh_BaiDangs = new List<HinhAnh_BaiDangDTO>();
 
             foreach (var item in hinhAnhBaiDang)
@@ -4906,8 +5399,20 @@ namespace STU.LVTN.SERVER.Provider.Handler
             BaiDangEntities baiDang = await baiDangHelper.GetPostByID(ID);
             BaiDangDoDungVanPhongEntities detailBaiDang = baiDangDoDungVanPhongHelper.GetPostByID((int)baiDang.IdBaiDangChiTiet);
             List<HinhAnhBaiDangEntities> hinhAnhBaiDang = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(ID);
-            result = _mapper.Map<BaiDangDoDungVanPhong_DTO>(baiDang);
             result = _mapper.Map<BaiDangDoDungVanPhong_DTO>(detailBaiDang);
+            result.IdBaiDang = baiDang.IdBaiDang;
+            result.IdBaiDangChiTiet = baiDang.IdBaiDangChiTiet;
+            result.IdDanhMucCha = baiDang.IdDanhMucCha;
+            result.IdDanhMucCon = baiDang.IdDanhMucCon;
+            result.TieuDe = baiDang.TieuDe;
+            result.Mota = baiDang.Mota;
+            result.ThanhPho = baiDang.ThanhPho;
+            result.QuanHuyen = baiDang.QuanHuyen;
+            result.PhuongXa = baiDang.PhuongXa;
+            result.DiaChiCuThe = result.DiaChiCuThe == null ? null : result.DiaChiCuThe;
+            result.isReviewed = baiDang.isReviewed;
+            result.Gia = baiDang.Gia;
+            result.CaNhan = baiDang.CaNhan;
             result.hinhAnh_BaiDangs = new List<HinhAnh_BaiDangDTO>();
 
             foreach (var item in hinhAnhBaiDang)
