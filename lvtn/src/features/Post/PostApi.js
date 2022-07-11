@@ -68,10 +68,14 @@ export const loadLocationData = async () => {
     }
 }
 
-export const editPost = async ({ paramUrl, ...formData }, token) => {
+export const editPost = async (
+    { paramUrl, ...formData },
+    token,
+    preflightKey
+) => {
     try {
-        const res = await axios.post(
-            `${host}/api/baiDang/${paramUrl}/newPost`,
+        const res = await axios.put(
+            `${host}/api/baiDang/${preflightKey}/updatePost`,
             formData,
             {
                 headers: {

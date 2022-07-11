@@ -69,7 +69,7 @@ function* getEditPostDataSaga({ idPost, preflightKey }) {
     }
 }
 
-function* editPostSaga({ formData }) {
+function* editPostSaga({ formData, preflightKey }) {
     const sdt = yield select(selectNumberPhone)
     const token = yield select(selectToken)
 
@@ -78,7 +78,8 @@ function* editPostSaga({ formData }) {
     const { status, errorMessage } = yield call(
         editPost,
         requestFormData,
-        token
+        token,
+        preflightKey
     )
     if (status === 200) {
         window.invokeMethod('NotifyAdmin', sdt)
@@ -91,7 +92,12 @@ function* editPostSaga({ formData }) {
             })
         )
     } else {
-        yield put(createPostFail({ errorMessage }))
+        yield put(
+            createPostFail({
+                errorMessage:
+                    errorMessage || 'Đã có lỗi xảy ra, vui lòng thử lại sau',
+            })
+        )
     }
 
     window.invokeMethod('NotifyAdmin', sdt)

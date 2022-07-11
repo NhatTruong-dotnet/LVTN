@@ -73,10 +73,14 @@ const ConfirmDialog = ({
                         <AiFillInfoCircle className={styles.confirmIcon} />
                         {title}
                     </div>
-                    <div className={styles.content}>{content}</div>
+                    <div className={styles.content}>
+                        {Array.isArray(content)
+                            ? content.map(text => <p>{text}</p>)
+                            : content}
+                    </div>
                     <div className={styles.btnGroup}>
                         <button
-                            className={styles.button}
+                            className={clsx(styles.button, styles.cancel)}
                             onClick={() => onClickButton(false)}
                         >
                             {cancelText}

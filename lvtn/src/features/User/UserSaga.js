@@ -135,6 +135,11 @@ function* getUserPostWithStatusSaga({ postStatus }) {
             })
         )
     } else {
-        yield put(getUserPostWithStatusFail({ errorMessage }))
+        yield put(
+            getUserPostWithStatusFail({
+                errorMessage:
+                    errorMessage || 'Đã có lỗi xảy ra, vui lòng thử lại sau',
+            })
+        )
     }
 }

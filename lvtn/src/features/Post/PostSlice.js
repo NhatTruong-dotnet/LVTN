@@ -42,11 +42,13 @@ const postSlice = createSlice({
             state.isLoading = false
             state.formMode = 'add'
             state.updatePost = {}
+            emitMessage('success', 'Chỉnh sửa tin thành công')
         },
-        editPostFail: state => {
+        editPostFail: (state, action) => {
             state.isLoading = false
             state.formMode = 'add'
             state.updatePost = {}
+            emitMessage('success', action.payload.errorMessage)
         },
         // -------------------------------------
         getPostPending(state) {

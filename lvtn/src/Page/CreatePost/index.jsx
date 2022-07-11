@@ -17,6 +17,7 @@ import ImagePicker from './Components/ImagePicker'
 import VideoPicker from './Components/VideoPicker'
 import { useLocation, useNavigate, useParams } from 'react-router-dom'
 import {
+    createPostPending,
     selectFormMode,
     selectPendingStatusPost,
     selectUpdatePost,
@@ -157,20 +158,21 @@ function CreatePost() {
         }
 
         if (validForm) {
-            // dispatch(createPostPending())
+            dispatch(createPostPending())
             const fileIdArray = await uploadImage(listFileDataMedia)
             console.log(fileIdArray)
-            // const formRequestData = { ...formData, medias: fileIdArray }
+            const formRequestData = { ...formData, medias: fileIdArray }
             if (formMode === 'add') {
-                // dispatch({
-                //     type: 'createPost',
-                //     formData: formRequestData,
-                // })
+                dispatch({
+                    type: 'createPost',
+                    formData: formRequestData,
+                })
             } else {
-                // dispatch({
-                //     type: 'editPost',
-                //     formData: formRequestData,
-                // })
+                dispatch({
+                    type: 'editPost',
+                    formData: formRequestData,
+                    preflightKey,
+                })
             }
         } else {
             emitMessage('error', 'Bạn chưa điền đầy đủ thông tin hợp lệ')
@@ -179,7 +181,7 @@ function CreatePost() {
 
     useEffect(() => {
         if (pathname.includes('edit-post')) {
-            setFormMode('edit')
+            dispatch(setFormMode({ formMode: 'edit' }))
         }
     }, [pathname])
 

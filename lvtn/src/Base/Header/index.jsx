@@ -25,6 +25,7 @@ function Header(props) {
     const [searchValue, setSearchValue] = useState('')
     const [isShowAutoComplete, setIsShowAutoComplete] = useState(false)
     const [isShowForm, setIsShowForm] = useState(false)
+    const [showConfirmDialog, setShowConfirmDialog] = useState(false)
     const isLoading = useSelector(selectStatus)
     const username = useSelector(selectUsername)
     const sdt = useSelector(selectNumberPhone)
@@ -135,6 +136,19 @@ function Header(props) {
             <DynamicModal showModal={isShowForm} loading={isLoading}>
                 <AuthForm setIsShowForm={setIsShowForm} />
             </DynamicModal>
+            <DynamicModal
+                showModal={showConfirmDialog}
+                confirmDialogConfig={{
+                    title: 'Tài khoản của bạn đã bị khóa',
+                    content: [
+                        'Tài khoản của bạn đã bị khóa vì vi phạm tiêu chuẩn cộng đồng và sẽ được mở lại vào ngày 11/07/2022',
+                        'Mọi thắc mắc liên hệ hotline: 0999999999',
+                    ],
+                    acceptText: 'Đồng ý',
+                    cancelText: 'Đóng',
+                    onDone: () => setShowConfirmDialog(false),
+                }}
+            />
         </div>
     )
 }
