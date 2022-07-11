@@ -253,12 +253,12 @@ function mappingFormData({ ...formData }, numberPhone) {
         trangThai: false,
         idBaiDangChiTiet: 0,
         tablesDetail: 'string',
-        idDanhMucCha: formData.categoryId,
+        idDanhMucCha: formData.categoryId || formData.idDanhMucCha,
         sdtNguoiBan: numberPhone,
         sdtNguoiMua: '',
         tieuDe: formData.title,
         mota: formData.description,
-        idDanhMucCon: subCategoryId,
+        idDanhMucCon: subCategoryId || formData.idDanhMucCon,
         hinhAnh_BaiDangs: formData.medias,
     }
 }
