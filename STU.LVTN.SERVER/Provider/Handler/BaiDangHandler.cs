@@ -1859,7 +1859,12 @@ namespace STU.LVTN.SERVER.Provider.Handler
                     BaiDangEntities baiDangGlobal = _mapper.Map<BaiDangEntities>(baiDangRequest);
                     baiDangGlobal.IdBaiDangChiTiet = lastIDPost;
                     await baiDangHelper.UpdateBaiDang(baiDangGlobal);
-                    List<HinhAnhBaiDangEntities> hinhAnhExist = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(lastIDPost);
+                    List<HinhAnhBaiDangEntities> hinhAnhExist = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(baiDangGlobal.IdBaiDang);
+                    int[] idxExist = new int[baiDangRequest.hinhAnh_BaiDangs.Count];
+                    foreach (var itemImg in hinhAnhExist)
+                    {
+                        hinhAnhBaiDangHelper.RemoveHinhAnh(itemImg);
+                    }
                     foreach (var item in baiDangRequest.hinhAnh_BaiDangs)
                     {
                         HinhAnhBaiDangEntities hinhAnhRequest = new HinhAnhBaiDangEntities();
@@ -1869,24 +1874,10 @@ namespace STU.LVTN.SERVER.Provider.Handler
                             hinhAnhRequest.VideoType = true;
                         else
                             hinhAnhRequest.VideoType = false;
+                        hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
 
-                        if (hinhAnhExist.Contains(hinhAnhRequest))
-                        {
-                            int idxHinhAnh = hinhAnhExist.IndexOf(hinhAnhRequest);
-                            hinhAnhExist.RemoveAt(idxHinhAnh);
-                        }
-                        else
-                        {
-                            hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
-                        }
                     }
-                    if (hinhAnhExist.Count > 0)
-                    {
-                        foreach (var item in hinhAnhExist)
-                        {
-                            item.IdSanPham = -1;
-                        }
-                    }
+
                     return true;
                 }
                 catch (Exception)
@@ -1911,7 +1902,12 @@ namespace STU.LVTN.SERVER.Provider.Handler
                     BaiDangEntities baiDangGlobal = _mapper.Map<BaiDangEntities>(baiDangRequest);
                     baiDangGlobal.IdBaiDangChiTiet = lastIDPost;
                     await baiDangHelper.UpdateBaiDang(baiDangGlobal);
-                    List<HinhAnhBaiDangEntities> hinhAnhExist = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(lastIDPost);
+                    List<HinhAnhBaiDangEntities> hinhAnhExist = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(baiDangGlobal.IdBaiDang);
+                    int[] idxExist = new int[baiDangRequest.hinhAnh_BaiDangs.Count];
+                    foreach (var itemImg in hinhAnhExist)
+                    {
+                        hinhAnhBaiDangHelper.RemoveHinhAnh(itemImg);
+                    }
                     foreach (var item in baiDangRequest.hinhAnh_BaiDangs)
                     {
                         HinhAnhBaiDangEntities hinhAnhRequest = new HinhAnhBaiDangEntities();
@@ -1921,24 +1917,10 @@ namespace STU.LVTN.SERVER.Provider.Handler
                             hinhAnhRequest.VideoType = true;
                         else
                             hinhAnhRequest.VideoType = false;
+                        hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
 
-                        if (hinhAnhExist.Contains(hinhAnhRequest))
-                        {
-                            int idxHinhAnh = hinhAnhExist.IndexOf(hinhAnhRequest);
-                            hinhAnhExist.RemoveAt(idxHinhAnh);
-                        }
-                        else
-                        {
-                            hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
-                        }
                     }
-                    if (hinhAnhExist.Count > 0)
-                    {
-                        foreach (var item in hinhAnhExist)
-                        {
-                            item.IdSanPham = -1;
-                        }
-                    }
+                    
                     return true;
                 }
                 catch (Exception)
@@ -1963,7 +1945,12 @@ namespace STU.LVTN.SERVER.Provider.Handler
                     BaiDangEntities baiDangGlobal = _mapper.Map<BaiDangEntities>(baiDangRequest);
                     baiDangGlobal.IdBaiDangChiTiet = lastIDPost;
                     await baiDangHelper.UpdateBaiDang(baiDangGlobal);
-                    List<HinhAnhBaiDangEntities> hinhAnhExist = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(lastIDPost);
+                    List<HinhAnhBaiDangEntities> hinhAnhExist = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(baiDangGlobal.IdBaiDang);
+                    int[] idxExist = new int[baiDangRequest.hinhAnh_BaiDangs.Count];
+                    foreach (var itemImg in hinhAnhExist)
+                    {
+                        hinhAnhBaiDangHelper.RemoveHinhAnh(itemImg);
+                    }
                     foreach (var item in baiDangRequest.hinhAnh_BaiDangs)
                     {
                         HinhAnhBaiDangEntities hinhAnhRequest = new HinhAnhBaiDangEntities();
@@ -1973,24 +1960,10 @@ namespace STU.LVTN.SERVER.Provider.Handler
                             hinhAnhRequest.VideoType = true;
                         else
                             hinhAnhRequest.VideoType = false;
+                        hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
 
-                        if (hinhAnhExist.Contains(hinhAnhRequest))
-                        {
-                            int idxHinhAnh = hinhAnhExist.IndexOf(hinhAnhRequest);
-                            hinhAnhExist.RemoveAt(idxHinhAnh);
-                        }
-                        else
-                        {
-                            hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
-                        }
                     }
-                    if (hinhAnhExist.Count > 0)
-                    {
-                        foreach (var item in hinhAnhExist)
-                        {
-                            item.IdSanPham = -1;
-                        }
-                    }
+
                     return true;
                 }
                 catch (Exception)
@@ -2015,7 +1988,12 @@ namespace STU.LVTN.SERVER.Provider.Handler
                     BaiDangEntities baiDangGlobal = _mapper.Map<BaiDangEntities>(baiDangRequest);
                     baiDangGlobal.IdBaiDangChiTiet = lastIDPost;
                     await baiDangHelper.UpdateBaiDang(baiDangGlobal);
-                    List<HinhAnhBaiDangEntities> hinhAnhExist = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(lastIDPost);
+                    List<HinhAnhBaiDangEntities> hinhAnhExist = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(baiDangGlobal.IdBaiDang);
+                    int[] idxExist = new int[baiDangRequest.hinhAnh_BaiDangs.Count];
+                    foreach (var itemImg in hinhAnhExist)
+                    {
+                        hinhAnhBaiDangHelper.RemoveHinhAnh(itemImg);
+                    }
                     foreach (var item in baiDangRequest.hinhAnh_BaiDangs)
                     {
                         HinhAnhBaiDangEntities hinhAnhRequest = new HinhAnhBaiDangEntities();
@@ -2025,24 +2003,10 @@ namespace STU.LVTN.SERVER.Provider.Handler
                             hinhAnhRequest.VideoType = true;
                         else
                             hinhAnhRequest.VideoType = false;
+                        hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
 
-                        if (hinhAnhExist.Contains(hinhAnhRequest))
-                        {
-                            int idxHinhAnh = hinhAnhExist.IndexOf(hinhAnhRequest);
-                            hinhAnhExist.RemoveAt(idxHinhAnh);
-                        }
-                        else
-                        {
-                            hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
-                        }
                     }
-                    if (hinhAnhExist.Count > 0)
-                    {
-                        foreach (var item in hinhAnhExist)
-                        {
-                            item.IdSanPham = -1;
-                        }
-                    }
+
                     return true;
                 }
                 catch (Exception)
@@ -2067,7 +2031,12 @@ namespace STU.LVTN.SERVER.Provider.Handler
                     BaiDangEntities baiDangGlobal = _mapper.Map<BaiDangEntities>(baiDangRequest);
                     baiDangGlobal.IdBaiDangChiTiet = lastIDPost;
                     await baiDangHelper.UpdateBaiDang(baiDangGlobal);
-                    List<HinhAnhBaiDangEntities> hinhAnhExist = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(lastIDPost);
+                    List<HinhAnhBaiDangEntities> hinhAnhExist = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(baiDangGlobal.IdBaiDang);
+                    int[] idxExist = new int[baiDangRequest.hinhAnh_BaiDangs.Count];
+                    foreach (var itemImg in hinhAnhExist)
+                    {
+                        hinhAnhBaiDangHelper.RemoveHinhAnh(itemImg);
+                    }
                     foreach (var item in baiDangRequest.hinhAnh_BaiDangs)
                     {
                         HinhAnhBaiDangEntities hinhAnhRequest = new HinhAnhBaiDangEntities();
@@ -2077,24 +2046,10 @@ namespace STU.LVTN.SERVER.Provider.Handler
                             hinhAnhRequest.VideoType = true;
                         else
                             hinhAnhRequest.VideoType = false;
+                        hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
 
-                        if (hinhAnhExist.Contains(hinhAnhRequest))
-                        {
-                            int idxHinhAnh = hinhAnhExist.IndexOf(hinhAnhRequest);
-                            hinhAnhExist.RemoveAt(idxHinhAnh);
-                        }
-                        else
-                        {
-                            hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
-                        }
                     }
-                    if (hinhAnhExist.Count > 0)
-                    {
-                        foreach (var item in hinhAnhExist)
-                        {
-                            item.IdSanPham = -1;
-                        }
-                    }
+
                     return true;
                 }
                 catch (Exception)
@@ -2122,7 +2077,12 @@ namespace STU.LVTN.SERVER.Provider.Handler
                     BaiDangEntities baiDangGlobal = _mapper.Map<BaiDangEntities>(baiDangRequest);
                     baiDangGlobal.IdBaiDangChiTiet = lastIDPost;
                     await baiDangHelper.UpdateBaiDang(baiDangGlobal);
-                    List<HinhAnhBaiDangEntities> hinhAnhExist = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(lastIDPost);
+                    List<HinhAnhBaiDangEntities> hinhAnhExist = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(baiDangGlobal.IdBaiDang);
+                    int[] idxExist = new int[baiDangRequest.hinhAnh_BaiDangs.Count];
+                    foreach (var itemImg in hinhAnhExist)
+                    {
+                        hinhAnhBaiDangHelper.RemoveHinhAnh(itemImg);
+                    }
                     foreach (var item in baiDangRequest.hinhAnh_BaiDangs)
                     {
                         HinhAnhBaiDangEntities hinhAnhRequest = new HinhAnhBaiDangEntities();
@@ -2132,24 +2092,10 @@ namespace STU.LVTN.SERVER.Provider.Handler
                             hinhAnhRequest.VideoType = true;
                         else
                             hinhAnhRequest.VideoType = false;
+                        hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
 
-                        if (hinhAnhExist.Contains(hinhAnhRequest))
-                        {
-                            int idxHinhAnh = hinhAnhExist.IndexOf(hinhAnhRequest);
-                            hinhAnhExist.RemoveAt(idxHinhAnh);
-                        }
-                        else
-                        {
-                            hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
-                        }
                     }
-                    if (hinhAnhExist.Count > 0)
-                    {
-                        foreach (var item in hinhAnhExist)
-                        {
-                            item.IdSanPham = -1;
-                        }
-                    }
+
                     return true;
                 }
                 catch (Exception)
@@ -2174,7 +2120,12 @@ namespace STU.LVTN.SERVER.Provider.Handler
                     BaiDangEntities baiDangGlobal = _mapper.Map<BaiDangEntities>(baiDangRequest);
                     baiDangGlobal.IdBaiDangChiTiet = lastIDPost;
                     await baiDangHelper.UpdateBaiDang(baiDangGlobal);
-                    List<HinhAnhBaiDangEntities> hinhAnhExist = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(lastIDPost);
+                    List<HinhAnhBaiDangEntities> hinhAnhExist = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(baiDangGlobal.IdBaiDang);
+                    int[] idxExist = new int[baiDangRequest.hinhAnh_BaiDangs.Count];
+                    foreach (var itemImg in hinhAnhExist)
+                    {
+                        hinhAnhBaiDangHelper.RemoveHinhAnh(itemImg);
+                    }
                     foreach (var item in baiDangRequest.hinhAnh_BaiDangs)
                     {
                         HinhAnhBaiDangEntities hinhAnhRequest = new HinhAnhBaiDangEntities();
@@ -2184,24 +2135,10 @@ namespace STU.LVTN.SERVER.Provider.Handler
                             hinhAnhRequest.VideoType = true;
                         else
                             hinhAnhRequest.VideoType = false;
+                        hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
 
-                        if (hinhAnhExist.Contains(hinhAnhRequest))
-                        {
-                            int idxHinhAnh = hinhAnhExist.IndexOf(hinhAnhRequest);
-                            hinhAnhExist.RemoveAt(idxHinhAnh);
-                        }
-                        else
-                        {
-                            hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
-                        }
                     }
-                    if (hinhAnhExist.Count > 0)
-                    {
-                        foreach (var item in hinhAnhExist)
-                        {
-                            item.IdSanPham = -1;
-                        }
-                    }
+
                     return true;
                 }
                 catch (Exception)
@@ -2226,7 +2163,12 @@ namespace STU.LVTN.SERVER.Provider.Handler
                     BaiDangEntities baiDangGlobal = _mapper.Map<BaiDangEntities>(baiDangRequest);
                     baiDangGlobal.IdBaiDangChiTiet = lastIDPost;
                     await baiDangHelper.UpdateBaiDang(baiDangGlobal);
-                    List<HinhAnhBaiDangEntities> hinhAnhExist = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(lastIDPost);
+                    List<HinhAnhBaiDangEntities> hinhAnhExist = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(baiDangGlobal.IdBaiDang);
+                    int[] idxExist = new int[baiDangRequest.hinhAnh_BaiDangs.Count];
+                    foreach (var itemImg in hinhAnhExist)
+                    {
+                        hinhAnhBaiDangHelper.RemoveHinhAnh(itemImg);
+                    }
                     foreach (var item in baiDangRequest.hinhAnh_BaiDangs)
                     {
                         HinhAnhBaiDangEntities hinhAnhRequest = new HinhAnhBaiDangEntities();
@@ -2236,24 +2178,10 @@ namespace STU.LVTN.SERVER.Provider.Handler
                             hinhAnhRequest.VideoType = true;
                         else
                             hinhAnhRequest.VideoType = false;
+                        hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
 
-                        if (hinhAnhExist.Contains(hinhAnhRequest))
-                        {
-                            int idxHinhAnh = hinhAnhExist.IndexOf(hinhAnhRequest);
-                            hinhAnhExist.RemoveAt(idxHinhAnh);
-                        }
-                        else
-                        {
-                            hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
-                        }
                     }
-                    if (hinhAnhExist.Count > 0)
-                    {
-                        foreach (var item in hinhAnhExist)
-                        {
-                            item.IdSanPham = -1;
-                        }
-                    }
+
                     return true;
                 }
                 catch (Exception)
@@ -2278,7 +2206,12 @@ namespace STU.LVTN.SERVER.Provider.Handler
                     BaiDangEntities baiDangGlobal = _mapper.Map<BaiDangEntities>(baiDangRequest);
                     baiDangGlobal.IdBaiDangChiTiet = lastIDPost;
                     await baiDangHelper.UpdateBaiDang(baiDangGlobal);
-                    List<HinhAnhBaiDangEntities> hinhAnhExist = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(lastIDPost);
+                    List<HinhAnhBaiDangEntities> hinhAnhExist = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(baiDangGlobal.IdBaiDang);
+                    int[] idxExist = new int[baiDangRequest.hinhAnh_BaiDangs.Count];
+                    foreach (var itemImg in hinhAnhExist)
+                    {
+                        hinhAnhBaiDangHelper.RemoveHinhAnh(itemImg);
+                    }
                     foreach (var item in baiDangRequest.hinhAnh_BaiDangs)
                     {
                         HinhAnhBaiDangEntities hinhAnhRequest = new HinhAnhBaiDangEntities();
@@ -2288,24 +2221,10 @@ namespace STU.LVTN.SERVER.Provider.Handler
                             hinhAnhRequest.VideoType = true;
                         else
                             hinhAnhRequest.VideoType = false;
+                        hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
 
-                        if (hinhAnhExist.Contains(hinhAnhRequest))
-                        {
-                            int idxHinhAnh = hinhAnhExist.IndexOf(hinhAnhRequest);
-                            hinhAnhExist.RemoveAt(idxHinhAnh);
-                        }
-                        else
-                        {
-                            hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
-                        }
                     }
-                    if (hinhAnhExist.Count > 0)
-                    {
-                        foreach (var item in hinhAnhExist)
-                        {
-                            item.IdSanPham = -1;
-                        }
-                    }
+
                     return true;
                 }
                 catch (Exception)
@@ -2330,7 +2249,12 @@ namespace STU.LVTN.SERVER.Provider.Handler
                     BaiDangEntities baiDangGlobal = _mapper.Map<BaiDangEntities>(baiDangRequest);
                     baiDangGlobal.IdBaiDangChiTiet = lastIDPost;
                     await baiDangHelper.UpdateBaiDang(baiDangGlobal);
-                    List<HinhAnhBaiDangEntities> hinhAnhExist = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(lastIDPost);
+                    List<HinhAnhBaiDangEntities> hinhAnhExist = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(baiDangGlobal.IdBaiDang);
+                    int[] idxExist = new int[baiDangRequest.hinhAnh_BaiDangs.Count];
+                    foreach (var itemImg in hinhAnhExist)
+                    {
+                        hinhAnhBaiDangHelper.RemoveHinhAnh(itemImg);
+                    }
                     foreach (var item in baiDangRequest.hinhAnh_BaiDangs)
                     {
                         HinhAnhBaiDangEntities hinhAnhRequest = new HinhAnhBaiDangEntities();
@@ -2340,24 +2264,10 @@ namespace STU.LVTN.SERVER.Provider.Handler
                             hinhAnhRequest.VideoType = true;
                         else
                             hinhAnhRequest.VideoType = false;
+                        hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
 
-                        if (hinhAnhExist.Contains(hinhAnhRequest))
-                        {
-                            int idxHinhAnh = hinhAnhExist.IndexOf(hinhAnhRequest);
-                            hinhAnhExist.RemoveAt(idxHinhAnh);
-                        }
-                        else
-                        {
-                            hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
-                        }
                     }
-                    if (hinhAnhExist.Count > 0)
-                    {
-                        foreach (var item in hinhAnhExist)
-                        {
-                            item.IdSanPham = -1;
-                        }
-                    }
+
                     return true;
                 }
                 catch (Exception)
@@ -2382,7 +2292,12 @@ namespace STU.LVTN.SERVER.Provider.Handler
                     BaiDangEntities baiDangGlobal = _mapper.Map<BaiDangEntities>(baiDangRequest);
                     baiDangGlobal.IdBaiDangChiTiet = lastIDPost;
                     await baiDangHelper.UpdateBaiDang(baiDangGlobal);
-                    List<HinhAnhBaiDangEntities> hinhAnhExist = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(lastIDPost);
+                    List<HinhAnhBaiDangEntities> hinhAnhExist = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(baiDangGlobal.IdBaiDang);
+                    int[] idxExist = new int[baiDangRequest.hinhAnh_BaiDangs.Count];
+                    foreach (var itemImg in hinhAnhExist)
+                    {
+                        hinhAnhBaiDangHelper.RemoveHinhAnh(itemImg);
+                    }
                     foreach (var item in baiDangRequest.hinhAnh_BaiDangs)
                     {
                         HinhAnhBaiDangEntities hinhAnhRequest = new HinhAnhBaiDangEntities();
@@ -2392,24 +2307,10 @@ namespace STU.LVTN.SERVER.Provider.Handler
                             hinhAnhRequest.VideoType = true;
                         else
                             hinhAnhRequest.VideoType = false;
+                        hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
 
-                        if (hinhAnhExist.Contains(hinhAnhRequest))
-                        {
-                            int idxHinhAnh = hinhAnhExist.IndexOf(hinhAnhRequest);
-                            hinhAnhExist.RemoveAt(idxHinhAnh);
-                        }
-                        else
-                        {
-                            hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
-                        }
                     }
-                    if (hinhAnhExist.Count > 0)
-                    {
-                        foreach (var item in hinhAnhExist)
-                        {
-                            item.IdSanPham = -1;
-                        }
-                    }
+
                     return true;
                 }
                 catch (Exception)
@@ -2434,7 +2335,12 @@ namespace STU.LVTN.SERVER.Provider.Handler
                     BaiDangEntities baiDangGlobal = _mapper.Map<BaiDangEntities>(baiDangRequest);
                     baiDangGlobal.IdBaiDangChiTiet = lastIDPost;
                     await baiDangHelper.UpdateBaiDang(baiDangGlobal);
-                    List<HinhAnhBaiDangEntities> hinhAnhExist = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(lastIDPost);
+                    List<HinhAnhBaiDangEntities> hinhAnhExist = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(baiDangGlobal.IdBaiDang);
+                    int[] idxExist = new int[baiDangRequest.hinhAnh_BaiDangs.Count];
+                    foreach (var itemImg in hinhAnhExist)
+                    {
+                        hinhAnhBaiDangHelper.RemoveHinhAnh(itemImg);
+                    }
                     foreach (var item in baiDangRequest.hinhAnh_BaiDangs)
                     {
                         HinhAnhBaiDangEntities hinhAnhRequest = new HinhAnhBaiDangEntities();
@@ -2444,24 +2350,10 @@ namespace STU.LVTN.SERVER.Provider.Handler
                             hinhAnhRequest.VideoType = true;
                         else
                             hinhAnhRequest.VideoType = false;
+                        hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
 
-                        if (hinhAnhExist.Contains(hinhAnhRequest))
-                        {
-                            int idxHinhAnh = hinhAnhExist.IndexOf(hinhAnhRequest);
-                            hinhAnhExist.RemoveAt(idxHinhAnh);
-                        }
-                        else
-                        {
-                            hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
-                        }
                     }
-                    if (hinhAnhExist.Count > 0)
-                    {
-                        foreach (var item in hinhAnhExist)
-                        {
-                            item.IdSanPham = -1;
-                        }
-                    }
+
                     return true;
                 }
                 catch (Exception)
@@ -2489,7 +2381,12 @@ namespace STU.LVTN.SERVER.Provider.Handler
                     BaiDangEntities baiDangGlobal = _mapper.Map<BaiDangEntities>(baiDangRequest);
                     baiDangGlobal.IdBaiDangChiTiet = lastIDPost;
                     await baiDangHelper.UpdateBaiDang(baiDangGlobal);
-                    List<HinhAnhBaiDangEntities> hinhAnhExist = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(lastIDPost);
+                    List<HinhAnhBaiDangEntities> hinhAnhExist = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(baiDangGlobal.IdBaiDang);
+                    int[] idxExist = new int[baiDangRequest.hinhAnh_BaiDangs.Count];
+                    foreach (var itemImg in hinhAnhExist)
+                    {
+                        hinhAnhBaiDangHelper.RemoveHinhAnh(itemImg);
+                    }
                     foreach (var item in baiDangRequest.hinhAnh_BaiDangs)
                     {
                         HinhAnhBaiDangEntities hinhAnhRequest = new HinhAnhBaiDangEntities();
@@ -2499,24 +2396,10 @@ namespace STU.LVTN.SERVER.Provider.Handler
                             hinhAnhRequest.VideoType = true;
                         else
                             hinhAnhRequest.VideoType = false;
+                        hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
 
-                        if (hinhAnhExist.Contains(hinhAnhRequest))
-                        {
-                            int idxHinhAnh = hinhAnhExist.IndexOf(hinhAnhRequest);
-                            hinhAnhExist.RemoveAt(idxHinhAnh);
-                        }
-                        else
-                        {
-                            hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
-                        }
                     }
-                    if (hinhAnhExist.Count > 0)
-                    {
-                        foreach (var item in hinhAnhExist)
-                        {
-                            item.IdSanPham = -1;
-                        }
-                    }
+
                     return true;
                 }
                 catch (Exception)
@@ -2542,7 +2425,12 @@ namespace STU.LVTN.SERVER.Provider.Handler
                     BaiDangEntities baiDangGlobal = _mapper.Map<BaiDangEntities>(baiDangRequest);
                     baiDangGlobal.IdBaiDangChiTiet = lastIDPost;
                     await baiDangHelper.UpdateBaiDang(baiDangGlobal);
-                    List<HinhAnhBaiDangEntities> hinhAnhExist = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(lastIDPost);
+                    List<HinhAnhBaiDangEntities> hinhAnhExist = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(baiDangGlobal.IdBaiDang);
+                    int[] idxExist = new int[baiDangRequest.hinhAnh_BaiDangs.Count];
+                    foreach (var itemImg in hinhAnhExist)
+                    {
+                        hinhAnhBaiDangHelper.RemoveHinhAnh(itemImg);
+                    }
                     foreach (var item in baiDangRequest.hinhAnh_BaiDangs)
                     {
                         HinhAnhBaiDangEntities hinhAnhRequest = new HinhAnhBaiDangEntities();
@@ -2552,24 +2440,10 @@ namespace STU.LVTN.SERVER.Provider.Handler
                             hinhAnhRequest.VideoType = true;
                         else
                             hinhAnhRequest.VideoType = false;
+                        hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
 
-                        if (hinhAnhExist.Contains(hinhAnhRequest))
-                        {
-                            int idxHinhAnh = hinhAnhExist.IndexOf(hinhAnhRequest);
-                            hinhAnhExist.RemoveAt(idxHinhAnh);
-                        }
-                        else
-                        {
-                            hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
-                        }
                     }
-                    if (hinhAnhExist.Count > 0)
-                    {
-                        foreach (var item in hinhAnhExist)
-                        {
-                            item.IdSanPham = -1;
-                        }
-                    }
+
                     return true;
                 }
                 catch (Exception)
@@ -2595,7 +2469,12 @@ namespace STU.LVTN.SERVER.Provider.Handler
                     BaiDangEntities baiDangGlobal = _mapper.Map<BaiDangEntities>(baiDangRequest);
                     baiDangGlobal.IdBaiDangChiTiet = lastIDPost;
                     await baiDangHelper.UpdateBaiDang(baiDangGlobal);
-                    List<HinhAnhBaiDangEntities> hinhAnhExist = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(lastIDPost);
+                    List<HinhAnhBaiDangEntities> hinhAnhExist = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(baiDangGlobal.IdBaiDang);
+                    int[] idxExist = new int[baiDangRequest.hinhAnh_BaiDangs.Count];
+                    foreach (var itemImg in hinhAnhExist)
+                    {
+                        hinhAnhBaiDangHelper.RemoveHinhAnh(itemImg);
+                    }
                     foreach (var item in baiDangRequest.hinhAnh_BaiDangs)
                     {
                         HinhAnhBaiDangEntities hinhAnhRequest = new HinhAnhBaiDangEntities();
@@ -2605,24 +2484,10 @@ namespace STU.LVTN.SERVER.Provider.Handler
                             hinhAnhRequest.VideoType = true;
                         else
                             hinhAnhRequest.VideoType = false;
+                        hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
 
-                        if (hinhAnhExist.Contains(hinhAnhRequest))
-                        {
-                            int idxHinhAnh = hinhAnhExist.IndexOf(hinhAnhRequest);
-                            hinhAnhExist.RemoveAt(idxHinhAnh);
-                        }
-                        else
-                        {
-                            hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
-                        }
                     }
-                    if (hinhAnhExist.Count > 0)
-                    {
-                        foreach (var item in hinhAnhExist)
-                        {
-                            item.IdSanPham = -1;
-                        }
-                    }
+
                     return true;
                 }
                 catch (Exception)
@@ -2648,7 +2513,12 @@ namespace STU.LVTN.SERVER.Provider.Handler
                     BaiDangEntities baiDangGlobal = _mapper.Map<BaiDangEntities>(baiDangRequest);
                     baiDangGlobal.IdBaiDangChiTiet = lastIDPost;
                     await baiDangHelper.UpdateBaiDang(baiDangGlobal);
-                    List<HinhAnhBaiDangEntities> hinhAnhExist = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(lastIDPost);
+                    List<HinhAnhBaiDangEntities> hinhAnhExist = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(baiDangGlobal.IdBaiDang);
+                    int[] idxExist = new int[baiDangRequest.hinhAnh_BaiDangs.Count];
+                    foreach (var itemImg in hinhAnhExist)
+                    {
+                        hinhAnhBaiDangHelper.RemoveHinhAnh(itemImg);
+                    }
                     foreach (var item in baiDangRequest.hinhAnh_BaiDangs)
                     {
                         HinhAnhBaiDangEntities hinhAnhRequest = new HinhAnhBaiDangEntities();
@@ -2658,24 +2528,10 @@ namespace STU.LVTN.SERVER.Provider.Handler
                             hinhAnhRequest.VideoType = true;
                         else
                             hinhAnhRequest.VideoType = false;
+                        hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
 
-                        if (hinhAnhExist.Contains(hinhAnhRequest))
-                        {
-                            int idxHinhAnh = hinhAnhExist.IndexOf(hinhAnhRequest);
-                            hinhAnhExist.RemoveAt(idxHinhAnh);
-                        }
-                        else
-                        {
-                            hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
-                        }
                     }
-                    if (hinhAnhExist.Count > 0)
-                    {
-                        foreach (var item in hinhAnhExist)
-                        {
-                            item.IdSanPham = -1;
-                        }
-                    }
+
                     return true;
                 }
                 catch (Exception)
@@ -2701,7 +2557,12 @@ namespace STU.LVTN.SERVER.Provider.Handler
                     BaiDangEntities baiDangGlobal = _mapper.Map<BaiDangEntities>(baiDangRequest);
                     baiDangGlobal.IdBaiDangChiTiet = lastIDPost;
                     await baiDangHelper.UpdateBaiDang(baiDangGlobal);
-                    List<HinhAnhBaiDangEntities> hinhAnhExist = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(lastIDPost);
+                    List<HinhAnhBaiDangEntities> hinhAnhExist = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(baiDangGlobal.IdBaiDang);
+                    int[] idxExist = new int[baiDangRequest.hinhAnh_BaiDangs.Count];
+                    foreach (var itemImg in hinhAnhExist)
+                    {
+                        hinhAnhBaiDangHelper.RemoveHinhAnh(itemImg);
+                    }
                     foreach (var item in baiDangRequest.hinhAnh_BaiDangs)
                     {
                         HinhAnhBaiDangEntities hinhAnhRequest = new HinhAnhBaiDangEntities();
@@ -2711,24 +2572,10 @@ namespace STU.LVTN.SERVER.Provider.Handler
                             hinhAnhRequest.VideoType = true;
                         else
                             hinhAnhRequest.VideoType = false;
+                        hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
 
-                        if (hinhAnhExist.Contains(hinhAnhRequest))
-                        {
-                            int idxHinhAnh = hinhAnhExist.IndexOf(hinhAnhRequest);
-                            hinhAnhExist.RemoveAt(idxHinhAnh);
-                        }
-                        else
-                        {
-                            hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
-                        }
                     }
-                    if (hinhAnhExist.Count > 0)
-                    {
-                        foreach (var item in hinhAnhExist)
-                        {
-                            item.IdSanPham = -1;
-                        }
-                    }
+
                     return true;
                 }
                 catch (Exception)
@@ -2754,7 +2601,12 @@ namespace STU.LVTN.SERVER.Provider.Handler
                     BaiDangEntities baiDangGlobal = _mapper.Map<BaiDangEntities>(baiDangRequest);
                     baiDangGlobal.IdBaiDangChiTiet = lastIDPost;
                     await baiDangHelper.UpdateBaiDang(baiDangGlobal);
-                    List<HinhAnhBaiDangEntities> hinhAnhExist = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(lastIDPost);
+                    List<HinhAnhBaiDangEntities> hinhAnhExist = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(baiDangGlobal.IdBaiDang);
+                    int[] idxExist = new int[baiDangRequest.hinhAnh_BaiDangs.Count];
+                    foreach (var itemImg in hinhAnhExist)
+                    {
+                        hinhAnhBaiDangHelper.RemoveHinhAnh(itemImg);
+                    }
                     foreach (var item in baiDangRequest.hinhAnh_BaiDangs)
                     {
                         HinhAnhBaiDangEntities hinhAnhRequest = new HinhAnhBaiDangEntities();
@@ -2764,24 +2616,10 @@ namespace STU.LVTN.SERVER.Provider.Handler
                             hinhAnhRequest.VideoType = true;
                         else
                             hinhAnhRequest.VideoType = false;
+                        hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
 
-                        if (hinhAnhExist.Contains(hinhAnhRequest))
-                        {
-                            int idxHinhAnh = hinhAnhExist.IndexOf(hinhAnhRequest);
-                            hinhAnhExist.RemoveAt(idxHinhAnh);
-                        }
-                        else
-                        {
-                            hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
-                        }
                     }
-                    if (hinhAnhExist.Count > 0)
-                    {
-                        foreach (var item in hinhAnhExist)
-                        {
-                            item.IdSanPham = -1;
-                        }
-                    }
+
                     return true;
                 }
                 catch (Exception)
@@ -2807,7 +2645,12 @@ namespace STU.LVTN.SERVER.Provider.Handler
                     BaiDangEntities baiDangGlobal = _mapper.Map<BaiDangEntities>(baiDangRequest);
                     baiDangGlobal.IdBaiDangChiTiet = lastIDPost;
                     await baiDangHelper.UpdateBaiDang(baiDangGlobal);
-                    List<HinhAnhBaiDangEntities> hinhAnhExist = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(lastIDPost);
+                    List<HinhAnhBaiDangEntities> hinhAnhExist = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(baiDangGlobal.IdBaiDang);
+                    int[] idxExist = new int[baiDangRequest.hinhAnh_BaiDangs.Count];
+                    foreach (var itemImg in hinhAnhExist)
+                    {
+                        hinhAnhBaiDangHelper.RemoveHinhAnh(itemImg);
+                    }
                     foreach (var item in baiDangRequest.hinhAnh_BaiDangs)
                     {
                         HinhAnhBaiDangEntities hinhAnhRequest = new HinhAnhBaiDangEntities();
@@ -2817,24 +2660,10 @@ namespace STU.LVTN.SERVER.Provider.Handler
                             hinhAnhRequest.VideoType = true;
                         else
                             hinhAnhRequest.VideoType = false;
+                        hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
 
-                        if (hinhAnhExist.Contains(hinhAnhRequest))
-                        {
-                            int idxHinhAnh = hinhAnhExist.IndexOf(hinhAnhRequest);
-                            hinhAnhExist.RemoveAt(idxHinhAnh);
-                        }
-                        else
-                        {
-                            hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
-                        }
                     }
-                    if (hinhAnhExist.Count > 0)
-                    {
-                        foreach (var item in hinhAnhExist)
-                        {
-                            item.IdSanPham = -1;
-                        }
-                    }
+
                     return true;
                 }
                 catch (Exception)
@@ -2860,7 +2689,12 @@ namespace STU.LVTN.SERVER.Provider.Handler
                     BaiDangEntities baiDangGlobal = _mapper.Map<BaiDangEntities>(baiDangRequest);
                     baiDangGlobal.IdBaiDangChiTiet = lastIDPost;
                     await baiDangHelper.UpdateBaiDang(baiDangGlobal);
-                    List<HinhAnhBaiDangEntities> hinhAnhExist = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(lastIDPost);
+                    List<HinhAnhBaiDangEntities> hinhAnhExist = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(baiDangGlobal.IdBaiDang);
+                    int[] idxExist = new int[baiDangRequest.hinhAnh_BaiDangs.Count];
+                    foreach (var itemImg in hinhAnhExist)
+                    {
+                        hinhAnhBaiDangHelper.RemoveHinhAnh(itemImg);
+                    }
                     foreach (var item in baiDangRequest.hinhAnh_BaiDangs)
                     {
                         HinhAnhBaiDangEntities hinhAnhRequest = new HinhAnhBaiDangEntities();
@@ -2870,24 +2704,10 @@ namespace STU.LVTN.SERVER.Provider.Handler
                             hinhAnhRequest.VideoType = true;
                         else
                             hinhAnhRequest.VideoType = false;
+                        hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
 
-                        if (hinhAnhExist.Contains(hinhAnhRequest))
-                        {
-                            int idxHinhAnh = hinhAnhExist.IndexOf(hinhAnhRequest);
-                            hinhAnhExist.RemoveAt(idxHinhAnh);
-                        }
-                        else
-                        {
-                            hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
-                        }
                     }
-                    if (hinhAnhExist.Count > 0)
-                    {
-                        foreach (var item in hinhAnhExist)
-                        {
-                            item.IdSanPham = -1;
-                        }
-                    }
+
                     return true;
                 }
                 catch (Exception)
@@ -2913,7 +2733,12 @@ namespace STU.LVTN.SERVER.Provider.Handler
                     BaiDangEntities baiDangGlobal = _mapper.Map<BaiDangEntities>(baiDangRequest);
                     baiDangGlobal.IdBaiDangChiTiet = lastIDPost;
                     await baiDangHelper.UpdateBaiDang(baiDangGlobal);
-                    List<HinhAnhBaiDangEntities> hinhAnhExist = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(lastIDPost);
+                    List<HinhAnhBaiDangEntities> hinhAnhExist = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(baiDangGlobal.IdBaiDang);
+                    int[] idxExist = new int[baiDangRequest.hinhAnh_BaiDangs.Count];
+                    foreach (var itemImg in hinhAnhExist)
+                    {
+                        hinhAnhBaiDangHelper.RemoveHinhAnh(itemImg);
+                    }
                     foreach (var item in baiDangRequest.hinhAnh_BaiDangs)
                     {
                         HinhAnhBaiDangEntities hinhAnhRequest = new HinhAnhBaiDangEntities();
@@ -2923,24 +2748,10 @@ namespace STU.LVTN.SERVER.Provider.Handler
                             hinhAnhRequest.VideoType = true;
                         else
                             hinhAnhRequest.VideoType = false;
+                        hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
 
-                        if (hinhAnhExist.Contains(hinhAnhRequest))
-                        {
-                            int idxHinhAnh = hinhAnhExist.IndexOf(hinhAnhRequest);
-                            hinhAnhExist.RemoveAt(idxHinhAnh);
-                        }
-                        else
-                        {
-                            hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
-                        }
                     }
-                    if (hinhAnhExist.Count > 0)
-                    {
-                        foreach (var item in hinhAnhExist)
-                        {
-                            item.IdSanPham = -1;
-                        }
-                    }
+
                     return true;
                 }
                 catch (Exception)
@@ -2969,7 +2780,12 @@ namespace STU.LVTN.SERVER.Provider.Handler
                     BaiDangEntities baiDangGlobal = _mapper.Map<BaiDangEntities>(baiDangRequest);
                     baiDangGlobal.IdBaiDangChiTiet = lastIDPost;
                     await baiDangHelper.UpdateBaiDang(baiDangGlobal);
-                    List<HinhAnhBaiDangEntities> hinhAnhExist = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(lastIDPost);
+                    List<HinhAnhBaiDangEntities> hinhAnhExist = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(baiDangGlobal.IdBaiDang);
+                    int[] idxExist = new int[baiDangRequest.hinhAnh_BaiDangs.Count];
+                    foreach (var itemImg in hinhAnhExist)
+                    {
+                        hinhAnhBaiDangHelper.RemoveHinhAnh(itemImg);
+                    }
                     foreach (var item in baiDangRequest.hinhAnh_BaiDangs)
                     {
                         HinhAnhBaiDangEntities hinhAnhRequest = new HinhAnhBaiDangEntities();
@@ -2979,24 +2795,10 @@ namespace STU.LVTN.SERVER.Provider.Handler
                             hinhAnhRequest.VideoType = true;
                         else
                             hinhAnhRequest.VideoType = false;
+                        hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
 
-                        if (hinhAnhExist.Contains(hinhAnhRequest))
-                        {
-                            int idxHinhAnh = hinhAnhExist.IndexOf(hinhAnhRequest);
-                            hinhAnhExist.RemoveAt(idxHinhAnh);
-                        }
-                        else
-                        {
-                            hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
-                        }
                     }
-                    if (hinhAnhExist.Count > 0)
-                    {
-                        foreach (var item in hinhAnhExist)
-                        {
-                            item.IdSanPham = -1;
-                        }
-                    }
+
                     return true;
                 }
                 catch (Exception)
@@ -3024,7 +2826,12 @@ namespace STU.LVTN.SERVER.Provider.Handler
                     BaiDangEntities baiDangGlobal = _mapper.Map<BaiDangEntities>(baiDangRequest);
                     baiDangGlobal.IdBaiDangChiTiet = lastIDPost;
                     await baiDangHelper.UpdateBaiDang(baiDangGlobal);
-                    List<HinhAnhBaiDangEntities> hinhAnhExist = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(lastIDPost);
+                    List<HinhAnhBaiDangEntities> hinhAnhExist = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(baiDangGlobal.IdBaiDang);
+                    int[] idxExist = new int[baiDangRequest.hinhAnh_BaiDangs.Count];
+                    foreach (var itemImg in hinhAnhExist)
+                    {
+                        hinhAnhBaiDangHelper.RemoveHinhAnh(itemImg);
+                    }
                     foreach (var item in baiDangRequest.hinhAnh_BaiDangs)
                     {
                         HinhAnhBaiDangEntities hinhAnhRequest = new HinhAnhBaiDangEntities();
@@ -3034,24 +2841,10 @@ namespace STU.LVTN.SERVER.Provider.Handler
                             hinhAnhRequest.VideoType = true;
                         else
                             hinhAnhRequest.VideoType = false;
+                        hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
 
-                        if (hinhAnhExist.Contains(hinhAnhRequest))
-                        {
-                            int idxHinhAnh = hinhAnhExist.IndexOf(hinhAnhRequest);
-                            hinhAnhExist.RemoveAt(idxHinhAnh);
-                        }
-                        else
-                        {
-                            hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
-                        }
                     }
-                    if (hinhAnhExist.Count > 0)
-                    {
-                        foreach (var item in hinhAnhExist)
-                        {
-                            item.IdSanPham = -1;
-                        }
-                    }
+
                     return true;
                 }
                 catch (Exception)
@@ -3077,7 +2870,12 @@ namespace STU.LVTN.SERVER.Provider.Handler
                     BaiDangEntities baiDangGlobal = _mapper.Map<BaiDangEntities>(baiDangRequest);
                     baiDangGlobal.IdBaiDangChiTiet = lastIDPost;
                     await baiDangHelper.UpdateBaiDang(baiDangGlobal);
-                    List<HinhAnhBaiDangEntities> hinhAnhExist = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(lastIDPost);
+                    List<HinhAnhBaiDangEntities> hinhAnhExist = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(baiDangGlobal.IdBaiDang);
+                    int[] idxExist = new int[baiDangRequest.hinhAnh_BaiDangs.Count];
+                    foreach (var itemImg in hinhAnhExist)
+                    {
+                        hinhAnhBaiDangHelper.RemoveHinhAnh(itemImg);
+                    }
                     foreach (var item in baiDangRequest.hinhAnh_BaiDangs)
                     {
                         HinhAnhBaiDangEntities hinhAnhRequest = new HinhAnhBaiDangEntities();
@@ -3087,24 +2885,10 @@ namespace STU.LVTN.SERVER.Provider.Handler
                             hinhAnhRequest.VideoType = true;
                         else
                             hinhAnhRequest.VideoType = false;
+                        hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
 
-                        if (hinhAnhExist.Contains(hinhAnhRequest))
-                        {
-                            int idxHinhAnh = hinhAnhExist.IndexOf(hinhAnhRequest);
-                            hinhAnhExist.RemoveAt(idxHinhAnh);
-                        }
-                        else
-                        {
-                            hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
-                        }
                     }
-                    if (hinhAnhExist.Count > 0)
-                    {
-                        foreach (var item in hinhAnhExist)
-                        {
-                            item.IdSanPham = -1;
-                        }
-                    }
+
                     return true;
                 }
                 catch (Exception)
@@ -3130,7 +2914,12 @@ namespace STU.LVTN.SERVER.Provider.Handler
                     BaiDangEntities baiDangGlobal = _mapper.Map<BaiDangEntities>(baiDangRequest);
                     baiDangGlobal.IdBaiDangChiTiet = lastIDPost;
                     await baiDangHelper.UpdateBaiDang(baiDangGlobal);
-                    List<HinhAnhBaiDangEntities> hinhAnhExist = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(lastIDPost);
+                    List<HinhAnhBaiDangEntities> hinhAnhExist = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(baiDangGlobal.IdBaiDang);
+                    int[] idxExist = new int[baiDangRequest.hinhAnh_BaiDangs.Count];
+                    foreach (var itemImg in hinhAnhExist)
+                    {
+                        hinhAnhBaiDangHelper.RemoveHinhAnh(itemImg);
+                    }
                     foreach (var item in baiDangRequest.hinhAnh_BaiDangs)
                     {
                         HinhAnhBaiDangEntities hinhAnhRequest = new HinhAnhBaiDangEntities();
@@ -3140,24 +2929,10 @@ namespace STU.LVTN.SERVER.Provider.Handler
                             hinhAnhRequest.VideoType = true;
                         else
                             hinhAnhRequest.VideoType = false;
+                        hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
 
-                        if (hinhAnhExist.Contains(hinhAnhRequest))
-                        {
-                            int idxHinhAnh = hinhAnhExist.IndexOf(hinhAnhRequest);
-                            hinhAnhExist.RemoveAt(idxHinhAnh);
-                        }
-                        else
-                        {
-                            hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
-                        }
                     }
-                    if (hinhAnhExist.Count > 0)
-                    {
-                        foreach (var item in hinhAnhExist)
-                        {
-                            item.IdSanPham = -1;
-                        }
-                    }
+
                     return true;
                 }
                 catch (Exception)
@@ -3186,7 +2961,12 @@ namespace STU.LVTN.SERVER.Provider.Handler
                     BaiDangEntities baiDangGlobal = _mapper.Map<BaiDangEntities>(baiDangRequest);
                     baiDangGlobal.IdBaiDangChiTiet = lastIDPost;
                     await baiDangHelper.UpdateBaiDang(baiDangGlobal);
-                    List<HinhAnhBaiDangEntities> hinhAnhExist = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(lastIDPost);
+                    List<HinhAnhBaiDangEntities> hinhAnhExist = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(baiDangGlobal.IdBaiDang);
+                    int[] idxExist = new int[baiDangRequest.hinhAnh_BaiDangs.Count];
+                    foreach (var itemImg in hinhAnhExist)
+                    {
+                        hinhAnhBaiDangHelper.RemoveHinhAnh(itemImg);
+                    }
                     foreach (var item in baiDangRequest.hinhAnh_BaiDangs)
                     {
                         HinhAnhBaiDangEntities hinhAnhRequest = new HinhAnhBaiDangEntities();
@@ -3196,24 +2976,10 @@ namespace STU.LVTN.SERVER.Provider.Handler
                             hinhAnhRequest.VideoType = true;
                         else
                             hinhAnhRequest.VideoType = false;
+                        hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
 
-                        if (hinhAnhExist.Contains(hinhAnhRequest))
-                        {
-                            int idxHinhAnh = hinhAnhExist.IndexOf(hinhAnhRequest);
-                            hinhAnhExist.RemoveAt(idxHinhAnh);
-                        }
-                        else
-                        {
-                            hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
-                        }
                     }
-                    if (hinhAnhExist.Count > 0)
-                    {
-                        foreach (var item in hinhAnhExist)
-                        {
-                            item.IdSanPham = -1;
-                        }
-                    }
+
                     return true;
                 }
                 catch (Exception)
@@ -3241,7 +3007,12 @@ namespace STU.LVTN.SERVER.Provider.Handler
                     BaiDangEntities baiDangGlobal = _mapper.Map<BaiDangEntities>(baiDangRequest);
                     baiDangGlobal.IdBaiDangChiTiet = lastIDPost;
                     await baiDangHelper.UpdateBaiDang(baiDangGlobal);
-                    List<HinhAnhBaiDangEntities> hinhAnhExist = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(lastIDPost);
+                    List<HinhAnhBaiDangEntities> hinhAnhExist = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(baiDangGlobal.IdBaiDang);
+                    int[] idxExist = new int[baiDangRequest.hinhAnh_BaiDangs.Count];
+                    foreach (var itemImg in hinhAnhExist)
+                    {
+                        hinhAnhBaiDangHelper.RemoveHinhAnh(itemImg);
+                    }
                     foreach (var item in baiDangRequest.hinhAnh_BaiDangs)
                     {
                         HinhAnhBaiDangEntities hinhAnhRequest = new HinhAnhBaiDangEntities();
@@ -3251,24 +3022,10 @@ namespace STU.LVTN.SERVER.Provider.Handler
                             hinhAnhRequest.VideoType = true;
                         else
                             hinhAnhRequest.VideoType = false;
+                        hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
 
-                        if (hinhAnhExist.Contains(hinhAnhRequest))
-                        {
-                            int idxHinhAnh = hinhAnhExist.IndexOf(hinhAnhRequest);
-                            hinhAnhExist.RemoveAt(idxHinhAnh);
-                        }
-                        else
-                        {
-                            hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
-                        }
                     }
-                    if (hinhAnhExist.Count > 0)
-                    {
-                        foreach (var item in hinhAnhExist)
-                        {
-                            item.IdSanPham = -1;
-                        }
-                    }
+
                     return true;
                 }
                 catch (Exception)
@@ -3294,7 +3051,12 @@ namespace STU.LVTN.SERVER.Provider.Handler
                     BaiDangEntities baiDangGlobal = _mapper.Map<BaiDangEntities>(baiDangRequest);
                     baiDangGlobal.IdBaiDangChiTiet = lastIDPost;
                     await baiDangHelper.UpdateBaiDang(baiDangGlobal);
-                    List<HinhAnhBaiDangEntities> hinhAnhExist = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(lastIDPost);
+                    List<HinhAnhBaiDangEntities> hinhAnhExist = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(baiDangGlobal.IdBaiDang);
+                    int[] idxExist = new int[baiDangRequest.hinhAnh_BaiDangs.Count];
+                    foreach (var itemImg in hinhAnhExist)
+                    {
+                        hinhAnhBaiDangHelper.RemoveHinhAnh(itemImg);
+                    }
                     foreach (var item in baiDangRequest.hinhAnh_BaiDangs)
                     {
                         HinhAnhBaiDangEntities hinhAnhRequest = new HinhAnhBaiDangEntities();
@@ -3304,24 +3066,10 @@ namespace STU.LVTN.SERVER.Provider.Handler
                             hinhAnhRequest.VideoType = true;
                         else
                             hinhAnhRequest.VideoType = false;
+                        hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
 
-                        if (hinhAnhExist.Contains(hinhAnhRequest))
-                        {
-                            int idxHinhAnh = hinhAnhExist.IndexOf(hinhAnhRequest);
-                            hinhAnhExist.RemoveAt(idxHinhAnh);
-                        }
-                        else
-                        {
-                            hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
-                        }
                     }
-                    if (hinhAnhExist.Count > 0)
-                    {
-                        foreach (var item in hinhAnhExist)
-                        {
-                            item.IdSanPham = -1;
-                        }
-                    }
+
                     return true;
                 }
                 catch (Exception)
@@ -3348,7 +3096,12 @@ namespace STU.LVTN.SERVER.Provider.Handler
                     BaiDangEntities baiDangGlobal = _mapper.Map<BaiDangEntities>(baiDangRequest);
                     baiDangGlobal.IdBaiDangChiTiet = lastIDPost;
                     await baiDangHelper.UpdateBaiDang(baiDangGlobal);
-                    List<HinhAnhBaiDangEntities> hinhAnhExist = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(lastIDPost);
+                    List<HinhAnhBaiDangEntities> hinhAnhExist = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(baiDangGlobal.IdBaiDang);
+                    int[] idxExist = new int[baiDangRequest.hinhAnh_BaiDangs.Count];
+                    foreach (var itemImg in hinhAnhExist)
+                    {
+                        hinhAnhBaiDangHelper.RemoveHinhAnh(itemImg);
+                    }
                     foreach (var item in baiDangRequest.hinhAnh_BaiDangs)
                     {
                         HinhAnhBaiDangEntities hinhAnhRequest = new HinhAnhBaiDangEntities();
@@ -3358,24 +3111,10 @@ namespace STU.LVTN.SERVER.Provider.Handler
                             hinhAnhRequest.VideoType = true;
                         else
                             hinhAnhRequest.VideoType = false;
+                        hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
 
-                        if (hinhAnhExist.Contains(hinhAnhRequest))
-                        {
-                            int idxHinhAnh = hinhAnhExist.IndexOf(hinhAnhRequest);
-                            hinhAnhExist.RemoveAt(idxHinhAnh);
-                        }
-                        else
-                        {
-                            hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
-                        }
                     }
-                    if (hinhAnhExist.Count > 0)
-                    {
-                        foreach (var item in hinhAnhExist)
-                        {
-                            item.IdSanPham = -1;
-                        }
-                    }
+
                     return true;
                 }
                 catch (Exception)
@@ -3403,7 +3142,12 @@ namespace STU.LVTN.SERVER.Provider.Handler
                     BaiDangEntities baiDangGlobal = _mapper.Map<BaiDangEntities>(baiDangRequest);
                     baiDangGlobal.IdBaiDangChiTiet = lastIDPost;
                     await baiDangHelper.UpdateBaiDang(baiDangGlobal);
-                    List<HinhAnhBaiDangEntities> hinhAnhExist = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(lastIDPost);
+                    List<HinhAnhBaiDangEntities> hinhAnhExist = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(baiDangGlobal.IdBaiDang);
+                    int[] idxExist = new int[baiDangRequest.hinhAnh_BaiDangs.Count];
+                    foreach (var itemImg in hinhAnhExist)
+                    {
+                        hinhAnhBaiDangHelper.RemoveHinhAnh(itemImg);
+                    }
                     foreach (var item in baiDangRequest.hinhAnh_BaiDangs)
                     {
                         HinhAnhBaiDangEntities hinhAnhRequest = new HinhAnhBaiDangEntities();
@@ -3413,24 +3157,10 @@ namespace STU.LVTN.SERVER.Provider.Handler
                             hinhAnhRequest.VideoType = true;
                         else
                             hinhAnhRequest.VideoType = false;
+                        hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
 
-                        if (hinhAnhExist.Contains(hinhAnhRequest))
-                        {
-                            int idxHinhAnh = hinhAnhExist.IndexOf(hinhAnhRequest);
-                            hinhAnhExist.RemoveAt(idxHinhAnh);
-                        }
-                        else
-                        {
-                            hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
-                        }
                     }
-                    if (hinhAnhExist.Count > 0)
-                    {
-                        foreach (var item in hinhAnhExist)
-                        {
-                            item.IdSanPham = -1;
-                        }
-                    }
+
                     return true;
                 }
                 catch (Exception)
@@ -3455,7 +3185,12 @@ namespace STU.LVTN.SERVER.Provider.Handler
                     BaiDangEntities baiDangGlobal = _mapper.Map<BaiDangEntities>(baiDangRequest);
                     baiDangGlobal.IdBaiDangChiTiet = lastIDPost;
                     await baiDangHelper.UpdateBaiDang(baiDangGlobal);
-                    List<HinhAnhBaiDangEntities> hinhAnhExist = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(lastIDPost);
+                    List<HinhAnhBaiDangEntities> hinhAnhExist = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(baiDangGlobal.IdBaiDang);
+                    int[] idxExist = new int[baiDangRequest.hinhAnh_BaiDangs.Count];
+                    foreach (var itemImg in hinhAnhExist)
+                    {
+                        hinhAnhBaiDangHelper.RemoveHinhAnh(itemImg);
+                    }
                     foreach (var item in baiDangRequest.hinhAnh_BaiDangs)
                     {
                         HinhAnhBaiDangEntities hinhAnhRequest = new HinhAnhBaiDangEntities();
@@ -3465,24 +3200,10 @@ namespace STU.LVTN.SERVER.Provider.Handler
                             hinhAnhRequest.VideoType = true;
                         else
                             hinhAnhRequest.VideoType = false;
+                        hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
 
-                        if (hinhAnhExist.Contains(hinhAnhRequest))
-                        {
-                            int idxHinhAnh = hinhAnhExist.IndexOf(hinhAnhRequest);
-                            hinhAnhExist.RemoveAt(idxHinhAnh);
-                        }
-                        else
-                        {
-                            hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
-                        }
                     }
-                    if (hinhAnhExist.Count > 0)
-                    {
-                        foreach (var item in hinhAnhExist)
-                        {
-                            item.IdSanPham = -1;
-                        }
-                    }
+
                     return true;
                 }
                 catch (Exception)
@@ -3507,7 +3228,12 @@ namespace STU.LVTN.SERVER.Provider.Handler
                     BaiDangEntities baiDangGlobal = _mapper.Map<BaiDangEntities>(baiDangRequest);
                     baiDangGlobal.IdBaiDangChiTiet = lastIDPost;
                     await baiDangHelper.UpdateBaiDang(baiDangGlobal);
-                    List<HinhAnhBaiDangEntities> hinhAnhExist = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(lastIDPost);
+                    List<HinhAnhBaiDangEntities> hinhAnhExist = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(baiDangGlobal.IdBaiDang);
+                    int[] idxExist = new int[baiDangRequest.hinhAnh_BaiDangs.Count];
+                    foreach (var itemImg in hinhAnhExist)
+                    {
+                        hinhAnhBaiDangHelper.RemoveHinhAnh(itemImg);
+                    }
                     foreach (var item in baiDangRequest.hinhAnh_BaiDangs)
                     {
                         HinhAnhBaiDangEntities hinhAnhRequest = new HinhAnhBaiDangEntities();
@@ -3517,24 +3243,10 @@ namespace STU.LVTN.SERVER.Provider.Handler
                             hinhAnhRequest.VideoType = true;
                         else
                             hinhAnhRequest.VideoType = false;
+                        hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
 
-                        if (hinhAnhExist.Contains(hinhAnhRequest))
-                        {
-                            int idxHinhAnh = hinhAnhExist.IndexOf(hinhAnhRequest);
-                            hinhAnhExist.RemoveAt(idxHinhAnh);
-                        }
-                        else
-                        {
-                            hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
-                        }
                     }
-                    if (hinhAnhExist.Count > 0)
-                    {
-                        foreach (var item in hinhAnhExist)
-                        {
-                            item.IdSanPham = -1;
-                        }
-                    }
+
                     return true;
                 }
                 catch (Exception)
@@ -3560,7 +3272,12 @@ namespace STU.LVTN.SERVER.Provider.Handler
                     BaiDangEntities baiDangGlobal = _mapper.Map<BaiDangEntities>(baiDangRequest);
                     baiDangGlobal.IdBaiDangChiTiet = lastIDPost;
                     await baiDangHelper.UpdateBaiDang(baiDangGlobal);
-                    List<HinhAnhBaiDangEntities> hinhAnhExist = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(lastIDPost);
+                    List<HinhAnhBaiDangEntities> hinhAnhExist = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(baiDangGlobal.IdBaiDang);
+                    int[] idxExist = new int[baiDangRequest.hinhAnh_BaiDangs.Count];
+                    foreach (var itemImg in hinhAnhExist)
+                    {
+                        hinhAnhBaiDangHelper.RemoveHinhAnh(itemImg);
+                    }
                     foreach (var item in baiDangRequest.hinhAnh_BaiDangs)
                     {
                         HinhAnhBaiDangEntities hinhAnhRequest = new HinhAnhBaiDangEntities();
@@ -3570,24 +3287,10 @@ namespace STU.LVTN.SERVER.Provider.Handler
                             hinhAnhRequest.VideoType = true;
                         else
                             hinhAnhRequest.VideoType = false;
+                        hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
 
-                        if (hinhAnhExist.Contains(hinhAnhRequest))
-                        {
-                            int idxHinhAnh = hinhAnhExist.IndexOf(hinhAnhRequest);
-                            hinhAnhExist.RemoveAt(idxHinhAnh);
-                        }
-                        else
-                        {
-                            hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
-                        }
                     }
-                    if (hinhAnhExist.Count > 0)
-                    {
-                        foreach (var item in hinhAnhExist)
-                        {
-                            item.IdSanPham = -1;
-                        }
-                    }
+
                     return true;
                 }
                 catch (Exception)
@@ -3613,7 +3316,12 @@ namespace STU.LVTN.SERVER.Provider.Handler
                     BaiDangEntities baiDangGlobal = _mapper.Map<BaiDangEntities>(baiDangRequest);
                     baiDangGlobal.IdBaiDangChiTiet = lastIDPost;
                     await baiDangHelper.UpdateBaiDang(baiDangGlobal);
-                    List<HinhAnhBaiDangEntities> hinhAnhExist = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(lastIDPost);
+                    List<HinhAnhBaiDangEntities> hinhAnhExist = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(baiDangGlobal.IdBaiDang);
+                    int[] idxExist = new int[baiDangRequest.hinhAnh_BaiDangs.Count];
+                    foreach (var itemImg in hinhAnhExist)
+                    {
+                        hinhAnhBaiDangHelper.RemoveHinhAnh(itemImg);
+                    }
                     foreach (var item in baiDangRequest.hinhAnh_BaiDangs)
                     {
                         HinhAnhBaiDangEntities hinhAnhRequest = new HinhAnhBaiDangEntities();
@@ -3623,24 +3331,10 @@ namespace STU.LVTN.SERVER.Provider.Handler
                             hinhAnhRequest.VideoType = true;
                         else
                             hinhAnhRequest.VideoType = false;
+                        hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
 
-                        if (hinhAnhExist.Contains(hinhAnhRequest))
-                        {
-                            int idxHinhAnh = hinhAnhExist.IndexOf(hinhAnhRequest);
-                            hinhAnhExist.RemoveAt(idxHinhAnh);
-                        }
-                        else
-                        {
-                            hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
-                        }
                     }
-                    if (hinhAnhExist.Count > 0)
-                    {
-                        foreach (var item in hinhAnhExist)
-                        {
-                            item.IdSanPham = -1;
-                        }
-                    }
+
                     return true;
                 }
                 catch (Exception)
@@ -3666,7 +3360,12 @@ namespace STU.LVTN.SERVER.Provider.Handler
                     BaiDangEntities baiDangGlobal = _mapper.Map<BaiDangEntities>(baiDangRequest);
                     baiDangGlobal.IdBaiDangChiTiet = lastIDPost;
                     await baiDangHelper.UpdateBaiDang(baiDangGlobal);
-                    List<HinhAnhBaiDangEntities> hinhAnhExist = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(lastIDPost);
+                    List<HinhAnhBaiDangEntities> hinhAnhExist = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(baiDangGlobal.IdBaiDang);
+                    int[] idxExist = new int[baiDangRequest.hinhAnh_BaiDangs.Count];
+                    foreach (var itemImg in hinhAnhExist)
+                    {
+                        hinhAnhBaiDangHelper.RemoveHinhAnh(itemImg);
+                    }
                     foreach (var item in baiDangRequest.hinhAnh_BaiDangs)
                     {
                         HinhAnhBaiDangEntities hinhAnhRequest = new HinhAnhBaiDangEntities();
@@ -3676,24 +3375,10 @@ namespace STU.LVTN.SERVER.Provider.Handler
                             hinhAnhRequest.VideoType = true;
                         else
                             hinhAnhRequest.VideoType = false;
+                        hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
 
-                        if (hinhAnhExist.Contains(hinhAnhRequest))
-                        {
-                            int idxHinhAnh = hinhAnhExist.IndexOf(hinhAnhRequest);
-                            hinhAnhExist.RemoveAt(idxHinhAnh);
-                        }
-                        else
-                        {
-                            hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
-                        }
                     }
-                    if (hinhAnhExist.Count > 0)
-                    {
-                        foreach (var item in hinhAnhExist)
-                        {
-                            item.IdSanPham = -1;
-                        }
-                    }
+
                     return true;
                 }
                 catch (Exception)
@@ -3719,7 +3404,12 @@ namespace STU.LVTN.SERVER.Provider.Handler
                     BaiDangEntities baiDangGlobal = _mapper.Map<BaiDangEntities>(baiDangRequest);
                     baiDangGlobal.IdBaiDangChiTiet = lastIDPost;
                     await baiDangHelper.UpdateBaiDang(baiDangGlobal);
-                    List<HinhAnhBaiDangEntities> hinhAnhExist = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(lastIDPost);
+                    List<HinhAnhBaiDangEntities> hinhAnhExist = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(baiDangGlobal.IdBaiDang);
+                    int[] idxExist = new int[baiDangRequest.hinhAnh_BaiDangs.Count];
+                    foreach (var itemImg in hinhAnhExist)
+                    {
+                        hinhAnhBaiDangHelper.RemoveHinhAnh(itemImg);
+                    }
                     foreach (var item in baiDangRequest.hinhAnh_BaiDangs)
                     {
                         HinhAnhBaiDangEntities hinhAnhRequest = new HinhAnhBaiDangEntities();
@@ -3729,24 +3419,10 @@ namespace STU.LVTN.SERVER.Provider.Handler
                             hinhAnhRequest.VideoType = true;
                         else
                             hinhAnhRequest.VideoType = false;
+                        hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
 
-                        if (hinhAnhExist.Contains(hinhAnhRequest))
-                        {
-                            int idxHinhAnh = hinhAnhExist.IndexOf(hinhAnhRequest);
-                            hinhAnhExist.RemoveAt(idxHinhAnh);
-                        }
-                        else
-                        {
-                            hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
-                        }
                     }
-                    if (hinhAnhExist.Count > 0)
-                    {
-                        foreach (var item in hinhAnhExist)
-                        {
-                            item.IdSanPham = -1;
-                        }
-                    }
+
                     return true;
                 }
                 catch (Exception)
@@ -3775,7 +3451,12 @@ namespace STU.LVTN.SERVER.Provider.Handler
                     BaiDangEntities baiDangGlobal = _mapper.Map<BaiDangEntities>(baiDangRequest);
                     baiDangGlobal.IdBaiDangChiTiet = lastIDPost;
                     await baiDangHelper.UpdateBaiDang(baiDangGlobal);
-                    List<HinhAnhBaiDangEntities> hinhAnhExist = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(lastIDPost);
+                    List<HinhAnhBaiDangEntities> hinhAnhExist = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(baiDangGlobal.IdBaiDang);
+                    int[] idxExist = new int[baiDangRequest.hinhAnh_BaiDangs.Count];
+                    foreach (var itemImg in hinhAnhExist)
+                    {
+                        hinhAnhBaiDangHelper.RemoveHinhAnh(itemImg);
+                    }
                     foreach (var item in baiDangRequest.hinhAnh_BaiDangs)
                     {
                         HinhAnhBaiDangEntities hinhAnhRequest = new HinhAnhBaiDangEntities();
@@ -3785,24 +3466,10 @@ namespace STU.LVTN.SERVER.Provider.Handler
                             hinhAnhRequest.VideoType = true;
                         else
                             hinhAnhRequest.VideoType = false;
+                        hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
 
-                        if (hinhAnhExist.Contains(hinhAnhRequest))
-                        {
-                            int idxHinhAnh = hinhAnhExist.IndexOf(hinhAnhRequest);
-                            hinhAnhExist.RemoveAt(idxHinhAnh);
-                        }
-                        else
-                        {
-                            hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
-                        }
                     }
-                    if (hinhAnhExist.Count > 0)
-                    {
-                        foreach (var item in hinhAnhExist)
-                        {
-                            item.IdSanPham = -1;
-                        }
-                    }
+
                     return true;
                 }
                 catch (Exception)
@@ -3830,7 +3497,12 @@ namespace STU.LVTN.SERVER.Provider.Handler
                     BaiDangEntities baiDangGlobal = _mapper.Map<BaiDangEntities>(baiDangRequest);
                     baiDangGlobal.IdBaiDangChiTiet = lastIDPost;
                     await baiDangHelper.UpdateBaiDang(baiDangGlobal);
-                    List<HinhAnhBaiDangEntities> hinhAnhExist = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(lastIDPost);
+                    List<HinhAnhBaiDangEntities> hinhAnhExist = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(baiDangGlobal.IdBaiDang);
+                    int[] idxExist = new int[baiDangRequest.hinhAnh_BaiDangs.Count];
+                    foreach (var itemImg in hinhAnhExist)
+                    {
+                        hinhAnhBaiDangHelper.RemoveHinhAnh(itemImg);
+                    }
                     foreach (var item in baiDangRequest.hinhAnh_BaiDangs)
                     {
                         HinhAnhBaiDangEntities hinhAnhRequest = new HinhAnhBaiDangEntities();
@@ -3840,24 +3512,10 @@ namespace STU.LVTN.SERVER.Provider.Handler
                             hinhAnhRequest.VideoType = true;
                         else
                             hinhAnhRequest.VideoType = false;
+                        hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
 
-                        if (hinhAnhExist.Contains(hinhAnhRequest))
-                        {
-                            int idxHinhAnh = hinhAnhExist.IndexOf(hinhAnhRequest);
-                            hinhAnhExist.RemoveAt(idxHinhAnh);
-                        }
-                        else
-                        {
-                            hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
-                        }
                     }
-                    if (hinhAnhExist.Count > 0)
-                    {
-                        foreach (var item in hinhAnhExist)
-                        {
-                            item.IdSanPham = -1;
-                        }
-                    }
+
                     return true;
                 }
                 catch (Exception)
@@ -3885,7 +3543,12 @@ namespace STU.LVTN.SERVER.Provider.Handler
                     BaiDangEntities baiDangGlobal = _mapper.Map<BaiDangEntities>(baiDangRequest);
                     baiDangGlobal.IdBaiDangChiTiet = lastIDPost;
                     await baiDangHelper.UpdateBaiDang(baiDangGlobal);
-                    List<HinhAnhBaiDangEntities> hinhAnhExist = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(lastIDPost);
+                    List<HinhAnhBaiDangEntities> hinhAnhExist = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(baiDangGlobal.IdBaiDang);
+                    int[] idxExist = new int[baiDangRequest.hinhAnh_BaiDangs.Count];
+                    foreach (var itemImg in hinhAnhExist)
+                    {
+                        hinhAnhBaiDangHelper.RemoveHinhAnh(itemImg);
+                    }
                     foreach (var item in baiDangRequest.hinhAnh_BaiDangs)
                     {
                         HinhAnhBaiDangEntities hinhAnhRequest = new HinhAnhBaiDangEntities();
@@ -3895,24 +3558,10 @@ namespace STU.LVTN.SERVER.Provider.Handler
                             hinhAnhRequest.VideoType = true;
                         else
                             hinhAnhRequest.VideoType = false;
+                        hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
 
-                        if (hinhAnhExist.Contains(hinhAnhRequest))
-                        {
-                            int idxHinhAnh = hinhAnhExist.IndexOf(hinhAnhRequest);
-                            hinhAnhExist.RemoveAt(idxHinhAnh);
-                        }
-                        else
-                        {
-                            hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
-                        }
                     }
-                    if (hinhAnhExist.Count > 0)
-                    {
-                        foreach (var item in hinhAnhExist)
-                        {
-                            item.IdSanPham = -1;
-                        }
-                    }
+
                     return true;
                 }
                 catch (Exception)
@@ -3937,7 +3586,12 @@ namespace STU.LVTN.SERVER.Provider.Handler
                     BaiDangEntities baiDangGlobal = _mapper.Map<BaiDangEntities>(baiDangRequest);
                     baiDangGlobal.IdBaiDangChiTiet = lastIDPost;
                     await baiDangHelper.UpdateBaiDang(baiDangGlobal);
-                    List<HinhAnhBaiDangEntities> hinhAnhExist = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(lastIDPost);
+                    List<HinhAnhBaiDangEntities> hinhAnhExist = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(baiDangGlobal.IdBaiDang);
+                    int[] idxExist = new int[baiDangRequest.hinhAnh_BaiDangs.Count];
+                    foreach (var itemImg in hinhAnhExist)
+                    {
+                        hinhAnhBaiDangHelper.RemoveHinhAnh(itemImg);
+                    }
                     foreach (var item in baiDangRequest.hinhAnh_BaiDangs)
                     {
                         HinhAnhBaiDangEntities hinhAnhRequest = new HinhAnhBaiDangEntities();
@@ -3947,24 +3601,10 @@ namespace STU.LVTN.SERVER.Provider.Handler
                             hinhAnhRequest.VideoType = true;
                         else
                             hinhAnhRequest.VideoType = false;
+                        hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
 
-                        if (hinhAnhExist.Contains(hinhAnhRequest))
-                        {
-                            int idxHinhAnh = hinhAnhExist.IndexOf(hinhAnhRequest);
-                            hinhAnhExist.RemoveAt(idxHinhAnh);
-                        }
-                        else
-                        {
-                            hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
-                        }
                     }
-                    if (hinhAnhExist.Count > 0)
-                    {
-                        foreach (var item in hinhAnhExist)
-                        {
-                            item.IdSanPham = -1;
-                        }
-                    }
+
                     return true;
                 }
                 catch (Exception)
@@ -3989,7 +3629,12 @@ namespace STU.LVTN.SERVER.Provider.Handler
                     BaiDangEntities baiDangGlobal = _mapper.Map<BaiDangEntities>(baiDangRequest);
                     baiDangGlobal.IdBaiDangChiTiet = lastIDPost;
                     await baiDangHelper.UpdateBaiDang(baiDangGlobal);
-                    List<HinhAnhBaiDangEntities> hinhAnhExist = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(lastIDPost);
+                    List<HinhAnhBaiDangEntities> hinhAnhExist = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(baiDangGlobal.IdBaiDang);
+                    int[] idxExist = new int[baiDangRequest.hinhAnh_BaiDangs.Count];
+                    foreach (var itemImg in hinhAnhExist)
+                    {
+                        hinhAnhBaiDangHelper.RemoveHinhAnh(itemImg);
+                    }
                     foreach (var item in baiDangRequest.hinhAnh_BaiDangs)
                     {
                         HinhAnhBaiDangEntities hinhAnhRequest = new HinhAnhBaiDangEntities();
@@ -3999,24 +3644,10 @@ namespace STU.LVTN.SERVER.Provider.Handler
                             hinhAnhRequest.VideoType = true;
                         else
                             hinhAnhRequest.VideoType = false;
+                        hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
 
-                        if (hinhAnhExist.Contains(hinhAnhRequest))
-                        {
-                            int idxHinhAnh = hinhAnhExist.IndexOf(hinhAnhRequest);
-                            hinhAnhExist.RemoveAt(idxHinhAnh);
-                        }
-                        else
-                        {
-                            hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
-                        }
                     }
-                    if (hinhAnhExist.Count > 0)
-                    {
-                        foreach (var item in hinhAnhExist)
-                        {
-                            item.IdSanPham = -1;
-                        }
-                    }
+
                     return true;
                 }
                 catch (Exception)
@@ -4044,7 +3675,12 @@ namespace STU.LVTN.SERVER.Provider.Handler
                     BaiDangEntities baiDangGlobal = _mapper.Map<BaiDangEntities>(baiDangRequest);
                     baiDangGlobal.IdBaiDangChiTiet = lastIDPost;
                     await baiDangHelper.UpdateBaiDang(baiDangGlobal);
-                    List<HinhAnhBaiDangEntities> hinhAnhExist = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(lastIDPost);
+                    List<HinhAnhBaiDangEntities> hinhAnhExist = await hinhAnhBaiDangHelper.getHinhAnhBaiDangByIDPost(baiDangGlobal.IdBaiDang);
+                    int[] idxExist = new int[baiDangRequest.hinhAnh_BaiDangs.Count];
+                    foreach (var itemImg in hinhAnhExist)
+                    {
+                        hinhAnhBaiDangHelper.RemoveHinhAnh(itemImg);
+                    }
                     foreach (var item in baiDangRequest.hinhAnh_BaiDangs)
                     {
                         HinhAnhBaiDangEntities hinhAnhRequest = new HinhAnhBaiDangEntities();
@@ -4054,24 +3690,10 @@ namespace STU.LVTN.SERVER.Provider.Handler
                             hinhAnhRequest.VideoType = true;
                         else
                             hinhAnhRequest.VideoType = false;
+                        hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
 
-                        if (hinhAnhExist.Contains(hinhAnhRequest))
-                        {
-                            int idxHinhAnh = hinhAnhExist.IndexOf(hinhAnhRequest);
-                            hinhAnhExist.RemoveAt(idxHinhAnh);
-                        }
-                        else
-                        {
-                            hinhAnhBaiDangHelper.AddHinhAnh(hinhAnhRequest);
-                        }
                     }
-                    if (hinhAnhExist.Count > 0)
-                    {
-                        foreach (var item in hinhAnhExist)
-                        {
-                            item.IdSanPham = -1;
-                        }
-                    }
+
                     return true;
                 }
                 catch (Exception)
@@ -4080,7 +3702,6 @@ namespace STU.LVTN.SERVER.Provider.Handler
                 }
             }
         }
-        #endregion
         #endregion
 
         #region PrefightForUpdate
@@ -5424,6 +5045,7 @@ namespace STU.LVTN.SERVER.Provider.Handler
             }
             return result;
         }
+        #endregion
         #endregion
         #endregion
     }

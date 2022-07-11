@@ -40,7 +40,6 @@ namespace STU.LVTN.SERVER.Provider.BusinessLogic
             Dictionary<string, string> post = new Dictionary<string, string>();
             BaiDangDoAnThucPhamEntities entity = _context.BaiDangDoAnThucPhams.Where(item => item.IdBaiDang == idPostDetail).FirstOrDefault();
             post.Add("Loại thực phẩm: ", entity.LoaiThucPham.ToString());
-            post.Add("preflightKey: ", "doAnThucPham");
             return post;
         }
     }

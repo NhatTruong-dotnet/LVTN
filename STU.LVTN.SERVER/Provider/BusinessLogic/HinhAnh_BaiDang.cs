@@ -17,7 +17,11 @@ namespace STU.LVTN.SERVER.Provider.BusinessLogic
                 
             }
         }
-
+        public void RemoveHinhAnh(HinhAnhBaiDangEntities hinhAnhRequest)
+        {
+            _context.HinhAnhBaiDangs.Remove(hinhAnhRequest);
+            _context.SaveChanges();
+        }
         public async Task<List<HinhAnhBaiDangEntities>> getHinhAnhBaiDangByIDPost(int idPost)
         {
             List<HinhAnhBaiDangEntities> result = _context.HinhAnhBaiDangs.Where(item => item.IdSanPham == idPost).ToList();

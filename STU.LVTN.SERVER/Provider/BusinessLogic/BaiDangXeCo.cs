@@ -49,7 +49,6 @@ namespace STU.LVTN.SERVER.Provider.BusinessLogic
             post.Add("Nhiên liệu: ", entity.OtoNhieuLieu.ToString());
             post.Add("Kiểu dáng: ", entity.OtoKieuDang.ToString());
             post.Add("Tình trạng: ", entity.DaSuDung == true ? "Đã sử dụng" : "Mới");
-            post.Add("preflightKey: ", "xeCoOto");
             return post;
         }
         public Dictionary<string, string> getPost_XeMay_ByID(int? idPostDetail)
@@ -63,7 +62,6 @@ namespace STU.LVTN.SERVER.Provider.BusinessLogic
             post.Add("Số Km đã đi: ", entity.SoKmDaDi.ToString());
             post.Add("Loại xe: ", entity.XeMayLoaiXe.ToString());
             post.Add("Kiểu dáng: ", entity.OtoKieuDang.ToString());
-            post.Add("preflightKey: ", "xeCoXeMay");
 
             return post;
         }
@@ -77,7 +75,6 @@ namespace STU.LVTN.SERVER.Provider.BusinessLogic
             post.Add("Trọng tải: ", entity.XeTaiTrongTai.ToString());
             post.Add("Số Km đã đi: ", entity.SoKmDaDi.ToString());
             post.Add("Nhiên liệu: ", entity.XeTaiNhieuLieu.ToString());
-            post.Add("preflightKey: ", "xeCoXeTai");
             return post;
         }
         public Dictionary<string, string> getPost_XeDien_ByID(int? idPostDetail)
@@ -90,7 +87,6 @@ namespace STU.LVTN.SERVER.Provider.BusinessLogic
             post.Add("Bảo hàng: ", entity.XeDienDaSuDung == true ? "Đã sử dụng" : "Mới");
             if ((bool)entity.XeDienMienPhi)
                 post.Add("Giá: ", "Cho tặng miễn phí");
-            post.Add("preflightKey: ", "xeCoXeDien");
 
             return post;
         }
@@ -110,7 +106,6 @@ namespace STU.LVTN.SERVER.Provider.BusinessLogic
                 post.Add("Chất lượng khung: ", entity.XeDapChatLuongKhung );
             if ((bool)entity.XeDapMienPhi)
                 post.Add("Giá: ", "Cho tặng miễn phí");
-            post.Add("preflightKey: ", "xeCoXeDap");
 
             return post;
         }
@@ -127,8 +122,6 @@ namespace STU.LVTN.SERVER.Provider.BusinessLogic
                 post.Add("Số chỗ: ", entity.PhuongTienKhacSoChoXeKhachXeBuyt.ToString());
             post.Add("Nhiên liệu ", entity.PhuongTienKhacNhienLieu.ToString());
             post.Add("Tình trạng sử dụng: ", entity.DaSuDung == true ? "Đã sử dụng" : "Mới");
-            post.Add("preflightKey: ", "xeCoPhuongTienKhac");
-
             return post;
         }
         public Dictionary<string, string> getPost_PhuTungXe_ByID(int? idPostDetail)
@@ -138,7 +131,6 @@ namespace STU.LVTN.SERVER.Provider.BusinessLogic
             post.Add("Loại phụ tùng: ", entity.PhuTungXeLoaiPhuTung.ToString());
             if ((bool)entity.PhuTungXeMienPhi)
                 post.Add("Giá: ", "Cho tặng miễn phí");
-            post.Add("preflightKey: ", "xeCoPhuTungXe");
             return post;
         }
     }

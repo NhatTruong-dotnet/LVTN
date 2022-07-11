@@ -41,7 +41,6 @@ namespace STU.LVTN.SERVER.Provider.BusinessLogic
             BaiDangThuCungEntities entity = _context.BaiDangThuCungs.Where(item => item.IdBaiDang == idPostDetail).FirstOrDefault();
             post.Add("Giống thú cưng: ", entity.GiongThuCung.ToString());
             post.Add("Độ tuổi: ", entity.DoTuoi.ToString());
-            post.Add("preflightKey: ", "thuCungGaMeoThuCungKhac");
 
             return post;
         }
@@ -52,7 +51,6 @@ namespace STU.LVTN.SERVER.Provider.BusinessLogic
             post.Add("Giống thú cưng: ", entity.GiongThuCung.ToString());
             post.Add("Độ tuổi: ", entity.DoTuoi.ToString());
             post.Add("Kích cỡ: ", entity.ChoKichCo.ToString());
-            post.Add("preflightKey: ", "thuCungCho");
 
             return post;
         }
@@ -63,7 +61,6 @@ namespace STU.LVTN.SERVER.Provider.BusinessLogic
             post.Add("Giống thú cưng: ", entity.GiongThuCung.ToString());
             post.Add("Độ tuổi: ", entity.DoTuoi.ToString());
             post.Add("Giới tính: ", entity.ChimGioiTinh.ToString());
-            post.Add("preflightKey: ", "thuCungChim");
 
             return post;
         }

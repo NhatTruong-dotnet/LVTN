@@ -51,7 +51,6 @@ namespace STU.LVTN.SERVER.Provider.BusinessLogic
             post.Add("Loại hình chung cư: ", entity.CcLoaiHinh);
             post.Add("Số phòng ngủ: ", entity.CcSoPhongNgu.ToString());
             post.Add("Tình trạng chung cư: ", entity.CcChuaBanGiao == false ? "Chưa bàn giao" : "Đã bàn giao");
-            post.Add("preflightKey: ", "batDongSanCC");
             if (entity.soToilet != null)
                 post.Add("Số toilet: ", entity.soToilet.ToString());
             return post;
@@ -72,8 +71,6 @@ namespace STU.LVTN.SERVER.Provider.BusinessLogic
             post.Add("Chiều ngang: ", entity.NhaOChieuNgang.ToString());
             post.Add("Diện tích sử dụng : ", entity.DienTich.ToString());
             post.Add("Số phòng ngủ: ", entity.CcSoPhongNgu.ToString());
-            post.Add("preflightKey: ", "batDongSanNhaO");
-
             return post;
         }
         public Dictionary<string, string> getPost_Dat_ByID(int? idPostDetail)
@@ -96,7 +93,6 @@ namespace STU.LVTN.SERVER.Provider.BusinessLogic
             post.Add("Chiều dài: ", entity.DatChieuDai.ToString());
             if (entity.DatGiayToPhapLy != null)
                 post.Add("Giấy tờ pháp lý: ", entity.DatGiayToPhapLy);
-            post.Add("preflightKey: ", "batDongSanDat");
             return post;
         }
         public Dictionary<string, string> getPost_VanPhong_ByID(int? idPostDetail)
@@ -109,7 +105,6 @@ namespace STU.LVTN.SERVER.Provider.BusinessLogic
                 post.Add("Giấy tờ pháp lý: ", entity.VanPhongGiayToPhapLy);
             if (entity.VanPhongHuongCuaChinh != null)
                 post.Add("Hướng cửa chính: ", entity.VanPhongHuongCuaChinh);
-            post.Add("preflightKey: ", "batDongSanVanPhong");
             return post;
         }
     }

@@ -101,6 +101,8 @@ namespace STU.LVTN.SERVER.Provider.Handler
             userProfile.DanhGiaHeThong = nguoiDung.DanhGiaHeThong;
             userProfile.AnhDaiDienSource = nguoiDung.AnhDaiDienSource;
             userProfile.CMND = nguoiDung.SoCmnd;
+            userProfile.Active = nguoiDung.Active;
+            userProfile.LockTime = nguoiDung.LockTime != null ? $"{nguoiDung.LockTime:dd-MM-yyyy}" : "";
             return userProfile;
         }
 

@@ -6,6 +6,8 @@
         public string? Ten { get; set; }
         public string? DiaChi { get; set; }
         public string? DanhGiaHeThong { get; set; }
+        public bool? Active { get; set; }
+        public string? LockTime { get; set; }
         public string? CreatedDate { get; set; } 
         public string? AnhDaiDienSource { get; set; }
         public string? CMND { get; set; }

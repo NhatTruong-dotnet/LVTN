@@ -41,7 +41,6 @@ namespace STU.LVTN.SERVER.Provider.BusinessLogic
             BaiDangTuLanhEntities entity = _context.BaiDangTuLanhs.Where(item => item.IdBaiDang == idPostDetail).FirstOrDefault();
             post.Add("Hãng: ", entity.Hang.ToString());
             post.Add("Thể tích: ", entity.TuLanhTheTich);
-            post.Add("preflightKey: ", "baiDangTuLanh");
             return post;
         }
         public Dictionary<string, string> getPost_MayLanhDieuHoa_ByID(int? idPostDetail)
@@ -50,7 +49,6 @@ namespace STU.LVTN.SERVER.Provider.BusinessLogic
             BaiDangTuLanhEntities entity = _context.BaiDangTuLanhs.Where(item => item.IdBaiDang == idPostDetail).FirstOrDefault();
             post.Add("Hãng: ", entity.Hang.ToString());
             post.Add("Công suất: ", entity.MayLanhCongSuat);
-            post.Add("preflightKey: ", "baiDangMayLanh");
             return post;
         }
         public Dictionary<string, string> getPost_MayGiat_ByID(int? idPostDetail)
@@ -62,7 +60,6 @@ namespace STU.LVTN.SERVER.Provider.BusinessLogic
                 post.Add("Cửa máy giặt: ", entity.MayGiatCuaMayGiat);
             if (entity.MayGiatKhoiLuongGiat != null)
                 post.Add("Khối lượng giặt: ", entity.MayGiatKhoiLuongGiat);
-            post.Add("preflightKey: ", "baiDangMayGiat");
 
             return post;
         }
