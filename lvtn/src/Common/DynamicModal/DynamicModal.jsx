@@ -75,7 +75,7 @@ const ConfirmDialog = ({
                     </div>
                     <div className={styles.content}>
                         {Array.isArray(content)
-                            ? content.map(text => <p>{text}</p>)
+                            ? content.map(text => <p key={text}>{text}</p>)
                             : content}
                     </div>
                     <div className={styles.btnGroup}>

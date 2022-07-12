@@ -51,7 +51,6 @@ function CreatePost() {
         medias: [],
     })
 
-    const navigate = useNavigate()
     const isLogin = useSelector(selectLoginStatus)
     const dispatch = useDispatch()
     const isLoading = useSelector(selectPendingStatusPost)
@@ -160,7 +159,6 @@ function CreatePost() {
         if (validForm) {
             dispatch(createPostPending())
             const fileIdArray = await uploadImage(listFileDataMedia)
-            console.log(fileIdArray)
             const formRequestData = { ...formData, medias: fileIdArray }
             if (formMode === 'add') {
                 dispatch({
@@ -218,7 +216,6 @@ function CreatePost() {
             })
 
             const { hinhAnh_BaiDangs } = updatePost
-            console.log(hinhAnh_BaiDangs)
             const imageArray = []
             const videoArray = []
 
@@ -263,8 +260,6 @@ function CreatePost() {
     useEffect(() => {
         dispatch({ type: 'loadLocationData' })
     }, [])
-    // console.log(formData)
-    console.log(selectedCategory)
     return (
         <div className='grid wide'>
             <DynamicModal showModal={isLoading} loading />

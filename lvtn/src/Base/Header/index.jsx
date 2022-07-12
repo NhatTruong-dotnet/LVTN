@@ -13,6 +13,7 @@ import Notification from './Components/Notification'
 import { useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import {
+    selectLockMessage,
     selectLoginStatus,
     selectNumberPhone,
     selectStatus,
@@ -30,6 +31,7 @@ function Header(props) {
     const username = useSelector(selectUsername)
     const sdt = useSelector(selectNumberPhone)
     const isLogin = useSelector(selectLoginStatus)
+    const lockMessage = useSelector(selectLockMessage)
     const dispatch = useDispatch()
 
     const navigate = useNavigate()
@@ -63,6 +65,7 @@ function Header(props) {
 
     useEffect(() => {
         window.showLoginForm = () => setIsShowForm(true)
+        window.showLockAccountDialog = () => setShowConfirmDialog(true)
     }, [])
 
     return (
@@ -141,7 +144,7 @@ function Header(props) {
                 confirmDialogConfig={{
                     title: 'Tài khoản của bạn đã bị khóa',
                     content: [
-                        'Tài khoản của bạn đã bị khóa vì vi phạm tiêu chuẩn cộng đồng và sẽ được mở lại vào ngày 11/07/2022',
+                        lockMessage,
                         'Mọi thắc mắc liên hệ hotline: 0999999999',
                     ],
                     acceptText: 'Đồng ý',

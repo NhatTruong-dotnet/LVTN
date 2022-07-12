@@ -21,6 +21,8 @@ function* loginWorker({ formData }) {
     const { status, token, errorMessage } = yield call(Login, formData)
     if (status === 200) {
         yield put(loginSuccess({ token }))
+    } else if (status === 400) {
+        yield put(loginFail({ status, errorMessage }))
     } else {
         yield put(loginFail({ errorMessage }))
     }

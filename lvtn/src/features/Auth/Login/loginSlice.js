@@ -9,6 +9,7 @@ const initialState = {
     sdt: '',
     isLoading: false,
     role: null,
+    lockMessage: '',
 }
 
 function getUserInfoInToken(token) {
@@ -68,8 +69,14 @@ export const loginSlice = createSlice({
             console.log(exp)
         },
         loginFail: (state, action) => {
+            const { status, errorMessage } = action.payload
             state.isLoading = false
-            emitMessage('error', action.payload.errorMessage)
+            if (status === 400) {
+                window.showLockAccountDialog()
+                state.lockMessage = errorMessage
+            } else {
+                emitMessage('error', errorMessage)
+            }
         },
         logout: state => {
             state.isLogin = false
@@ -118,5 +125,6 @@ export const selectUsername = state => state.login.username
 export const selectNumberPhone = state => state.login.sdt
 export const selectLoginStatus = state => state.login.isLogin
 export const selectToken = state => state.login.token
+export const selectLockMessage = state => state.login.lockMessage
 
 export default reducer
