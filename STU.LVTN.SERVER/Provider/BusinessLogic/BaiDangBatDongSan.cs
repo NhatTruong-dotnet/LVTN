@@ -59,8 +59,8 @@ namespace STU.LVTN.SERVER.Provider.BusinessLogic
         {
             Dictionary<string, string> post = new Dictionary<string, string>();
             BaiDangBatDongSanEntities entity = _context.BaiDangBatDongSans.Where(item => item.IdBaiDang == idPostDetail).FirstOrDefault();
-            post.Add("Diện tích đất : ", entity.NhaOSoPhongNgu.ToString());
-            post.Add("Số phòng ngủ: ", entity.DienTich.ToString());
+            post.Add("Diện tích đất : ", entity.DienTich.ToString());
+            post.Add("Số phòng ngủ: ", entity.NhaOSoPhongNgu.ToString());
             if (entity.NhaOGiayToPhapLy != null)
                 post.Add("Giấy tờ pháp lí: ", entity.NhaOGiayToPhapLy);
             post.Add("Loại hình nhà ở: ", entity.NhaOLoaiHinh);
@@ -70,7 +70,7 @@ namespace STU.LVTN.SERVER.Provider.BusinessLogic
                 post.Add("Đặc điểm nhà đất: ", entity.NhaOHemXeHoi == true ? "Hẻm xe hơi" : entity.NhaONoHau == true ? "Nở hậu":"");
             post.Add("Chiều ngang: ", entity.NhaOChieuNgang.ToString());
             post.Add("Diện tích sử dụng : ", entity.DienTich.ToString());
-            post.Add("Số phòng ngủ: ", entity.CcSoPhongNgu.ToString());
+            
             return post;
         }
         public Dictionary<string, string> getPost_Dat_ByID(int? idPostDetail)
@@ -100,7 +100,7 @@ namespace STU.LVTN.SERVER.Provider.BusinessLogic
             Dictionary<string, string> post = new Dictionary<string, string>();
             BaiDangBatDongSanEntities entity = _context.BaiDangBatDongSans.Where(item => item.IdBaiDang == idPostDetail).FirstOrDefault();
             post.Add("Diện tích: ", entity.DienTich.ToString());
-            post.Add("Diện tích: ", entity.DienTich.ToString());
+            
             if (entity.VanPhongGiayToPhapLy != null)
                 post.Add("Giấy tờ pháp lý: ", entity.VanPhongGiayToPhapLy);
             if (entity.VanPhongHuongCuaChinh != null)

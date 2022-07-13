@@ -61,7 +61,7 @@ namespace STU.LVTN.SERVER.Provider.BusinessLogic
             post.Add("Dòng xe: ", entity.XeMayDongXe.ToString());
             post.Add("Số Km đã đi: ", entity.SoKmDaDi.ToString());
             post.Add("Loại xe: ", entity.XeMayLoaiXe.ToString());
-            post.Add("Kiểu dáng: ", entity.OtoKieuDang.ToString());
+            
 
             return post;
         }
@@ -85,8 +85,9 @@ namespace STU.LVTN.SERVER.Provider.BusinessLogic
             post.Add("Xuất xứ: ", entity.Xuatxu.ToString());
             post.Add("Hãng xe ", entity.HangXe.ToString());
             post.Add("Bảo hàng: ", entity.XeDienDaSuDung == true ? "Đã sử dụng" : "Mới");
-            if ((bool)entity.XeDienMienPhi)
-                post.Add("Giá: ", "Cho tặng miễn phí");
+            if (entity.XeDienMienPhi != null)
+                if ((bool)entity.XeDienMienPhi) 
+                    post.Add("Giá: ", "Cho tặng miễn phí");
 
             return post;
         }
@@ -95,7 +96,6 @@ namespace STU.LVTN.SERVER.Provider.BusinessLogic
             Dictionary<string, string> post = new Dictionary<string, string>();
             BaiDangXeCoEntities entity = _context.BaiDangXeCos.Where(item => item.IdBaiDang == idPostDetail).FirstOrDefault();
             post.Add("Dòng xe đạp thể thao: ", entity.XeDapLoaiXe.ToString());
-            post.Add("Tình trạng sử dụng: ", entity.Xuatxu.ToString());
             post.Add("Hãng xe ", entity.HangXe.ToString());
             post.Add("Tình trạng sử dụng: ", entity.XeDienDaSuDung == true ? "Đã sử dụng" : "Mới");
             if (entity.XeDapBaoHang != null)
@@ -104,8 +104,9 @@ namespace STU.LVTN.SERVER.Provider.BusinessLogic
                 post.Add("Kích thước khung: ", entity.XeDapKichThuocKhung );
             if (entity.XeDapChatLuongKhung != null)
                 post.Add("Chất lượng khung: ", entity.XeDapChatLuongKhung );
-            if ((bool)entity.XeDapMienPhi)
-                post.Add("Giá: ", "Cho tặng miễn phí");
+            if (entity.XeDienMienPhi != null)
+                if ((bool)entity.XeDienMienPhi)
+                    post.Add("Giá: ", "Cho tặng miễn phí");
 
             return post;
         }
@@ -129,8 +130,9 @@ namespace STU.LVTN.SERVER.Provider.BusinessLogic
             Dictionary<string, string> post = new Dictionary<string, string>();
             BaiDangXeCoEntities entity = _context.BaiDangXeCos.Where(item => item.IdBaiDang == idPostDetail).FirstOrDefault();
             post.Add("Loại phụ tùng: ", entity.PhuTungXeLoaiPhuTung.ToString());
-            if ((bool)entity.PhuTungXeMienPhi)
-                post.Add("Giá: ", "Cho tặng miễn phí");
+            if (entity.XeDienMienPhi != null)
+                if ((bool)entity.XeDienMienPhi)
+                    post.Add("Giá: ", "Cho tặng miễn phí");
             return post;
         }
     }
