@@ -75,10 +75,11 @@ function ImagePicker({ listPreviewImage, deleteFile, multiple, style, title }) {
         ) : (
             <label htmlFor='filePicker'>
                 <img
-                    width='350px'
+                    width='100%'
                     height={'225px'}
                     src={listPreviewImage[0].url}
-                    alt=''
+                    alt='preview'
+                    style={{ objectFit: 'cover', borderRadius: 10 }}
                 />
             </label>
         )
@@ -117,7 +118,7 @@ function ImagePicker({ listPreviewImage, deleteFile, multiple, style, title }) {
                         </g>
                     </svg>
                     <div className={styles.text}>
-                        {title || 'Đăng từ 1 đến 4 hình'}
+                        {title || 'Đăng từ 1 đến 6 hình'}
                     </div>
                 </label>
             )}

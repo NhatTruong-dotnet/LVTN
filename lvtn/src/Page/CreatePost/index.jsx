@@ -143,9 +143,9 @@ function CreatePost() {
             }
         }
 
-        if (listPreviewImage.length > 4) {
+        if (listPreviewImage.length > 6) {
             validForm = false
-            emitMessage('error', 'Bạn chỉ có thể chọn tối đa 5 hình')
+            emitMessage('error', 'Bạn chỉ có thể chọn tối đa 6 hình')
         } else if (listPreviewImage.length === 0) {
             validForm = false
             emitMessage('error', 'Bạn chưa chọn hình')

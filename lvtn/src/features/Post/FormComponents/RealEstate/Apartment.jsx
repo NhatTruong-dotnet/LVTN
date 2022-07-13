@@ -16,7 +16,6 @@ function Apartment({ formData, handleFormDataChange }) {
                         onChange={e =>
                             handleFormDataChange('tenDuAn', e.target.value)
                         }
-                        test
                     />
                 </div>
                 <AddressPicker

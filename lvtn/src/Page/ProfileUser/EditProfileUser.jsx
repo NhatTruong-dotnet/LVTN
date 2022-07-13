@@ -50,7 +50,6 @@ function EditProfileUser(props) {
         if (type.match(/image/)) {
             const url = URL.createObjectURL(file)
             setListPreviewImage([
-                ...listPreviewImage,
                 { indexInFileData: listFileDataMedia.length, url },
             ])
         } else {
@@ -59,7 +58,7 @@ function EditProfileUser(props) {
         }
 
         convertFile(e.target.files[0], dataSend => {
-            setListFileDataMedia([...listFileDataMedia, dataSend])
+            setListFileDataMedia([dataSend])
         })
     }
 
@@ -114,7 +113,7 @@ function EditProfileUser(props) {
                                 name='filePicker'
                                 id='filePicker'
                                 hidden
-                                accept='image/*'
+                                accept='ima ge/*'
                                 onChange={handleSelectMediaFile}
                             />
                             <ImagePicker
@@ -165,25 +164,6 @@ function EditProfileUser(props) {
                                     }
                                     value={formData.cmnd}
                                 />
-                                {/* <div
-                                    className={styles.group}
-                                    style={{
-                                        display: 'flex',
-                                        justifyContent: 'space-between',
-                                        marginTop: 20,
-                                    }}
-                                >
-                                    <ImagePicker
-                                        listPreviewImage={listPreviewImage}
-                                        deleteFile={deleteFile}
-                                        style={{ width: 350 }}
-                                    />
-                                    <ImagePicker
-                                        listPreviewImage={listPreviewImage}
-                                        deleteFile={deleteFile}
-                                        style={{ width: 350 }}
-                                    />
-                                </div> */}
                             </div>
                         </FormGroup>
                         <div style={{ textAlign: 'right' }}>

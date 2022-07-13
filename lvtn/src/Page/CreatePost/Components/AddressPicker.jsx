@@ -122,7 +122,6 @@ function AddressPicker({ formData, handleFormDataChange }) {
             />
 
             <FormInput
-                require
                 label='Địa chỉ cụ thể'
                 value={formData.diaChiCuThe}
                 onChange={e =>

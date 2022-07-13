@@ -163,7 +163,7 @@ function* createPost({ formData }) {
         token
     )
     if (status === 200) {
-        window.invokeMethod('NotifyAdmin', sdt)
+        window.notifyInvokeMethod('NotifyAdmin', sdt)
         yield put(createPostSuccess())
     } else if (status === 401) {
         yield put(
@@ -175,8 +175,6 @@ function* createPost({ formData }) {
     } else {
         yield put(createPostFail({ errorMessage }))
     }
-
-    window.invokeMethod('NotifyAdmin', sdt)
 }
 
 function* loadLocationDataSaga() {

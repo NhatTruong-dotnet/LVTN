@@ -47,10 +47,24 @@ function App() {
             })
         }
     }
+    const listenNotifyConnection = (eventName, callback) => {
+        if (notifyConnection) {
+            notifyConnection.on(eventName, res => {
+                callback(res)
+            })
+        }
+    }
 
     const invokeMethod = async (method, data) => {
         try {
             await connection.invoke(method, data)
+        } catch (e) {
+            console.log(e)
+        }
+    }
+    const invokeMethodNotifyConnection = async (method, data) => {
+        try {
+            await notifyConnection.invoke(method, data)
         } catch (e) {
             console.log(e)
         }
@@ -107,8 +121,8 @@ function App() {
     // set global signalR notify method
     useEffect(() => {
         window.notifyConnection = connection
-        window.notifyInvokeMethod = invokeMethod
-        window.notifyListen = listen
+        window.notifyInvokeMethod = invokeMethodNotifyConnection
+        window.notifyListen = listenNotifyConnection
     }, [notifyConnection])
 
     // set global signalR chat method

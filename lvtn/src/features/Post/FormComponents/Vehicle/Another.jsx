@@ -55,7 +55,6 @@ function Another({ formData, handleFormDataChange }) {
                                 { value: 'Xe đông lạnh' },
                                 { value: 'Xe hút chất thải' },
                                 { value: 'Xe Lam' },
-                                { value: 'Xe Lam' },
                                 { value: 'Xe Lu' },
                                 { value: 'Xe máy cày' },
                                 { value: 'Xe nâng' },
