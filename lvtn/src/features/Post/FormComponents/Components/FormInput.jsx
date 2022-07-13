@@ -103,7 +103,7 @@ function FormInput({
                         validateFormInput(value)
                         setTimeout(() => {
                             setDisplayAutoComplete(false)
-                        }, 1000)
+                        }, 500)
                     }}
                     onFocus={() => {
                         setDisplayAutoComplete(true)

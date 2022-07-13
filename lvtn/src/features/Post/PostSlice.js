@@ -112,11 +112,18 @@ const postSlice = createSlice({
         // --------------------------------------------------------
         setLocation(state, action) {
             const locationData = action.payload.locationData
+
             const locationArray = []
             for (let key in locationData) {
                 locationArray.push(locationData[key])
             }
-            state.locationData = locationArray
+            const priorityLocation = locationArray.filter(
+                ({ name }) => name === 'Hà Nội' || name === 'Hồ Chí Minh'
+            )
+            const restLocation = locationArray.filter(
+                ({ name }) => name !== 'Hà Nội' || name !== 'Hồ Chí Minh'
+            )
+            state.locationData = [...priorityLocation, ...restLocation]
         },
         // --------------------------------------------------------
         getUpdatePostDataPending(state, action) {
