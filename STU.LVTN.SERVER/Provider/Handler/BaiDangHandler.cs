@@ -86,7 +86,7 @@ namespace STU.LVTN.SERVER.Provider.Handler
             postDictionary.Add("tieuDe", post.TieuDe);
             postDictionary.Add("IsReviewed", post.isReviewed.ToString());
             postDictionary.Add("moTa", post.Mota);
-            postDictionary.Add("gia", post.Gia.ToString());
+            postDictionary.Add("gia", String.Format("{0:n0}", double.Parse(post.Gia.ToString())) );
             postDictionary.Add("sdt", post.SdtNguoiBan);
             postDictionary.Add("idDanhMuc", post.IdDanhMucCon.ToString());
             postDictionary.Add("khuVuc", post.PhuongXa + ", " + post.QuanHuyen + ", " + post.ThanhPho);

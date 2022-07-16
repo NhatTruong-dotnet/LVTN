@@ -44,9 +44,9 @@ namespace STU.LVTN.SERVER.Provider.BusinessLogic
             post.Add("Ngành nghề: ", entity.NganhNghe);
             post.Add("Loại công việc: ", entity.LoaiCongViec);
             if (entity.LuongToiThieu != null)
-                post.Add("Lương tối thiểu: ", entity.LuongToiThieu.ToString());
+                post.Add("Lương tối thiểu: ", String.Format("{0:n0}", double.Parse(entity.LuongToiThieu?.ToString())) );
             if (entity.LuongToiDa != null)
-                post.Add("Lương tối đa: ", entity.LuongToiDa.ToString());
+                post.Add("Lương tối đa: ", String.Format("{0:n0}", double.Parse(entity.LuongToiDa?.ToString())));
             if (entity.Nam == null)
                 post.Add("Giới tính: ","Không yêu cầu");
             else

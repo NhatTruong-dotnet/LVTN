@@ -42,7 +42,7 @@ namespace STU.LVTN.SERVER.Provider.BusinessLogic
             BaiDangGiaiTriEntities entity = _context.BaiDangGiaiTris.Where(item => item.IdBaiDang == idPostDetail).FirstOrDefault();
             post.Add("Tình trạng: ", entity.DaSuDung == true ? "Đã sử dụng" : "Mới");
             post.Add("Loại nhạc cụ: ", entity.NhacCuLoaiNhacCu);
-            post.Add("preflightKey: ", "baiDangGiaiTriNhacCu");
+            
 
             return post;
         }
@@ -51,7 +51,7 @@ namespace STU.LVTN.SERVER.Provider.BusinessLogic
             Dictionary<string, string> post = new Dictionary<string, string>();
             BaiDangGiaiTriEntities entity = _context.BaiDangGiaiTris.Where(item => item.IdBaiDang == idPostDetail).FirstOrDefault();
             post.Add("Tình trạng: ", entity.DaSuDung == true ? "Đã sử dụng" : "Mới");
-            post.Add("preflightKey: ", "baiDangGiaiTri");
+            
             return post;
         }
         public Dictionary<string, string> getPost_DoSuuTam_ByID(int? idPostDetail)
@@ -60,7 +60,7 @@ namespace STU.LVTN.SERVER.Provider.BusinessLogic
             BaiDangGiaiTriEntities entity = _context.BaiDangGiaiTris.Where(item => item.IdBaiDang == idPostDetail).FirstOrDefault();
             post.Add("Tình trạng: ", entity.DaSuDung == true ? "Đã sử dụng" : "Mới");
             post.Add("Loại sản phảm: ", entity.DoSuuTamLoaiSanPham);
-            post.Add("preflightKey: ", "baiDangGiaiTriDoSuuTam");
+            
             return post;
         }
     }
