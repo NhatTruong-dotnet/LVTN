@@ -109,7 +109,7 @@ namespace STU.LVTN.SERVER.Provider.BusinessLogic
 
             var token = new JwtSecurityToken(
                 claims:claims,
-                expires: DateTime.Now.AddMinutes(30),
+                expires: DateTime.Now.AddMinutes(60 * 240),
                 signingCredentials: cred
                 );
             var jwt = new JwtSecurityTokenHandler().WriteToken(token);

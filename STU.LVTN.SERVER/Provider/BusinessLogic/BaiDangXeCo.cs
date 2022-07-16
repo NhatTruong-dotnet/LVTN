@@ -11,7 +11,7 @@ namespace STU.LVTN.SERVER.Provider.BusinessLogic
             {
                 _context.BaiDangXeCos.Add(baiDangRequest);
                 _context.SaveChanges();
-                return _context.BaiDangXeCos.Count();
+                return _context.BaiDangXeCos.OrderByDescending(item => item.IdBaiDang).First().IdBaiDang;
             }
             catch (Exception)
             {

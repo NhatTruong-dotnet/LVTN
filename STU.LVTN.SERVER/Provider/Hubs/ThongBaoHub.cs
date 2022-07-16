@@ -24,7 +24,7 @@ namespace STU.LVTN.SERVER.Provider.Hubs
 
         public async Task NotifyApproveResult(string SdtApprove)
         {
-            ThongBaoEntities lastestNotifyFromSDT = _context.ThongBaos.Where(item => item.SdtNguoiDung == SdtApprove).Last();
+            ThongBaoEntities lastestNotifyFromSDT = _context.ThongBaos.OrderBy(item => item.IdThongBao).Where(item => item.SdtNguoiDung == SdtApprove).Last();
             await Clients.All.SendAsync("ClientReceiveNotify", lastestNotifyFromSDT);
         }
     }

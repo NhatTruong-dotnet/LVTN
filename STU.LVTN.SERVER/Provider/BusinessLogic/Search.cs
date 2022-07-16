@@ -1550,7 +1550,7 @@ namespace STU.LVTN.SERVER.Provider.BusinessLogic
         {
             List<BaiDangHomePageDTO> result = new List<BaiDangHomePageDTO>();
             foreach (BaiDangEntities entity in _context.BaiDangs.Where(item => item.SdtNguoiBan == sdt).ToList())
-            {
+            { 
                 BaiDangHomePageDTO post = new BaiDangHomePageDTO();
                 post.Gia = entity.Gia;
                 post.TieuDe = entity.TieuDe;

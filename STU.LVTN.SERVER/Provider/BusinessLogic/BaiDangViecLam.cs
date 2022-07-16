@@ -44,9 +44,9 @@ namespace STU.LVTN.SERVER.Provider.BusinessLogic
             post.Add("Ngành nghề: ", entity.NganhNghe);
             post.Add("Loại công việc: ", entity.LoaiCongViec);
             if (entity.LuongToiThieu != null)
-                post.Add("Bảo hành: ", entity.LuongToiThieu.ToString());
+                post.Add("Lương tối thiểu: ", entity.LuongToiThieu.ToString());
             if (entity.LuongToiDa != null)
-                post.Add("Bảo hành: ", entity.LuongToiDa.ToString());
+                post.Add("Lương tối đa: ", entity.LuongToiDa.ToString());
             if (entity.Nam == null)
                 post.Add("Giới tính: ","Không yêu cầu");
             else
@@ -55,7 +55,7 @@ namespace STU.LVTN.SERVER.Provider.BusinessLogic
                 post.Add("Học vấn tối thiểu: ", entity.HocVanToiThieu);
             if (entity.KinhNghiem != null)
                 post.Add("Yêu cầu kinh nghiệm: ", entity.KinhNghiem);
-            if (entity.ChungChi != null)
+            if (entity.ChungChi != null && entity.ChungChi != String.Empty)
                 post.Add("Yêu cầu chứng chỉ: ", entity.ChungChi);
             return post;
         }

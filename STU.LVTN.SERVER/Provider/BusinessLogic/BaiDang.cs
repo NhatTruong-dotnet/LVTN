@@ -22,6 +22,7 @@ namespace STU.LVTN.SERVER.Provider.BusinessLogic
                 BaiDangEntities baiDang = _context.BaiDangs.Where(item => item.IdBaiDang == approveResult.IDPost).FirstOrDefault();
                 baiDang.TrangThai = approveResult.ApproveResult;
                 baiDang.isReviewed = true;
+                baiDang.AnTin = false;
                 _context.BaiDangs.Update(baiDang);
 
                 ThongBaoEntities thongBao = new ThongBaoEntities();
