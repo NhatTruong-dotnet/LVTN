@@ -1,8 +1,7 @@
 import React from 'react'
 import styles from './picker.module.css'
-import { MdOutlineKeyboardArrowRight } from 'react-icons/md'
 import { FiCheck } from 'react-icons/fi'
-import { FaTimes, FaArrowLeft } from 'react-icons/fa'
+import { FaTimes } from 'react-icons/fa'
 import { useState } from 'react'
 import DynamicModal from '../../../../Common/DynamicModal/DynamicModal'
 import clsx from 'clsx'
@@ -97,7 +96,9 @@ function SelectPicker({
                             }}
                         >
                             <div className={styles.nameWrap}>
-                                <span className={styles.name}>{text}</span>
+                                <span className={styles.name}>
+                                    {text || value}
+                                </span>
                             </div>
 
                             <div
