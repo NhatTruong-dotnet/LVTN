@@ -122,7 +122,8 @@ function Laptop({ formData, handleFormDataChange }) {
                 />
 
                 <FormInput
-                    label='Loại ổ cứng (Không bắt buộc)'
+                    require
+                    label='Loại ổ cứng '
                     value={formData.laptopHdd}
                     onChange={e =>
                         handleFormDataChange('laptopHdd', e.target.value)

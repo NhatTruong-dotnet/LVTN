@@ -113,12 +113,11 @@
 .conversation {
     padding: 50px 30px 10px 30px;
     display: flex;
+    flex: 1;
     flex-direction: column;
     overflow-y: auto;
 }
 
-.message {
-}
 .message > .text {
     max-width: 500px;
 }

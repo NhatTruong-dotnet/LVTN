@@ -20,6 +20,7 @@ import {
     selectCurrentConversationId,
     selectReceiveUserSdt,
     setCurrentConversationId,
+    setReceiveUserInfo,
 } from './ChatSlice'
 
 export default function* chatSaga() {
@@ -32,8 +33,8 @@ export default function* chatSaga() {
 function* getAllConversationSaga() {
     const token = yield select(selectToken)
     const sdt = yield select(selectNumberPhone)
-    const receiveUserSdt = yield select(selectReceiveUserSdt)
-    const currentConversationId = yield select(selectCurrentConversationId)
+    // const receiveUserSdt = yield select(selectReceiveUserSdt)
+    // const currentConversationId = yield select(selectCurrentConversationId)
     if (!token || !sdt) {
         return
     }
@@ -48,18 +49,35 @@ function* getAllConversationSaga() {
 
     if (status === 200) {
         yield put(getAllConversationSuccess({ listConversation }))
-        const selectedConversation = listConversation.find(
-            ({ sdtNguoiMua }) => sdtNguoiMua === receiveUserSdt
-        )
-        if (selectedConversation) {
+        if (Array.isArray(listConversation) && listConversation.length !== 0) {
+            const currentConversation = listConversation[0]
             yield put(
-                setCurrentConversationId(selectedConversation.conversationId)
+                setCurrentConversationId(currentConversation.conversationId)
             )
-        } else if (currentConversationId === 0) {
             yield put(
-                setCurrentConversationId(listConversation[0].conversationId)
+                setReceiveUserInfo({
+                    userInfo: {
+                        ten: currentConversation.ten,
+                        soDienThoai: currentConversation.sdtNguoiMua,
+                        anhDaiDienSource:
+                            currentConversation.imageSourceNguoiMua,
+                    },
+                })
             )
+            // yield put( setReceiveUserInfo)
         }
+        // const selectedConversation = listConversation.find(
+        //     ({ sdtNguoiMua }) => sdtNguoiMua === receiveUserSdt
+        // )
+        // if (selectedConversation) {
+        //     yield put(
+        //         setCurrentConversationId(selectedConversation.conversationId)
+        //     )
+        // } else if (currentConversationId === 0) {
+        //     yield put(
+        //         setCurrentConversationId(listConversation[0].conversationId)
+        //     )
+        // }
     } else if (status === 401) {
         yield put(
             getAllConversationFail({
@@ -76,7 +94,7 @@ function* getAllMessageSaga({ id }) {
     const { listMessage, status, errorMessage } = yield call(getAllMessage, id)
     if (status === 200) {
         yield put(getAllMessageSuccess({ listMessage }))
-        localStorage.setItem('lastConversation', id)
+        // localStorage.setItem('lastConversation', id)
     } else if (status === 401) {
         yield put(
             getAllMessageFail({

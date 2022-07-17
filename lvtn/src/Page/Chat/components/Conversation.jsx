@@ -13,8 +13,6 @@ function Conversation({ listPreviewImage, deleteFile }) {
     const listMessage = useSelector(selectListMessage)
     const conversationRef = useRef()
 
-    useEffect(() => {}, [])
-
     useEffect(() => {
         conversationRef.current.scrollTop = conversationRef.current.scrollHeight
     })

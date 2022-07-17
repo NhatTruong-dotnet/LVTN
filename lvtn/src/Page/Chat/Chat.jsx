@@ -84,7 +84,6 @@ function Chat(props) {
         newListFileDataMedia.splice(indexInFileData, 1)
         setListFileDataMedia(newListFileDataMedia)
     }
-    console.log(listFileDataMedia)
     const handleSelectConversation = ({
         id,
         ten,
@@ -103,30 +102,30 @@ function Chat(props) {
         )
     }
 
-    useEffect(() => {
-        const currentConversationId = localStorage.getItem('lastConversation')
-        if (currentConversationId && !receiveUserSdt) {
-            dispatch(setCurrentConversationId(currentConversationId))
-            const receiveUser = listConversation.find(
-                ({ conversationId }) =>
-                    conversationId === +currentConversationId
-            )
-            if (receiveUser) {
-                console.log('dispatch')
-                dispatch(
-                    setReceiveUserInfo({
-                        userInfo: {
-                            ten: receiveUser.ten,
-                            soDienThoai: receiveUser.sdtNguoiMua,
-                            anhDaiDienSource: receiveUser.imageSourceNguoiMua,
-                        },
-                    })
-                )
-            }
-        } else if (!currentConversationId && !receiveUserSdt) {
-            dispatch(setCurrentConversationId(0))
-        }
-    }, [listConversation])
+    // useEffect(() => {
+    //     const currentConversationId = localStorage.getItem('lastConversation')
+    //     if (currentConversationId && !receiveUserSdt) {
+    //         // dispatch(setCurrentConversationId(currentConversationId))
+    //         const receiveUser = listConversation.find(
+    //             ({ conversationId }) =>
+    //                 conversationId === +currentConversationId
+    //         )
+    //         if (receiveUser) {
+    //             console.log('dispatch')
+    //             dispatch(
+    //                 setReceiveUserInfo({
+    //                     userInfo: {
+    //                         ten: receiveUser.ten,
+    //                         soDienThoai: receiveUser.sdtNguoiMua,
+    //                         anhDaiDienSource: receiveUser.imageSourceNguoiMua,
+    //                     },
+    //                 })
+    //             )
+    //         }
+    //     } else if (!currentConversationId && !receiveUserSdt) {
+    //         // dispatch(setCurrentConversationId(0))
+    //     }
+    // }, [listConversation])
 
     useEffect(() => {
         dispatch({ type: 'getAllConversation' })
@@ -140,6 +139,12 @@ function Chat(props) {
 
     useEffect(() => {
         clearAllImageSelect()
+    }, [])
+
+    useEffect(() => {
+        if (!isLogin) {
+            window.showLoginForm()
+        }
     }, [])
 
     // useEffect(()=>{

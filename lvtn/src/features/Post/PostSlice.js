@@ -121,7 +121,7 @@ const postSlice = createSlice({
                 ({ name }) => name === 'Hà Nội' || name === 'Hồ Chí Minh'
             )
             const restLocation = locationArray.filter(
-                ({ name }) => name !== 'Hà Nội' || name !== 'Hồ Chí Minh'
+                ({ name }) => name !== 'Hà Nội' && name !== 'Hồ Chí Minh'
             )
             state.locationData = [...priorityLocation, ...restLocation]
         },

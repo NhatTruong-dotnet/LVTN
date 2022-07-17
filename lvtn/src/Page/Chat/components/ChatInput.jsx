@@ -6,6 +6,8 @@ import { ImAttachment } from 'react-icons/im'
 import { TiDeleteOutline } from 'react-icons/ti'
 import { useDispatch } from 'react-redux'
 import { uploadImage } from '../../../Utils/PostUtils'
+import { selectLoginStatus } from '../../../features/Auth/Login/loginSlice'
+import { useSelector } from 'react-redux'
 
 function ChatInput({
     listPreviewImage,
@@ -16,8 +18,12 @@ function ChatInput({
 }) {
     const [messageText, setTextMessage] = useState('')
     const dispatch = useDispatch()
+    const isLogin = useSelector(selectLoginStatus)
 
     const handleAddNewMessage = async () => {
+        if (!isLogin) {
+            window.showLoginForm()
+        }
         const responseArray = await uploadImage(listFileDataMedia)
         let imageId = ''
         if (responseArray.length !== 0) {

@@ -256,7 +256,15 @@ function mappingFormData({ ...formData }, numberPhone) {
         sdtNguoiMua: '',
         tieuDe: formData.title,
         mota: formData.description,
-        idDanhMucCon: subCategoryId || formData.idDanhMucCon,
+        idDanhMucCon:
+            subCategoryId ||
+            formData.idDanhMucCon ||
+            formData.categoryId ||
+            formData.idDanhMucCha,
         hinhAnh_BaiDangs: formData.medias,
+        baoHanh: formData.baoHanh === 'Còn bảo hành' ? true : false,
+        mayTinhBang4g: formData.mayTinhBang4g === 'Còn bảo hành' ? true : false,
+        laptopHdd: formData.laptopHdd === 'HDD' ? true : false,
+        mayTinhDeBanHdd: formData.mayTinhDeBanHdd === 'HDD' ? true : false,
     }
 }

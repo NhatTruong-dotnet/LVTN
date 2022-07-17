@@ -64,6 +64,18 @@ const chatSlice = createSlice({
             state.currentConversation.listMessage.pop()
             emitMessage('error', action.payload.errorMessage)
         },
+        // -------------------------------------------
+        setDefaultConversation: state => {
+            state.currentConversation = {
+                conversationId: '',
+                receiveUserInfo: {
+                    ten: '',
+                    soDienThoai: '',
+                    anhDaiDienSource: '',
+                },
+                listMessage: [],
+            }
+        },
     },
 })
 
@@ -85,6 +97,8 @@ export const {
     addMessage,
     addNewMessageApiSuccess,
     addNewMessageApiFail,
+    // ------------------------
+    setDefaultConversation,
 } = actions
 
 export const selectListConversation = state => state.chat.listConversation

@@ -1,4 +1,5 @@
-import { call, put, takeLeading, select } from 'redux-saga/effects'
+import { call, put, takeLeading, select, takeEvery } from 'redux-saga/effects'
+import { setDefaultConversation } from '../../Chat/ChatSlice'
 import { changePassword, Login } from './loginApi'
 import {
     loginPending,
@@ -14,6 +15,11 @@ import {
 export default function* loginWatcher() {
     yield takeLeading('USER_LOGIN', loginWorker)
     yield takeLeading('changePassword', changePasswordSaga)
+    yield takeEvery('logout', logoutSaga)
+}
+
+function* logoutSaga() {
+    yield put(setDefaultConversation())
 }
 
 function* loginWorker({ formData }) {

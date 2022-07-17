@@ -98,7 +98,7 @@ function AuthForm({ setIsShowForm }) {
                     {formMode === 'login' ? 'Đăng nhập' : 'Đăng ký'}
                 </button>
             </form>
-            <button
+            {/* <button
                 className={clsx(styles.loginButton, styles.google)}
                 style={{ display: 'block' }}
             >
@@ -108,7 +108,7 @@ function AuthForm({ setIsShowForm }) {
             <button className={clsx(styles.loginButton, styles.facebook)}>
                 <FaFacebook className={styles.socialIcon} />
                 Đăng nhập với Facebook
-            </button>
+            </button> */}
             <div className={styles.switchForm}>
                 {formMode === 'login' ? (
                     <>
