@@ -43,7 +43,7 @@ function* filterPost({ searchCategory, address, params }) {
         quanHuyen ? quanHuyen + ';' : ''
     }${phuongXa ? phuongXa + ';' : ''}`
 
-    const queryStringBeforeAddParams = queryString
+    const queryStringBeforeAddParams = (queryString += '/')
 
     for (let key in params) {
         if (
@@ -57,7 +57,7 @@ function* filterPost({ searchCategory, address, params }) {
                 }`
             }
         } else {
-            queryString += `${params[key] ? '/' + params[key] + ';' : ''}`
+            queryString += `${params[key] ? params[key] + ';' : ''}`
         }
     }
     if (queryStringBeforeAddParams === queryString) {

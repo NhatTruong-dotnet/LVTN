@@ -43,6 +43,7 @@ const postSlice = createSlice({
             state.formMode = 'add'
             state.updatePost = {}
             emitMessage('success', 'Chỉnh sửa tin thành công')
+            // window.navigate('/')
         },
         editPostFail: (state, action) => {
             state.isLoading = false

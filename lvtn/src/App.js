@@ -1,5 +1,5 @@
 import Header from './Base/Header'
-import { Routes, Route, useLocation } from 'react-router-dom'
+import { Routes, Route, useLocation, useNavigate } from 'react-router-dom'
 import { lazy, useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { loginWithToken } from './features/Auth/Login/loginSlice'
@@ -21,6 +21,7 @@ function App() {
     const [notifyConnection, setNotifyConnection] = useState(null)
     const dispatch = useDispatch()
     const { pathname } = useLocation()
+    const navigate = useNavigate()
 
     const connectSignalRServer = async (
         url,
@@ -91,6 +92,9 @@ function App() {
     const receiveNotify = notifyObject => {
         console.log(notifyObject)
     }
+    useEffect(() => {
+        window.navigate = navigate
+    }, [])
     // init wish list
     useEffect(() => {
         const wishList = JSON.parse(localStorage.getItem('wishList'))
