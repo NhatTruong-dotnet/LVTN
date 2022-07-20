@@ -84,7 +84,7 @@ function* editPostSaga({ formData, preflightKey }) {
     if (status === 200) {
         window.invokeMethod('NotifyAdmin', sdt)
         yield put(editPostSuccess())
-        window.navigate('/')
+        window.navigate(-1)
     } else if (status === 401) {
         yield put(
             editPostFail({
