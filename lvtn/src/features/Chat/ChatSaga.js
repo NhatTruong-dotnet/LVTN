@@ -18,9 +18,11 @@ import {
     getAllMessageFail,
     getAllMessageSuccess,
     selectCurrentConversationId,
+    selectReceiveUserInfo,
     selectReceiveUserSdt,
     setCurrentConversationId,
     setReceiveUserInfo,
+    createClientConversation,
 } from './ChatSlice'
 
 export default function* chatSaga() {
@@ -33,7 +35,9 @@ export default function* chatSaga() {
 function* getAllConversationSaga() {
     const token = yield select(selectToken)
     const sdt = yield select(selectNumberPhone)
-    // const receiveUserSdt = yield select(selectReceiveUserSdt)
+    const receiveUserSdt = yield select(selectReceiveUserSdt)
+    const receiveUser = yield select(selectReceiveUserInfo)
+    console.log(receiveUser)
     // const currentConversationId = yield select(selectCurrentConversationId)
     if (!token || !sdt) {
         return
@@ -50,34 +54,46 @@ function* getAllConversationSaga() {
     if (status === 200) {
         yield put(getAllConversationSuccess({ listConversation }))
         if (Array.isArray(listConversation) && listConversation.length !== 0) {
-            const currentConversation = listConversation[0]
-            yield put(
-                setCurrentConversationId(currentConversation.conversationId)
-            )
-            yield put(
-                setReceiveUserInfo({
-                    userInfo: {
-                        ten: currentConversation.ten,
-                        soDienThoai: currentConversation.sdtNguoiMua,
-                        anhDaiDienSource:
-                            currentConversation.imageSourceNguoiMua,
-                    },
-                })
-            )
+            // const currentConversation = listConversation[0]
+            // yield put(
+            //     setCurrentConversationId(currentConversation.conversationId)
+            // )
+            // yield put(
+            //     setReceiveUserInfo({
+            //         userInfo: {
+            //             ten: currentConversation.ten,
+            //             soDienThoai: currentConversation.sdtNguoiMua,
+            //             anhDaiDienSource:
+            //                 currentConversation.imageSourceNguoiMua,
+            //         },
+            //     })
+            // )
+            // --------------------------------------------------------
             // yield put( setReceiveUserInfo)
         }
-        // const selectedConversation = listConversation.find(
-        //     ({ sdtNguoiMua }) => sdtNguoiMua === receiveUserSdt
-        // )
-        // if (selectedConversation) {
-        //     yield put(
-        //         setCurrentConversationId(selectedConversation.conversationId)
-        //     )
-        // } else if (currentConversationId === 0) {
-        //     yield put(
-        //         setCurrentConversationId(listConversation[0].conversationId)
-        //     )
-        // }
+        if (receiveUserSdt) {
+            const selectedConversation = listConversation.find(
+                ({ sdtNguoiMua }) => sdtNguoiMua === receiveUserSdt
+            )
+            if (selectedConversation) {
+                yield put(
+                    setCurrentConversationId(
+                        selectedConversation.conversationId
+                    )
+                )
+            } else {
+                yield put(
+                    createClientConversation({
+                        userInfo: receiveUser,
+                    })
+                )
+            }
+            // else if (currentConversationId === 0) {
+            //     yield put(
+            //         setCurrentConversationId(listConversation[0].conversationId)
+            //     )
+            // }
+        }
     } else if (status === 401) {
         yield put(
             getAllConversationFail({

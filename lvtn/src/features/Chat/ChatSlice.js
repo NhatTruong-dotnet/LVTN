@@ -4,6 +4,7 @@ import { emitMessage } from '../../Common/ToastMessage/ToastMessage'
 const initialState = {
     isLoading: false,
     listConversation: [],
+    previousLocation: '',
     currentConversation: {
         conversationId: '',
         receiveUserInfo: {
@@ -76,6 +77,25 @@ const chatSlice = createSlice({
                 listMessage: [],
             }
         },
+        createClientConversation: (state, action) => {
+            const userProfile = action.payload.userInfo
+            console.log(userProfile)
+            const existConversation = state.listConversation.some(
+                ({ sdtNguoiMua }) => sdtNguoiMua === userProfile.soDienThoai
+            )
+            if (!existConversation) {
+                console.log(existConversation)
+
+                state.listConversation.unshift({
+                    conversationId: Math.random(),
+                    ten: userProfile.ten,
+                    sdtNguoiMua: userProfile.soDienThoai,
+                    imageSourceNguoiMua: userProfile.anhDaiDienSource,
+                    lastMessage: '  ',
+                    time: new Date().toISOString(),
+                })
+            }
+        },
     },
 })
 
@@ -99,6 +119,8 @@ export const {
     addNewMessageApiFail,
     // ------------------------
     setDefaultConversation,
+    // ------------------------
+    createClientConversation,
 } = actions
 
 export const selectListConversation = state => state.chat.listConversation
