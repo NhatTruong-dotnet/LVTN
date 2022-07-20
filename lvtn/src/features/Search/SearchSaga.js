@@ -53,7 +53,7 @@ function* filterPost({ searchCategory, address, params }) {
         ) {
             for (let subKey in params[key]) {
                 queryString += `${
-                    params[key][subKey] ? '/' + params[key][subKey] + ';' : ''
+                    params[key][subKey] ? params[key][subKey] + ';' : ''
                 }`
             }
         } else {
