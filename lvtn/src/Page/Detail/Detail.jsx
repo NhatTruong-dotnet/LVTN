@@ -25,6 +25,7 @@ import {
     selectLoginStatus,
     selectNumberPhone,
 } from '../../features/Auth/Login/loginSlice'
+import { createClientConversation } from '../../features/Chat/ChatSlice'
 
 const imgURL = process.env.REACT_APP_BASE_IMG_URL
 
@@ -118,6 +119,7 @@ function Detail(props) {
                 userInfo: postDetail.userProfile,
             })
         )
+
         navigate('/chat')
     }
 

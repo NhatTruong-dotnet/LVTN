@@ -20,9 +20,9 @@ function App() {
     const [connection, setConnection] = useState(null)
     const [notifyConnection, setNotifyConnection] = useState(null)
     const dispatch = useDispatch()
-    const { pathname } = useLocation()
+    const { pathname, ...rest } = useLocation()
     const navigate = useNavigate()
-
+    console.log(rest)
     const connectSignalRServer = async (
         url,
         setConnection,

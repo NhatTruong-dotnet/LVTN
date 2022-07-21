@@ -18,6 +18,7 @@ import {
     selectReceiveUserInfo,
     selectReceiveUserSdt,
     setCurrentConversationId,
+    setDefaultConversation,
     setReceiveUserInfo,
 } from '../../features/Chat/ChatSlice'
 import Conversation from './components/Conversation'
@@ -154,6 +155,12 @@ function Chat(props) {
     //         const
     //     }
     // },[receiveUserInfo.soDienThoai])
+    useEffect(() => {
+        return () => {
+            dispatch(setDefaultConversation())
+            dispatch(setReceiveUserInfo({ userInfo: receiveUserInfo }))
+        }
+    }, [])
     console.log(receiveUserInfo)
     return (
         <div className='grid wide'>
