@@ -159,9 +159,7 @@ function Detail(props) {
                             </div>
                             <div className={styles.price}>
                                 {postDetail.result.BaiDang.gia &&
-                                    formatCurrency(
-                                        postDetail.result.BaiDang.gia
-                                    )}
+                                    postDetail.result.BaiDang.gia}
                             </div>
                             <div className={styles.description}>
                                 {postDetail.result.BaiDang.moTa}
