@@ -53,5 +53,5 @@ jobs:
         with:
           app-name: 'lvtnSTU'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_E5ED9A0A34654F8DAC45F34D82705CF5 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_88EC00B2D6F74937BF7E565CA87867BF }}
           package: .
