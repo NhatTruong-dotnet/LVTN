@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Development\\LVTN\\STU.LVTN.SERVER\\STU.LVTN.SERVER.csproj": {}
+    "C:\\Development\\LVTN\\STU.LVTN.SERVER.csproj": {}
   },
   "projects": {
-    "C:\\Development\\LVTN\\STU.LVTN.SERVER\\STU.LVTN.SERVER.csproj": {
+    "C:\\Development\\LVTN\\STU.LVTN.SERVER.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Development\\LVTN\\STU.LVTN.SERVER\\STU.LVTN.SERVER.csproj",
+        "projectUniqueName": "C:\\Development\\LVTN\\STU.LVTN.SERVER.csproj",
         "projectName": "STU.LVTN.SERVER",
-        "projectPath": "C:\\Development\\LVTN\\STU.LVTN.SERVER\\STU.LVTN.SERVER.csproj",
+        "projectPath": "C:\\Development\\LVTN\\STU.LVTN.SERVER.csproj",
         "packagesPath": "C:\\Users\\buile\\.nuget\\packages\\",
-        "outputPath": "C:\\Development\\LVTN\\STU.LVTN.SERVER\\obj\\",
+        "outputPath": "C:\\Development\\LVTN\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\buile\\AppData\\Roaming\\NuGet\\NuGet.Config",
