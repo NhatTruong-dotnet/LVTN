@@ -17,7 +17,7 @@ builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddCors(option => 
     option.AddDefaultPolicy(builder =>
     {
-        builder.WithOrigins("http://localhost:3000").WithOrigins("http://localhost:3001")
+        builder.WithOrigins("https://luanvantotnghiep.netlify.app/").WithOrigins("https://luanvantotnghiepadmin.netlify.app/")
         .AllowAnyHeader()
         .AllowAnyMethod()
         .AllowCredentials();
