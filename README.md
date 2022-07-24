@@ -1,7 +1,7 @@
 # LVTN
 Luận văn tốt nghiệp, REACT - .NET  
-Link truy cập website client:  
-Link truy cập website admin:  
+Link truy cập website client:  https://luanvantotnghiep.netlify.app/
+Link truy cập website admin:  https://luanvantotnghiepadmin.netlify.app/
 | Client |             |              |                          |
 |--------|-------------|--------------|--------------------------|
 |        | **Account** | **Password** |       **Username**       |
