@@ -26,5 +26,8 @@ Truy cập vào link chứa source code: https://github.com/NhatTruong-dotnet/LV
 &ensp;&ensp;&ensp;2.3.2. Truy cập vào azure portal để tạo SQL Database: https://portal.azure.com/#create/Microsoft.SQLDatabase  
 &ensp;&ensp;&ensp;2.3.3. Điền DB name sau đó chọn Next ![image](https://user-images.githubusercontent.com/55442462/180627478-35081b74-e021-4003-a8ee-4cd6716f25b4.png)  
 &ensp;&ensp;&ensp;2.3.4. Điền thông tin như hình và nhấn Review + Create ![image](https://user-images.githubusercontent.com/55442462/180627513-aa057245-6cb0-441e-a2a4-f5aaf1c52384.png)  
-&ensp;&ensp;&ensp;2.3.5. Sau khi tạo thành công DB, truy cập vào DB, chọn query editor và open query để tiến hành tạo DB ![image](https://user-images.githubusercontent.com/55442462/180627584-3838d6bd-6c3d-4405-9df0-114647e7096e.png)
+&ensp;&ensp;&ensp;2.3.5. Sau khi tạo thành công DB, truy cập vào DB, chọn query editor và open query để tiến hành tạo DB ![image](https://user-images.githubusercontent.com/55442462/180627637-287daa11-7119-42f9-a73e-7c891b6a6f44.png)
+&ensp;&ensp;&ensp;2.3.6. Sau khi query thành công, tiến hành kiểm tra lại các tables ![image](https://user-images.githubusercontent.com/55442462/180627651-4a2af79c-cc37-460d-ad19-cf068f814ad9.png)
+
+
 
