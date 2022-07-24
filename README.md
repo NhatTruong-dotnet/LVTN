@@ -20,5 +20,11 @@ Truy cập vào link chứa source code: https://github.com/NhatTruong-dotnet/LV
 &ensp;&ensp;&ensp;&ensp;2.2.2.2 Tạo một web app ![image](https://user-images.githubusercontent.com/55442462/180612171-e42a0009-823b-4bf4-9222-49492cab6899.png)
 &ensp;&ensp;&ensp;&ensp;2.2.2.3 Điền thông tin vào (1*) và (2*), sau khi điền thông tin thì nhấn Next![image](https://user-images.githubusercontent.com/55442462/180612372-1bd83f91-0943-4e51-9307-ccf70e443f53.png)
 &ensp;&ensp;&ensp;&ensp;2.2.2.4 Chọn các thông tin như hình, sau đó nhấn Review + Create![image](https://user-images.githubusercontent.com/55442462/180612605-7203943d-14e0-486e-8a48-2f78bc8d1f5a.png)  
-&ensp;&ensp;&ensp;&ensp;2.2.2.5 Sau khi process thành công thì web server sẽ được hiển thị ở link (1*).azurewebsites.net
+&ensp;&ensp;&ensp;&ensp;2.2.2.5 Sau khi process thành công thì web server sẽ được hiển thị ở link (1*).azurewebsites.net  
+#### &ensp;2.3 Deploy Database to Azure SQL database  
+&ensp;&ensp;&ensp;2.3.1. Truy cập vào link và tải script về: https://github.com/NhatTruong-dotnet/LVTN/tree/publish/DB  
+&ensp;&ensp;&ensp;2.3.2. Truy cập vào azure portal để tạo SQL Database: https://portal.azure.com/#create/Microsoft.SQLDatabase  
+&ensp;&ensp;&ensp;2.3.3. Điền DB name sau đó chọn Next ![image](https://user-images.githubusercontent.com/55442462/180627478-35081b74-e021-4003-a8ee-4cd6716f25b4.png)  
+&ensp;&ensp;&ensp;2.3.4. Điền thông tin như hình và nhấn Review + Create ![image](https://user-images.githubusercontent.com/55442462/180627513-aa057245-6cb0-441e-a2a4-f5aaf1c52384.png)  
+&ensp;&ensp;&ensp;2.3.5. Sau khi tạo thành công DB, truy cập vào DB, chọn query editor và open query để tiến hành tạo DB ![image](https://user-images.githubusercontent.com/55442462/180627584-3838d6bd-6c3d-4405-9df0-114647e7096e.png)
 
