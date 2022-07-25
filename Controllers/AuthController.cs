@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 using STU.LVTN.SERVER.Model;
 using STU.LVTN.SERVER.Model.DTO;
 using STU.LVTN.SERVER.Provider.Handler;
+using Twilio;
+using Twilio.Rest.Api.V2010.Account;
 
 namespace STU.LVTN.SERVER.Controllers
 {
@@ -98,5 +100,30 @@ namespace STU.LVTN.SERVER.Controllers
                 return BadRequest();
             }
         }
+        [HttpPost("account/forgotPassword/{sdt?}")]
+        public async Task<ActionResult<bool>> ForgotPassword(string sdt )
+        {
+            try
+            {
+                string accountSid = "AC6e9d8c0ebfd1911c29d4e0c39f9c3b84";
+                string authToken = "acadd4440164f95aabf3e91ec1abdc2b";
+                TwilioClient.Init(accountSid, authToken);
+                string newPassword = await nguoiDungHandler.ForgotPassword(sdt);
+                var message = MessageResource.Create(
+                    body: $"Your password have been reset, here is your new password: {newPassword}",
+                    from: new Twilio.Types.PhoneNumber("+18454079095"),
+                    to: new Twilio.Types.PhoneNumber($"+84{sdt}")
+                );
+                if (newPassword == string.Empty)
+                    return BadRequest("Something wrong when trying request");
+                else
+                    return Ok();
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
+        }
+
     }
 }

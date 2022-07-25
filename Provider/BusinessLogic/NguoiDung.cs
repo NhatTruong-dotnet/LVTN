@@ -82,6 +82,29 @@ namespace STU.LVTN.SERVER.Provider.BusinessLogic
             return user == null ? false:true;
         }
 
+        public async Task<string> ResetPassword(string soDienThoai)
+        {
+            var user = _context.NguoiDungs.Where(user => user.SoDienThoai == soDienThoai).FirstOrDefault();
+            byte[]? passwordHash;
+            byte[]? passwordSalt;
+            var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+            var stringChars = new char[8];
+            var random = new Random();
+
+            for (int i = 0; i < stringChars.Length; i++)
+            {
+                stringChars[i] = chars[random.Next(chars.Length)];
+            }
+
+            var finalString = new String(stringChars);
+            CreatePasswordHash(finalString, out passwordHash, out passwordSalt);
+            user.PasswordHash = passwordHash;
+            user.PasswordSalt = passwordSalt;
+            _context.NguoiDungs.Update(user);
+            _context.SaveChanges();
+            return finalString;
+        }
+
         public  async Task<bool> VerifyPasswordHash(string password, byte[] passwordHash, byte[] passwordSalt)
         {
             using (var hmac = new HMACSHA512(passwordSalt))

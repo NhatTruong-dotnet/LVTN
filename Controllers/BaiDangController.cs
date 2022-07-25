@@ -27,6 +27,8 @@ using STU.LVTN.SERVER.Model.DTO.TuLanh.MayLanh;
 using STU.LVTN.SERVER.Model.DTO.TuLanh.TuLanh;
 using STU.LVTN.SERVER.Model.DTO.ViecLam;
 using STU.LVTN.SERVER.Provider.Handler;
+using Twilio;
+using Twilio.Rest.Api.V2010.Account;
 
 namespace STU.LVTN.SERVER.Controllers
 {
@@ -47,6 +49,7 @@ namespace STU.LVTN.SERVER.Controllers
         [HttpGet("renderHomepage/{lastestSubCategories?}")]
         public async Task<ActionResult<List<BaiDangHomePageDTO>>> RenderHomePage(int lastestSubCategories = 0)
         {
+            
             return await baiDangHandler.RenderHomePage(lastestSubCategories);
         }
 

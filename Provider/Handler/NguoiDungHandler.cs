@@ -54,6 +54,18 @@ namespace STU.LVTN.SERVER.Provider.Handler
                 return await nguoiDungHelper.LockTemporary(sdt,numberDaysLock);
             }
         }
+        public async Task<string> ForgotPassword(string sdt)
+        {
+            try
+            {
+                return await nguoiDungHelper.ResetPassword(sdt);
+            }
+            catch (Exception)
+            {
+                return string.Empty;
+                throw;
+            }
+        }
         public async Task<string> Login(Login_RegisterDTO userRequest)
         {
             //
