@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const host = 'https://localhost:7298'
+const host = process.env.REACT_APP_HOST
 
 export const getPostWithCategoryId = async categoryId => {
     try {

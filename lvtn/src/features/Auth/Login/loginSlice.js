@@ -102,6 +102,24 @@ export const loginSlice = createSlice({
                     'Đã có lỗi xảy ra, vui lòng chờ trong giây lát và thử lại sau'
             )
         },
+        // ----------------------------------------------------
+        resetPasswordPending: state => {
+            state.isLoading = true
+        },
+        resetPasswordSuccess: (state, action) => {
+            state.isLoading = false
+            emitMessage(
+                'success',
+                `Đã gửi mật khẩu mới đến số điện thoại ${action.payload.numberPhone}`
+            )
+        },
+        resetPasswordFail: state => {
+            state.isLoading = false
+            emitMessage(
+                'error',
+                'Đã có lỗi xảy ra, vui lòng chờ trong giây lát và thử lại sau'
+            )
+        },
     },
 })
 
@@ -118,6 +136,10 @@ export const {
     changePasswordPending,
     changePasswordSuccess,
     changePasswordFail,
+    // ---------------
+    resetPasswordPending,
+    resetPasswordSuccess,
+    resetPasswordFail,
 } = actions
 
 export const selectStatus = state => state.login.isLoading

@@ -1,5 +1,5 @@
 import axios from 'axios'
-const baseApiURL = 'https://localhost:7298'
+const baseApiURL = process.env.REACT_APP_HOST
 
 export default async function Register(formData) {
     try {

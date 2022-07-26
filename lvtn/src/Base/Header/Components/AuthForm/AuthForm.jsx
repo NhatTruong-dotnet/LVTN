@@ -1,6 +1,5 @@
 import styles from './authform.module.css'
 import { useEffect, useState } from 'react'
-import clsx from 'clsx'
 import { useLocation } from 'react-router-dom'
 import { FcGoogle } from 'react-icons/fc'
 import { FaFacebook, FaTimes } from 'react-icons/fa'
@@ -10,6 +9,8 @@ import {
     setDefaultRegisterState,
 } from '../../../../features/Auth/Register/registerSlice'
 import { selectLoginStatus } from '../../../../features/Auth/Login/loginSlice'
+import DynamicModal from '../../../../Common/DynamicModal/DynamicModal'
+import { emitMessage } from '../../../../Common/ToastMessage/ToastMessage'
 
 function AuthForm({ setIsShowForm }) {
     const [formMode, setFormMode] = useState('login')
@@ -17,6 +18,8 @@ function AuthForm({ setIsShowForm }) {
         numberPhone: '',
         password: '',
     })
+    const [forgotPasswordConfirmDialog, setForgotPasswordConfirmDialog] =
+        useState(false)
     const registerState = useSelector(selectRegisterState)
     const dispatch = useDispatch()
     const isLogin = useSelector(selectLoginStatus)
@@ -98,6 +101,45 @@ function AuthForm({ setIsShowForm }) {
                     {formMode === 'login' ? 'Đăng nhập' : 'Đăng ký'}
                 </button>
             </form>
+            <div
+                style={{
+                    textAlign: 'center',
+                    fontSize: 12,
+                    marginTop: 10,
+                    fontWeight: '500',
+                    textDecoration: 'underline',
+                }}
+                className={styles.link}
+                onClick={() => {
+                    if (formData.numberPhone) {
+                        setForgotPasswordConfirmDialog(true)
+                    } else {
+                        emitMessage('error', 'Bạn chưa nhập số điện thoại')
+                    }
+                }}
+            >
+                Bạn quên mật khẩu ?
+            </div>
+            <DynamicModal
+                showModal={forgotPasswordConfirmDialog}
+                confirmDialogConfig={{
+                    title: 'Đặt lại mật khẩu',
+                    content: `Bạn có chắc đặt lại mật khẩu, mật khẩu mới sẽ được gửi về số điện thoại "${formData.numberPhone}"`,
+                    cancelText: 'Hủy',
+                    acceptText: 'Đồng ý',
+                    loadingOnDone: true,
+                    onDone: value => {
+                        if (!value) {
+                            setForgotPasswordConfirmDialog(false)
+                        } else {
+                            dispatch({
+                                type: 'resetPassword',
+                                numberPhone: formData.numberPhone,
+                            })
+                        }
+                    },
+                }}
+            ></DynamicModal>
             {/* <button
                 className={clsx(styles.loginButton, styles.google)}
                 style={{ display: 'block' }}

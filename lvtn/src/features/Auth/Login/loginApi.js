@@ -1,9 +1,9 @@
 import axios from 'axios'
-const baseApiURL = 'https://localhost:7298'
+const host = process.env.REACT_APP_HOST
 
 export async function Login(formData) {
     try {
-        const res = await axios.post(`${baseApiURL}/api/Auth/login`, {
+        const res = await axios.post(`${host}/api/Auth/login`, {
             soDienThoai: formData.numberPhone,
             password: formData.password,
         })
@@ -20,7 +20,7 @@ export async function Login(formData) {
 export async function changePassword({ token, soDienThoai, password }) {
     try {
         const res = await axios.post(
-            `${baseApiURL}/api/auth/changePassword`,
+            `${host}/api/auth/changePassword`,
             { soDienThoai, password },
             {
                 headers: {
@@ -33,6 +33,22 @@ export async function changePassword({ token, soDienThoai, password }) {
         return {
             status: response.status,
             errorMessage: response.data,
+        }
+    }
+}
+
+export const resetPassword = async numberPhone => {
+    try {
+        const res = await axios.post(
+            `${host}/account/forgotPassword/${numberPhone}`
+        )
+
+        return {
+            status: res.status,
+        }
+    } catch ({ response }) {
+        return {
+            status: response.status,
         }
     }
 }

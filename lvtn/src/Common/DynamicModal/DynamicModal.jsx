@@ -12,7 +12,6 @@ function DynamicModal({
     children,
 }) {
     const [isOpen, setIsOpen] = useState(showModal)
-
     let timer = useRef()
     useEffect(() => {
         if (autoClose && isOpen) {

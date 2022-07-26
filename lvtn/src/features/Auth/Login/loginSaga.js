@@ -1,6 +1,6 @@
 import { call, put, takeLeading, select, takeEvery } from 'redux-saga/effects'
 import { setDefaultConversation } from '../../Chat/ChatSlice'
-import { changePassword, Login } from './loginApi'
+import { changePassword, Login, resetPassword } from './loginApi'
 import {
     loginPending,
     loginSuccess,
@@ -10,12 +10,26 @@ import {
     changePasswordFail,
     changePasswordSuccess,
     selectNumberPhone,
+    resetPasswordPending,
+    resetPasswordSuccess,
+    resetPasswordFail,
 } from './loginSlice'
 
 export default function* loginWatcher() {
     yield takeLeading('USER_LOGIN', loginWorker)
     yield takeLeading('changePassword', changePasswordSaga)
     yield takeEvery('logout', logoutSaga)
+    yield takeLeading('resetPassword', resetPasswordSaga)
+}
+
+function* resetPasswordSaga({ numberPhone }) {
+    yield put(resetPasswordPending())
+    const { status } = yield call(resetPassword, numberPhone)
+    if (status === 200) {
+        yield put(resetPasswordSuccess({ numberPhone }))
+    } else {
+        yield put(resetPasswordFail())
+    }
 }
 
 function* logoutSaga() {

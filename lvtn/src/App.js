@@ -16,6 +16,8 @@ const Chat = lazy(() => import('./Page/Chat/Chat'))
 const Category = lazy(() => import('./Page/Category/Category'))
 const Search = lazy(() => import('./Page/Search/Search'))
 
+const host = process.env.REACT_APP_HOST
+
 function App() {
     const [connection, setConnection] = useState(null)
     const [notifyConnection, setNotifyConnection] = useState(null)
@@ -115,11 +117,8 @@ function App() {
 
     // connect signalR
     useEffect(() => {
-        connectSignalRServer('https://localhost:7298/chat', setConnection)
-        connectSignalRServer(
-            'https://localhost:7298/notify',
-            setNotifyConnection
-        )
+        connectSignalRServer(`${host}/chat`, setConnection)
+        connectSignalRServer(`${host}/notify`, setNotifyConnection)
     }, [])
 
     // set global signalR notify method
