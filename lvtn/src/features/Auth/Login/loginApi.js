@@ -40,7 +40,7 @@ export async function changePassword({ token, soDienThoai, password }) {
 export const resetPassword = async numberPhone => {
     try {
         const res = await axios.post(
-            `${host}/account/forgotPassword/${numberPhone}`
+            `${host}/api/Auth/account/forgotPassword/${numberPhone}`
         )
 
         return {
