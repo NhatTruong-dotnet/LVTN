@@ -238,13 +238,13 @@ function CreatePost() {
         }
     }, [pathname, updatePost, isLogin])
 
-    useEffect(() => {
-        if (!isLogin) {
-            if (typeof window.showLoginForm === 'function') {
-                window.showLoginForm()
-            }
-        }
-    }, [isLogin])
+    // useEffect(() => {
+    //     if (!isLogin) {
+    //         if (typeof window.showLoginForm === 'function') {
+    //             window.showLoginForm()
+    //         }
+    //     }
+    // }, [isLogin])
 
     useEffect(() => {
         if (selectedCategory.category.id && !pathname.includes('edit-post')) {

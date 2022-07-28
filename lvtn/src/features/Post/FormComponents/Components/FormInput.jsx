@@ -2,7 +2,7 @@ import styles from '../RealEstate/index.module.css'
 import AutoComplete from '../../../../Base/Header/Components/AutoComplete'
 import clsx from 'clsx'
 import { useState } from 'react'
-import TabContainer from '../../../../Common/TabContainer'
+import { useDebounceCallback } from '../../../../Utils/Hook'
 
 function FormInput({
     require,
@@ -21,6 +21,7 @@ function FormInput({
     const [autoCompleteItems, setAutoCompleteItems] = useState(requireData)
     const [message, setMessage] = useState('')
     const [displayAutoComplete, setDisplayAutoComplete] = useState(false)
+    const delayCallback = useDebounceCallback(500)
 
     const validateFormInput = value => {
         if (!value && require) {
@@ -57,7 +58,7 @@ function FormInput({
         if (message) {
             setMessage('')
         }
-        onChange(e)
+        // onChange(e)
     }
 
     const handleSelectAutoCompleteItem = value => {
@@ -101,9 +102,7 @@ function FormInput({
                     name={name}
                     onBlur={() => {
                         validateFormInput(value)
-                        setTimeout(() => {
-                            setDisplayAutoComplete(false)
-                        }, 500)
+                        delayCallback(() => setDisplayAutoComplete(false))
                     }}
                     onFocus={() => {
                         setDisplayAutoComplete(true)
