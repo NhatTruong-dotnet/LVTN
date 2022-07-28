@@ -106,7 +106,7 @@ namespace STU.LVTN.SERVER.Controllers
             try
             {
                 string accountSid = "AC6e9d8c0ebfd1911c29d4e0c39f9c3b84";
-                string authToken = "acadd4440164f95aabf3e91ec1abdc2b";
+                string authToken = "059f1c63d60be1a93fef45573b62d76f";
                 TwilioClient.Init(accountSid, authToken);
                 string newPassword = await nguoiDungHandler.ForgotPassword(sdt);
                 var message = MessageResource.Create(
