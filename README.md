@@ -16,7 +16,7 @@ Truy cập vào link chứa source code: https://github.com/NhatTruong-dotnet/LV
 &ensp;&ensp;&ensp;2.1.1. Truy cập vào source code server và Fork: https://github.com/NhatTruong-dotnet/LVTN  
 &ensp;&ensp;&ensp;2.1.2. Mở VScode và truy cập vào thư mục source code  
 &ensp;&ensp;&ensp;2.1.3. Mở terminal và gõ lệnh npm run build  ![image](https://user-images.githubusercontent.com/66171634/182862801-7f055dd9-44bd-445e-9a00-3d50fe2bd67d.png)  
-&ensp;&ensp;&ensp;2.1.4. Cấu trúc thư mục build  ![image](https://user-images.githubusercontent.com/66171634/182863082-09239f71-a086-4cfd-967e-2bf7cc1cbe54.png)  
+&ensp;&ensp;&ensp;2.1.4. Cấu trúc thư mục build    ![image](https://user-images.githubusercontent.com/66171634/182863082-09239f71-a086-4cfd-967e-2bf7cc1cbe54.png)  
 &ensp;&ensp;&ensp;2.1.5. Truy cập vào netlify https://www.netlify.com/  
 &ensp;&ensp;&ensp;2.1.6. Sau khi đăng nhập vào netlify chọn Add new site -> Deploy manual  ![image](https://user-images.githubusercontent.com/66171634/182864225-e45316b3-ab76-44fc-8cd2-6c697a5db859.png)  
 &ensp;&ensp;&ensp;2.1.7. Kéo thả thư mục build vào  ![image](https://user-images.githubusercontent.com/66171634/182864658-fd5487fc-2ddc-4030-96a0-195152ccfbce.png)  
